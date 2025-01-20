@@ -12,6 +12,7 @@ book:
     - Spearman.qmd
     - Multiple_factors.qmd
     - Modification_indices.qmd
+    - EFA.qmd
     - Correlated_residuals.qmd
     - summary.qmd
     - references.qmd

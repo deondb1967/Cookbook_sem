@@ -1,0 +1,21 @@
+---
+title: "Exploratory factor analysis"
+author: "Deon de Bruin"
+---
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+library(lavaan)
+library(flexplavaan)
+library(psychTools)
+library(psych)
+
+scree(bfi[c(1:5, 16:20)])
+
+fa.parallel(bfi[c(1:5, 16:20)])
+
+fa(bfi[c(1:5, 16:20)], nfactors = 2)
+
+fa(bfi[c(1:5, 16:20)], nfactors = 3)
+```
