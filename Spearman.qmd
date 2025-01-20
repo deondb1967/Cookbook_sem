@@ -1,0 +1,49 @@
+---
+title: "Single factor model"
+author: "Deon de Bruin"
+---
+
+## Fitting a single factor model
+
+```{r}
+
+#| warning: FALSE
+#| message: FALSE
+
+library(psychTools)
+library(lavaan)
+library(flexplavaan)
+
+mod1 <- '
+Agreeableness =~ A1 + A2 + A3 + A4 + A5
+'
+
+fit.mod1 <- cfa(mod1, data = bfi)
+summary(fit.mod1, standardized = TRUE, fit.measures = TRUE)
+
+ visualize(fit.mod1)
+ measurement_plot(fit.mod1, sample = 300)
+ residual_plots(fit.mod1)
+```
+
+## 
+
+```{r}
+
+#| warning: FALSE
+#| message: FALSE
+
+GWS2020 <- read.csv("C:/Users/deondb/Downloads/GWS2020.csv")
+
+modgws <- '
+Stress =~ Item1 + Item2 + Item3 + Item4 + Item5 + Item6 + Item7 + Item8 + Item9
+'
+
+fit.modgws <- cfa(modgws, data = GWS2020)
+summary(fit.modgws, standardized = TRUE, fit.measures = TRUE)
+
+
+ visualize(fit.modgws, subset = 1:9)
+ measurement_plot(fit.modgws, sample = 300)
+ residual_plots(fit.modgws)
+```

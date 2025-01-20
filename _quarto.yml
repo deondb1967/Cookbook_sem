@@ -2,12 +2,13 @@ project:
   type: book
 
 book:
-  title: "Cookbook_sem"
-  author: "Norah Jones"
+  title: "Structural equation modeling with R cookbook"
+  author: "Deon de Bruin"
   date: "2025/01/20"
   chapters:
     - index.qmd
     - intro.qmd
+    - Spearman.qmd
     - summary.qmd
     - references.qmd
 
