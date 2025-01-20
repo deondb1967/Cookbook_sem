@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Deon de Bruin">
-<meta name="dcterms.date" content="2025-01-20">
 
-<title>Structural equation modeling with R cookbook</title>
+<title>4&nbsp; Modification Indices – Structural equation modeling with R cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./Correlated_residuals.html" rel="next">
+<link href="./Multiple_factors.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Modification_indices.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modification Indices</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
+  <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
@@ -194,21 +194,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Structural equation modeling with R cookbook</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modification Indices</span></h1>
 </div>
 
 
@@ -222,12 +216,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 20, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -237,19 +225,175 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This is lavaan 0.6-19
+lavaan is FREE software! Please report any bugs.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">Neuroticism   =~ N1 + N2 + N3 + N4 + N5</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">Agreeableness =~ A1 + A2 + A3 + A4 + A5</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fit.mod3 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(<span class="at">model =</span> mod3, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">data  =</span> bfi)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod3, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">standardized =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>lavaan 0.6-19 ended normally after 36 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        21
+
+                                                  Used       Total
+  Number of observations                          2618        2800
+
+Model Test User Model:
+                                                      
+  Test statistic                               694.620
+  Degrees of freedom                                34
+  P-value (Chi-square)                           0.000
+
+Model Test Baseline Model:
+
+  Test statistic                              7465.706
+  Degrees of freedom                                45
+  P-value                                        0.000
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.911
+  Tucker-Lewis Index (TLI)                       0.882
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)             -43379.800
+  Loglikelihood unrestricted model (H1)     -43032.491
+                                                      
+  Akaike (AIC)                               86801.601
+  Bayesian (BIC)                             86924.874
+  Sample-size adjusted Bayesian (SABIC)      86858.151
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.086
+  90 Percent confidence interval - lower         0.081
+  90 Percent confidence interval - upper         0.092
+  P-value H_0: RMSEA &lt;= 0.050                    0.000
+  P-value H_0: RMSEA &gt;= 0.080                    0.966
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.054
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Neuroticism =~                                                        
+    N1                1.000                               1.292    0.823
+    N2                0.949    0.023   40.791    0.000    1.226    0.803
+    N3                0.884    0.024   36.571    0.000    1.141    0.714
+    N4                0.680    0.024   27.853    0.000    0.878    0.559
+    N5                0.626    0.025   24.591    0.000    0.809    0.499
+  Agreeableness =~                                                      
+    A1                1.000                               0.545    0.389
+    A2               -1.404    0.085  -16.527    0.000   -0.765   -0.651
+    A3               -1.822    0.107  -17.018    0.000   -0.992   -0.759
+    A4               -1.338    0.090  -14.855    0.000   -0.729   -0.489
+    A5               -1.483    0.090  -16.448    0.000   -0.808   -0.640
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Neuroticism ~~                                                        
+    Agreeableness     0.155    0.019    8.049    0.000    0.220    0.220
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .N1                0.793    0.036   22.094    0.000    0.793    0.322
+   .N2                0.826    0.035   23.877    0.000    0.826    0.355
+   .N3                1.249    0.043   29.352    0.000    1.249    0.490
+   .N4                1.694    0.051   33.284    0.000    1.694    0.687
+   .N5                1.974    0.058   34.081    0.000    1.974    0.751
+   .A1                1.665    0.049   34.211    0.000    1.665    0.849
+   .A2                0.796    0.029   27.597    0.000    0.796    0.576
+   .A3                0.725    0.035   20.614    0.000    0.725    0.424
+   .A4                1.690    0.052   32.667    0.000    1.690    0.761
+   .A5                0.939    0.033   28.108    0.000    0.939    0.590
+    Neuroticism       1.668    0.070   23.696    0.000    1.000    1.000
+    Agreeableness     0.297    0.033    9.060    0.000    1.000    1.000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modificationindices</span>(fit.mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             lhs op rhs      mi    epc sepc.lv sepc.all sepc.nox
+24   Neuroticism =~  A1  19.035  0.098   0.127    0.091    0.091
+25   Neuroticism =~  A2  20.795  0.079   0.102    0.087    0.087
+26   Neuroticism =~  A3  29.798  0.104   0.135    0.103    0.103
+27   Neuroticism =~  A4   5.262 -0.053  -0.069   -0.046   -0.046
+28   Neuroticism =~  A5  50.336 -0.132  -0.171   -0.135   -0.135
+29 Agreeableness =~  N1   0.630  0.038   0.021    0.013    0.013
+30 Agreeableness =~  N2   0.295  0.025   0.014    0.009    0.009
+31 Agreeableness =~  N3  10.202 -0.168  -0.091   -0.057   -0.057
+32 Agreeableness =~  N4  25.954  0.293   0.160    0.102    0.102
+33 Agreeableness =~  N5  11.128 -0.205  -0.112   -0.069   -0.069
+34            N1 ~~  N2 345.707  0.775   0.775    0.958    0.958
+35            N1 ~~  N3  52.136 -0.272  -0.272   -0.274   -0.274
+36            N1 ~~  N4  76.839 -0.291  -0.291   -0.251   -0.251
+37            N1 ~~  N5  19.022 -0.149  -0.149   -0.119   -0.119
+38            N1 ~~  A1  24.399  0.137   0.137    0.119    0.119
+39            N1 ~~  A2   4.495 -0.044  -0.044   -0.055   -0.055
+40            N1 ~~  A3  13.106  0.079   0.079    0.104    0.104
+41            N1 ~~  A4   5.855  0.069   0.069    0.059    0.059
+42            N1 ~~  A5   5.301 -0.051  -0.051   -0.059   -0.059
+43            N2 ~~  N3  37.647 -0.220  -0.220   -0.216   -0.216
+44            N2 ~~  N4  68.849 -0.266  -0.266   -0.225   -0.225
+45            N2 ~~  N5  42.497 -0.217  -0.217   -0.170   -0.170
+46            N2 ~~  A1   3.438  0.051   0.051    0.043    0.043
+47            N2 ~~  A2  14.146  0.077   0.077    0.095    0.095
+48            N2 ~~  A3   0.861  0.020   0.020    0.026    0.026
+49            N2 ~~  A4  14.742 -0.108  -0.108   -0.091   -0.091
+50            N2 ~~  A5   3.613 -0.042  -0.042   -0.048   -0.048
+51            N3 ~~  N4 163.251  0.436   0.436    0.300    0.300
+52            N3 ~~  N5  47.254  0.247   0.247    0.157    0.157
+53            N3 ~~  A1   0.111  0.010   0.010    0.007    0.007
+54            N3 ~~  A2   0.254  0.012   0.012    0.012    0.012
+55            N3 ~~  A3   3.474  0.046   0.046    0.048    0.048
+56            N3 ~~  A4   0.614  0.025   0.025    0.017    0.017
+57            N3 ~~  A5   0.171  0.010   0.010    0.010    0.010
+58            N4 ~~  N5  86.112  0.360   0.360    0.197    0.197
+59            N4 ~~  A1  17.767 -0.146  -0.146   -0.087   -0.087
+60            N4 ~~  A2   0.251  0.013   0.013    0.011    0.011
+61            N4 ~~  A3   3.030 -0.047  -0.047   -0.043   -0.043
+62            N4 ~~  A4  20.479 -0.161  -0.161   -0.095   -0.095
+63            N4 ~~  A5  10.813 -0.092  -0.092   -0.073   -0.073
+64            N5 ~~  A1   8.114 -0.106  -0.106   -0.058   -0.058
+65            N5 ~~  A2   7.324  0.075   0.075    0.060    0.060
+66            N5 ~~  A3   5.725 -0.069  -0.069   -0.058   -0.058
+67            N5 ~~  A4   8.224  0.109   0.109    0.060    0.060
+68            N5 ~~  A5   0.301  0.016   0.016    0.012    0.012
+69            A1 ~~  A2  64.589 -0.219  -0.219   -0.190   -0.190
+70            A1 ~~  A3   6.688  0.080   0.080    0.073    0.073
+71            A1 ~~  A4   4.991  0.080   0.080    0.048    0.048
+72            A1 ~~  A5  22.962  0.140   0.140    0.112    0.112
+73            A2 ~~  A3   0.654 -0.027  -0.027   -0.036   -0.036
+74            A2 ~~  A4   3.109  0.051   0.051    0.044    0.044
+75            A2 ~~  A5  20.439 -0.124  -0.124   -0.143   -0.143
+76            A3 ~~  A4   0.417 -0.022  -0.022   -0.020   -0.020
+77            A3 ~~  A5  31.301  0.197   0.197    0.239    0.239
+78            A4 ~~  A5   0.192 -0.014  -0.014   -0.011   -0.011</code></pre>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -674,10 +818,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./Multiple_factors.html" class="pagination-link" aria-label="Multiple factors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple factors</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Correlated_residuals.html" class="pagination-link" aria-label="Correlated residuals">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

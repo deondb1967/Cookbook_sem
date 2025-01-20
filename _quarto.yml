@@ -10,6 +10,9 @@ book:
     - index.qmd
     - intro.qmd
     - Spearman.qmd
+    - Multiple_factors.qmd
+    - Modification_indices.qmd
+    - Correlated_residuals.qmd
     - summary.qmd
     - references.qmd
 

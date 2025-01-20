@@ -1,0 +1,22 @@
+---
+title: "Modification Indices"
+author: "Deon de Bruin"
+---
+
+```{r}
+library(lavaan)
+library(psychTools)
+mod3 <- '
+Neuroticism   =~ N1 + N2 + N3 + N4 + N5
+Agreeableness =~ A1 + A2 + A3 + A4 + A5
+'
+
+fit.mod3 <- cfa(model = mod3, 
+                data  = bfi)
+
+summary(fit.mod3, 
+        standardized = TRUE, 
+        fit.measures = TRUE)
+
+modificationindices(fit.mod3)
+```
