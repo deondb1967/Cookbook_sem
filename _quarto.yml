@@ -9,13 +9,16 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - part: "Measurement model"
     - Spearman.qmd
     - Multiple_factors.qmd
     - Modification_indices.qmd
     - EFA.qmd
     - Correlated_residuals.qmd
+    - part: "Structural model"
     - summary.qmd
     - references.qmd
+  page-navigation: true
 
 bibliography: references.bib
 

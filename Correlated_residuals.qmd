@@ -20,6 +20,7 @@ N3 ~~ N4
 
 fit.mod4 <- cfa(mod4, 
                 data = bfi)
+
 summary(fit.mod4, 
         standardized = TRUE, 
         fit.measures = TRUE)
