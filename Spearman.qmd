@@ -3,8 +3,6 @@ title: "Single factor model"
 author: "Deon de Bruin"
 ---
 
-## Fitting a single factor model
-
 ```{r}
 #| warning: FALSE
 #| message: FALSE
@@ -23,7 +21,6 @@ visualize(fit.mod1)
 measurement_plot(fit.mod1, sample = 300)
 residual_plots(fit.mod1)
 ```
-
 
 ```{r}
 #| warning: FALSE
