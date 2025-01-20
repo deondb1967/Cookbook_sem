@@ -6,7 +6,6 @@ author: "Deon de Bruin"
 ## Fitting a single factor model
 
 ```{r}
-
 #| warning: FALSE
 #| message: FALSE
 
@@ -29,10 +28,8 @@ summary(fit.mod1, standardized = TRUE, fit.measures = TRUE)
 ## 
 
 ```{r}
-
 #| warning: FALSE
 #| message: FALSE
-
 GWS2020 <- read.csv("C:/Users/deondb/Downloads/GWS2020.csv")
 
 modgws <- '
