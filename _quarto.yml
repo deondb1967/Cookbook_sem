@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Structural equation modeling with R cookbook"
+  title: "Structural equation modeling with lavaan in R: Examples and excercises"
   author: "Deon de Bruin"
   date: "2025/01/20"
   chapters:
