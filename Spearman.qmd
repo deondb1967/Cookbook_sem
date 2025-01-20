@@ -8,7 +8,6 @@ author: "Deon de Bruin"
 ```{r}
 #| warning: FALSE
 #| message: FALSE
-
 library(psychTools)
 library(lavaan)
 library(flexplavaan)
@@ -20,12 +19,11 @@ Agreeableness =~ A1 + A2 + A3 + A4 + A5
 fit.mod1 <- cfa(mod1, data = bfi)
 summary(fit.mod1, standardized = TRUE, fit.measures = TRUE)
 
- visualize(fit.mod1)
- measurement_plot(fit.mod1, sample = 300)
- residual_plots(fit.mod1)
+visualize(fit.mod1)
+measurement_plot(fit.mod1, sample = 300)
+residual_plots(fit.mod1)
 ```
 
-## 
 
 ```{r}
 #| warning: FALSE
@@ -40,7 +38,7 @@ fit.modgws <- cfa(modgws, data = GWS2020)
 summary(fit.modgws, standardized = TRUE, fit.measures = TRUE)
 
 
- visualize(fit.modgws, subset = 1:9)
- measurement_plot(fit.modgws, sample = 300)
- residual_plots(fit.modgws)
+visualize(fit.modgws, subset = 1:9)
+measurement_plot(fit.modgws, sample = 300)
+residual_plots(fit.modgws)
 ```
