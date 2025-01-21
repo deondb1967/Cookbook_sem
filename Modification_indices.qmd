@@ -19,4 +19,15 @@ summary(fit.mod3,
         fit.measures = TRUE)
 
 modificationindices(fit.mod3)
+
+mymi <- modificationindices(fit.mod3)
+mymi[mymi$op == "~~" & mymi$mi > 100, ]
+
+library(dplyr)
+mymi %>% 
+  filter(op == "~~" & mi > 100)
+
+mymi %>% 
+  filter(op == "~~") %>% 
+  arrange(desc(mi))
 ```

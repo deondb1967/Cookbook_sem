@@ -15,11 +15,11 @@ Neuroticism   =~ N1 + N2 + N3 + N4 + N5
 Agreeableness =~ A1 + A2 + A3 + A4 + A5
 
 N1 ~~ N2
-N3 ~~ N4
+N4 ~~ N5
 '
 
 fit.mod4 <- cfa(mod4, 
-                data = bfi)
+                data = bfi, std.lv = TRUE)
 
 summary(fit.mod4, 
         standardized = TRUE, 
