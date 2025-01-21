@@ -36,6 +36,6 @@ summary(fit.modgws, standardized = TRUE, fit.measures = TRUE)
 
 
 visualize(fit.modgws, subset = c(1:9))
-measurement_plot(fit.modgws, sample = 300)
+measurement_plot(fit.modgws)
 residual_plots(fit.modgws)
 ```
