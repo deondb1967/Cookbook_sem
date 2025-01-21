@@ -1,0 +1,93 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reading and storing data in *R*
+
+In this chapter we learn how to read and store data in *R*. The focus falls on reading .csv files, .xlsx files, and .sav files. We also learn how to copy data to the clipboard and to then store it in *R.*
+
+## Setting the working directory
+
+The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with R.
+
+You should create a folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward.
+
+You can set the working directory via the Rstudio menu: **`Session/Set Working Directory/Choose Directory`**. R uses the **`setwd()`** function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start R and want to set the working directory, you can highlight the first row of the script and run it.
+
+In the example below I first used the menus to set the working directory to "C:/myR/Masters2021". Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.
+
+I also included the **`getwd()`** function, which is used to see the active working directory. Users sometimes change the working directory during an R session and **`getwd()`** can be used at any time to remind you of the current working directory.
+
+```{r setwd}
+#setwd("C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021")
+#getwd()
+```
+
+## Reading the data and storing it as an object
+
+Data will typically be captured in a spreadsheet programme like Excel. One of the safest ways to get data into R is to first--in the working directory folder--store the Excel file as a comma separated values file (*.csv), second to read the csv file in R, and third to store the data as an object in R. In R the stored data is referred to as a* data frame\*.
+
+We accomplish the second and third steps jointly by using the **`read.csv()`** function. In the example we read the data and then store it to an object (a data frame) with the name "mydata". Note that we can give the data frame any name we want (but the name should not start with a number and it should not contain any special characters such as \@, #, \$, %, !, etc). The name also should not contain spaces. Two words can be used in a name if they are separated by an underscore or by a full stop (e.g. "my.data" or "my_data") It is good practice to keep the name short and straightforward, but as informative as possible.
+
+```{r read.csv}
+mydata <- read.csv("SA_Swiss.csv")
+```
+
+On some machines Excel uses a semi-colon rather than a comma to separate values. In such cases you should use the **`read.csv2()`** function rather than the **`read.csv()`** function.
+
+## Check that the data has been properly read
+
+You can view the contents of the data frame with the **`View()`** function, which will open a spreadsheet in the script window. Scrolling through the spreadsheet will reveal if the data were properly read.
+
+```{r View}
+View(mydata)
+```
+
+You can also request that R print the first few lines of the data frame by using the **`head()`** function.
+
+```{r head}
+head(mydata)
+```
+
+Finally, it is good practice to use the **`names()`** function to print to the console window the names of the variables in the data frame. Each row of the printed names will start with a number in square brackets and that number represents the serial position in the data frame of the first variable in that row.
+
+```{r names}
+names(mydata)
+
+data.frame(names(mydata))
+```
+
+## Missing data
+
+It is relatively common to find missing data in a data set. In Excel, missing data can be represented by an empty cell, by the letters **NA**, or by a special code such as -999. In the first two cases R will recognise the empty cells or cells containing NAs as missing data. In the third case it is necessary to indicate to **`read.csv()`** that the special code represents missing data. Note that in an R data frame missing data will always be represented by NA (an abbreviation for "not available").
+
+```{r missing_csv}
+SA_Swiss <- read.csv("SA_Swiss.csv", na.strings="-999")
+```
+
+## Reading an Excel file
+
+It is possible to directly read an Excel file without first storing it in csv format. This requires that the **readxl** package must be installed and activated. Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the **`read_excel()`** function will automatically recognise the missing data.
+
+```{r read_excel}
+#library(readxl)
+#mydata <- read_excel("SA_Swiss.xlsx", na = "-999")
+```
+
+## Reading an SPSS file
+
+It is possible to read an SPSS data file without first storing it in csv format. This requires that the **haven** package must be installed and activated. The **`read_spss()`** function will automatically recognise missing data in an SPSS file, on condition that special codes have been assigned missing data status in the SPSS file.
+
+```{r read_spss}
+#library(haven)
+#mydata <- read_spss("SA_Swiss.sav")
+```
+
+## Reading data from the clipboard
+
+At times it might be convenient to highlight and copy data in Excel and then use the **`read.clipboard()`** function from the **`psychTools`** package to read and store the copied data as a data frame. Whereas this is easy and quick to do it is not recommended for general practice, because the saved code will not explicitly state where the data were obtained from (other than the clipboard). In the example code below I copied some data in Excel and then used the **`read.clipboard()`** function to store it as a data frame called "tempdata". To execute the code users will have to first copy data in Excel, then remove the hash tags at the beginning of the lines, and then run the code.
+
+```{r}
+#library(psychTools)
+#tempdata <- read.clipboard()
+```

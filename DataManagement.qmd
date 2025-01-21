@@ -1,0 +1,56 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data management in *R*
+
+In this chapter we focus on some basic aspects of data management in R. We focus on (a) different types of variables, (b) different types of data structures, (c) converting a variable from one type to another ...
+
+## Reading the data and storing it as a data frame
+
+Our first step is to read the data and to store it as a data frame. This needs to be done at the start of each session. If this had been done earlier in the session we do not need to do it again.
+
+```{r }
+mydata <- read.csv("SA_Swiss.csv")
+```
+
+## Inspecting the structure of a data frame
+
+When data are imported from a csv or Excel file, R will (usually) automatically classify variables that contain only numbers as numeric, whereas variables that contain text will (usually) be classified as categorical. In R, a categorical variable is referred to as a factor. There are two types of categorical variables or factors, namely nominal and ordinal.
+
+We can inspect the classification of variables in a data frame with the **str()** function. In the example below we see that the items of the GWSS, the UWES, the MBI, and the GHQ are classified as integers, which is a type of numeric variable. We also note that Gender and Country are classified as integer (numeric) variables. The latter classification is problematic, in the sense that Gender and Country are actually categorical (nominal) variables where the numbers 0 and 1 for Gender indicate "Man" and "Woman", respectively, and the numbers 1 and 2 for Country indicate "South Africa" and "Switzerland", respectively.
+
+Checking if categorical variables were imported as factors is an important and essential step in the data analysis process. Similarly, converting variables that were incorrectly imported as numerical to factor is an **essential step**.
+
+```{r }
+str(mydata)
+```
+
+To ensure proper statistical analyses, we need to convert Gender and Country from numeric variables to factors. The code in the example below instructs R that the Gender variable in the mydata data frame should be treated as a factor, and that the newly converted Gender variable should be stored with the same name as the existing one (i.e. the new variable overwrites the old variable). The second line of code is used to check whether the newly overwritten Gender variable (mydata\$Gender) actually is a factor.
+
+```{r }
+mydata$Gender <- factor(mydata$Gender)
+is.factor(mydata$Gender)
+```
+
+It is good practice, but not necessary, to assign labels to the numbers of a categorical variable or factor. In the present example we could assign the label "Man" to the value of 0, and the label "Woman" to the value of 1. To assign the labels we (a) instruct R what the levels of the categorical variable are, and (b) what the labels of each level are.
+
+```{r }
+mydata$Gender <- factor(mydata$Gender, levels = c("0", "1"), labels = c("Man", "Woman"))
+is.factor(mydata$Gender)
+```
+
+We now do the same with the Country variable (mydata\$Country).
+
+```{r }
+mydata$Country <- factor(mydata$Country, levels = c("1", "2"), labels = c("ZAR", "CHE"))
+is.factor(mydata$Country)
+```
+
+We can now ask for a summary of basic descriptive statistics of all the variables in the data frame by using the **summary()** function. This function will return for each numeric variable the minimum and maximum values, the first and third quartiles, the median, and the mean. For each categorical variable or factor the frequencies of the different levels of the variable are returned.
+
+```{r }
+summary(mydata)
+```
+
+$$ C(n, k) = \frac{n!}{k!(n-k)!} $$

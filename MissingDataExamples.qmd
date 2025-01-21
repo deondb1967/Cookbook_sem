@@ -1,0 +1,162 @@
+Identifying potential influential cases
+
+Data sets often contain outliers and influential cases. A case is influential if its inclusion in the data set significantly alters the parameters of interest (for instance a factor loading or the correlations between factors). Cook's *d* statistic is often used in to identify inluential cases when data are analysed with univariate multiple regression. This can be extended to the multivariate case. The expected influence value is the number of manifest cases divided by the number of participants. Each person's influence value can be compared to this expected value. In practice, the plot is most useful to identify people whose observed influence values are clearly different from those of the remaining people. The **`bollen_plot()`** function of the **`hemp`** package can be used to plot each person's influence statistic. The horizontal line on the plot represents the expected value. If a critical value is supplied, the row numbers of cases that exceed the critical value are printed. Once such influential cases have been identified their observed data can be inspected to identify potential data entering errors or unusual response patterns. The analyst may choose to correct the incorrectly entered data points or perhaps to remove cases with response patterns. Data should be analysed with and without the influential cases and the results compared.
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library(hemp)
+library(psychTools)
+library(psych)
+bp <- bollen_plot(bfi[16:20], 0.007)
+```
+
+## Dealing with missing data
+
+This chapter contains a simple demonstration of how researchers can deal with missing data in a test construction context using the `lavaan` and `lavaan.mi` packages in *R*. We demonstrate the following:
+
+-   identifying **missing data patterns**,
+
+-   performing **Little's MCAR test** (missing completely at random),
+
+-   using **full information maximum likelihood** **("fiml")** to estimate parameters in the presence of missing data, and
+
+-   using **multiple imputation** to estimate parameters in the presence of missing data
+
+We don't address the philosophy, pitfalls, or merits of different methods of dealing with missing data, nor do we discuss the different methods of multiple imputation and pooling of results. We just show how a researcher can easily deal with missing data if they have made the decision to do so using either "fiml" or multiple imputation with the defaults of the relevant packages.
+
+Mikko Rönkkö made nice videos about missing data and how to deal with it. He discusses different missing data mechanisms here: [**https://www.youtube.com/watch?v=TxcLeMsZ7Bk**](https://www.youtube.com/watch?v=TxcLeMsZ7Bk). He discusses full information maximum likelihood estimation here: [**https://www.youtube.com/watch?v=6CQ526G8rOk**](https://www.youtube.com/watch?v=6CQ526G8rOk). Finally, he discusses multiple imputation here: [**https://www.youtube.com/watch?v=gQkd_MylHQ8**](https://www.youtube.com/watch?v=gQkd_MylHQ8).
+
+## *R* packages used in the demonstration
+
+We use the following packages: `psychTools` (to access the `bfi` data set), `mice` (to detect the patterns of missing data), `naniar` (to perform Little's MCAR test) , `Amelia` (to perform the multiple imputation), `lavaan` (to perform the confirmatory factor analysis), and `lavaan.mi` (to perform the confirmatory factor analysis with multiple complete data sets).
+
+These packages need to be installed once. To install the packages you need to remove the \# at the beginning of each row (*R* does not evaluate any code that follows a #).
+
+```{r}
+#install.packages("psychTools")
+#install.packages("naniar")
+#install.packages("lavaan")
+#install.packages("mice")
+#install.packages("Amelia")
+```
+
+The `lavaan.mi` package is not yet available from the CRAN repository, but it can be downloaded and installed from Terence Jorgenson's github page. For this you will also need the `remotes` package.
+
+```{r}
+#install.packages("remotes")
+#remotes::install_github("TDJorgensen/lavaan.mi")
+```
+
+## CFA of the 5-item Neuroticism scale of the Big Five Inventory
+
+I performed a confirmatory factor analysis of the Neuroticism scale of the Big Five Inventory. The data are in the `bfi` data frame, which can be found in the `psychTools` package. There were 2800 participants, but there were only 2694 complete cases. For convenience, I stored the five Neuroticism items (which are in columns 16 to 20 of the `bfi` data frame) in a new data frame called `Ndata`.
+
+In this baseline analysis I ignored the missing data. By default, lavaan employs **listwise deletion** when missing data are encountered. At the top of the output it can be seen that the number of observed (*n* = 2800) and used (*n* = 2694) cases differ.
+
+```{r warning = FALSE, message = FALSE}
+library(psychTools)
+library(lavaan)
+library(lavaan.mi)
+
+Ndata <- bfi[16:20]
+
+Nmodel  <- '
+Nfactor =~ N1 + N2 + N3 + N4 + N5
+'
+
+fit.Nmodel <- cfa(Nmodel, 
+                  data      = Ndata, 
+                  estimator = "MLR")
+
+summary(fit.Nmodel,
+        standardized = TRUE,
+        fit.measures = TRUE)
+```
+
+## Examining patterns of missing data and testing for "missing completely at random"
+
+Next, I employed the `md.pattern()` function of the `mice` package to identify the patterns of missing data. I also used the `mcar_test()` function of the `naniar` package to perform Little's missing completely at random (MCAR) test. There were 11 missing data patterns. There were 11 missing values for item N3, 21 for item N2, 22 for item N1, 29 for item N5, and 36 for item N4, which gives a total of 119 missing values. The pattern with the most missing values contained three missing values (four persons produced this pattern).
+
+Little's MCAR test showed that the null hypothesis that the missing data are completely at random could not be rejected: $\chi^2(34) = 27.2, p = 0.791$
+
+```{r warning = FALSE, message = FALSE}
+library(mice)
+md.pattern(Ndata)
+
+
+library(naniar)
+mcar_test(Ndata)
+```
+
+## Full information maximum likelihood estimation
+
+Second, I estimated the parameters of the confirmatory factor analysis model using full information maximum likelihood ("fiml"). This approach uses all the available information in the data set to estimate the parameters. It does not estimate what the missing values would be and it does not fill it in to complete the data set. Note that all 2800 cases were now used.
+
+```{r warning = FALSE, message = FALSE}
+fit.Nmodel.fiml <- cfa(Nmodel,
+                       data      = Ndata, 
+                       estimator = "MLR", 
+                       missing   = "fiml",
+                       fixed.x   = FALSE)
+
+summary(fit.Nmodel.fiml,
+        standardized = TRUE,
+        fit.measures = TRUE)
+```
+
+## Multiple imputation with the Amelia and lavaan.mi packages
+
+Next, I used the `Amelia` and `lavaan.mi` packages to (a) perform multiple imputation to obtain 20 data sets that contain plausible estimates of the missing values, (b) fit the confirmatory factor analysis model to each of the data sets, and (c) report the pooled results.
+
+The 20 complete data sets were stored as a list in an object I labeled `Ndata.mi`. I stored this list in a new object I labeled `imps`.
+
+```{r warning = FALSE, message = FALSE, output = FALSE}
+library(Amelia)
+library(lavaan.mi)
+
+set.seed(12345)
+Ndata.mi      <- amelia(Ndata, 
+                        m = 20)
+
+imps          <- Ndata.mi$imputations
+```
+
+### Fit the model to the imputed data sets and pool the results
+
+I fitted the confirmatory factor analysis model to the imputed data sets in `imps` using the `cfa.mi()` function of the `lavaan.mi` package. The results are stored in `fit.Nmodel.mi`. We access the results by asking for a summary. Note that the parameter estimates are very similar to those obtained with listwise deletion and full information maximum likelihood estimation. Also, the standard errors of the parameters are very similar across the three analyses.
+
+```{r  warning = FALSE, message = FALSE}
+fit.Nmodel.mi <- cfa.mi(Nmodel, 
+                        data      = imps,
+                        estimator = "MLR")
+
+summary(fit.Nmodel.mi, 
+        fit.measures = TRUE,
+        standardized = TRUE)
+```
+
+## Multiple imputation with ordinal variables
+
+The items of the Neuroticism scale are strictly ordinal with six ordered categories. The observed values should be 1, 2, 3, 4, 5 or 6. If we don't instruct `amelia()` to treat the items as ordinal, the function will treat them as continuous variables and the imputed values will contain decimals (which is not what we want). The imputed values may even extend beyond the range of the original six-point rating scale (which is really not what we want). Here I impute the missing data with the `amelia()` function, but now with the added argument that the items are ordinal. The imputed values will now be integers rather than decimals, which is what we want. The results are almost indistinguishable from the previous results.
+
+```{r warning = FALSE, message = FALSE, output = FALSE}
+library(Amelia)
+library(lavaan.mi)
+
+set.seed(12345)
+Ndata.mi2      <- amelia(Ndata, 
+                         m    = 20, 
+                         ords = c("N1", "N2", "N3", "N4", "N5"))
+
+imps2          <- Ndata.mi2$imputations
+
+```
+
+```{r  warning = FALSE, message = FALSE}
+fit.Nmodel.mi2 <- cfa.mi(Nmodel, 
+                         data      = imps2,
+                         estimator = "MLR")
+
+summary(fit.Nmodel.mi2, 
+        fit.measures = TRUE,
+        standardized = TRUE)
+```

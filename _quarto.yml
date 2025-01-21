@@ -9,6 +9,9 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - ReadingStoringData.qmd
+    - DataManagement.qmd
+    - Subsetting.qmd
     - part: "Part I: Measurement model"
     - Spearman.qmd
     - Multiple_factors.qmd
@@ -17,6 +20,7 @@ book:
     - EFA.qmd
     - Correlated_residuals.qmd
     - part: "Part III: Structural model"
+    - MissingDataExamples.qmd
     - summary.qmd
     - references.qmd
   page-navigation: true

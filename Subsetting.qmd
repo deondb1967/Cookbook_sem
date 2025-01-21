@@ -1,0 +1,173 @@
+---
+title: "Subsetting a data frame"
+---
+
+```{r}
+library(tidyverse)
+library(psychTools)
+```
+
+## Selecting consecutive rows by their row numbers with square brackets
+
+```{r}
+bfi[1:20, ]
+```
+
+
+## Selecting non-consecutive rows by their row numbers with square brackets
+
+```{r}
+bfi[c(1,3,5,7,9,11,13,15,17,19,20), ]
+```
+
+## Selecting rows and storing the data as a new data frame
+
+```{r}
+mybfi <- bfi[1000:1019, ]
+```
+
+
+## Selecting a variable with $ notation and its name
+
+```{r}
+mybfi$A1
+```
+
+## Selecting a variable by its column number
+
+```{r}
+mybfi[,1] 
+```
+
+## Selecting a variable by its name with square brackets
+
+```{r}
+mybfi[, "A1"]
+```
+
+## Selecting two or more contiguous variables by their column numbers with square brackets
+
+```{r}
+mybfi[, 1:5]
+```
+
+## Selecting two or more non-contiguous variables by their column numbers with square brackets
+
+```{r}
+mybfi[, c(1,3,5)]
+```
+
+## Selecting two or more variables by their names with square brackets
+
+```{r}
+mybfi[, c("A1", "A3", "A5")]
+```
+
+## Selecting two or more variables with the dplyr package
+
+```{r}
+library(dplyr)
+mybfi %>% select(A1:A5)
+```
+
+
+```{r}
+library(dplyr)
+mybfi %>% select(A1,A3,A5)
+```
+
+## Selecting cases by consecutive row numbers
+
+```{r}
+mybfi %>% slice(1:10)
+```
+
+## Filtering cases by non-consecutive row numbers
+
+```{r}
+mybfi %>% slice(1, 3, 5, 7)
+```
+
+## Filtering cases that meet a certain condition
+
+```{r}
+mybfi %>% filter(gender == 1)
+
+mybfi %>% filter(education > 3)
+```
+
+## Filtering cases that don't meet a certain condition
+
+```{r}
+mybfi %>% filter(!gender == 1)
+
+mybfi %>% filter(!education > 3)
+```
+
+## Filtering cases on the basis of two or more conditions
+
+```{r}
+mybfi %>% filter(gender == 2 & education > 3)
+
+mybfi %>% filter(gender == 2 | education > 2)
+```
+
+## Combining select and slice
+
+```{r}
+mybfi %>%
+  select(A1:5) %>% 
+  slice(1,3,5)
+```
+
+## Combing select and filter
+
+```{r}
+mybfi %>%
+  filter(gender == 2) %>% 
+  slice(1:10) %>% 
+  select(A1:A5)
+```
+
+## Randomly select rows from a data frame without replacement
+
+```{r}
+mybfi %>% 
+  sample_n(10)
+```
+
+## Randomly select rows from a data frame with replacement
+
+```{r}
+mybfi %>% 
+  sample_n(10, replace = TRUE)
+```
+
+## Randomly select a fraction of rows without replacement
+
+```{r}
+mybfi %>% 
+  sample_frac(.50)
+```
+
+## Randomly select a fraction of rows with replacement
+
+```{r}
+mybfi %>% 
+  sample_frac(.50, replace = TRUE)
+```
+## Randomly split a data frame into two parts
+
+```{r}
+## Specify exactly how many persons you want in the two groups, respectively.
+## Here we want n = 12 in the first group and n = 8 in the second.
+v       <- as.vector(c(rep(TRUE, 12), rep(FALSE, 8))) 
+select  <- sample(v) 
+mybfi1  <- mybfi[select, ] 
+mybfi2  <- mybfi[!select, ]
+
+nrow(mybfi1)
+nrow(mybfi2)
+```
+
+

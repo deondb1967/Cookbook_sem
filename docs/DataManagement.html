@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Deon de Bruin">
 
-<title>7&nbsp; Modification Indices – Structural equation modeling with lavaan in R: Examples and excercises</title>
+<title>3&nbsp; Data management in R – Structural equation modeling with lavaan in R: Examples and excercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./EFA.html" rel="next">
-<link href="./Multiple_factors.html" rel="prev">
+<link href="./Subsetting.html" rel="next">
+<link href="./ReadingStoringData.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -116,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Modification_indices.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modification Indices</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./DataManagement.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./DataManagement.html" class="sidebar-item-text sidebar-link">
+  <a href="./DataManagement.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
   </div>
 </li>
@@ -193,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
@@ -236,27 +264,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#reading-the-data-and-storing-it-as-a-data-frame" id="toc-reading-the-data-and-storing-it-as-a-data-frame" class="nav-link active" data-scroll-target="#reading-the-data-and-storing-it-as-a-data-frame"><span class="header-section-number">3.1</span> Reading the data and storing it as a data frame</a></li>
+  <li><a href="#inspecting-the-structure-of-a-data-frame" id="toc-inspecting-the-structure-of-a-data-frame" class="nav-link" data-scroll-target="#inspecting-the-structure-of-a-data-frame"><span class="header-section-number">3.2</span> Inspecting the structure of a data frame</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modification Indices</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Deon de Bruin </p>
-          </div>
-  </div>
     
   
     
@@ -267,175 +296,192 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>In this chapter we focus on some basic aspects of data management in R. We focus on (a) different types of variables, (b) different types of data structures, (c) converting a variable from one type to another …</p>
+<section id="reading-the-data-and-storing-it-as-a-data-frame" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="reading-the-data-and-storing-it-as-a-data-frame"><span class="header-section-number">3.1</span> Reading the data and storing it as a data frame</h2>
+<p>Our first step is to read the data and to store it as a data frame. This needs to be done at the start of each session. If this had been done earlier in the session we do not need to do it again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>This is lavaan 0.6-19
-lavaan is FREE software! Please report any bugs.</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SA_Swiss.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="st">'</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">Neuroticism   =~ N1 + N2 + N3 + N4 + N5</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">Agreeableness =~ A1 + A2 + A3 + A4 + A5</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fit.mod3 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(<span class="at">model =</span> mod3, </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">data  =</span> bfi)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod3, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">standardized =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inspecting-the-structure-of-a-data-frame" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="inspecting-the-structure-of-a-data-frame"><span class="header-section-number">3.2</span> Inspecting the structure of a data frame</h2>
+<p>When data are imported from a csv or Excel file, R will (usually) automatically classify variables that contain only numbers as numeric, whereas variables that contain text will (usually) be classified as categorical. In R, a categorical variable is referred to as a factor. There are two types of categorical variables or factors, namely nominal and ordinal.</p>
+<p>We can inspect the classification of variables in a data frame with the <strong>str()</strong> function. In the example below we see that the items of the GWSS, the UWES, the MBI, and the GHQ are classified as integers, which is a type of numeric variable. We also note that Gender and Country are classified as integer (numeric) variables. The latter classification is problematic, in the sense that Gender and Country are actually categorical (nominal) variables where the numbers 0 and 1 for Gender indicate “Man” and “Woman”, respectively, and the numbers 1 and 2 for Country indicate “South Africa” and “Switzerland”, respectively.</p>
+<p>Checking if categorical variables were imported as factors is an important and essential step in the data analysis process. Similarly, converting variables that were incorrectly imported as numerical to factor is an <strong>essential step</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-19 ended normally after 36 iterations
-
-  Estimator                                         ML
-  Optimization method                           NLMINB
-  Number of model parameters                        21
-
-                                                  Used       Total
-  Number of observations                          2618        2800
-
-Model Test User Model:
-                                                      
-  Test statistic                               694.620
-  Degrees of freedom                                34
-  P-value (Chi-square)                           0.000
-
-Model Test Baseline Model:
-
-  Test statistic                              7465.706
-  Degrees of freedom                                45
-  P-value                                        0.000
-
-User Model versus Baseline Model:
-
-  Comparative Fit Index (CFI)                    0.911
-  Tucker-Lewis Index (TLI)                       0.882
-
-Loglikelihood and Information Criteria:
-
-  Loglikelihood user model (H0)             -43379.800
-  Loglikelihood unrestricted model (H1)     -43032.491
-                                                      
-  Akaike (AIC)                               86801.601
-  Bayesian (BIC)                             86924.874
-  Sample-size adjusted Bayesian (SABIC)      86858.151
-
-Root Mean Square Error of Approximation:
-
-  RMSEA                                          0.086
-  90 Percent confidence interval - lower         0.081
-  90 Percent confidence interval - upper         0.092
-  P-value H_0: RMSEA &lt;= 0.050                    0.000
-  P-value H_0: RMSEA &gt;= 0.080                    0.966
-
-Standardized Root Mean Square Residual:
-
-  SRMR                                           0.054
-
-Parameter Estimates:
-
-  Standard errors                             Standard
-  Information                                 Expected
-  Information saturated (h1) model          Structured
-
-Latent Variables:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-  Neuroticism =~                                                        
-    N1                1.000                               1.292    0.823
-    N2                0.949    0.023   40.791    0.000    1.226    0.803
-    N3                0.884    0.024   36.571    0.000    1.141    0.714
-    N4                0.680    0.024   27.853    0.000    0.878    0.559
-    N5                0.626    0.025   24.591    0.000    0.809    0.499
-  Agreeableness =~                                                      
-    A1                1.000                               0.545    0.389
-    A2               -1.404    0.085  -16.527    0.000   -0.765   -0.651
-    A3               -1.822    0.107  -17.018    0.000   -0.992   -0.759
-    A4               -1.338    0.090  -14.855    0.000   -0.729   -0.489
-    A5               -1.483    0.090  -16.448    0.000   -0.808   -0.640
-
-Covariances:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-  Neuroticism ~~                                                        
-    Agreeableness     0.155    0.019    8.049    0.000    0.220    0.220
-
-Variances:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-   .N1                0.793    0.036   22.094    0.000    0.793    0.322
-   .N2                0.826    0.035   23.877    0.000    0.826    0.355
-   .N3                1.249    0.043   29.352    0.000    1.249    0.490
-   .N4                1.694    0.051   33.284    0.000    1.694    0.687
-   .N5                1.974    0.058   34.081    0.000    1.974    0.751
-   .A1                1.665    0.049   34.211    0.000    1.665    0.849
-   .A2                0.796    0.029   27.597    0.000    0.796    0.576
-   .A3                0.725    0.035   20.614    0.000    0.725    0.424
-   .A4                1.690    0.052   32.667    0.000    1.690    0.761
-   .A5                0.939    0.033   28.108    0.000    0.939    0.590
-    Neuroticism       1.668    0.070   23.696    0.000    1.000    1.000
-    Agreeableness     0.297    0.033    9.060    0.000    1.000    1.000</code></pre>
+<pre><code>'data.frame':   1377 obs. of  49 variables:
+ $ GWS1   : int  2 3 2 2 1 2 1 3 2 2 ...
+ $ GWS2   : int  1 3 2 2 1 2 1 3 1 2 ...
+ $ GWS3   : int  2 2 2 2 1 2 1 2 1 2 ...
+ $ GWS4   : int  1 3 2 3 2 2 1 2 1 2 ...
+ $ GWS5   : int  1 3 2 3 2 2 1 2 1 2 ...
+ $ GWS6   : int  1 4 3 3 1 3 1 1 1 2 ...
+ $ GWS7   : int  1 4 4 1 1 3 2 2 1 2 ...
+ $ GWS8   : int  1 3 2 3 1 2 1 2 1 1 ...
+ $ GWS9   : int  1 3 3 3 1 1 2 1 1 1 ...
+ $ UWES1  : int  5 4 5 4 6 3 3 5 5 5 ...
+ $ UWES2  : int  5 4 5 4 6 3 4 5 5 5 ...
+ $ UWES3  : int  5 4 6 4 6 4 6 5 4 6 ...
+ $ UWES4  : int  5 4 6 4 6 4 6 5 3 6 ...
+ $ UWES5  : int  5 4 5 3 5 4 5 6 5 5 ...
+ $ UWES6  : int  5 5 6 4 5 4 5 4 5 6 ...
+ $ UWES7  : int  5 5 6 4 6 4 6 7 5 6 ...
+ $ UWES8  : int  4 5 5 4 6 4 5 5 4 7 ...
+ $ UWES9  : int  4 5 4 4 3 4 5 5 4 3 ...
+ $ MBI1   : int  1 2 1 1 1 1 1 1 3 1 ...
+ $ MBI2   : int  1 2 1 1 1 1 1 1 2 2 ...
+ $ MBI3   : int  1 2 2 1 1 3 1 5 2 6 ...
+ $ MBI4   : int  1 1 1 1 1 2 1 2 2 1 ...
+ $ MBI5   : int  1 1 1 1 1 1 1 1 2 1 ...
+ $ MBI6   : int  1 3 1 2 1 2 2 2 1 1 ...
+ $ MBI7   : int  1 3 1 1 1 2 2 3 1 1 ...
+ $ MBI8   : int  1 1 1 1 1 2 1 2 1 2 ...
+ $ MBI9   : int  1 2 1 1 1 3 1 2 1 2 ...
+ $ MBI10  : int  1 2 1 1 1 2 1 2 1 2 ...
+ $ MBI11  : int  4 3 3 4 7 4 2 2 2 2 ...
+ $ MBI12  : int  3 3 3 4 7 3 2 1 2 1 ...
+ $ MBI13  : int  2 3 3 4 7 3 2 1 1 1 ...
+ $ MBI14  : int  1 3 2 4 7 3 3 1 1 1 ...
+ $ MBI15  : int  1 3 3 4 7 4 3 2 2 2 ...
+ $ MBI16  : int  1 3 2 4 7 4 2 2 1 1 ...
+ $ GHQ1   : int  1 1 1 1 2 2 2 2 2 2 ...
+ $ GHQ2   : int  1 2 2 2 1 1 1 1 1 1 ...
+ $ GHQ3   : int  2 1 1 2 1 1 1 2 2 2 ...
+ $ GHQ4   : int  2 1 1 2 1 1 2 2 2 2 ...
+ $ GHQ5   : int  1 2 3 2 1 2 1 1 1 2 ...
+ $ GHQ6   : int  4 1 2 1 4 1 1 1 1 1 ...
+ $ GHQ7   : int  1 2 2 2 1 2 2 2 2 3 ...
+ $ GHQ8   : int  1 2 1 2 2 2 2 2 2 2 ...
+ $ GHQ9   : int  1 2 2 1 1 1 1 1 2 1 ...
+ $ GHQ10  : int  1 2 1 1 1 1 1 1 2 1 ...
+ $ GHQ11  : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ GHQ12  : int  1 1 2 2 1 1 2 2 2 1 ...
+ $ Country: int  2 2 2 2 2 2 2 2 2 2 ...
+ $ Age    : num  35 35 22 38 20 25 58 26 28 34 ...
+ $ Gender : int  1 0 0 1 0 1 1 0 1 0 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modificationindices</span>(fit.mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To ensure proper statistical analyses, we need to convert Gender and Country from numeric variables to factors. The code in the example below instructs R that the Gender variable in the mydata data frame should be treated as a factor, and that the newly converted Gender variable should be stored with the same name as the existing one (i.e.&nbsp;the new variable overwrites the old variable). The second line of code is used to check whether the newly overwritten Gender variable (mydata$Gender) actually is a factor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(mydata<span class="sc">$</span>Gender)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(mydata<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             lhs op rhs      mi    epc sepc.lv sepc.all sepc.nox
-24   Neuroticism =~  A1  19.035  0.098   0.127    0.091    0.091
-25   Neuroticism =~  A2  20.795  0.079   0.102    0.087    0.087
-26   Neuroticism =~  A3  29.798  0.104   0.135    0.103    0.103
-27   Neuroticism =~  A4   5.262 -0.053  -0.069   -0.046   -0.046
-28   Neuroticism =~  A5  50.336 -0.132  -0.171   -0.135   -0.135
-29 Agreeableness =~  N1   0.630  0.038   0.021    0.013    0.013
-30 Agreeableness =~  N2   0.295  0.025   0.014    0.009    0.009
-31 Agreeableness =~  N3  10.202 -0.168  -0.091   -0.057   -0.057
-32 Agreeableness =~  N4  25.954  0.293   0.160    0.102    0.102
-33 Agreeableness =~  N5  11.128 -0.205  -0.112   -0.069   -0.069
-34            N1 ~~  N2 345.707  0.775   0.775    0.958    0.958
-35            N1 ~~  N3  52.136 -0.272  -0.272   -0.274   -0.274
-36            N1 ~~  N4  76.839 -0.291  -0.291   -0.251   -0.251
-37            N1 ~~  N5  19.022 -0.149  -0.149   -0.119   -0.119
-38            N1 ~~  A1  24.399  0.137   0.137    0.119    0.119
-39            N1 ~~  A2   4.495 -0.044  -0.044   -0.055   -0.055
-40            N1 ~~  A3  13.106  0.079   0.079    0.104    0.104
-41            N1 ~~  A4   5.855  0.069   0.069    0.059    0.059
-42            N1 ~~  A5   5.301 -0.051  -0.051   -0.059   -0.059
-43            N2 ~~  N3  37.647 -0.220  -0.220   -0.216   -0.216
-44            N2 ~~  N4  68.849 -0.266  -0.266   -0.225   -0.225
-45            N2 ~~  N5  42.497 -0.217  -0.217   -0.170   -0.170
-46            N2 ~~  A1   3.438  0.051   0.051    0.043    0.043
-47            N2 ~~  A2  14.146  0.077   0.077    0.095    0.095
-48            N2 ~~  A3   0.861  0.020   0.020    0.026    0.026
-49            N2 ~~  A4  14.742 -0.108  -0.108   -0.091   -0.091
-50            N2 ~~  A5   3.613 -0.042  -0.042   -0.048   -0.048
-51            N3 ~~  N4 163.251  0.436   0.436    0.300    0.300
-52            N3 ~~  N5  47.254  0.247   0.247    0.157    0.157
-53            N3 ~~  A1   0.111  0.010   0.010    0.007    0.007
-54            N3 ~~  A2   0.254  0.012   0.012    0.012    0.012
-55            N3 ~~  A3   3.474  0.046   0.046    0.048    0.048
-56            N3 ~~  A4   0.614  0.025   0.025    0.017    0.017
-57            N3 ~~  A5   0.171  0.010   0.010    0.010    0.010
-58            N4 ~~  N5  86.112  0.360   0.360    0.197    0.197
-59            N4 ~~  A1  17.767 -0.146  -0.146   -0.087   -0.087
-60            N4 ~~  A2   0.251  0.013   0.013    0.011    0.011
-61            N4 ~~  A3   3.030 -0.047  -0.047   -0.043   -0.043
-62            N4 ~~  A4  20.479 -0.161  -0.161   -0.095   -0.095
-63            N4 ~~  A5  10.813 -0.092  -0.092   -0.073   -0.073
-64            N5 ~~  A1   8.114 -0.106  -0.106   -0.058   -0.058
-65            N5 ~~  A2   7.324  0.075   0.075    0.060    0.060
-66            N5 ~~  A3   5.725 -0.069  -0.069   -0.058   -0.058
-67            N5 ~~  A4   8.224  0.109   0.109    0.060    0.060
-68            N5 ~~  A5   0.301  0.016   0.016    0.012    0.012
-69            A1 ~~  A2  64.589 -0.219  -0.219   -0.190   -0.190
-70            A1 ~~  A3   6.688  0.080   0.080    0.073    0.073
-71            A1 ~~  A4   4.991  0.080   0.080    0.048    0.048
-72            A1 ~~  A5  22.962  0.140   0.140    0.112    0.112
-73            A2 ~~  A3   0.654 -0.027  -0.027   -0.036   -0.036
-74            A2 ~~  A4   3.109  0.051   0.051    0.044    0.044
-75            A2 ~~  A5  20.439 -0.124  -0.124   -0.143   -0.143
-76            A3 ~~  A4   0.417 -0.022  -0.022   -0.020   -0.020
-77            A3 ~~  A5  31.301  0.197   0.197    0.239    0.239
-78            A4 ~~  A5   0.192 -0.014  -0.014   -0.011   -0.011</code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
 </div>
+<p>It is good practice, but not necessary, to assign labels to the numbers of a categorical variable or factor. In the present example we could assign the label “Man” to the value of 0, and the label “Woman” to the value of 1. To assign the labels we (a) instruct R what the levels of the categorical variable are, and (b) what the labels of each level are.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(mydata<span class="sc">$</span>Gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Man"</span>, <span class="st">"Woman"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(mydata<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>We now do the same with the Country variable (mydata$Country).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>Country <span class="ot">&lt;-</span> <span class="fu">factor</span>(mydata<span class="sc">$</span>Country, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"ZAR"</span>, <span class="st">"CHE"</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(mydata<span class="sc">$</span>Country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>We can now ask for a summary of basic descriptive statistics of all the variables in the data frame by using the <strong>summary()</strong> function. This function will return for each numeric variable the minimum and maximum values, the first and third quartiles, the median, and the mean. For each categorical variable or factor the frequencies of the different levels of the variable are returned.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      GWS1            GWS2            GWS3            GWS4      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :3.000   Median :2.000   Median :2.000   Median :2.000  
+ Mean   :2.601   Mean   :2.145   Mean   :2.226   Mean   :2.243  
+ 3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+      GWS5            GWS6            GWS7            GWS8      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:1.000  
+ Median :2.000   Median :2.000   Median :3.000   Median :2.000  
+ Mean   :2.041   Mean   :2.078   Mean   :2.667   Mean   :1.969  
+ 3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+      GWS9           UWES1           UWES2           UWES3          UWES4     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.00  
+ 1st Qu.:1.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.00   1st Qu.:4.00  
+ Median :2.000   Median :5.000   Median :5.000   Median :5.00   Median :5.00  
+ Mean   :1.993   Mean   :4.698   Mean   :4.892   Mean   :5.24   Mean   :4.99  
+ 3rd Qu.:3.000   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:6.00   3rd Qu.:6.00  
+ Max.   :5.000   Max.   :7.000   Max.   :7.000   Max.   :7.00   Max.   :7.00  
+     UWES5           UWES6           UWES7           UWES8      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:4.000   1st Qu.:5.000   1st Qu.:5.000   1st Qu.:4.000  
+ Median :5.000   Median :6.000   Median :6.000   Median :5.000  
+ Mean   :4.808   Mean   :5.373   Mean   :5.586   Mean   :4.914  
+ 3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:7.000   3rd Qu.:6.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+     UWES9            MBI1            MBI2            MBI3      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:4.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000  
+ Median :5.000   Median :2.000   Median :2.000   Median :4.000  
+ Mean   :4.754   Mean   :2.549   Mean   :2.741   Mean   :3.774  
+ 3rd Qu.:6.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+      MBI4            MBI5            MBI6            MBI7      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:3.000  
+ Median :3.000   Median :2.000   Median :3.000   Median :4.000  
+ Mean   :2.873   Mean   :2.603   Mean   :3.001   Mean   :3.741  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+      MBI8            MBI9           MBI10           MBI11      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000  
+ Median :3.000   Median :3.000   Median :3.000   Median :3.000  
+ Mean   :3.165   Mean   :2.895   Mean   :2.914   Mean   :2.675  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+     MBI12           MBI13           MBI14           MBI15      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2.000  
+ Median :3.000   Median :2.000   Median :3.000   Median :3.000  
+ Mean   :2.699   Mean   :2.261   Mean   :3.103   Mean   :2.788  
+ 3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+     MBI16            GHQ1            GHQ2            GHQ3      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2.000  
+ Median :2.000   Median :2.000   Median :2.000   Median :2.000  
+ Mean   :2.466   Mean   :2.104   Mean   :1.987   Mean   :1.977  
+ 3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000  
+ Max.   :7.000   Max.   :4.000   Max.   :4.000   Max.   :4.000  
+      GHQ4            GHQ5            GHQ6            GHQ7      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2.000  
+ Median :2.000   Median :2.000   Median :2.000   Median :2.000  
+ Mean   :1.954   Mean   :2.192   Mean   :1.938   Mean   :2.133  
+ 3rd Qu.:2.000   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:2.000  
+ Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.000  
+      GHQ8            GHQ9           GHQ10           GHQ11      
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :2.000   Median :2.000   Median :1.000   Median :1.000  
+ Mean   :2.004   Mean   :1.933   Mean   :1.676   Mean   :1.441  
+ 3rd Qu.:2.000   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:2.000  
+ Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.000  
+     GHQ12       Country        Age          Gender   
+ Min.   :1.000   ZAR:584   Min.   :16.00   Man  :607  
+ 1st Qu.:2.000   CHE:793   1st Qu.:26.00   Woman:770  
+ Median :2.000             Median :33.00              
+ Mean   :1.992             Mean   :36.44              
+ 3rd Qu.:2.000             3rd Qu.:47.00              
+ Max.   :4.000             Max.   :65.00              </code></pre>
+</div>
+</div>
+<p><span class="math display">\[ C(n, k) = \frac{n!}{k!(n-k)!} \]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -860,13 +906,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Multiple_factors.html" class="pagination-link" aria-label="Multiple factors">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple factors</span></span>
+      <a href="./ReadingStoringData.html" class="pagination-link" aria-label="Reading and storing data in *R*">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./EFA.html" class="pagination-link" aria-label="Exploratory factor analysis">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Subsetting.html" class="pagination-link" aria-label="Subsetting a data frame">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
