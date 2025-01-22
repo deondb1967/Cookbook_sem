@@ -10,12 +10,30 @@ library(lavaan)
 library(flexplavaan)
 library(psychTools)
 library(psych)
+library(tidyverse)
 
-scree(bfi[c(1:5, 16:20)])
+scree(bfi[, c(1:5, 16:20)])
 
-fa.parallel(bfi[c(1:5, 16:20)])
+fa.parallel(bfi[, c(1:5, 16:20)])
 
-fa(bfi[c(1:5, 16:20)], nfactors = 2)
+fa(bfi[, c(1:5, 16:20)], nfactors = 2)
 
-fa(bfi[c(1:5, 16:20)], nfactors = 3)
+fa(bfi[, c(1:5, 16:20)], nfactors = 3)
+
+bfi %>% 
+  select(1:5, 16:20) %>% 
+  scree()
+
+bfi %>% 
+  select(1:5, 16:20) %>% 
+  fa.parallel()
+
+myfa <- bfi %>% 
+  select(1:5, 16:20) %>% 
+  fa(nfactors = 2)
+
+print(myfa$loadings, cut = 0)
+
+data.frame(myfa$complexity) %>% 
+  arrange(myfa.complexity)
 ```

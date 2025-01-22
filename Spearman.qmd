@@ -10,8 +10,11 @@ library(psychTools)
 library(lavaan)
 library(flexplavaan)
 
+bfi$A1 <- 7 - bfi$A1
+
 mod1 <- '
 Agreeableness =~ A1 + A2 + A3 + A4 + A5
+A1 ~~ A2
 '
 
 fit.mod1 <- cfa(mod1, data = bfi)

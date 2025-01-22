@@ -6,6 +6,7 @@ author: "Deon de Bruin"
 ```{r}
 library(lavaan)
 library(psychTools)
+library(tidyverse)
 mod3 <- '
 Neuroticism   =~ N1 + N2 + N3 + N4 + N5
 Agreeableness =~ A1 + A2 + A3 + A4 + A5
@@ -17,17 +18,43 @@ fit.mod3 <- cfa(model = mod3,
 summary(fit.mod3, 
         standardized = TRUE, 
         fit.measures = TRUE)
+```
 
+
+```{r}
 modificationindices(fit.mod3)
 
 mymi <- modificationindices(fit.mod3)
-mymi[mymi$op == "~~" & mymi$mi > 100, ]
+```
 
-library(dplyr)
-mymi %>% 
-  filter(op == "~~" & mi > 100)
 
+```{r}
 mymi %>% 
   filter(op == "~~") %>% 
-  arrange(desc(mi))
+  arrange(desc(mi)) %>% 
+  slice(1:20)
+
+mymi %>% 
+  filter(op == "~~" & mi > 100)
 ```
+
+```{r}
+mod4 <- '
+Neuroticism   =~ N1 + N2 + N3 + N4 + N5
+Agreeableness =~ A1 + A2 + A3 + A4 + A5
+N1 ~~ N2
+'
+
+fit.mod4 <- cfa(model = mod4, 
+                data  = bfi)
+
+summary(fit.mod4, 
+        standardized = TRUE, 
+        fit.measures = TRUE)
+```
+
+```{r}
+compfit <- semTools::compareFit(fit.mod3, fit.mod4)
+summary(compfit)
+```
+

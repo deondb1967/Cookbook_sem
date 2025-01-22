@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Subsetting a data frame – Structural equation modeling with lavaan in R: Examples and excercises</title>
+<title>4&nbsp; Subsetting a data frame using the dplyr package – Structural equation modeling with lavaan in R: Examples and excercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Subsetting.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Subsetting.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Subsetting.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,28 +240,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link active" data-scroll-target="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">4.1</span> Selecting consecutive rows by their row numbers with square brackets</a></li>
-  <li><a href="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">4.2</span> Selecting non-consecutive rows by their row numbers with square brackets</a></li>
-  <li><a href="#selecting-rows-and-storing-the-data-as-a-new-data-frame" id="toc-selecting-rows-and-storing-the-data-as-a-new-data-frame" class="nav-link" data-scroll-target="#selecting-rows-and-storing-the-data-as-a-new-data-frame"><span class="header-section-number">4.3</span> Selecting rows and storing the data as a new data frame</a></li>
-  <li><a href="#selecting-a-variable-with-notation-and-its-name" id="toc-selecting-a-variable-with-notation-and-its-name" class="nav-link" data-scroll-target="#selecting-a-variable-with-notation-and-its-name"><span class="header-section-number">4.4</span> Selecting a variable with $ notation and its name</a></li>
-  <li><a href="#selecting-a-variable-by-its-column-number" id="toc-selecting-a-variable-by-its-column-number" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-column-number"><span class="header-section-number">4.5</span> Selecting a variable by its column number</a></li>
-  <li><a href="#selecting-a-variable-by-its-name-with-square-brackets" id="toc-selecting-a-variable-by-its-name-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">4.6</span> Selecting a variable by its name with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">4.7</span> Selecting two or more contiguous variables by their column numbers with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">4.8</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-variables-by-their-names-with-square-brackets" id="toc-selecting-two-or-more-variables-by-their-names-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">4.9</span> Selecting two or more variables by their names with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-variables-with-the-dplyr-package" id="toc-selecting-two-or-more-variables-with-the-dplyr-package" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-with-the-dplyr-package"><span class="header-section-number">4.10</span> Selecting two or more variables with the dplyr package</a></li>
-  <li><a href="#selecting-cases-by-consecutive-row-numbers" id="toc-selecting-cases-by-consecutive-row-numbers" class="nav-link" data-scroll-target="#selecting-cases-by-consecutive-row-numbers"><span class="header-section-number">4.11</span> Selecting cases by consecutive row numbers</a></li>
-  <li><a href="#filtering-cases-by-non-consecutive-row-numbers" id="toc-filtering-cases-by-non-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">4.12</span> Filtering cases by non-consecutive row numbers</a></li>
-  <li><a href="#filtering-cases-that-meet-a-certain-condition" id="toc-filtering-cases-that-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">4.13</span> Filtering cases that meet a certain condition</a></li>
-  <li><a href="#filtering-cases-that-dont-meet-a-certain-condition" id="toc-filtering-cases-that-dont-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">4.14</span> Filtering cases that don’t meet a certain condition</a></li>
-  <li><a href="#filtering-cases-on-the-basis-of-two-or-more-conditions" id="toc-filtering-cases-on-the-basis-of-two-or-more-conditions" class="nav-link" data-scroll-target="#filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">4.15</span> Filtering cases on the basis of two or more conditions</a></li>
-  <li><a href="#combining-select-and-slice" id="toc-combining-select-and-slice" class="nav-link" data-scroll-target="#combining-select-and-slice"><span class="header-section-number">4.16</span> Combining select and slice</a></li>
-  <li><a href="#combing-select-and-filter" id="toc-combing-select-and-filter" class="nav-link" data-scroll-target="#combing-select-and-filter"><span class="header-section-number">4.17</span> Combing select and filter</a></li>
-  <li><a href="#randomly-select-rows-from-a-data-frame-without-replacement" id="toc-randomly-select-rows-from-a-data-frame-without-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">4.18</span> Randomly select rows from a data frame without replacement</a></li>
-  <li><a href="#randomly-select-rows-from-a-data-frame-with-replacement" id="toc-randomly-select-rows-from-a-data-frame-with-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">4.19</span> Randomly select rows from a data frame with replacement</a></li>
-  <li><a href="#randomly-select-a-fraction-of-rows-without-replacement" id="toc-randomly-select-a-fraction-of-rows-without-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">4.20</span> Randomly select a fraction of rows without replacement</a></li>
-  <li><a href="#randomly-select-a-fraction-of-rows-with-replacement" id="toc-randomly-select-a-fraction-of-rows-with-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">4.21</span> Randomly select a fraction of rows with replacement</a></li>
-  <li><a href="#randomly-split-a-data-frame-into-two-parts" id="toc-randomly-split-a-data-frame-into-two-parts" class="nav-link" data-scroll-target="#randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">4.22</span> Randomly split a data frame into two parts</a></li>
+  <li><a href="#using-dplyr-to-filter-rows-from-a-data-frame" id="toc-using-dplyr-to-filter-rows-from-a-data-frame" class="nav-link active" data-scroll-target="#using-dplyr-to-filter-rows-from-a-data-frame"><span class="header-section-number">5</span> Using dplyr to filter rows from a data frame</a>
+  <ul class="collapse">
+  <li><a href="#filtering-rows-by-consecutive-row-numbers" id="toc-filtering-rows-by-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">5.1</span> Filtering rows by consecutive row numbers</a></li>
+  <li><a href="#filtering-cases-by-non-consecutive-row-numbers" id="toc-filtering-cases-by-non-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">5.2</span> Filtering cases by non-consecutive row numbers</a></li>
+  <li><a href="#filtering-cases-that-meet-a-certain-condition" id="toc-filtering-cases-that-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">5.3</span> Filtering cases that meet a certain condition</a></li>
+  <li><a href="#filtering-cases-that-dont-meet-a-certain-condition" id="toc-filtering-cases-that-dont-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">5.4</span> Filtering cases that don’t meet a certain condition</a></li>
+  <li><a href="#filtering-cases-on-the-basis-of-two-or-more-conditions" id="toc-filtering-cases-on-the-basis-of-two-or-more-conditions" class="nav-link" data-scroll-target="#filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">5.5</span> Filtering cases on the basis of two or more conditions</a></li>
+  <li><a href="#storing-the-filtered-cases-in-a-new-data-frame" id="toc-storing-the-filtered-cases-in-a-new-data-frame" class="nav-link" data-scroll-target="#storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">5.6</span> Storing the filtered cases in a new data frame</a></li>
+  </ul></li>
+  <li><a href="#selecting-variables-with-the-dplyr-package" id="toc-selecting-variables-with-the-dplyr-package" class="nav-link" data-scroll-target="#selecting-variables-with-the-dplyr-package"><span class="header-section-number">6</span> Selecting variables with the dplyr package</a>
+  <ul class="collapse">
+  <li><a href="#combining-select-and-slice" id="toc-combining-select-and-slice" class="nav-link" data-scroll-target="#combining-select-and-slice"><span class="header-section-number">6.1</span> Combining select and slice</a></li>
+  <li><a href="#combing-select-and-filter" id="toc-combing-select-and-filter" class="nav-link" data-scroll-target="#combing-select-and-filter"><span class="header-section-number">6.2</span> Combing select and filter</a></li>
+  <li><a href="#randomly-select-rows-from-a-data-frame-without-replacement" id="toc-randomly-select-rows-from-a-data-frame-without-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">6.3</span> Randomly select rows from a data frame without replacement</a></li>
+  <li><a href="#randomly-select-rows-from-a-data-frame-with-replacement" id="toc-randomly-select-rows-from-a-data-frame-with-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">6.4</span> Randomly select rows from a data frame with replacement</a></li>
+  <li><a href="#randomly-select-a-fraction-of-rows-without-replacement" id="toc-randomly-select-a-fraction-of-rows-without-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">6.5</span> Randomly select a fraction of rows without replacement</a></li>
+  <li><a href="#randomly-select-a-fraction-of-rows-with-replacement" id="toc-randomly-select-a-fraction-of-rows-with-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">6.6</span> Randomly select a fraction of rows with replacement</a></li>
+  <li><a href="#randomly-split-a-data-frame-into-two-parts" id="toc-randomly-split-a-data-frame-into-two-parts" class="nav-link" data-scroll-target="#randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">6.7</span> Randomly split a data frame into two parts</a></li>
+  <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises"><span class="header-section-number">6.8</span> Excercises</a>
+  <ul class="collapse">
+  <li><a href="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.8.1</span> Selecting consecutive rows by their row numbers with square brackets</a></li>
+  <li><a href="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.8.2</span> Selecting non-consecutive rows by their row numbers with square brackets</a></li>
+  </ul></li>
+  <li><a href="#selecting-columns-variables-from-a-data-frame" id="toc-selecting-columns-variables-from-a-data-frame" class="nav-link" data-scroll-target="#selecting-columns-variables-from-a-data-frame"><span class="header-section-number">6.9</span> Selecting columns (variables) from a data frame</a>
+  <ul class="collapse">
+  <li><a href="#selecting-a-variable-with-notation" id="toc-selecting-a-variable-with-notation" class="nav-link" data-scroll-target="#selecting-a-variable-with-notation"><span class="header-section-number">6.9.1</span> Selecting a variable with $ notation</a></li>
+  <li><a href="#selecting-a-variable-by-its-column-number-with-square-brackets" id="toc-selecting-a-variable-by-its-column-number-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">6.9.2</span> Selecting a variable by its column number with square brackets</a></li>
+  </ul></li>
+  <li><a href="#selecting-a-variable-by-its-name-with-square-brackets" id="toc-selecting-a-variable-by-its-name-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">6.10</span> Selecting a variable by its name with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.11</span> Selecting two or more contiguous variables by their column numbers with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.12</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-variables-by-their-names-with-square-brackets" id="toc-selecting-two-or-more-variables-by-their-names-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">6.13</span> Selecting two or more variables by their names with square brackets</a></li>
+  <li><a href="#fun-with-starwars-characters" id="toc-fun-with-starwars-characters" class="nav-link" data-scroll-target="#fun-with-starwars-characters"><span class="header-section-number">6.14</span> Fun with Starwars characters</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -270,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></h1>
 </div>
 
 
@@ -287,687 +299,3727 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="using-dplyr-to-filter-rows-from-a-data-frame" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Using dplyr to filter rows from a data frame</h1>
+<section id="filtering-rows-by-consecutive-row-numbers" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">5.1</span> Filtering rows by consecutive row numbers</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'psychTools'
-
-The following object is masked from 'package:dplyr':
-
-    recode</code></pre>
-</div>
-</div>
-<section id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">4.1</span> Selecting consecutive rows by their row numbers with square brackets</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4
-61617  2  4  3  4  4  2  3  3  4  4  3  3  3  4  4  3  4  2  2  3  3  6  3  4
-61618  2  4  5  2  5  5  4  4  3  4  1  1  6  4  3  3  3  3  5  5  4  2  4  3
-61620  5  4  5  4  4  4  5  4  2  5  2  4  4  4  5  4  5  4  2  3  4  2  5  5
-61621  4  4  6  5  5  4  4  3  5  5  5  3  4  4  4  2  5  2  4  1  3  3  4  3
-61622  2  3  3  4  5  4  4  5  3  2  2  2  5  4  5  2  3  4  4  3  3  3  4  3
-61623  6  6  5  6  5  6  6  6  1  3  2  1  6  5  6  3  5  2  2  3  4  3  5  6
-61624  2  5  5  3  5  5  4  4  2  3  4  3  4  5  5  1  2  2  1  1  5  2  5  6
-61629  4  3  1  5  1  3  2  4  2  4  3  6  4  2  1  6  3  2  6  4  3  2  4  5
-61630  4  3  6  3  3  6  6  3  4  5  5  3 NA  4  3  5  5  2  3  3  6  6  6  6
-61633  2  5  6  6  5  6  5  6  2  1  2  2  4  5  5  5  5  5  2  4  5  1  5  5
-61634  4  4  5  6  5  4  3  5  3  2  1  3  2  5  4  3  3  4  2  3  5  3  5  6
-61636  2  5  5  5  5  5  4  5  4  5  3  3  4  5  4  4  5  3  2 NA  4  6  4  5
-61637  5  5  5  6  4  5  4  3  2  2  3  3  3  2  4  1  2  2  2  2  4  2  4  5
-61639  5  5  5  6  6  4  4  4  2  1  2  2  4  6  5  1  1  1  2  1  5  3  4  4
-61640  4  5  2  2  1  5  5  5  2  2  3  4  3  6  5  2  4  2  2  3  5  2  5  5
-61643  4  3  6  6  3  5  5  5  3  5  1  1  6  6  4  4  5  4  5  5  6  6  6  3
-61650  4  6  6  2  5  4  4  4  4  4  1  2  5  5  5  4  4  4  4  5  5  1  5  6
-61651  5  5  5  4  5  5  5  5  4  3  2  2  4  6  6  6  5  5  4  4  5  1  4  5
-61653  4  4  5  4  3  5  4  5  4  6  1  2  4  5  5  5  6  5  5  2  4  2  2  4
-61654  4  4  6  5  5  1  1  1  5  6  1  1  4  5  6  5  5  5  1  1  4  1  5  3
-      O5 gender education age
-61617  3      1        NA  16
-61618  3      2        NA  18
-61620  2      2        NA  17
-61621  5      2        NA  17
-61622  3      1        NA  17
-61623  1      2         3  21
-61624  1      1        NA  18
-61629  3      1         2  19
-61630  1      1         1  19
-61633  2      2        NA  17
-61634  3      1         1  21
-61636  4      1        NA  16
-61637  2      2        NA  16
-61639  4      1        NA  16
-61640  5      1         1  17
-61643  2      1        NA  17
-61650  3      2        NA  17
-61651  4      1        NA  17
-61653  2      2        NA  16
-61654  2      2        NA  17</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   2  5  5  6  5  1  2  2  2  2      2         1  15
+2   2  6  5  3  5  2  4  1  2  2      2         4  28
+3   2  5  5  4  5  3  3  2  5  2      1         3  18
+4   2  6  5  6  6  3  4  4  4  2      1         5  29
+5   2  5  5  6  5  2  2  2  3  3      1         3  23
+6   1  5  5  4  6  1  3  3  4  5      2         3  19
+7   2  6  6  6  5  3  5  5  4  3      1         3  46
+8   1  6  6  6  6  2  2  5  2  1      1         1  17
+9   1  6  6  5  4  4  5  4  4  4      2         4  28
+10  1  6  6  6  6  1  1  1  1  1      1         4  35</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">4.2</span> Selecting non-consecutive rows by their row numbers with square brackets</h2>
+<section id="filtering-cases-by-non-consecutive-row-numbers" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">5.2</span> Filtering cases by non-consecutive row numbers</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bfi[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">20</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4
-61617  2  4  3  4  4  2  3  3  4  4  3  3  3  4  4  3  4  2  2  3  3  6  3  4
-61620  5  4  5  4  4  4  5  4  2  5  2  4  4  4  5  4  5  4  2  3  4  2  5  5
-61622  2  3  3  4  5  4  4  5  3  2  2  2  5  4  5  2  3  4  4  3  3  3  4  3
-61624  2  5  5  3  5  5  4  4  2  3  4  3  4  5  5  1  2  2  1  1  5  2  5  6
-61630  4  3  6  3  3  6  6  3  4  5  5  3 NA  4  3  5  5  2  3  3  6  6  6  6
-61634  4  4  5  6  5  4  3  5  3  2  1  3  2  5  4  3  3  4  2  3  5  3  5  6
-61637  5  5  5  6  4  5  4  3  2  2  3  3  3  2  4  1  2  2  2  2  4  2  4  5
-61640  4  5  2  2  1  5  5  5  2  2  3  4  3  6  5  2  4  2  2  3  5  2  5  5
-61650  4  6  6  2  5  4  4  4  4  4  1  2  5  5  5  4  4  4  4  5  5  1  5  6
-61653  4  4  5  4  3  5  4  5  4  6  1  2  4  5  5  5  6  5  5  2  4  2  2  4
-61654  4  4  6  5  5  1  1  1  5  6  1  1  4  5  6  5  5  5  1  1  4  1  5  3
-      O5 gender education age
-61617  3      1        NA  16
-61620  2      2        NA  17
-61622  3      1        NA  17
-61624  1      1        NA  18
-61630  1      1         1  19
-61634  3      1         1  21
-61637  2      2        NA  16
-61640  5      1         1  17
-61650  3      2        NA  17
-61653  2      2        NA  16
-61654  2      2        NA  17</code></pre>
+<pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1  2  5  5  6  5  1  2  2  2  2      2         1  15
+2  2  5  5  4  5  3  3  2  5  2      1         3  18
+3  2  5  5  6  5  2  2  2  3  3      1         3  23
+4  2  6  6  6  5  3  5  5  4  3      1         3  46</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-rows-and-storing-the-data-as-a-new-data-frame" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="selecting-rows-and-storing-the-data-as-a-new-data-frame"><span class="header-section-number">4.3</span> Selecting rows and storing the data as a new data frame</h2>
+<section id="filtering-cases-that-meet-a-certain-condition" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">5.3</span> Filtering cases that meet a certain condition</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="ot">&lt;-</span> bfi[<span class="dv">1000</span><span class="sc">:</span><span class="dv">1019</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(education <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">==</span> <span class="dv">30</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">&lt;=</span> <span class="dv">30</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">31</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="selecting-a-variable-with-notation-and-its-name" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="selecting-a-variable-with-notation-and-its-name"><span class="header-section-number">4.4</span> Selecting a variable with $ notation and its name</h2>
+<section id="filtering-cases-that-dont-meet-a-certain-condition" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">5.4</span> Filtering cases that don’t meet a certain condition</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mybfi<span class="sc">$</span>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 6 2 4 1 2 2 1 1 3 1 2 3 2 1 1 3 1 2 2 4</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>gender <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>education <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="selecting-a-variable-by-its-column-number" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="selecting-a-variable-by-its-column-number"><span class="header-section-number">4.5</span> Selecting a variable by its column number</h2>
+<section id="filtering-cases-on-the-basis-of-two-or-more-conditions" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">5.5</span> Filtering cases on the basis of two or more conditions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mybfi[,<span class="dv">1</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">&gt;</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 6 2 4 1 2 2 1 1 3 1 2 3 2 1 1 3 1 2 2 4</code></pre>
+<pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1  5  4  2  6  4  5  5  4  4  4      1         2  65
+2  1  4  3  6  5  6  5  5  6  4      1         4  67
+3  2  4  5  6  6  2  3  2  3  1      1         4  70
+4  2  4  4  3  4  4  4  4  4  2      1         5  67</code></pre>
 </div>
-</div>
-</section>
-<section id="selecting-a-variable-by-its-name-with-square-brackets" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">4.6</span> Selecting a variable by its name with square brackets</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="st">"A1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> age <span class="sc">&gt;</span> <span class="dv">60</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 6 2 4 1 2 2 1 1 3 1 2 3 2 1 1 3 1 2 2 4</code></pre>
-</div>
-</div>
-</section>
-<section id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">4.7</span> Selecting two or more contiguous variables by their column numbers with square brackets</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      A1 A2 A3 A4 A5
-63746  6  5  5  4  5
-63748  2  4  5  1  4
-63750  4  4  4  3  3
-63752  1  6  5  5  5
-63760  2  4  6  6  5
-63761  2  5  5  4  4
-63762  1  6  6  1  6
-63763  1  6  6  4  1
-63766  3  5  6  6  5
-63767  1  6  6  6  6
-63768  2  5  5  4  5
-63770  3  6  6  6  5
-63773  2  6  5  6  6
-63775  1  5  3  4  5
-63776  1 NA  5  6  6
-63778  3  5  2  2  4
-63788  1  5  5  6  5
-63789  2  4  3  6  4
-63791  2  6  4  5  4
-63792  4  6  6  6  5</code></pre>
-</div>
-</div>
-</section>
-<section id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">4.8</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      A1 A3 A5
-63746  6  5  5
-63748  2  5  4
-63750  4  4  3
-63752  1  5  5
-63760  2  6  5
-63761  2  5  4
-63762  1  6  6
-63763  1  6  1
-63766  3  6  5
-63767  1  6  6
-63768  2  5  5
-63770  3  6  5
-63773  2  5  6
-63775  1  3  5
-63776  1  5  6
-63778  3  2  4
-63788  1  5  5
-63789  2  3  4
-63791  2  4  4
-63792  4  6  5</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   1  6  6  5  6  3  4  3  6  4      1         2  26
+2   1  6  6  1  6  4  6  3  5  5      1         5  28
+3   5  6  6  6  6  1  1  3  1  1      1         3  36
+4   3  4  5  6  4  3  4  2  1  3      1         3  23
+5   3  6  6  5  6  3  6  1  5  1      1         2  21
+6   4  5  5  6  5  3  4  5  3  4      1         3  51
+7   4  3  4  3  3  5  5  5  4  4      1         2  31
+8   1  6  5  5  6  3  3  4  3  4      1         3  21
+9   3  5  4  4  5  3  5  2  2  2      1         3  20
+10  4  5  5  5  5  4  4  4  5  6      1         2  20
+11  2  2  4  1  3  5  5  6  6  4      1         3  18
+12  1  4  4  4  4  2  3  4  2  3      1         4  28
+13  2  2  5  5  4  3  4  3  6  4      1         5  46
+14  3  4  4  6  5  2  2  1  1  1      1         3  25
+15  2  4  3  3  3  1  2  1  3  1      1         5  25
+16  2  6  5  6  6  1  2  1  1  1      1         3  27
+17  4  4  3  5  5  4  3  4  4  4      1         5  39
+18  5  5  5  5  5  5  5  5  5  5      1         3  25
+19  4  4  4  6  3  6  6  5  5  4      1         3  38
+20  3  4  4  5  3  3  3  4  4  4      1         3  18</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-variables-by-their-names-with-square-brackets" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">4.9</span> Selecting two or more variables by their names with square brackets</h2>
+<section id="storing-the-filtered-cases-in-a-new-data-frame" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">5.6</span> Storing the filtered cases in a new data frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A3"</span>, <span class="st">"A5"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">28</span> <span class="sc">&amp;</span> education <span class="sc">&gt;=</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(age)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      A1 A3 A5
-63746  6  5  5
-63748  2  5  4
-63750  4  4  3
-63752  1  5  5
-63760  2  6  5
-63761  2  5  4
-63762  1  6  6
-63763  1  6  1
-63766  3  6  5
-63767  1  6  6
-63768  2  5  5
-63770  3  6  5
-63773  2  5  6
-63775  1  3  5
-63776  1  5  6
-63778  3  2  4
-63788  1  5  5
-63789  2  3  4
-63791  2  4  4
-63792  4  6  5</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   2  6  5  6  6  3  4  4  4  2      1         5  29
+2   5  2  3  4  2  5  6  2  2  1      1         5  29
+3   4  5  3  4  4  3  2  2  4  2      1         4  32
+4   1  6  6  6  6  1  1  1  1  1      1         4  35
+5   1  5  5  5  5  5  5  4  4  3      2         5  35
+6   1  5  5  5  6  3  4  2  4  2      2         5  36
+7   1  6  6  5  6  1  1  2  1  2      2         4  42
+8   2  5  4  4  5  3  4  2  4  2      1         4  45
+9   2  2  5  5  3  3  3  4  2  3      1         4  45
+10  2  4  4  5  5  5  5  5  6  3      2         3  45
+11  2  6  6  6  5  3  5  5  4  3      1         3  46
+12  2  5  4  5  4  5  5  4  6  5      2         3  48
+13  1  6  6  6  5  2  3  2  1  2      2         3  49
+14  1  5  4  5  2  3  1  4  6  6      2         4  50
+15  5  4  4  4  5  4  4  4  4  2      1         5  58</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-variables-with-the-dplyr-package" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="selecting-two-or-more-variables-with-the-dplyr-package"><span class="header-section-number">4.10</span> Selecting two or more variables with the dplyr package</h2>
+</section>
+<section id="selecting-variables-with-the-dplyr-package" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Selecting variables with the dplyr package</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      A1 A2 A3 A4 A5
-63746  6  5  5  4  5
-63748  2  4  5  1  4
-63750  4  4  4  3  3
-63752  1  6  5  5  5
-63760  2  4  6  6  5
-63761  2  5  5  4  4
-63762  1  6  6  1  6
-63763  1  6  6  4  1
-63766  3  5  6  6  5
-63767  1  6  6  6  6
-63768  2  5  5  4  5
-63770  3  6  6  6  5
-63773  2  6  5  6  6
-63775  1  5  3  4  5
-63776  1 NA  5  6  6
-63778  3  5  2  2  4
-63788  1  5  5  6  5
-63789  2  4  3  6  4
-63791  2  6  4  5  4
-63792  4  6  6  6  5</code></pre>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, A1<span class="sc">:</span>A5)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, A1, A3, N1, N3)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, <span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, <span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, <span class="fu">ends_with</span>(<span class="st">"r"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1, A3, N1, N3)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"r"</span>))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<section id="combining-select-and-slice" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="combining-select-and-slice"><span class="header-section-number">6.1</span> Combining select and slice</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1,A3,A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="combing-select-and-filter" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="combing-select-and-filter"><span class="header-section-number">6.2</span> Combing select and filter</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="randomly-select-rows-from-a-data-frame-without-replacement" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">6.3</span> Randomly select rows from a data frame without replacement</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      A1 A3 A5
-63746  6  5  5
-63748  2  5  4
-63750  4  4  3
-63752  1  5  5
-63760  2  6  5
-63761  2  5  4
-63762  1  6  6
-63763  1  6  1
-63766  3  6  5
-63767  1  6  6
-63768  2  5  5
-63770  3  6  5
-63773  2  5  6
-63775  1  3  5
-63776  1  5  6
-63778  3  2  4
-63788  1  5  5
-63789  2  3  4
-63791  2  4  4
-63792  4  6  5</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   1  5  6  6  6  4  4  4  3  6      2         4  20
+2   2  5  5  6  4  4  4  4  5  4      2         3  24
+3   2  5  4  6  5  2  2  2  2  3      2         3  20
+4   6  4  6  6  5  6  4  4  2  2      2         5  44
+5   6  6  5  5  4  1  4  1  1  1      2         1  21
+6   1  6  5  6  5  4  5  5  5  6      2         1  18
+7   1  5  5  6  6  1  2  2  2  1      2         5  27
+8   2  5  5  1  5  1  3  2  4  1      2         4  39
+9   1  1  6  6  5  2  2  1  1  1      2         3  36
+10  6  3  2  3  5  5  6  6  5  3      1         2  37</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-cases-by-consecutive-row-numbers" class="level2" data-number="4.11">
-<h2 data-number="4.11" class="anchored" data-anchor-id="selecting-cases-by-consecutive-row-numbers"><span class="header-section-number">4.11</span> Selecting cases by consecutive row numbers</h2>
+<section id="randomly-select-rows-from-a-data-frame-with-replacement" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">6.4</span> Randomly select rows from a data frame with replacement</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2   2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-3   4  4  4  3  3  6  4  4  2  4  4  4  3  2  4  3  5  5  4  4  4  2  4  5  3
-4   1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-5   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-6   2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-7   1  6  6  1  6  1  1  1  6  6  1  6  6  1  4  6  6  2  6  6  6  1  6  3  1
-8   1  6  6  4  1  1  6  5  4  2  6  1  3  5  1  5  5  5  6  4  6  1  6  6  6
-9   3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-10  1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-   gender education age
-1       2         4  53
-2       1         3  27
-3       2         4  48
-4       2         4  30
-5       2         3  25
-6       2         4  35
-7       2        NA  17
-8       2         3  41
-9       2         3  41
-10      2         3  37</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   1  4  2  5  3  2  2  3  4  5      2         5  22
+2   1  4  5  5  4  3  4  5  4  5      1         3  31
+3   2  5  6  5  5  2  2  2  5  4      1         3  22
+4   3  6  5  6  5  3  3  2  3  4      2         3  40
+5   4  4  3  2  3  6  6  5  5  5      2         4  45
+6   2  4  4  4  5  4  5  6  4  4      2         3  50
+7   2  6  5  6  4  1  3  2  1  2      2         3  23
+8   2  5  5  5  4  5  5  2  4  4      2         4  26
+9   1  6  5  6  4  3  2  4  4  5      2         3  18
+10  2  5  3  5  1  3  5  4  4  5      2         3  37</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-cases-by-non-consecutive-row-numbers" class="level2" data-number="4.12">
-<h2 data-number="4.12" class="anchored" data-anchor-id="filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">4.12</span> Filtering cases by non-consecutive row numbers</h2>
+<section id="randomly-select-a-fraction-of-rows-without-replacement" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">6.5</span> Randomly select a fraction of rows without replacement</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(.<span class="dv">01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1  6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2  4  4  4  3  3  6  4  4  2  4  4  4  3  2  4  3  5  5  4  4  4  2  4  5  3
-3  2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-4  1  6  6  1  6  1  1  1  6  6  1  6  6  1  4  6  6  2  6  6  6  1  6  3  1
-  gender education age
-1      2         4  53
-2      2         4  48
-3      2         3  25
-4      2        NA  17</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   2  4  4  6  4  3  2  1  1  1      1         3  21
+2   2  4  2  6  4  4  5  3  4  6      2         1  18
+3   2  4  2  1  2  2  4  1  2  1      2         3  25
+4   2  5  5  6  5  1  1  2  2  2      2         3  28
+5   2  6  5  6  5  3  5  5  4  6      2         3  20
+6   1  5  6  6  5  1  2  1  1  2      2         4  26
+7   2  5  6  6  6  6  6  6  4  2      1         3  19
+8   1  6  6  5  6  1  6  1  6  1      1         5  25
+9   4  4  5  3  4  2  4  2  6  2      1         5  25
+10  1  5  3  4  5  1  2  1  2  1      1         4  26</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-cases-that-meet-a-certain-condition" class="level2" data-number="4.13">
-<h2 data-number="4.13" class="anchored" data-anchor-id="filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">4.13</span> Filtering cases that meet a certain condition</h2>
+<section id="randomly-select-a-fraction-of-rows-with-replacement" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">6.6</span> Randomly select a fraction of rows with replacement</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.01</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1  2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-2  2  6  5  6  6  6  6  5  1  4  4  2  5  5  6  4 NA  1  1 NA  6  4  5  5  1
-3  3  5  2  2  4  5  3  6  1  5  3  5  1  4  2  1  3  6  6  6  6  4  3  6  1
-4  1  5  5  6  5  5  5  1  5  6  1  2  5  6  5  2  2  2  4  1  5  1  5  6  1
-  gender education age
-1      1         3  27
-2      1         3  53
-3      1         2  19
-4      1         1  24</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(education <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1  6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2  4  4  4  3  3  6  4  4  2  4  4  4  3  2  4  3  5  5  4  4  4  2  4  5  3
-3  1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-4  2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-5  4  6  6  6  5  4  3  2  2  3  2  3  5  6  4  4  4  3  3  4  2  3  4  3  3
-  gender education age
-1      2         4  53
-2      2         4  48
-3      2         4  30
-4      2         4  35
-5      2         4  25</code></pre>
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   1  5  5  6  5  2  2  3  3  3      2         3  40
+2   2  6  5  6  4  3  5  4  4  4      2         3  22
+3   1  6  6  6  6  2  2  2  4  6      2         4  34
+4   1  6  6  6  4  3  4  4  1  1      2         3  26
+5   3  5  5  4  5  4  3  2  3  2      2         3  19
+6   1  6  5  2  5  2  2  3  4  2      1         3  19
+7   2  5  4  3  3  1  1  1  4  3      2         5  41
+8   2  6  6  6  6  1  1  1  1  2      2         5  43
+9   2  6  6  6  6  1  2  2  2  4      2         3  20
+10  2  4  3  2  3  5  5  5  5  4      2         5  29</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-cases-that-dont-meet-a-certain-condition" class="level2" data-number="4.14">
-<h2 data-number="4.14" class="anchored" data-anchor-id="filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">4.14</span> Filtering cases that don’t meet a certain condition</h2>
+<section id="randomly-split-a-data-frame-into-two-parts" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">6.7</span> Randomly split a data frame into two parts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>gender <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specify exactly how many persons you want in the two groups, respectively.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we want n = 600 in the first group and n = 400 in the second.</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>v          <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="dv">800</span>), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="dv">200</span>))) </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>selection  <span class="ot">&lt;-</span> <span class="fu">sample</span>(v) </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>mybfi1     <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(selection) </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>mybfi2     <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>selection) </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mybfi1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2   4  4  4  3  3  6  4  4  2  4  4  4  3  2  4  3  5  5  4  4  4  2  4  5  3
-3   1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-4   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-5   2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-6   1  6  6  1  6  1  1  1  6  6  1  6  6  1  4  6  6  2  6  6  6  1  6  3  1
-7   1  6  6  4  1  1  6  5  4  2  6  1  3  5  1  5  5  5  6  4  6  1  6  6  6
-8   3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-9   1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-10  2  5  5  4  5  5  4  5  2  3  5  2  4  5  6  4  2  4  3  2  4  2  4  4  4
-11  3  6  6  6  5  5  5  3  2  4  1  2  5  5  5  4  4  4  3  2  4  2  5  6  1
-12  1  5  3  4  5  5  4  4  1  2  5  4  2  5  2  1  2  2  1  2  6  1  6  5  2
-13  1 NA  5  6  6  5  6 NA  2  6  1  1  4  6  4  3  5  3 NA  1  4  4  4  6  5
-14  2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-15  2  6  4  5  4  5  5  5  1  1  2  2  4  3  6  1  2  1  2  1  5  2  6  4  2
-16  4  6  6  6  5  4  3  2  2  3  2  3  5  6  4  4  4  3  3  4  2  3  4  3  3
-   gender education age
-1       2         4  53
-2       2         4  48
-3       2         4  30
-4       2         3  25
-5       2         4  35
-6       2        NA  17
-7       2         3  41
-8       2         3  41
-9       2         3  37
-10      2         3  60
-11      2         3  23
-12      2         2  19
-13      2         3  35
-14      2         3  21
-15      2         3  29
-16      2         4  25</code></pre>
+<pre><code>[1] 800</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>education <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mybfi2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-2   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-3   1  6  6  4  1  1  6  5  4  2  6  1  3  5  1  5  5  5  6  4  6  1  6  6  6
-4   3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-5   1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-6   2  5  5  4  5  5  4  5  2  3  5  2  4  5  6  4  2  4  3  2  4  2  4  4  4
-7   3  6  6  6  5  5  5  3  2  4  1  2  5  5  5  4  4  4  3  2  4  2  5  6  1
-8   2  6  5  6  6  6  6  5  1  4  4  2  5  5  6  4 NA  1  1 NA  6  4  5  5  1
-9   1  5  3  4  5  5  4  4  1  2  5  4  2  5  2  1  2  2  1  2  6  1  6  5  2
-10  1 NA  5  6  6  5  6 NA  2  6  1  1  4  6  4  3  5  3 NA  1  4  4  4  6  5
-11  3  5  2  2  4  5  3  6  1  5  3  5  1  4  2  1  3  6  6  6  6  4  3  6  1
-12  1  5  5  6  5  5  5  1  5  6  1  2  5  6  5  2  2  2  4  1  5  1  5  6  1
-13  2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-14  2  6  4  5  4  5  5  5  1  1  2  2  4  3  6  1  2  1  2  1  5  2  6  4  2
-   gender education age
-1       1         3  27
-2       2         3  25
-3       2         3  41
-4       2         3  41
-5       2         3  37
-6       2         3  60
-7       2         3  23
-8       1         3  53
-9       2         2  19
-10      2         3  35
-11      1         2  19
-12      1         1  24
-13      2         3  21
-14      2         3  29</code></pre>
+<pre><code>[1] 200</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-cases-on-the-basis-of-two-or-more-conditions" class="level2" data-number="4.15">
-<h2 data-number="4.15" class="anchored" data-anchor-id="filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">4.15</span> Filtering cases on the basis of two or more conditions</h2>
+<section id="excercises" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="excercises"><span class="header-section-number">6.8</span> Excercises</h2>
+<ol type="1">
+<li>First use dollar notation and then square brackets to find the mean and standard deviation of variable A3.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> education <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1  6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2  4  4  4  3  3  6  4  4  2  4  4  4  3  2  4  3  5  5  4  4  4  2  4  5  3
-3  1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-4  2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-5  4  6  6  6  5  4  3  2  2  3  2  3  5  6  4  4  4  3  3  4  2  3  4  3  3
-  gender education age
-1      2         4  53
-2      2         4  48
-3      2         4  30
-4      2         4  35
-5      2         4  25</code></pre>
+<pre><code>[1] 2.363</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> education <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2   2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-3   4  4  4  3  3  6  4  4  2  4  4  4  3  2  4  3  5  5  4  4  4  2  4  5  3
-4   1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-5   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-6   2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-7   1  6  6  1  6  1  1  1  6  6  1  6  6  1  4  6  6  2  6  6  6  1  6  3  1
-8   1  6  6  4  1  1  6  5  4  2  6  1  3  5  1  5  5  5  6  4  6  1  6  6  6
-9   3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-10  1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-11  2  5  5  4  5  5  4  5  2  3  5  2  4  5  6  4  2  4  3  2  4  2  4  4  4
-12  3  6  6  6  5  5  5  3  2  4  1  2  5  5  5  4  4  4  3  2  4  2  5  6  1
-13  2  6  5  6  6  6  6  5  1  4  4  2  5  5  6  4 NA  1  1 NA  6  4  5  5  1
-14  1  5  3  4  5  5  4  4  1  2  5  4  2  5  2  1  2  2  1  2  6  1  6  5  2
-15  1 NA  5  6  6  5  6 NA  2  6  1  1  4  6  4  3  5  3 NA  1  4  4  4  6  5
-16  2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-17  2  6  4  5  4  5  5  5  1  1  2  2  4  3  6  1  2  1  2  1  5  2  6  4  2
-18  4  6  6  6  5  4  3  2  2  3  2  3  5  6  4  4  4  3  3  4  2  3  4  3  3
-   gender education age
-1       2         4  53
-2       1         3  27
-3       2         4  48
-4       2         4  30
-5       2         3  25
-6       2         4  35
-7       2        NA  17
-8       2         3  41
-9       2         3  41
-10      2         3  37
-11      2         3  60
-12      2         3  23
-13      1         3  53
-14      2         2  19
-15      2         3  35
-16      2         3  21
-17      2         3  29
-18      2         4  25</code></pre>
+<pre><code>[1] 1.375181</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.363</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.375181</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.363</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.375181</code></pre>
 </div>
 </div>
-</section>
-<section id="combining-select-and-slice" class="level2" data-number="4.16">
-<h2 data-number="4.16" class="anchored" data-anchor-id="combining-select-and-slice"><span class="header-section-number">4.16</span> Combining select and slice</h2>
+<ol start="2" type="1">
+<li>First use dollar notation and then square brackets to find the correlation of variables N1 and N3.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi<span class="sc">$</span>N1, mybfi<span class="sc">$</span>N3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  A1 A2 A3 A4 A5
-1  6  5  5  4  5
-2  4  4  4  3  3
-3  2  4  6  6  5</code></pre>
+<pre><code>[1] 0.5494834</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          N1        N3
+N1 1.0000000 0.5494834
+N3 0.5494834 1.0000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="fu">c</span>(<span class="st">"N1"</span>,<span class="st">"N3"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          N1        N3
+N1 1.0000000 0.5494834
+N3 0.5494834 1.0000000</code></pre>
 </div>
 </div>
-</section>
-<section id="combing-select-and-filter" class="level2" data-number="4.17">
-<h2 data-number="4.17" class="anchored" data-anchor-id="combing-select-and-filter"><span class="header-section-number">4.17</span> Combing select and filter</h2>
+<ol start="5" type="1">
+<li>Use square bracket notation to find the correlations of the five agreeableness items for the first 500 persons.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5
-1   6  5  5  4  5
-2   4  4  4  3  3
-3   1  6  5  5  5
-4   2  4  6  6  5
-5   2  5  5  4  4
-6   1  6  6  1  6
-7   1  6  6  4  1
-8   3  5  6  6  5
-9   1  6  6  6  6
-10  2  5  5  4  5</code></pre>
+<pre><code>           A1         A2         A3         A4         A5
+A1  1.0000000 -0.3205558 -0.3088202 -0.1429860 -0.2013822
+A2 -0.3205558  1.0000000  0.5082237  0.3411862  0.4377395
+A3 -0.3088202  0.5082237  1.0000000  0.3808071  0.4391616
+A4 -0.1429860  0.3411862  0.3808071  1.0000000  0.2938687
+A5 -0.2013822  0.4377395  0.4391616  0.2938687  1.0000000</code></pre>
 </div>
-</div>
-</section>
-<section id="randomly-select-rows-from-a-data-frame-without-replacement" class="level2" data-number="4.18">
-<h2 data-number="4.18" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">4.18</span> Randomly select rows from a data frame without replacement</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A2"</span>, <span class="st">"A3"</span>, <span class="st">"A4"</span>, <span class="st">"A5"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   3  5  2  2  4  5  3  6  1  5  3  5  1  4  2  1  3  6  6  6  6  4  3  6  1
-2   2  6  4  5  4  5  5  5  1  1  2  2  4  3  6  1  2  1  2  1  5  2  6  4  2
-3   2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-4   1  5  5  6  5  5  5  1  5  6  1  2  5  6  5  2  2  2  4  1  5  1  5  6  1
-5   6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-6   1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-7   2  6  5  6  6  6  6  5  1  4  4  2  5  5  6  4 NA  1  1 NA  6  4  5  5  1
-8   2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-9   2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-10  1  5  3  4  5  5  4  4  1  2  5  4  2  5  2  1  2  2  1  2  6  1  6  5  2
-   gender education age
-1       1         2  19
-2       2         3  29
-3       1         3  27
-4       1         1  24
-5       2         4  53
-6       2         3  37
-7       1         3  53
-8       2         4  35
-9       2         3  21
-10      2         2  19</code></pre>
+<pre><code>           A1         A2         A3         A4         A5
+A1  1.0000000 -0.3205558 -0.3088202 -0.1429860 -0.2013822
+A2 -0.3205558  1.0000000  0.5082237  0.3411862  0.4377395
+A3 -0.3088202  0.5082237  1.0000000  0.3808071  0.4391616
+A4 -0.1429860  0.3411862  0.3808071  1.0000000  0.2938687
+A5 -0.2013822  0.4377395  0.4391616  0.2938687  1.0000000</code></pre>
 </div>
 </div>
-</section>
-<section id="randomly-select-rows-from-a-data-frame-with-replacement" class="level2" data-number="4.19">
-<h2 data-number="4.19" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">4.19</span> Randomly select rows from a data frame with replacement</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-2   1  5  3  4  5  5  4  4  1  2  5  4  2  5  2  1  2  2  1  2  6  1  6  5  2
-3   1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-4   2  5  5  4  4  2  2  2  4  5  4  4  4  5  5  1  2  2  5  4  6  5  5  6  1
-5   1  6  6  6  6  6  6  6  1  1  4  1  6  6  6  1  1  1  1  1  6  1  6  1  1
-6   2  6  4  5  4  5  5  5  1  1  2  2  4  3  6  1  2  1  2  1  5  2  6  4  2
-7   2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-8   2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-9   2  6  5  6  6  6  6  5  1  4  4  2  5  5  6  4 NA  1  1 NA  6  4  5  5  1
-10  2  5  5  4  5  5  4  5  2  3  5  2  4  5  6  4  2  4  3  2  4  2  4  4  4
-   gender education age
-1       2         3  25
-2       2         2  19
-3       2         3  37
-4       2         4  35
-5       2         3  37
-6       2         3  29
-7       2         3  21
-8       1         3  27
-9       1         3  53
-10      2         3  60</code></pre>
-</div>
-</div>
-</section>
-<section id="randomly-select-a-fraction-of-rows-without-replacement" class="level2" data-number="4.20">
-<h2 data-number="4.20" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">4.20</span> Randomly select a fraction of rows without replacement</h2>
+<ol start="6" type="1">
+<li>Use the dplyr package with the pipe operator to randomly select 500 cases from the mybfi data frame and then use the psych package to find the correlations of the five agreeableness variables.</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(.<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span>A5) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   6  5  5  4  5  5  2  5  3  5  5  5  4  2  6  6  6  6  6  2  5  3  4  6  1
-2   2  6  4  5  4  5  5  5  1  1  2  2  4  3  6  1  2  1  2  1  5  2  6  4  2
-3   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-4   3  6  6  6  5  5  5  3  2  4  1  2  5  5  5  4  4  4  3  2  4  2  5  6  1
-5   3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-6   3  5  2  2  4  5  3  6  1  5  3  5  1  4  2  1  3  6  6  6  6  4  3  6  1
-7   2  4  5  1  4  3  1  5  1  4  5  4  1 NA  3  2  6  6  5  6  3  4  1  4  3
-8   2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-9   1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-10  1 NA  5  6  6  5  6 NA  2  6  1  1  4  6  4  3  5  3 NA  1  4  4  4  6  5
-   gender education age
-1       2         4  53
-2       2         3  29
-3       2         3  25
-4       2         3  23
-5       2         3  41
-6       1         2  19
-7       1         3  27
-8       2         3  21
-9       2         4  30
-10      2         3  35</code></pre>
+<pre><code>           A1         A2         A3         A4         A5
+A1  1.0000000 -0.2750351 -0.2890619 -0.1044841 -0.1976840
+A2 -0.2750351  1.0000000  0.4957357  0.3569632  0.3865844
+A3 -0.2890619  0.4957357  1.0000000  0.4201449  0.4522662
+A4 -0.1044841  0.3569632  0.4201449  1.0000000  0.3212758
+A5 -0.1976840  0.3865844  0.4522662  0.3212758  1.0000000</code></pre>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Randomly split (without replacement) the mybfi data frame into two data frames where the first data frame contains 800 cases and the second 200 cases. Store the first data frame as mybfi1 and the second as mybfi2. Next, use the pipe operator to select variables A1, A3, N2 and N4, and then find the correlations of these variables. Do this for each of the two data frames. Note that the corresponding correlations are not exactly the same across the two data sets, which illustrates the role of sampling error.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specify exactly how many persons you want in the two groups, respectively.</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we want n = 600 in the first group and n = 400 in the second.</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>v          <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="dv">800</span>), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="dv">200</span>))) </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>selection  <span class="ot">&lt;-</span> <span class="fu">sample</span>(v) </span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>mybfi1     <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(selection) </span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>mybfi2     <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>selection) </span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>mybfi1 <span class="sc">%&gt;%</span> </span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1, A3, N2, N4) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           A1         A3         N2         N4
+A1  1.0000000 -0.3001276  0.1688189  0.0797245
+A3 -0.3001276  1.0000000 -0.1024764 -0.1728127
+N2  0.1688189 -0.1024764  1.0000000  0.3785602
+N4  0.0797245 -0.1728127  0.3785602  1.0000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mybfi2 <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1, A3, N2, N4) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           A1         A3         N2         N4
+A1  1.0000000 -0.3454982  0.1733285  0.0573474
+A3 -0.3454982  1.0000000 -0.1408839 -0.1548989
+N2  0.1733285 -0.1408839  1.0000000  0.2063893
+N4  0.0573474 -0.1548989  0.2063893  1.0000000</code></pre>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Use the dplyr package to select the rows of all the women (coded as 2 in the gender column). Then find the correlations of the variables N1 to N5. Do the same for the men.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1<span class="sc">:</span>N5) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          N1        N2        N3        N4        N5
+N1 1.0000000 0.6725800 0.5206517 0.3597307 0.3790043
+N2 0.6725800 1.0000000 0.5221154 0.3184202 0.3208288
+N3 0.5206517 0.5221154 1.0000000 0.4640781 0.3654788
+N4 0.3597307 0.3184202 0.4640781 1.0000000 0.3780785
+N5 0.3790043 0.3208288 0.3654788 0.3780785 1.0000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1<span class="sc">:</span>N5) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          N1        N2        N3        N4        N5
+N1 1.0000000 0.6548220 0.6106060 0.3989106 0.3167902
+N2 0.6548220 1.0000000 0.5824986 0.3988605 0.2951374
+N3 0.6106060 0.5824986 1.0000000 0.5576866 0.4386868
+N4 0.3989106 0.3988605 0.5576866 1.0000000 0.4562816
+N5 0.3167902 0.2951374 0.4386868 0.4562816 1.0000000</code></pre>
+</div>
+</div>
+<ol start="9" type="1">
+<li>Use the dplyr package to select the rows of the men who (a) have education levels of 3 or above and (b) are older than 40. Then find the correlations of variables N1 to N5.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> education <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> age <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1<span class="sc">:</span>N5) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          N1        N2        N3        N4        N5
+N1 1.0000000 0.8344167 0.7858851 0.5191535 0.3853142
+N2 0.8344167 1.0000000 0.7381118 0.4643201 0.3020105
+N3 0.7858851 0.7381118 1.0000000 0.5574286 0.5044646
+N4 0.5191535 0.4643201 0.5574286 1.0000000 0.5729220
+N5 0.3853142 0.3020105 0.5044646 0.5729220 1.0000000</code></pre>
+</div>
+</div>
+<section id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="6.8.1">
+<h3 data-number="6.8.1" class="anchored" data-anchor-id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.8.1</span> Selecting consecutive rows by their row numbers with square brackets</h3>
+<p>We can select rows of a data frame by their row numbers using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index <strong><code>mybfi[1, 1]</code></strong>. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by <strong><code>mybfi[5, 6]</code></strong>.</p>
+<p>If we want to select a row and include all the columns we leave the space after the comma empty. So if we want to use the scores of the person in the sixth row of the data frame on all the variables we would do it as follows: <strong><code>mybfi[6, ]</code></strong>.</p>
+<p>In the example below we select the persons in rows 1 to 20, using all the variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1   2  5  5  6  5  1  2  2  2  2      2         1  15
+2   2  6  5  3  5  2  4  1  2  2      2         4  28
+3   2  5  5  4  5  3  3  2  5  2      1         3  18
+4   2  6  5  6  6  3  4  4  4  2      1         5  29
+5   2  5  5  6  5  2  2  2  3  3      1         3  23
+6   1  5  5  4  6  1  3  3  4  5      2         3  19
+7   2  6  6  6  5  3  5  5  4  3      1         3  46
+8   1  6  6  6  6  2  2  5  2  1      1         1  17
+9   1  6  6  5  4  4  5  4  4  4      2         4  28
+10  1  6  6  6  6  1  1  1  1  1      1         4  35</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-a-fraction-of-rows-with-replacement" class="level2" data-number="4.21">
-<h2 data-number="4.21" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">4.21</span> Randomly select a fraction of rows with replacement</h2>
+<section id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="6.8.2">
+<h3 data-number="6.8.2" class="anchored" data-anchor-id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.8.2</span> Selecting non-consecutive rows by their row numbers with square brackets</h3>
+<p>We can select non-consecutive rows of a data frame by concatenating the row numbers inside round brackets, preceded by the letter “c”. For instance, to select rows 2, 4, and 7 of the mybfi data frame we type <strong><code>mybfi[c(2, 4, 7), ]</code></strong>. Note that the space after the comma indicates that we want to include all the variables.</p>
+<p>In the example below we select rows 1, 3, 5, 7 and 9 from the bfi data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(.<span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>mybfi[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   A1 A2 A3 A4 A5 C1 C2 C3 C4 C5 E1 E2 E3 E4 E5 N1 N2 N3 N4 N5 O1 O2 O3 O4 O5
-1   3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-2   2  4  3  6  4  4  5  5  1  2  6  5  4  4  4  3  3  4  3  5  5  4  3  5  4
-3   1  5  5  6  5  5  5  1  5  6  1  2  5  6  5  2  2  2  4  1  5  1  5  6  1
-4   1 NA  5  6  6  5  6 NA  2  6  1  1  4  6  4  3  5  3 NA  1  4  4  4  6  5
-5   3  6  6  6  5  5  5  3  2  4  1  2  5  5  5  4  4  4  3  2  4  2  5  6  1
-6   1  6  5  5  5  6  5  5  1  5  4  4  5  5  4  1  4  4  4  2  6  4  3  5  5
-7   2  4  6  6  5  4  3  3  2  3  5  3  3  4  4  4  4  4  3  2  3  4  3  3  4
-8   1  5  5  6  5  5  5  1  5  6  1  2  5  6  5  2  2  2  4  1  5  1  5  6  1
-9   2  6  5  6  6  6  6  5  1  4  4  2  5  5  6  4 NA  1  1 NA  6  4  5  5  1
-10  3  5  6  6  5  5  4  5  1  1  1  1  3  6  4  1  1  1  1  2  5  1  4  4  2
-   gender education age
-1       2         3  41
-2       2         3  21
-3       1         1  24
-4       2         3  35
-5       2         3  23
-6       2         4  30
-7       2         3  25
-8       1         1  24
-9       1         3  53
-10      2         3  41</code></pre>
+<pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
+1  2  5  5  6  5  1  2  2  2  2      2         1  15
+3  2  5  5  4  5  3  3  2  5  2      1         3  18
+5  2  5  5  6  5  2  2  2  3  3      1         3  23
+7  2  6  6  6  5  3  5  5  4  3      1         3  46
+9  1  6  6  5  4  4  5  4  4  4      2         4  28</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-split-a-data-frame-into-two-parts" class="level2" data-number="4.22">
-<h2 data-number="4.22" class="anchored" data-anchor-id="randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">4.22</span> Randomly split a data frame into two parts</h2>
+</section>
+<section id="selecting-columns-variables-from-a-data-frame" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="selecting-columns-variables-from-a-data-frame"><span class="header-section-number">6.9</span> Selecting columns (variables) from a data frame</h2>
+<section id="selecting-a-variable-with-notation" class="level3" data-number="6.9.1">
+<h3 data-number="6.9.1" class="anchored" data-anchor-id="selecting-a-variable-with-notation"><span class="header-section-number">6.9.1</span> Selecting a variable with $ notation</h3>
+<p>We can select a variable from a data frame using dollar notation by first typing the name of the data frame, second typing a $ symbol, and then typing the name of the variable. For instance, we select variable N1 of the mybfi data frame as follows: <strong><code>mybfi$N1</code></strong></p>
+<p>In this example we are selecting the variable A1 from the <code>mybfi</code> data frame. Next, I find the mean and standard deviation of variable A1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specify exactly how many persons you want in the two groups, respectively.</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we want n = 12 in the first group and n = 8 in the second.</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>v       <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="dv">8</span>))) </span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>select  <span class="ot">&lt;-</span> <span class="fu">sample</span>(v) </span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>mybfi1  <span class="ot">&lt;-</span> mybfi[select, ] </span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>mybfi2  <span class="ot">&lt;-</span> mybfi[<span class="sc">!</span>select, ]</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mybfi1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>mybfi<span class="sc">$</span>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12</code></pre>
+<pre><code>   [1] 2 2 2 2 2 1 2 1 1 1 2 2 5 1 2 5 1 1 2 1 4 2 3 4 1 1 2 2 4 5 3 2 1 2 5 1 1
+  [38] 2 1 3 1 1 4 2 2 3 2 2 1 5 2 4 1 1 3 4 2 1 3 2 1 3 1 2 2 1 2 2 2 2 2 3 4 1
+  [75] 2 4 1 2 4 4 1 4 3 3 2 1 2 1 2 2 1 6 2 6 2 6 3 2 1 3 1 1 2 6 3 3 1 1 2 5 2
+ [112] 1 4 1 1 2 1 1 1 2 2 3 5 4 2 6 4 3 2 4 1 2 2 2 1 3 6 1 5 1 3 2 1 2 2 2 5 3
+ [149] 2 1 3 2 1 1 5 3 2 1 1 1 5 1 2 2 2 3 2 2 1 1 4 2 4 3 1 5 3 1 4 1 2 4 2 2 3
+ [186] 2 3 1 1 3 5 6 1 4 3 3 2 5 1 1 1 2 1 5 2 1 2 2 1 4 5 1 1 4 1 1 4 3 5 2 4 3
+ [223] 2 2 2 3 2 1 1 2 2 3 1 1 1 1 2 2 5 1 3 6 2 3 4 2 1 1 3 1 2 2 1 3 2 3 4 3 2
+ [260] 1 1 4 2 1 1 2 3 2 3 2 1 1 4 1 4 3 1 1 1 2 1 4 2 3 3 3 2 1 3 1 4 1 3 3 2 1
+ [297] 1 1 1 2 2 1 2 1 1 1 4 4 4 3 2 1 1 1 1 5 3 2 1 1 3 3 3 1 2 2 3 2 5 2 1 1 2
+ [334] 3 1 1 1 1 2 3 2 2 2 3 2 2 4 5 2 2 1 5 3 3 1 1 2 1 2 2 2 2 3 1 1 1 2 2 3 3
+ [371] 2 3 2 1 3 4 2 2 2 6 4 2 2 1 2 1 2 4 1 5 4 3 3 1 1 1 4 5 5 5 1 4 4 2 3 1 1
+ [408] 5 2 2 2 1 1 4 3 5 1 3 2 5 2 2 5 1 1 3 1 1 1 2 6 5 5 2 1 2 2 1 4 1 4 3 2 1
+ [445] 4 1 2 1 1 1 2 2 4 1 4 2 1 1 4 4 1 4 1 1 1 5 1 3 1 1 1 1 1 2 1 2 1 1 2 4 1
+ [482] 2 6 1 2 2 1 5 1 2 1 1 2 2 3 2 3 1 6 2 1 1 4 2 2 4 1 1 4 2 2 1 2 1 2 5 2 3
+ [519] 1 2 2 4 2 4 1 1 4 1 1 2 4 2 1 2 1 2 3 1 1 3 1 4 1 5 1 6 1 1 1 1 1 1 4 1 3
+ [556] 4 1 4 4 1 2 4 3 1 1 4 4 2 1 3 2 6 3 2 2 2 2 3 1 1 3 1 1 1 4 2 3 1 1 4 1 5
+ [593] 1 1 3 2 2 4 4 1 1 2 2 2 2 5 6 1 2 5 1 2 2 4 3 2 1 3 2 4 1 2 1 2 2 1 1 1 1
+ [630] 3 4 2 1 1 2 3 3 3 2 2 5 3 4 5 3 1 4 4 6 3 3 1 1 1 5 1 1 5 1 2 3 2 2 1 1 1
+ [667] 2 4 2 3 1 1 4 2 4 5 4 2 2 2 1 4 6 1 1 5 5 1 4 1 2 3 2 4 2 5 2 1 5 3 1 3 5
+ [704] 1 1 1 2 6 1 6 1 2 1 3 1 2 3 4 2 4 1 2 2 2 2 1 1 2 5 1 3 3 2 1 2 6 1 4 2 2
+ [741] 1 1 2 1 3 2 2 2 2 2 5 3 4 2 4 3 2 4 4 1 1 2 2 1 1 4 1 2 3 1 1 4 1 2 1 1 2
+ [778] 6 5 2 3 4 2 4 2 3 2 2 3 2 2 4 3 1 1 5 1 4 1 5 5 1 2 4 1 2 4 3 1 2 2 2 1 1
+ [815] 1 1 1 2 2 1 1 5 2 1 1 1 1 2 3 5 4 5 2 2 1 1 4 6 4 4 2 1 2 4 2 4 5 1 1 3 4
+ [852] 1 2 2 1 1 4 2 2 1 2 1 4 4 1 2 4 1 2 4 4 2 1 1 5 3 4 3 3 2 1 2 2 1 2 1 2 2
+ [889] 4 2 1 1 1 3 2 1 2 4 2 4 2 4 1 3 3 1 2 3 2 3 5 5 6 1 3 6 2 1 1 2 3 3 3 4 1
+ [926] 5 1 1 4 2 2 2 3 3 1 2 3 2 2 4 2 1 4 1 3 2 2 1 3 1 1 4 4 1 2 1 1 2 3 1 2 3
+ [963] 6 4 2 2 1 2 1 2 4 3 1 5 1 1 2 1 1 4 6 2 1 3 4 6 1 4 2 5 3 1 5 3 1 3 4 1 1
+[1000] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mybfi2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
+<pre><code>[1] 2.363</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.375181</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-a-variable-by-its-column-number-with-square-brackets" class="level3" data-number="6.9.2">
+<h3 data-number="6.9.2" class="anchored" data-anchor-id="selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">6.9.2</span> Selecting a variable by its column number with square brackets</h3>
+<p>We can select a variable by its column number in the data frame using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index <strong><code>mybfi[1, 1]</code></strong>. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by <strong><code>mybfi[5, 6]</code></strong>.</p>
+<p>If we want to select a variable and include all the rows we leave the space before the comma empty. So if we want to use the scores of all the persons in the data frame on the variable in column six we would do it as follows: <strong><code>mybfi[, 6]</code></strong>.</p>
+<p>In the example below we select variable A1, which is in the first column, using all the rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="dv">1</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1] 2 2 2 2 2 1 2 1 1 1 2 2 5 1 2 5 1 1 2 1 4 2 3 4 1 1 2 2 4 5 3 2 1 2 5 1 1
+  [38] 2 1 3 1 1 4 2 2 3 2 2 1 5 2 4 1 1 3 4 2 1 3 2 1 3 1 2 2 1 2 2 2 2 2 3 4 1
+  [75] 2 4 1 2 4 4 1 4 3 3 2 1 2 1 2 2 1 6 2 6 2 6 3 2 1 3 1 1 2 6 3 3 1 1 2 5 2
+ [112] 1 4 1 1 2 1 1 1 2 2 3 5 4 2 6 4 3 2 4 1 2 2 2 1 3 6 1 5 1 3 2 1 2 2 2 5 3
+ [149] 2 1 3 2 1 1 5 3 2 1 1 1 5 1 2 2 2 3 2 2 1 1 4 2 4 3 1 5 3 1 4 1 2 4 2 2 3
+ [186] 2 3 1 1 3 5 6 1 4 3 3 2 5 1 1 1 2 1 5 2 1 2 2 1 4 5 1 1 4 1 1 4 3 5 2 4 3
+ [223] 2 2 2 3 2 1 1 2 2 3 1 1 1 1 2 2 5 1 3 6 2 3 4 2 1 1 3 1 2 2 1 3 2 3 4 3 2
+ [260] 1 1 4 2 1 1 2 3 2 3 2 1 1 4 1 4 3 1 1 1 2 1 4 2 3 3 3 2 1 3 1 4 1 3 3 2 1
+ [297] 1 1 1 2 2 1 2 1 1 1 4 4 4 3 2 1 1 1 1 5 3 2 1 1 3 3 3 1 2 2 3 2 5 2 1 1 2
+ [334] 3 1 1 1 1 2 3 2 2 2 3 2 2 4 5 2 2 1 5 3 3 1 1 2 1 2 2 2 2 3 1 1 1 2 2 3 3
+ [371] 2 3 2 1 3 4 2 2 2 6 4 2 2 1 2 1 2 4 1 5 4 3 3 1 1 1 4 5 5 5 1 4 4 2 3 1 1
+ [408] 5 2 2 2 1 1 4 3 5 1 3 2 5 2 2 5 1 1 3 1 1 1 2 6 5 5 2 1 2 2 1 4 1 4 3 2 1
+ [445] 4 1 2 1 1 1 2 2 4 1 4 2 1 1 4 4 1 4 1 1 1 5 1 3 1 1 1 1 1 2 1 2 1 1 2 4 1
+ [482] 2 6 1 2 2 1 5 1 2 1 1 2 2 3 2 3 1 6 2 1 1 4 2 2 4 1 1 4 2 2 1 2 1 2 5 2 3
+ [519] 1 2 2 4 2 4 1 1 4 1 1 2 4 2 1 2 1 2 3 1 1 3 1 4 1 5 1 6 1 1 1 1 1 1 4 1 3
+ [556] 4 1 4 4 1 2 4 3 1 1 4 4 2 1 3 2 6 3 2 2 2 2 3 1 1 3 1 1 1 4 2 3 1 1 4 1 5
+ [593] 1 1 3 2 2 4 4 1 1 2 2 2 2 5 6 1 2 5 1 2 2 4 3 2 1 3 2 4 1 2 1 2 2 1 1 1 1
+ [630] 3 4 2 1 1 2 3 3 3 2 2 5 3 4 5 3 1 4 4 6 3 3 1 1 1 5 1 1 5 1 2 3 2 2 1 1 1
+ [667] 2 4 2 3 1 1 4 2 4 5 4 2 2 2 1 4 6 1 1 5 5 1 4 1 2 3 2 4 2 5 2 1 5 3 1 3 5
+ [704] 1 1 1 2 6 1 6 1 2 1 3 1 2 3 4 2 4 1 2 2 2 2 1 1 2 5 1 3 3 2 1 2 6 1 4 2 2
+ [741] 1 1 2 1 3 2 2 2 2 2 5 3 4 2 4 3 2 4 4 1 1 2 2 1 1 4 1 2 3 1 1 4 1 2 1 1 2
+ [778] 6 5 2 3 4 2 4 2 3 2 2 3 2 2 4 3 1 1 5 1 4 1 5 5 1 2 4 1 2 4 3 1 2 2 2 1 1
+ [815] 1 1 1 2 2 1 1 5 2 1 1 1 1 2 3 5 4 5 2 2 1 1 4 6 4 4 2 1 2 4 2 4 5 1 1 3 4
+ [852] 1 2 2 1 1 4 2 2 1 2 1 4 4 1 2 4 1 2 4 4 2 1 1 5 3 4 3 3 2 1 2 2 1 2 1 2 2
+ [889] 4 2 1 1 1 3 2 1 2 4 2 4 2 4 1 3 3 1 2 3 2 3 5 5 6 1 3 6 2 1 1 2 3 3 3 4 1
+ [926] 5 1 1 4 2 2 2 3 3 1 2 3 2 2 4 2 1 4 1 3 2 2 1 3 1 1 4 4 1 2 1 1 2 3 1 2 3
+ [963] 6 4 2 2 1 2 1 2 4 3 1 5 1 1 2 1 1 4 6 2 1 3 4 6 1 4 2 5 3 1 5 3 1 3 4 1 1
+[1000] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.363</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.375181</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="selecting-a-variable-by-its-name-with-square-brackets" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">6.10</span> Selecting a variable by its name with square brackets</h2>
+<p>We can also use square brackets to select a variable by its name. For instance, to select variable N1 of the mybfi data frame, we type mybfi[, “N1”. Note that we have to type the name of the variable inside quotation marks.</p>
+<p>In the example below we select variable A1 from the mybfi data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="st">"A1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1] 2 2 2 2 2 1 2 1 1 1 2 2 5 1 2 5 1 1 2 1 4 2 3 4 1 1 2 2 4 5 3 2 1 2 5 1 1
+  [38] 2 1 3 1 1 4 2 2 3 2 2 1 5 2 4 1 1 3 4 2 1 3 2 1 3 1 2 2 1 2 2 2 2 2 3 4 1
+  [75] 2 4 1 2 4 4 1 4 3 3 2 1 2 1 2 2 1 6 2 6 2 6 3 2 1 3 1 1 2 6 3 3 1 1 2 5 2
+ [112] 1 4 1 1 2 1 1 1 2 2 3 5 4 2 6 4 3 2 4 1 2 2 2 1 3 6 1 5 1 3 2 1 2 2 2 5 3
+ [149] 2 1 3 2 1 1 5 3 2 1 1 1 5 1 2 2 2 3 2 2 1 1 4 2 4 3 1 5 3 1 4 1 2 4 2 2 3
+ [186] 2 3 1 1 3 5 6 1 4 3 3 2 5 1 1 1 2 1 5 2 1 2 2 1 4 5 1 1 4 1 1 4 3 5 2 4 3
+ [223] 2 2 2 3 2 1 1 2 2 3 1 1 1 1 2 2 5 1 3 6 2 3 4 2 1 1 3 1 2 2 1 3 2 3 4 3 2
+ [260] 1 1 4 2 1 1 2 3 2 3 2 1 1 4 1 4 3 1 1 1 2 1 4 2 3 3 3 2 1 3 1 4 1 3 3 2 1
+ [297] 1 1 1 2 2 1 2 1 1 1 4 4 4 3 2 1 1 1 1 5 3 2 1 1 3 3 3 1 2 2 3 2 5 2 1 1 2
+ [334] 3 1 1 1 1 2 3 2 2 2 3 2 2 4 5 2 2 1 5 3 3 1 1 2 1 2 2 2 2 3 1 1 1 2 2 3 3
+ [371] 2 3 2 1 3 4 2 2 2 6 4 2 2 1 2 1 2 4 1 5 4 3 3 1 1 1 4 5 5 5 1 4 4 2 3 1 1
+ [408] 5 2 2 2 1 1 4 3 5 1 3 2 5 2 2 5 1 1 3 1 1 1 2 6 5 5 2 1 2 2 1 4 1 4 3 2 1
+ [445] 4 1 2 1 1 1 2 2 4 1 4 2 1 1 4 4 1 4 1 1 1 5 1 3 1 1 1 1 1 2 1 2 1 1 2 4 1
+ [482] 2 6 1 2 2 1 5 1 2 1 1 2 2 3 2 3 1 6 2 1 1 4 2 2 4 1 1 4 2 2 1 2 1 2 5 2 3
+ [519] 1 2 2 4 2 4 1 1 4 1 1 2 4 2 1 2 1 2 3 1 1 3 1 4 1 5 1 6 1 1 1 1 1 1 4 1 3
+ [556] 4 1 4 4 1 2 4 3 1 1 4 4 2 1 3 2 6 3 2 2 2 2 3 1 1 3 1 1 1 4 2 3 1 1 4 1 5
+ [593] 1 1 3 2 2 4 4 1 1 2 2 2 2 5 6 1 2 5 1 2 2 4 3 2 1 3 2 4 1 2 1 2 2 1 1 1 1
+ [630] 3 4 2 1 1 2 3 3 3 2 2 5 3 4 5 3 1 4 4 6 3 3 1 1 1 5 1 1 5 1 2 3 2 2 1 1 1
+ [667] 2 4 2 3 1 1 4 2 4 5 4 2 2 2 1 4 6 1 1 5 5 1 4 1 2 3 2 4 2 5 2 1 5 3 1 3 5
+ [704] 1 1 1 2 6 1 6 1 2 1 3 1 2 3 4 2 4 1 2 2 2 2 1 1 2 5 1 3 3 2 1 2 6 1 4 2 2
+ [741] 1 1 2 1 3 2 2 2 2 2 5 3 4 2 4 3 2 4 4 1 1 2 2 1 1 4 1 2 3 1 1 4 1 2 1 1 2
+ [778] 6 5 2 3 4 2 4 2 3 2 2 3 2 2 4 3 1 1 5 1 4 1 5 5 1 2 4 1 2 4 3 1 2 2 2 1 1
+ [815] 1 1 1 2 2 1 1 5 2 1 1 1 1 2 3 5 4 5 2 2 1 1 4 6 4 4 2 1 2 4 2 4 5 1 1 3 4
+ [852] 1 2 2 1 1 4 2 2 1 2 1 4 4 1 2 4 1 2 4 4 2 1 1 5 3 4 3 3 2 1 2 2 1 2 1 2 2
+ [889] 4 2 1 1 1 3 2 1 2 4 2 4 2 4 1 3 3 1 2 3 2 3 5 5 6 1 3 6 2 1 1 2 3 3 3 4 1
+ [926] 5 1 1 4 2 2 2 3 3 1 2 3 2 2 4 2 1 4 1 3 2 2 1 3 1 1 4 4 1 2 1 1 2 3 1 2 3
+ [963] 6 4 2 2 1 2 1 2 4 3 1 5 1 1 2 1 1 4 6 2 1 3 4 6 1 4 2 5 3 1 5 3 1 3 4 1 1
+[1000] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.363</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.375181</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.11</span> Selecting two or more contiguous variables by their column numbers with square brackets</h2>
+<p>If the columns we want to select are contiguous–i.e.&nbsp;next to each other or together in sequence–we can type the first and last column numbers separated by a colon. For instance, to select the variables in columns three to six of the mybfi data frame we would type <strong><code>mybfi[, 3:6]</code></strong>.</p>
+<p>In the example below we select the variables in columns one to five. Next we ask for descriptive statistics of these variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     A1 A2 A3 A4 A5
+1     2  5  5  6  5
+2     2  6  5  3  5
+3     2  5  5  4  5
+4     2  6  5  6  6
+5     2  5  5  6  5
+6     1  5  5  4  6
+7     2  6  6  6  5
+8     1  6  6  6  6
+9     1  6  6  5  4
+10    1  6  6  6  6
+11    2  6  5  6  5
+12    2  5  4  5  4
+13    5  2  3  4  2
+14    1  6  6  5  6
+15    2  4  4  4  2
+16    5  6  6  5  4
+17    1  5  5  5  5
+18    1  6  5  2  4
+19    2  5  4  4  5
+20    1  5  5  5  6
+21    4  5  5  4  5
+22    2  2  5  5  3
+23    3  4  5  4  6
+24    4  5  4  5  5
+25    1  4  2  1  5
+26    1  6  6  5  6
+27    2  4  3  3  3
+28    2  4  1  1  5
+29    4  5  3  4  4
+30    5  4  4  4  5
+31    3  5  4  6  4
+32    2  3  4  4  4
+33    1  6  6  6  5
+34    2  4  4  5  5
+35    5  5  5  5  5
+36    1  5  4  5  2
+37    1  5  6  6  5
+38    2  4  4  5  2
+39    1  6  6  6  6
+40    3  6  6  6  3
+41    1  6  5  6  4
+42    1  6  6  6  5
+43    4  3  4  4  3
+44    2  6  5  5  6
+45    2  5  6  6  6
+46    3  4  5  2  3
+47    2  6  6  6  6
+48    2  4  3  6  4
+49    1  4  5  1  5
+50    5  2  1  2  5
+51    2  5  5  6  5
+52    4  5  5  4  5
+53    1  6  6  6  6
+54    1  5  6  2  5
+55    3  6  1  5  6
+56    4  5  4  4  4
+57    2  5  5  3  2
+58    1  6  6  6  5
+59    3  5  5  2  6
+60    2  5  4  6  5
+61    1  6  6  3  5
+62    3  2  2  1  5
+63    1  5  5  6  6
+64    2  4  4  6  4
+65    2  5  5  5  5
+66    1  6  6  3  6
+67    2  5  5  6  4
+68    2  6  4  6  5
+69    2  4  3  6  5
+70    2  5  3  1  4
+71    2  4  5  2  6
+72    3  5  5  5  5
+73    4  6  5  6  4
+74    1  6  5  6  4
+75    2  1  4  1  4
+76    4  6  6  6  5
+77    1  5  5  6  6
+78    2  4  4  5  4
+79    4  4  4  5  5
+80    4  4  4  6  5
+81    1  4  5  2  3
+82    4  4  1  2  2
+83    3  4  5  1  4
+84    3  4  4  5  4
+85    2  5  5  6  5
+86    1  6  5  5  5
+87    2  4  4  6  4
+88    1  5  5  6  4
+89    2  5  6  5  5
+90    2  5  5  4  4
+91    1  5  5  4  6
+92    6  2  5  6  6
+93    2  5  5  6  6
+94    6  1  1  1  1
+95    2  5  6  5  5
+96    6  3  3  6  6
+97    3  5  3  5  4
+98    2  5  5  6  4
+99    1  6  6  6  6
+100   3  4  2  2  3
+101   1  6  5  2  5
+102   1  6  5  6  5
+103   2  1  1  2  4
+104   6  4  6  6  5
+105   3  4  4  3  4
+106   3  5  4  4  5
+107   1  6  6  6  6
+108   1  6  6  6  6
+109   2  3  4  4  5
+110   5  2  3  3  2
+111   2  6  5  6  5
+112   1  6  5  4  5
+113   4  5  5  6  6
+114   1  6  3  3  4
+115   1  4  4  4  5
+116   2  6  4  6  5
+117   1  1  5  6  6
+118   1  5  6  5  2
+119   1  6  5  6  6
+120   2  3  3  4  4
+121   2  6  6  6  6
+122   3  4  5  2  4
+123   5  5  3  4  3
+124   4  4  5  4  4
+125   2  2  1  3  3
+126   6  2  4  6  3
+127   4  2  1  2  2
+128   3  4  4  3  4
+129   2  4  4  4  3
+130   4  6  2  5  5
+131   1  6  1  6  6
+132   2  5  5  6  5
+133   2  6  6  6  6
+134   2  6  5  3  5
+135   1  4  3  5  5
+136   3  4  4  4  4
+137   6  1  1  4  1
+138   1  5  5  6  5
+139   5  4  4  1  6
+140   1  6  5  5  6
+141   3  5  2  4  5
+142   2  4  2  5  4
+143   1  2  2  6  2
+144   2  4  4  4  5
+145   2  6  5  4  6
+146   2  5  5  5  5
+147   5  6  6  6  6
+148   3  4  4  4  4
+149   2  1  6  6  6
+150   1  4  4  6  6
+151   3  1  5  6  4
+152   2  3  4  5  6
+153   1  5  5  5  5
+154   1  5  6  6  6
+155   5  6  5  6  6
+156   3  3  4  2  3
+157   2  4  4  1  3
+158   1  4  4  6  4
+159   1  6  4  5  6
+160   1  5  1  5  6
+161   5  6  5  6  5
+162   1  4  6  6  3
+163   2  1  1  1  2
+164   2  4  6  4  5
+165   2  5  4  5  5
+166   3  4  4  5  4
+167   2  4  2  6  5
+168   2  1  3  1  3
+169   1  5  6  5  4
+170   1  6  6  6  6
+171   4  5  5  6  5
+172   2  6  5  6  5
+173   4  4  2  1  3
+174   3  5  4  4  5
+175   1  5  4  4  4
+176   5  5  6  6  5
+177   3  6  5  5  5
+178   1  5  6  6  6
+179   4  5  5  5  6
+180   1  6  6  6  6
+181   2  5  5  5  2
+182   4  4  2  4  6
+183   2  6  5  6  5
+184   2  4  4  4  5
+185   3  4  6  6  6
+186   2  6  5  6  6
+187   3  5  4  5  2
+188   1  6  6  6  6
+189   1  6  6  6  6
+190   3  4  4  6  4
+191   5  4  2  6  4
+192   6  6  6  6  6
+193   1  6  5  5  6
+194   4  6  6  6  6
+195   3  5  4  6  5
+196   3  4  3  5  4
+197   2  5  4  6  4
+198   5  2  2  4  4
+199   1  5  6  6  4
+200   1  5  5  6  6
+201   1  6  5  6  5
+202   2  5  5  5  4
+203   1  6  6  6  6
+204   5  5  2  2  3
+205   2  2  4  1  3
+206   1  5  6  6  5
+207   2  5  5  5  5
+208   2  5  5  6  6
+209   1  6  6  6  6
+210   4  5  3  5  4
+211   5  6  6  6  5
+212   1  6  5  4  5
+213   1  6  6  6  6
+214   4  6  6  6  5
+215   1  6  6  4  5
+216   1  4  2  4  6
+217   4  4  4  4  4
+218   3  5  5  4  6
+219   5  6  5  5  6
+220   2  6  2  6  5
+221   4  5  5  6  4
+222   3  4  4  4  4
+223   2  5  4  6  5
+224   2  5  5  6  3
+225   2  5  4  1  6
+226   3  4  2  4  4
+227   2  5  4  4  5
+228   1  6  4  3  5
+229   1  6  6  5  6
+230   2  4  3  3  5
+231   2  5  2  5  5
+232   3  5  5  5  3
+233   1  6  5  5  6
+234   1  6  6  6  6
+235   1  6  2  6  6
+236   1  5  5  6  5
+237   2  5  4  6  4
+238   2  5  3  5  1
+239   5  5  5  2  6
+240   1  5  4  5  6
+241   3  6  6  5  6
+242   6  5  5  6  6
+243   2  5  4  3  3
+244   3  4  3  6  4
+245   4  3  5  5  5
+246   2  5  4  4  3
+247   1  6  6  6  6
+248   1  6  6  6  6
+249   3  4  3  4  5
+250   1  6  5  6  6
+251   2  5  5  5  6
+252   2  3  4  5  3
+253   1  5  5  5  6
+254   3  5  2  4  5
+255   2  4  5  1  4
+256   3  6  6  6  4
+257   4  4  4  4  5
+258   3  4  3  2  4
+259   2  5  5  4  3
+260   1  6  5  6  5
+261   1  5  5  5  5
+262   4  3  6  4  6
+263   2  2  5  6  6
+264   1  5  6  6  6
+265   1  6  5  6  6
+266   2  4  5  5  4
+267   3  5  6  6  4
+268   2  6  4  2  5
+269   3  2  1  2  4
+270   2  5  4  6  4
+271   1  5  3  4  4
+272   1  6  6  6  6
+273   4  4  5  6  2
+274   1  4  3  6  5
+275   4  5  5  5  4
+276   3  5  4  5  4
+277   1  6  6  6  5
+278   1  1  4  6  6
+279   1  5  5  6  5
+280   2  5  5  6  5
+281   1  5  4  2  3
+282   4  3  1  6  3
+283   2  5  5  6  5
+284   3  4  5  6  3
+285   3  5  5  2  4
+286   3  4  4  4  4
+287   2  4  5  5  4
+288   1  6  5  5  5
+289   3  4  4  4  5
+290   1  5  6  6  5
+291   4  5  5  6  2
+292   1  6  5  6  5
+293   3  4  4  3  5
+294   3  4  5  4  6
+295   2  5  2  4  2
+296   1  6  5  6  6
+297   1  6  2  6  5
+298   1  6  6  3  6
+299   1  6  6  6  6
+300   2  4  5  5  3
+301   2  4  3  5  4
+302   1  5  4  3  4
+303   2  6  5  6  4
+304   1  5  4  6  4
+305   1  4  4  5  4
+306   1  2  5  6  5
+307   4  4  5  2  5
+308   4  2  2  4  3
+309   4  5  5  4  5
+310   3  4  5  6  5
+311   2  6  5  6  5
+312   1  5  6  5  5
+313   1  5  6  5  6
+314   1  6  6  5  6
+315   1  5  5  6  6
+316   5  4  4  3  5
+317   3  6  5  6  5
+318   2  5  5  6  5
+319   1  5  5  6  4
+320   1  6  6  6  6
+321   3  5  4  6  4
+322   3  6  6  5  5
+323   3  4  4  6  4
+324   1  6  6  5  5
+325   2  5  5  6  6
+326   2  6  4  6  5
+327   3  3  2  1  2
+328   2  5  6  5  6
+329   5  4  1  4  3
+330   2  5  3  5  4
+331   1  5  5  6  5
+332   1  5  5  6  4
+333   2  6  6  5  5
+334   3  5  5  5  5
+335   1  6  5  6  5
+336   1  6  6  6  6
+337   1  5  6  4  5
+338   1  6  5  6  5
+339   2  6  6  6  6
+340   3  5  2  6  5
+341   2  6  6  6  6
+342   2  5  4  3  3
+343   2  5  5  6  5
+344   3  4  6  6  4
+345   2  6  6  2  6
+346   2  4  4  6  4
+347   4  5  5  6  4
+348   5  3  3  6  2
+349   2  6  6  6  6
+350   2  5  4  4  4
+351   1  6  6  6  5
+352   5  6  6  5  5
+353   3  5  5  5  5
+354   3  4  5  4  4
+355   1  5  5  6  6
+356   1  6  5  6  5
+357   2  5  3  5  2
+358   1  5  5  5  5
+359   2  5  5  2  4
+360   2  5  6  4  6
+361   2  5  5  6  5
+362   2  5  5  6  5
+363   3  5  5  4  5
+364   1  6  6  4  6
+365   1  1  1  1  1
+366   1  6  6  6  1
+367   2  5  5  6  4
+368   2  6  6  6  6
+369   3  3  5  1  5
+370   3  4  4  2  5
+371   2  6  6  6  5
+372   3  4  4  2  4
+373   2  3  4  4  4
+374   1  6  6  5  4
+375   3  4  4  5  3
+376   4  6  6  5  6
+377   2  4  4  6  4
+378   2  4  5  3  4
+379   2  5  4  5  3
+380   6  6  5  6  6
+381   4  6  5  5  6
+382   2  4  6  4  6
+383   2  6  6  6  6
+384   1  6  6  5  6
+385   2  5  6  6  5
+386   1  5  5  2  5
+387   2  5  5  6  5
+388   4  4  3  5  5
+389   1  6  4  5  5
+390   5  5  2  2  4
+391   4  2  6  6  2
+392   3  2  5  5  3
+393   3  5  5  6  5
+394   1  6  5  5  4
+395   1  6  4  6  6
+396   1  5  5  5  6
+397   4  4  5  3  4
+398   5  4  3  4  5
+399   5  6  6  6  6
+400   5  5  4  5  5
+401   1  5  6  6  6
+402   4  4  4  2  5
+403   4  4  4  5  4
+404   2  6  5  4  5
+405   3  3  4  6  3
+406   1  5  6  4  6
+407   1  6  5  6  4
+408   5  4  2  4  5
+409   2  4  4  5  3
+410   2  5  5  5  5
+411   2  6  5  6  5
+412   1  6  6  5  2
+413   1  6  6  6  5
+414   4  4  4  5  6
+415   3  4  4  6  3
+416   5  5  5  6  4
+417   1  5  5  6  5
+418   3  4  4  3  4
+419   2  5  4  4  4
+420   5  6  4  3  5
+421   2  5  4  6  4
+422   2  4  5  3  5
+423   5  5  5  6  6
+424   1  4  3  5  5
+425   1  6  6  5  6
+426   3  6  5  6  5
+427   1  6  5  5  5
+428   1  6  5  6  4
+429   1  5  5  6  4
+430   2  5  5  6  4
+431   6  5  2  4  5
+432   5  2  3  5  4
+433   5  3  1  1  3
+434   2  2  2  4  1
+435   1  6  6  6  6
+436   2  6  6  6  6
+437   2  5  6  4  6
+438   1  6  6  6  6
+439   4  6  4  5  5
+440   1  6  5  2  5
+441   4  5  4  2  5
+442   3  5  5  6  4
+443   2  5  5  4  6
+444   1  4  6  6  6
+445   4  4  2  5  3
+446   1  6  6  6  6
+447   2  2  3  2  2
+448   1  5  1  6  6
+449   1  6  6  6  6
+450   1  6  6  4  4
+451   2  4  4  3  4
+452   2  4  6  4  6
+453   4  6  2  2  4
+454   1  6  6  6  4
+455   4  5  4  3  3
+456   2  5  5  6  6
+457   1  6  5  6  6
+458   1  5  6  6  6
+459   4  4  4  4  4
+460   4  2  2  1  5
+461   1  5  4  5  4
+462   4  2  1  4  1
+463   1  6  6  6  6
+464   1  5  5  5  4
+465   1  2  5  6  5
+466   5  6  6  5  6
+467   1  6  6  4  6
+468   3  4  3  5  5
+469   1  6  5  6  5
+470   1  5  5  6  6
+471   1  6  6  6  6
+472   1  6  6  1  6
+473   1  6  5  6  6
+474   2  6  6  2  4
+475   1  5  6  5  4
+476   2  5  6  5  5
+477   1  6  6  6  6
+478   1  6  5  1  3
+479   2  5  5  2  5
+480   4  5  4  6  5
+481   1  5  6  5  5
+482   2  6  6  6  6
+483   6  2  5  6  6
+484   1  6  6  5  6
+485   2  5  5  4  5
+486   2  4  6  5  6
+487   1  5  3  4  5
+488   5  5  3  6  4
+489   1  5  6  4  6
+490   2  5  5  4  5
+491   1  6  5  6  6
+492   1  4  4  2  2
+493   2  5  5  5  2
+494   2  5  4  4  3
+495   3  6  6  6  5
+496   2  5  5  5  4
+497   3  5  5  6  3
+498   1  6  3  1  4
+499   6  5  5  6  5
+500   2  4  4  6  5
+501   1  5  5  4  5
+502   1  6  5  4  6
+503   4  4  6  6  5
+504   2  5  4  4  6
+505   2  4  5  6  6
+506   4  3  4  3  4
+507   1  5  6  6  5
+508   1  6  6  6  6
+509   4  4  4  6  3
+510   2  3  3  4  3
+511   2  6  4  5  5
+512   1  6  6  5  5
+513   2  6  5  4  5
+514   1  4  5  6  5
+515   2  4  4  4  6
+516   5  4  4  4  3
+517   2  6  6  6  6
+518   3  4  4  6  3
+519   1  6  4  6  6
+520   2  5  5  5  5
+521   2  6  6  4  6
+522   4  4  3  4  2
+523   2  4  4  6  4
+524   4  4  3  5  5
+525   1  5  5  6  6
+526   1  6  6  6  6
+527   4  5  5  5  5
+528   1  5  5  6  5
+529   1  5  5  6  5
+530   2  5  5  1  6
+531   4  4  5  6  5
+532   2  6  6  5  6
+533   1  6  6  4  5
+534   2  6  4  3  4
+535   1  5  6  4  5
+536   2  6  6  6  6
+537   3  5  5  4  5
+538   1  4  4  4  4
+539   1  5  5  3  3
+540   3  5  4  2  2
+541   1  6  6  6  5
+542   4  4  4  4  3
+543   1  4  6  5  6
+544   5  4  4  4  5
+545   1  6  1  6  5
+546   6  2  5  6  2
+547   1  5  6  5  5
+548   1  6  6  6  6
+549   1  6  6  6  6
+550   1  6  6  5  6
+551   1  5  5  6  4
+552   1  4  5  5  6
+553   4  4  5  4  5
+554   1  5  5  5  6
+555   3  6  4  6  4
+556   4  4  1  1  1
+557   1  4  4  4  4
+558   4  5  4  4  5
+559   4  6  4  6  4
+560   1  6  5  2  5
+561   2  5  5  4  5
+562   4  4  4  5  4
+563   3  6  6  6  6
+564   1  6  4  2  6
+565   1  6  6  6  6
+566   4  6  5  5  5
+567   4  5  4  4  5
+568   2  4  4  4  3
+569   1  6  5  6  5
+570   3  5  5  6  5
+571   2  4  4  2  2
+572   6  5  6  6  6
+573   3  5  6  6  5
+574   2  6  4  4  4
+575   2  5  5  3  6
+576   2  6  6  6  6
+577   2  5  6  5  6
+578   3  4  5  4  5
+579   1  5  4  3  4
+580   1  5  3  6  6
+581   3  4  4  3  4
+582   1  6  5  4  5
+583   1  6  6  6  6
+584   1  4  5  5  5
+585   4  4  5  4  4
+586   2  6  5  6  4
+587   3  3  6  2  6
+588   1  6  6  6  1
+589   1  5  5  6  6
+590   4  4  4  4  4
+591   1  6  4  6  4
+592   5  2  2  2  4
+593   1  6  4  4  4
+594   1  4  4  4  4
+595   3  5  4  4  4
+596   2  3  4  5  2
+597   2  1  3  4  6
+598   4  6  5  6  5
+599   4  4  4  4  3
+600   1  5  4  4  5
+601   1  5  6  6  5
+602   2  4  3  2  4
+603   2  5  5  5  6
+604   2  6  5  3  5
+605   2  5  5  6  6
+606   5  5  3  5  2
+607   6  6  6  6  6
+608   1  6  6  6  6
+609   2  4  2  2  3
+610   5  1  3  5  2
+611   1  5  1  5  5
+612   2  5  5  6  4
+613   2  5  6  5  4
+614   4  4  2  6  4
+615   3  4  5  6  4
+616   2  4  4  6  5
+617   1  6  6  6  6
+618   3  6  6  6  5
+619   2  6  6  5  5
+620   4  6  4  6  5
+621   1  6  6  4  5
+622   2  3  4  5  5
+623   1  6  6  4  6
+624   2  6  4  6  4
+625   2  6  5  4  5
+626   1  5  5  6  5
+627   1  6  6  6  5
+628   1  5  5  6  6
+629   1  6  6  6  6
+630   3  5  5  6  5
+631   4  5  5  6  5
+632   2  4  4  6  3
+633   1  6  6  5  6
+634   1  6  5  5  5
+635   2  3  4  4  4
+636   3  4  4  6  6
+637   3  4  2  4  1
+638   3  4  3  5  5
+639   2  5  5  5  5
+640   2  2  5  5  4
+641   5  2  4  3  3
+642   3  5  5  6  6
+643   4  3  4  3  3
+644   5  4  5  6  4
+645   3  5  5  5  5
+646   1  6  6  6  6
+647   4  6  5  2  5
+648   4  6  5  5  5
+649   6  2  5  6  6
+650   3  3  3  5  5
+651   3  5  5  3  5
+652   1  6  5  6  4
+653   1  5  5  6  5
+654   1  6  6  5  6
+655   5  5  2  5  1
+656   1  5  5  5  5
+657   1  6  6  4  6
+658   5  3  2  4  4
+659   1  6  6  5  6
+660   2  6  6  5  5
+661   3  5  4  2  2
+662   2  4  5  5  5
+663   2  6  6  6  6
+664   1  6  5  6  4
+665   1  6  6  2  5
+666   1  5  4  4  5
+667   2  6  6  5  5
+668   4  4  6  4  6
+669   2  5  5  6  4
+670   3  2  5  4  4
+671   1  5  5  5  4
+672   1  6  6  6  6
+673   4  4  1  1  2
+674   2  5  3  5  5
+675   4  5  6  1  5
+676   5  6  3  6  6
+677   4  4  2  2  3
+678   2  4  5  3  3
+679   2  4  3  2  3
+680   2  6  5  6  4
+681   1  6  6  4  6
+682   4  3  2  1  4
+683   6  1  1  6  1
+684   1  5  5  6  5
+685   1  6  6  6  6
+686   5  4  5  6  4
+687   5  5  4  5  4
+688   1  4  2  5  3
+689   4  3  3  5  1
+690   1  6  6  4  5
+691   2  5  5  4  5
+692   3  5  5  3  5
+693   2  6  5  5  2
+694   4  5  4  2  4
+695   2  3  4  3  4
+696   5  4  4  6  4
+697   2  3  4  2  5
+698   1  5  5  6  6
+699   5  6  6  1  6
+700   3  6  4  6  5
+701   1  1  6  6  5
+702   3  4  3  6  4
+703   5  6  6  6  6
+704   1  6  6  6  6
+705   1  5  4  4  4
+706   1  6  5  6  3
+707   2  5  5  1  5
+708   6  1  2  2  2
+709   1  6  6  6  6
+710   6  4  1  5  1
+711   1  6  6  1  6
+712   2  5  3  5  5
+713   1  5  4  6  4
+714   3  6  5  6  4
+715   1  5  4  5  5
+716   2  4  4  1  2
+717   3  5  5  3  3
+718   4  2  4  4  4
+719   2  4  4  6  4
+720   4  3  5  6  5
+721   1  5  4  5  5
+722   2  6  2  3  4
+723   2  5  6  6  5
+724   2  6  6  6  5
+725   2  6  6  6  6
+726   1  6  6  6  6
+727   1  6  6  6  4
+728   2  1  6  6  6
+729   5  3  5  4  4
+730   1  3  5  5  5
+731   3  6  6  5  6
+732   3  6  3  4  3
+733   2  5  4  3  4
+734   1  5  5  6  5
+735   2  5  5  4  5
+736   6  3  2  4  4
+737   1  4  5  6  6
+738   4  6  5  5  6
+739   2  4  5  3  5
+740   2  4  5  4  6
+741   1  6  6  5  6
+742   1  5  6  6  5
+743   2  6  6  6  1
+744   1  6  6  6  6
+745   3  6  6  6  6
+746   2  6  5  5  4
+747   2  5  4  6  5
+748   2  6  6  6  6
+749   2  5  6  4  4
+750   2  4  4  5  4
+751   5  5  4  5  5
+752   3  4  4  2  4
+753   4  6  5  6  4
+754   2  5  5  6  5
+755   4  6  6  6  5
+756   3  4  4  6  4
+757   2  4  3  1  5
+758   4  3  2  6  5
+759   4  4  5  6  5
+760   1  5  5  5  5
+761   1  6  5  6  6
+762   2  6  4  5  4
+763   2  6  6  3  5
+764   1  6  5  6  5
+765   1  6  6  6  4
+766   4  3  5  6  3
+767   1  6  6  5  6
+768   2  4  4  6  4
+769   3  4  2  5  4
+770   1  5  5  6  5
+771   1  5  5  6  6
+772   4  2  2  3  3
+773   1  5  5  5  5
+774   2  6  6  4  6
+775   1  5  3  5  4
+776   1  5  5  1  2
+777   2  6  6  6  3
+778   6  2  5  2  2
+779   5  3  2  5  2
+780   2  3  3  5  3
+781   3  4  4  3  2
+782   4  5  5  6  4
+783   2  6  6  5  4
+784   4  5  3  4  3
+785   2  4  4  4  5
+786   3  6  6  5  6
+787   2  5  2  1  2
+788   2  5  5  4  6
+789   3  4  3  6  3
+790   2  5  6  6  4
+791   2  5  5  5  4
+792   4  6  4  5  5
+793   3  4  5  5  4
+794   1  5  5  4  4
+795   1  5  6  5  5
+796   5  4  1  4  2
+797   1  5  5  6  5
+798   4  6  6  2  5
+799   1  5  5  5  5
+800   5  4  5  2  5
+801   5  2  2  2  4
+802   1  4  4  5  3
+803   2  4  4  3  5
+804   4  5  5  6  5
+805   1  6  3  4  2
+806   2  5  5  4  4
+807   4  4  3  2  3
+808   3  5  5  6  4
+809   1  6  5  2  2
+810   2  5  6  6  6
+811   2  5  4  6  4
+812   2  5  6  4  6
+813   1  6  6  6  6
+814   1  6  6  6  6
+815   1  5  6  6  6
+816   1  5  4  3  2
+817   1  6  4  4  2
+818   2  6  3  6  5
+819   2  5  4  6  5
+820   1  5  4  4  5
+821   1  6  5  5  5
+822   5  6  6  6  5
+823   2  5  5  4  3
+824   1  4  5  5  4
+825   1  6  5  6  4
+826   1  6  5  5  2
+827   1  6  6  6  6
+828   2  4  6  2  5
+829   3  4  3  2  2
+830   5  2  3  2  3
+831   4  4  4  2  4
+832   5  4  4  3  1
+833   2  6  5  6  6
+834   2  6  4  4  4
+835   1  5  5  6  4
+836   1  6  6  6  6
+837   4  6  6  6  6
+838   6  3  2  3  5
+839   4  5  4  2  4
+840   4  6  5  6  5
+841   2  4  4  3  5
+842   1  6  6  4  6
+843   2  5  5  6  5
+844   4  2  4  4  2
+845   2  5  5  6  4
+846   4  1  1  1  3
+847   5  5  6  6  2
+848   1  5  5  5  5
+849   1  5  2  4  2
+850   3  4  4  6  5
+851   4  3  3  2  2
+852   1  5  6  5  6
+853   2  5  5  6  5
+854   2  5  4  5  4
+855   1  5  5  6  5
+856   1  6  6  4  1
+857   4  4  4  4  2
+858   2  5  6  6  5
+859   2  3  2  5  4
+860   1  6  6  4  5
+861   2  4  2  1  2
+862   1  6  5  6  5
+863   4  5  4  5  2
+864   4  5  6  5  5
+865   1  6  3  3  1
+866   2  5  6  6  6
+867   4  5  5  6  5
+868   1  6  6  6  5
+869   2  5  4  3  5
+870   4  5  5  4  5
+871   4  4  3  1  4
+872   2  5  6  6  6
+873   1  6  6  5  6
+874   1  5  5  6  6
+875   5  5  6  2  5
+876   3  5  5  3  5
+877   4  4  1  6  3
+878   3  4  4  5  5
+879   3  5  6  5  5
+880   2  5  4  6  5
+881   1  5  6  4  5
+882   2  5  6  5  5
+883   2  4  2  1  3
+884   1  6  6  6  6
+885   2  3  4  2  4
+886   1  6  6  6  4
+887   2  6  4  6  2
+888   2  3  4  6  5
+889   4  5  5  6  5
+890   2  6  6  6  6
+891   1  6  6  6  6
+892   1  6  5  4  6
+893   1  5  6  6  6
+894   3  5  5  4  4
+895   2  6  6  6  6
+896   1  5  6  6  5
+897   2  4  2  6  4
+898   4  4  5  6  4
+899   2  6  5  5  5
+900   4  4  4  4  4
+901   2  5  6  6  6
+902   4  3  6  6  6
+903   1  6  6  6  5
+904   3  5  5  4  5
+905   3  5  3  3  4
+906   1  6  6  6  6
+907   2  5  5  2  5
+908   3  5  6  6  6
+909   2  5  2  6  4
+910   3  4  4  6  5
+911   5  4  4  5  4
+912   5  6  5  3  6
+913   6  5  6  5  6
+914   1  6  6  6  5
+915   3  5  6  6  5
+916   6  6  6  6  6
+917   2  5  5  4  5
+918   1  4  4  2  3
+919   1  5  5  6  5
+920   2  5  6  5  6
+921   3  6  5  6  5
+922   3  5  4  5  5
+923   3  3  3  4  4
+924   4  5  3  6  3
+925   1  5  6  6  5
+926   5  6  6  4  6
+927   1  6  6  5  6
+928   1  6  5  6  5
+929   4  5  2  2  1
+930   2  5  5  5  5
+931   2  5  4  5  4
+932   2  5  5  5  5
+933   3  6  6  4  3
+934   3  4  6  4  5
+935   1  5  5  5  6
+936   2  4  5  5  4
+937   3  3  5  6  4
+938   2  5  5  6  4
+939   2  1  4  2  4
+940   4  5  5  5  3
+941   2  4  4  3  4
+942   1  6  6  6  4
+943   4  6  6  6  5
+944   1  6  5  6  6
+945   3  5  5  6  5
+946   2  3  4  2  3
+947   2  5  5  5  4
+948   1  5  4  3  5
+949   3  6  6  6  5
+950   1  4  6  6  6
+951   1  5  6  6  4
+952   4  5  3  2  3
+953   4  3  3  3  3
+954   1  5  5  6  5
+955   2  4  5  5  4
+956   1  5  4  2  5
+957   1  6  5  3  5
+958   2  5  5  5  5
+959   3  5  1  3  4
+960   1  4  6  2  5
+961   2  5  4  5  4
+962   3  5  5  4  5
+963   6  6  5  5  4
+964   4  4  3  3  3
+965   2  2  5  4  4
+966   2  5  6  5  6
+967   1  5  5  6  5
+968   2  5  3  2  4
+969   1  4  4  5  4
+970   2  6  5  6  5
+971   4  4  4  5  5
+972   3  5  5  6  4
+973   1  5  5  6  4
+974   5  5  5  5  5
+975   1  6  5  6  5
+976   1  5  6  5  6
+977   2  5  4  5  5
+978   1  1  1  1  1
+979   1  5  5  5  4
+980   4  5  5  5  3
+981   6  6  4  5  4
+982   2  5  5  4  4
+983   1  6  5  6  5
+984   3  6  6  5  6
+985   4  5  5  5  5
+986   6  2  5  6  6
+987   1  5  5  4  5
+988   4  5  4  5  4
+989   2  6  5  6  5
+990   5  5  5  6  6
+991   3  5  5  6  5
+992   1  6  5  4  6
+993   5  4  3  5  4
+994   3  4  4  5  5
+995   1  6  6  6  6
+996   3  6  5  6  6
+997   4  5  4  1  4
+998   1  5  6  6  4
+999   1  6  6  5  6
+1000  2  5  5  2  5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   vars    n mean   sd median trimmed  mad min max range  skew kurtosis   se
+A1    1 1000 2.36 1.38      2    2.18 1.48   1   6     5  0.86    -0.19 0.04
+A2    2 1000 4.82 1.17      5    5.00 1.48   1   6     5 -1.17     1.30 0.04
+A3    3 1000 4.61 1.28      5    4.78 1.48   1   6     5 -0.99     0.51 0.04
+A4    4 1000 4.72 1.46      5    4.96 1.48   1   6     5 -1.04     0.09 0.05
+A5    5 1000 4.61 1.23      5    4.76 1.48   1   6     5 -0.88     0.35 0.04</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           A1         A2         A3         A4         A5
+A1  1.0000000 -0.3448880 -0.3102942 -0.1487814 -0.2392874
+A2 -0.3448880  1.0000000  0.4984189  0.3153440  0.3980547
+A3 -0.3102942  0.4984189  1.0000000  0.3744146  0.5008368
+A4 -0.1487814  0.3153440  0.3744146  1.0000000  0.3184022
+A5 -0.2392874  0.3980547  0.5008368  0.3184022  1.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.12</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     A1 A3 A5
+1     2  5  5
+2     2  5  5
+3     2  5  5
+4     2  5  6
+5     2  5  5
+6     1  5  6
+7     2  6  5
+8     1  6  6
+9     1  6  4
+10    1  6  6
+11    2  5  5
+12    2  4  4
+13    5  3  2
+14    1  6  6
+15    2  4  2
+16    5  6  4
+17    1  5  5
+18    1  5  4
+19    2  4  5
+20    1  5  6
+21    4  5  5
+22    2  5  3
+23    3  5  6
+24    4  4  5
+25    1  2  5
+26    1  6  6
+27    2  3  3
+28    2  1  5
+29    4  3  4
+30    5  4  5
+31    3  4  4
+32    2  4  4
+33    1  6  5
+34    2  4  5
+35    5  5  5
+36    1  4  2
+37    1  6  5
+38    2  4  2
+39    1  6  6
+40    3  6  3
+41    1  5  4
+42    1  6  5
+43    4  4  3
+44    2  5  6
+45    2  6  6
+46    3  5  3
+47    2  6  6
+48    2  3  4
+49    1  5  5
+50    5  1  5
+51    2  5  5
+52    4  5  5
+53    1  6  6
+54    1  6  5
+55    3  1  6
+56    4  4  4
+57    2  5  2
+58    1  6  5
+59    3  5  6
+60    2  4  5
+61    1  6  5
+62    3  2  5
+63    1  5  6
+64    2  4  4
+65    2  5  5
+66    1  6  6
+67    2  5  4
+68    2  4  5
+69    2  3  5
+70    2  3  4
+71    2  5  6
+72    3  5  5
+73    4  5  4
+74    1  5  4
+75    2  4  4
+76    4  6  5
+77    1  5  6
+78    2  4  4
+79    4  4  5
+80    4  4  5
+81    1  5  3
+82    4  1  2
+83    3  5  4
+84    3  4  4
+85    2  5  5
+86    1  5  5
+87    2  4  4
+88    1  5  4
+89    2  6  5
+90    2  5  4
+91    1  5  6
+92    6  5  6
+93    2  5  6
+94    6  1  1
+95    2  6  5
+96    6  3  6
+97    3  3  4
+98    2  5  4
+99    1  6  6
+100   3  2  3
+101   1  5  5
+102   1  5  5
+103   2  1  4
+104   6  6  5
+105   3  4  4
+106   3  4  5
+107   1  6  6
+108   1  6  6
+109   2  4  5
+110   5  3  2
+111   2  5  5
+112   1  5  5
+113   4  5  6
+114   1  3  4
+115   1  4  5
+116   2  4  5
+117   1  5  6
+118   1  6  2
+119   1  5  6
+120   2  3  4
+121   2  6  6
+122   3  5  4
+123   5  3  3
+124   4  5  4
+125   2  1  3
+126   6  4  3
+127   4  1  2
+128   3  4  4
+129   2  4  3
+130   4  2  5
+131   1  1  6
+132   2  5  5
+133   2  6  6
+134   2  5  5
+135   1  3  5
+136   3  4  4
+137   6  1  1
+138   1  5  5
+139   5  4  6
+140   1  5  6
+141   3  2  5
+142   2  2  4
+143   1  2  2
+144   2  4  5
+145   2  5  6
+146   2  5  5
+147   5  6  6
+148   3  4  4
+149   2  6  6
+150   1  4  6
+151   3  5  4
+152   2  4  6
+153   1  5  5
+154   1  6  6
+155   5  5  6
+156   3  4  3
+157   2  4  3
+158   1  4  4
+159   1  4  6
+160   1  1  6
+161   5  5  5
+162   1  6  3
+163   2  1  2
+164   2  6  5
+165   2  4  5
+166   3  4  4
+167   2  2  5
+168   2  3  3
+169   1  6  4
+170   1  6  6
+171   4  5  5
+172   2  5  5
+173   4  2  3
+174   3  4  5
+175   1  4  4
+176   5  6  5
+177   3  5  5
+178   1  6  6
+179   4  5  6
+180   1  6  6
+181   2  5  2
+182   4  2  6
+183   2  5  5
+184   2  4  5
+185   3  6  6
+186   2  5  6
+187   3  4  2
+188   1  6  6
+189   1  6  6
+190   3  4  4
+191   5  2  4
+192   6  6  6
+193   1  5  6
+194   4  6  6
+195   3  4  5
+196   3  3  4
+197   2  4  4
+198   5  2  4
+199   1  6  4
+200   1  5  6
+201   1  5  5
+202   2  5  4
+203   1  6  6
+204   5  2  3
+205   2  4  3
+206   1  6  5
+207   2  5  5
+208   2  5  6
+209   1  6  6
+210   4  3  4
+211   5  6  5
+212   1  5  5
+213   1  6  6
+214   4  6  5
+215   1  6  5
+216   1  2  6
+217   4  4  4
+218   3  5  6
+219   5  5  6
+220   2  2  5
+221   4  5  4
+222   3  4  4
+223   2  4  5
+224   2  5  3
+225   2  4  6
+226   3  2  4
+227   2  4  5
+228   1  4  5
+229   1  6  6
+230   2  3  5
+231   2  2  5
+232   3  5  3
+233   1  5  6
+234   1  6  6
+235   1  2  6
+236   1  5  5
+237   2  4  4
+238   2  3  1
+239   5  5  6
+240   1  4  6
+241   3  6  6
+242   6  5  6
+243   2  4  3
+244   3  3  4
+245   4  5  5
+246   2  4  3
+247   1  6  6
+248   1  6  6
+249   3  3  5
+250   1  5  6
+251   2  5  6
+252   2  4  3
+253   1  5  6
+254   3  2  5
+255   2  5  4
+256   3  6  4
+257   4  4  5
+258   3  3  4
+259   2  5  3
+260   1  5  5
+261   1  5  5
+262   4  6  6
+263   2  5  6
+264   1  6  6
+265   1  5  6
+266   2  5  4
+267   3  6  4
+268   2  4  5
+269   3  1  4
+270   2  4  4
+271   1  3  4
+272   1  6  6
+273   4  5  2
+274   1  3  5
+275   4  5  4
+276   3  4  4
+277   1  6  5
+278   1  4  6
+279   1  5  5
+280   2  5  5
+281   1  4  3
+282   4  1  3
+283   2  5  5
+284   3  5  3
+285   3  5  4
+286   3  4  4
+287   2  5  4
+288   1  5  5
+289   3  4  5
+290   1  6  5
+291   4  5  2
+292   1  5  5
+293   3  4  5
+294   3  5  6
+295   2  2  2
+296   1  5  6
+297   1  2  5
+298   1  6  6
+299   1  6  6
+300   2  5  3
+301   2  3  4
+302   1  4  4
+303   2  5  4
+304   1  4  4
+305   1  4  4
+306   1  5  5
+307   4  5  5
+308   4  2  3
+309   4  5  5
+310   3  5  5
+311   2  5  5
+312   1  6  5
+313   1  6  6
+314   1  6  6
+315   1  5  6
+316   5  4  5
+317   3  5  5
+318   2  5  5
+319   1  5  4
+320   1  6  6
+321   3  4  4
+322   3  6  5
+323   3  4  4
+324   1  6  5
+325   2  5  6
+326   2  4  5
+327   3  2  2
+328   2  6  6
+329   5  1  3
+330   2  3  4
+331   1  5  5
+332   1  5  4
+333   2  6  5
+334   3  5  5
+335   1  5  5
+336   1  6  6
+337   1  6  5
+338   1  5  5
+339   2  6  6
+340   3  2  5
+341   2  6  6
+342   2  4  3
+343   2  5  5
+344   3  6  4
+345   2  6  6
+346   2  4  4
+347   4  5  4
+348   5  3  2
+349   2  6  6
+350   2  4  4
+351   1  6  5
+352   5  6  5
+353   3  5  5
+354   3  5  4
+355   1  5  6
+356   1  5  5
+357   2  3  2
+358   1  5  5
+359   2  5  4
+360   2  6  6
+361   2  5  5
+362   2  5  5
+363   3  5  5
+364   1  6  6
+365   1  1  1
+366   1  6  1
+367   2  5  4
+368   2  6  6
+369   3  5  5
+370   3  4  5
+371   2  6  5
+372   3  4  4
+373   2  4  4
+374   1  6  4
+375   3  4  3
+376   4  6  6
+377   2  4  4
+378   2  5  4
+379   2  4  3
+380   6  5  6
+381   4  5  6
+382   2  6  6
+383   2  6  6
+384   1  6  6
+385   2  6  5
+386   1  5  5
+387   2  5  5
+388   4  3  5
+389   1  4  5
+390   5  2  4
+391   4  6  2
+392   3  5  3
+393   3  5  5
+394   1  5  4
+395   1  4  6
+396   1  5  6
+397   4  5  4
+398   5  3  5
+399   5  6  6
+400   5  4  5
+401   1  6  6
+402   4  4  5
+403   4  4  4
+404   2  5  5
+405   3  4  3
+406   1  6  6
+407   1  5  4
+408   5  2  5
+409   2  4  3
+410   2  5  5
+411   2  5  5
+412   1  6  2
+413   1  6  5
+414   4  4  6
+415   3  4  3
+416   5  5  4
+417   1  5  5
+418   3  4  4
+419   2  4  4
+420   5  4  5
+421   2  4  4
+422   2  5  5
+423   5  5  6
+424   1  3  5
+425   1  6  6
+426   3  5  5
+427   1  5  5
+428   1  5  4
+429   1  5  4
+430   2  5  4
+431   6  2  5
+432   5  3  4
+433   5  1  3
+434   2  2  1
+435   1  6  6
+436   2  6  6
+437   2  6  6
+438   1  6  6
+439   4  4  5
+440   1  5  5
+441   4  4  5
+442   3  5  4
+443   2  5  6
+444   1  6  6
+445   4  2  3
+446   1  6  6
+447   2  3  2
+448   1  1  6
+449   1  6  6
+450   1  6  4
+451   2  4  4
+452   2  6  6
+453   4  2  4
+454   1  6  4
+455   4  4  3
+456   2  5  6
+457   1  5  6
+458   1  6  6
+459   4  4  4
+460   4  2  5
+461   1  4  4
+462   4  1  1
+463   1  6  6
+464   1  5  4
+465   1  5  5
+466   5  6  6
+467   1  6  6
+468   3  3  5
+469   1  5  5
+470   1  5  6
+471   1  6  6
+472   1  6  6
+473   1  5  6
+474   2  6  4
+475   1  6  4
+476   2  6  5
+477   1  6  6
+478   1  5  3
+479   2  5  5
+480   4  4  5
+481   1  6  5
+482   2  6  6
+483   6  5  6
+484   1  6  6
+485   2  5  5
+486   2  6  6
+487   1  3  5
+488   5  3  4
+489   1  6  6
+490   2  5  5
+491   1  5  6
+492   1  4  2
+493   2  5  2
+494   2  4  3
+495   3  6  5
+496   2  5  4
+497   3  5  3
+498   1  3  4
+499   6  5  5
+500   2  4  5
+501   1  5  5
+502   1  5  6
+503   4  6  5
+504   2  4  6
+505   2  5  6
+506   4  4  4
+507   1  6  5
+508   1  6  6
+509   4  4  3
+510   2  3  3
+511   2  4  5
+512   1  6  5
+513   2  5  5
+514   1  5  5
+515   2  4  6
+516   5  4  3
+517   2  6  6
+518   3  4  3
+519   1  4  6
+520   2  5  5
+521   2  6  6
+522   4  3  2
+523   2  4  4
+524   4  3  5
+525   1  5  6
+526   1  6  6
+527   4  5  5
+528   1  5  5
+529   1  5  5
+530   2  5  6
+531   4  5  5
+532   2  6  6
+533   1  6  5
+534   2  4  4
+535   1  6  5
+536   2  6  6
+537   3  5  5
+538   1  4  4
+539   1  5  3
+540   3  4  2
+541   1  6  5
+542   4  4  3
+543   1  6  6
+544   5  4  5
+545   1  1  5
+546   6  5  2
+547   1  6  5
+548   1  6  6
+549   1  6  6
+550   1  6  6
+551   1  5  4
+552   1  5  6
+553   4  5  5
+554   1  5  6
+555   3  4  4
+556   4  1  1
+557   1  4  4
+558   4  4  5
+559   4  4  4
+560   1  5  5
+561   2  5  5
+562   4  4  4
+563   3  6  6
+564   1  4  6
+565   1  6  6
+566   4  5  5
+567   4  4  5
+568   2  4  3
+569   1  5  5
+570   3  5  5
+571   2  4  2
+572   6  6  6
+573   3  6  5
+574   2  4  4
+575   2  5  6
+576   2  6  6
+577   2  6  6
+578   3  5  5
+579   1  4  4
+580   1  3  6
+581   3  4  4
+582   1  5  5
+583   1  6  6
+584   1  5  5
+585   4  5  4
+586   2  5  4
+587   3  6  6
+588   1  6  1
+589   1  5  6
+590   4  4  4
+591   1  4  4
+592   5  2  4
+593   1  4  4
+594   1  4  4
+595   3  4  4
+596   2  4  2
+597   2  3  6
+598   4  5  5
+599   4  4  3
+600   1  4  5
+601   1  6  5
+602   2  3  4
+603   2  5  6
+604   2  5  5
+605   2  5  6
+606   5  3  2
+607   6  6  6
+608   1  6  6
+609   2  2  3
+610   5  3  2
+611   1  1  5
+612   2  5  4
+613   2  6  4
+614   4  2  4
+615   3  5  4
+616   2  4  5
+617   1  6  6
+618   3  6  5
+619   2  6  5
+620   4  4  5
+621   1  6  5
+622   2  4  5
+623   1  6  6
+624   2  4  4
+625   2  5  5
+626   1  5  5
+627   1  6  5
+628   1  5  6
+629   1  6  6
+630   3  5  5
+631   4  5  5
+632   2  4  3
+633   1  6  6
+634   1  5  5
+635   2  4  4
+636   3  4  6
+637   3  2  1
+638   3  3  5
+639   2  5  5
+640   2  5  4
+641   5  4  3
+642   3  5  6
+643   4  4  3
+644   5  5  4
+645   3  5  5
+646   1  6  6
+647   4  5  5
+648   4  5  5
+649   6  5  6
+650   3  3  5
+651   3  5  5
+652   1  5  4
+653   1  5  5
+654   1  6  6
+655   5  2  1
+656   1  5  5
+657   1  6  6
+658   5  2  4
+659   1  6  6
+660   2  6  5
+661   3  4  2
+662   2  5  5
+663   2  6  6
+664   1  5  4
+665   1  6  5
+666   1  4  5
+667   2  6  5
+668   4  6  6
+669   2  5  4
+670   3  5  4
+671   1  5  4
+672   1  6  6
+673   4  1  2
+674   2  3  5
+675   4  6  5
+676   5  3  6
+677   4  2  3
+678   2  5  3
+679   2  3  3
+680   2  5  4
+681   1  6  6
+682   4  2  4
+683   6  1  1
+684   1  5  5
+685   1  6  6
+686   5  5  4
+687   5  4  4
+688   1  2  3
+689   4  3  1
+690   1  6  5
+691   2  5  5
+692   3  5  5
+693   2  5  2
+694   4  4  4
+695   2  4  4
+696   5  4  4
+697   2  4  5
+698   1  5  6
+699   5  6  6
+700   3  4  5
+701   1  6  5
+702   3  3  4
+703   5  6  6
+704   1  6  6
+705   1  4  4
+706   1  5  3
+707   2  5  5
+708   6  2  2
+709   1  6  6
+710   6  1  1
+711   1  6  6
+712   2  3  5
+713   1  4  4
+714   3  5  4
+715   1  4  5
+716   2  4  2
+717   3  5  3
+718   4  4  4
+719   2  4  4
+720   4  5  5
+721   1  4  5
+722   2  2  4
+723   2  6  5
+724   2  6  5
+725   2  6  6
+726   1  6  6
+727   1  6  4
+728   2  6  6
+729   5  5  4
+730   1  5  5
+731   3  6  6
+732   3  3  3
+733   2  4  4
+734   1  5  5
+735   2  5  5
+736   6  2  4
+737   1  5  6
+738   4  5  6
+739   2  5  5
+740   2  5  6
+741   1  6  6
+742   1  6  5
+743   2  6  1
+744   1  6  6
+745   3  6  6
+746   2  5  4
+747   2  4  5
+748   2  6  6
+749   2  6  4
+750   2  4  4
+751   5  4  5
+752   3  4  4
+753   4  5  4
+754   2  5  5
+755   4  6  5
+756   3  4  4
+757   2  3  5
+758   4  2  5
+759   4  5  5
+760   1  5  5
+761   1  5  6
+762   2  4  4
+763   2  6  5
+764   1  5  5
+765   1  6  4
+766   4  5  3
+767   1  6  6
+768   2  4  4
+769   3  2  4
+770   1  5  5
+771   1  5  6
+772   4  2  3
+773   1  5  5
+774   2  6  6
+775   1  3  4
+776   1  5  2
+777   2  6  3
+778   6  5  2
+779   5  2  2
+780   2  3  3
+781   3  4  2
+782   4  5  4
+783   2  6  4
+784   4  3  3
+785   2  4  5
+786   3  6  6
+787   2  2  2
+788   2  5  6
+789   3  3  3
+790   2  6  4
+791   2  5  4
+792   4  4  5
+793   3  5  4
+794   1  5  4
+795   1  6  5
+796   5  1  2
+797   1  5  5
+798   4  6  5
+799   1  5  5
+800   5  5  5
+801   5  2  4
+802   1  4  3
+803   2  4  5
+804   4  5  5
+805   1  3  2
+806   2  5  4
+807   4  3  3
+808   3  5  4
+809   1  5  2
+810   2  6  6
+811   2  4  4
+812   2  6  6
+813   1  6  6
+814   1  6  6
+815   1  6  6
+816   1  4  2
+817   1  4  2
+818   2  3  5
+819   2  4  5
+820   1  4  5
+821   1  5  5
+822   5  6  5
+823   2  5  3
+824   1  5  4
+825   1  5  4
+826   1  5  2
+827   1  6  6
+828   2  6  5
+829   3  3  2
+830   5  3  3
+831   4  4  4
+832   5  4  1
+833   2  5  6
+834   2  4  4
+835   1  5  4
+836   1  6  6
+837   4  6  6
+838   6  2  5
+839   4  4  4
+840   4  5  5
+841   2  4  5
+842   1  6  6
+843   2  5  5
+844   4  4  2
+845   2  5  4
+846   4  1  3
+847   5  6  2
+848   1  5  5
+849   1  2  2
+850   3  4  5
+851   4  3  2
+852   1  6  6
+853   2  5  5
+854   2  4  4
+855   1  5  5
+856   1  6  1
+857   4  4  2
+858   2  6  5
+859   2  2  4
+860   1  6  5
+861   2  2  2
+862   1  5  5
+863   4  4  2
+864   4  6  5
+865   1  3  1
+866   2  6  6
+867   4  5  5
+868   1  6  5
+869   2  4  5
+870   4  5  5
+871   4  3  4
+872   2  6  6
+873   1  6  6
+874   1  5  6
+875   5  6  5
+876   3  5  5
+877   4  1  3
+878   3  4  5
+879   3  6  5
+880   2  4  5
+881   1  6  5
+882   2  6  5
+883   2  2  3
+884   1  6  6
+885   2  4  4
+886   1  6  4
+887   2  4  2
+888   2  4  5
+889   4  5  5
+890   2  6  6
+891   1  6  6
+892   1  5  6
+893   1  6  6
+894   3  5  4
+895   2  6  6
+896   1  6  5
+897   2  2  4
+898   4  5  4
+899   2  5  5
+900   4  4  4
+901   2  6  6
+902   4  6  6
+903   1  6  5
+904   3  5  5
+905   3  3  4
+906   1  6  6
+907   2  5  5
+908   3  6  6
+909   2  2  4
+910   3  4  5
+911   5  4  4
+912   5  5  6
+913   6  6  6
+914   1  6  5
+915   3  6  5
+916   6  6  6
+917   2  5  5
+918   1  4  3
+919   1  5  5
+920   2  6  6
+921   3  5  5
+922   3  4  5
+923   3  3  4
+924   4  3  3
+925   1  6  5
+926   5  6  6
+927   1  6  6
+928   1  5  5
+929   4  2  1
+930   2  5  5
+931   2  4  4
+932   2  5  5
+933   3  6  3
+934   3  6  5
+935   1  5  6
+936   2  5  4
+937   3  5  4
+938   2  5  4
+939   2  4  4
+940   4  5  3
+941   2  4  4
+942   1  6  4
+943   4  6  5
+944   1  5  6
+945   3  5  5
+946   2  4  3
+947   2  5  4
+948   1  4  5
+949   3  6  5
+950   1  6  6
+951   1  6  4
+952   4  3  3
+953   4  3  3
+954   1  5  5
+955   2  5  4
+956   1  4  5
+957   1  5  5
+958   2  5  5
+959   3  1  4
+960   1  6  5
+961   2  4  4
+962   3  5  5
+963   6  5  4
+964   4  3  3
+965   2  5  4
+966   2  6  6
+967   1  5  5
+968   2  3  4
+969   1  4  4
+970   2  5  5
+971   4  4  5
+972   3  5  4
+973   1  5  4
+974   5  5  5
+975   1  5  5
+976   1  6  6
+977   2  4  5
+978   1  1  1
+979   1  5  4
+980   4  5  3
+981   6  4  4
+982   2  5  4
+983   1  5  5
+984   3  6  6
+985   4  5  5
+986   6  5  6
+987   1  5  5
+988   4  4  4
+989   2  5  5
+990   5  5  6
+991   3  5  5
+992   1  5  6
+993   5  3  4
+994   3  4  5
+995   1  6  6
+996   3  5  6
+997   4  4  4
+998   1  6  4
+999   1  6  6
+1000  2  5  5</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-two-or-more-variables-by-their-names-with-square-brackets" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">6.13</span> Selecting two or more variables by their names with square brackets</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>mybfi[, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A3"</span>, <span class="st">"A5"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     A1 A3 A5
+1     2  5  5
+2     2  5  5
+3     2  5  5
+4     2  5  6
+5     2  5  5
+6     1  5  6
+7     2  6  5
+8     1  6  6
+9     1  6  4
+10    1  6  6
+11    2  5  5
+12    2  4  4
+13    5  3  2
+14    1  6  6
+15    2  4  2
+16    5  6  4
+17    1  5  5
+18    1  5  4
+19    2  4  5
+20    1  5  6
+21    4  5  5
+22    2  5  3
+23    3  5  6
+24    4  4  5
+25    1  2  5
+26    1  6  6
+27    2  3  3
+28    2  1  5
+29    4  3  4
+30    5  4  5
+31    3  4  4
+32    2  4  4
+33    1  6  5
+34    2  4  5
+35    5  5  5
+36    1  4  2
+37    1  6  5
+38    2  4  2
+39    1  6  6
+40    3  6  3
+41    1  5  4
+42    1  6  5
+43    4  4  3
+44    2  5  6
+45    2  6  6
+46    3  5  3
+47    2  6  6
+48    2  3  4
+49    1  5  5
+50    5  1  5
+51    2  5  5
+52    4  5  5
+53    1  6  6
+54    1  6  5
+55    3  1  6
+56    4  4  4
+57    2  5  2
+58    1  6  5
+59    3  5  6
+60    2  4  5
+61    1  6  5
+62    3  2  5
+63    1  5  6
+64    2  4  4
+65    2  5  5
+66    1  6  6
+67    2  5  4
+68    2  4  5
+69    2  3  5
+70    2  3  4
+71    2  5  6
+72    3  5  5
+73    4  5  4
+74    1  5  4
+75    2  4  4
+76    4  6  5
+77    1  5  6
+78    2  4  4
+79    4  4  5
+80    4  4  5
+81    1  5  3
+82    4  1  2
+83    3  5  4
+84    3  4  4
+85    2  5  5
+86    1  5  5
+87    2  4  4
+88    1  5  4
+89    2  6  5
+90    2  5  4
+91    1  5  6
+92    6  5  6
+93    2  5  6
+94    6  1  1
+95    2  6  5
+96    6  3  6
+97    3  3  4
+98    2  5  4
+99    1  6  6
+100   3  2  3
+101   1  5  5
+102   1  5  5
+103   2  1  4
+104   6  6  5
+105   3  4  4
+106   3  4  5
+107   1  6  6
+108   1  6  6
+109   2  4  5
+110   5  3  2
+111   2  5  5
+112   1  5  5
+113   4  5  6
+114   1  3  4
+115   1  4  5
+116   2  4  5
+117   1  5  6
+118   1  6  2
+119   1  5  6
+120   2  3  4
+121   2  6  6
+122   3  5  4
+123   5  3  3
+124   4  5  4
+125   2  1  3
+126   6  4  3
+127   4  1  2
+128   3  4  4
+129   2  4  3
+130   4  2  5
+131   1  1  6
+132   2  5  5
+133   2  6  6
+134   2  5  5
+135   1  3  5
+136   3  4  4
+137   6  1  1
+138   1  5  5
+139   5  4  6
+140   1  5  6
+141   3  2  5
+142   2  2  4
+143   1  2  2
+144   2  4  5
+145   2  5  6
+146   2  5  5
+147   5  6  6
+148   3  4  4
+149   2  6  6
+150   1  4  6
+151   3  5  4
+152   2  4  6
+153   1  5  5
+154   1  6  6
+155   5  5  6
+156   3  4  3
+157   2  4  3
+158   1  4  4
+159   1  4  6
+160   1  1  6
+161   5  5  5
+162   1  6  3
+163   2  1  2
+164   2  6  5
+165   2  4  5
+166   3  4  4
+167   2  2  5
+168   2  3  3
+169   1  6  4
+170   1  6  6
+171   4  5  5
+172   2  5  5
+173   4  2  3
+174   3  4  5
+175   1  4  4
+176   5  6  5
+177   3  5  5
+178   1  6  6
+179   4  5  6
+180   1  6  6
+181   2  5  2
+182   4  2  6
+183   2  5  5
+184   2  4  5
+185   3  6  6
+186   2  5  6
+187   3  4  2
+188   1  6  6
+189   1  6  6
+190   3  4  4
+191   5  2  4
+192   6  6  6
+193   1  5  6
+194   4  6  6
+195   3  4  5
+196   3  3  4
+197   2  4  4
+198   5  2  4
+199   1  6  4
+200   1  5  6
+201   1  5  5
+202   2  5  4
+203   1  6  6
+204   5  2  3
+205   2  4  3
+206   1  6  5
+207   2  5  5
+208   2  5  6
+209   1  6  6
+210   4  3  4
+211   5  6  5
+212   1  5  5
+213   1  6  6
+214   4  6  5
+215   1  6  5
+216   1  2  6
+217   4  4  4
+218   3  5  6
+219   5  5  6
+220   2  2  5
+221   4  5  4
+222   3  4  4
+223   2  4  5
+224   2  5  3
+225   2  4  6
+226   3  2  4
+227   2  4  5
+228   1  4  5
+229   1  6  6
+230   2  3  5
+231   2  2  5
+232   3  5  3
+233   1  5  6
+234   1  6  6
+235   1  2  6
+236   1  5  5
+237   2  4  4
+238   2  3  1
+239   5  5  6
+240   1  4  6
+241   3  6  6
+242   6  5  6
+243   2  4  3
+244   3  3  4
+245   4  5  5
+246   2  4  3
+247   1  6  6
+248   1  6  6
+249   3  3  5
+250   1  5  6
+251   2  5  6
+252   2  4  3
+253   1  5  6
+254   3  2  5
+255   2  5  4
+256   3  6  4
+257   4  4  5
+258   3  3  4
+259   2  5  3
+260   1  5  5
+261   1  5  5
+262   4  6  6
+263   2  5  6
+264   1  6  6
+265   1  5  6
+266   2  5  4
+267   3  6  4
+268   2  4  5
+269   3  1  4
+270   2  4  4
+271   1  3  4
+272   1  6  6
+273   4  5  2
+274   1  3  5
+275   4  5  4
+276   3  4  4
+277   1  6  5
+278   1  4  6
+279   1  5  5
+280   2  5  5
+281   1  4  3
+282   4  1  3
+283   2  5  5
+284   3  5  3
+285   3  5  4
+286   3  4  4
+287   2  5  4
+288   1  5  5
+289   3  4  5
+290   1  6  5
+291   4  5  2
+292   1  5  5
+293   3  4  5
+294   3  5  6
+295   2  2  2
+296   1  5  6
+297   1  2  5
+298   1  6  6
+299   1  6  6
+300   2  5  3
+301   2  3  4
+302   1  4  4
+303   2  5  4
+304   1  4  4
+305   1  4  4
+306   1  5  5
+307   4  5  5
+308   4  2  3
+309   4  5  5
+310   3  5  5
+311   2  5  5
+312   1  6  5
+313   1  6  6
+314   1  6  6
+315   1  5  6
+316   5  4  5
+317   3  5  5
+318   2  5  5
+319   1  5  4
+320   1  6  6
+321   3  4  4
+322   3  6  5
+323   3  4  4
+324   1  6  5
+325   2  5  6
+326   2  4  5
+327   3  2  2
+328   2  6  6
+329   5  1  3
+330   2  3  4
+331   1  5  5
+332   1  5  4
+333   2  6  5
+334   3  5  5
+335   1  5  5
+336   1  6  6
+337   1  6  5
+338   1  5  5
+339   2  6  6
+340   3  2  5
+341   2  6  6
+342   2  4  3
+343   2  5  5
+344   3  6  4
+345   2  6  6
+346   2  4  4
+347   4  5  4
+348   5  3  2
+349   2  6  6
+350   2  4  4
+351   1  6  5
+352   5  6  5
+353   3  5  5
+354   3  5  4
+355   1  5  6
+356   1  5  5
+357   2  3  2
+358   1  5  5
+359   2  5  4
+360   2  6  6
+361   2  5  5
+362   2  5  5
+363   3  5  5
+364   1  6  6
+365   1  1  1
+366   1  6  1
+367   2  5  4
+368   2  6  6
+369   3  5  5
+370   3  4  5
+371   2  6  5
+372   3  4  4
+373   2  4  4
+374   1  6  4
+375   3  4  3
+376   4  6  6
+377   2  4  4
+378   2  5  4
+379   2  4  3
+380   6  5  6
+381   4  5  6
+382   2  6  6
+383   2  6  6
+384   1  6  6
+385   2  6  5
+386   1  5  5
+387   2  5  5
+388   4  3  5
+389   1  4  5
+390   5  2  4
+391   4  6  2
+392   3  5  3
+393   3  5  5
+394   1  5  4
+395   1  4  6
+396   1  5  6
+397   4  5  4
+398   5  3  5
+399   5  6  6
+400   5  4  5
+401   1  6  6
+402   4  4  5
+403   4  4  4
+404   2  5  5
+405   3  4  3
+406   1  6  6
+407   1  5  4
+408   5  2  5
+409   2  4  3
+410   2  5  5
+411   2  5  5
+412   1  6  2
+413   1  6  5
+414   4  4  6
+415   3  4  3
+416   5  5  4
+417   1  5  5
+418   3  4  4
+419   2  4  4
+420   5  4  5
+421   2  4  4
+422   2  5  5
+423   5  5  6
+424   1  3  5
+425   1  6  6
+426   3  5  5
+427   1  5  5
+428   1  5  4
+429   1  5  4
+430   2  5  4
+431   6  2  5
+432   5  3  4
+433   5  1  3
+434   2  2  1
+435   1  6  6
+436   2  6  6
+437   2  6  6
+438   1  6  6
+439   4  4  5
+440   1  5  5
+441   4  4  5
+442   3  5  4
+443   2  5  6
+444   1  6  6
+445   4  2  3
+446   1  6  6
+447   2  3  2
+448   1  1  6
+449   1  6  6
+450   1  6  4
+451   2  4  4
+452   2  6  6
+453   4  2  4
+454   1  6  4
+455   4  4  3
+456   2  5  6
+457   1  5  6
+458   1  6  6
+459   4  4  4
+460   4  2  5
+461   1  4  4
+462   4  1  1
+463   1  6  6
+464   1  5  4
+465   1  5  5
+466   5  6  6
+467   1  6  6
+468   3  3  5
+469   1  5  5
+470   1  5  6
+471   1  6  6
+472   1  6  6
+473   1  5  6
+474   2  6  4
+475   1  6  4
+476   2  6  5
+477   1  6  6
+478   1  5  3
+479   2  5  5
+480   4  4  5
+481   1  6  5
+482   2  6  6
+483   6  5  6
+484   1  6  6
+485   2  5  5
+486   2  6  6
+487   1  3  5
+488   5  3  4
+489   1  6  6
+490   2  5  5
+491   1  5  6
+492   1  4  2
+493   2  5  2
+494   2  4  3
+495   3  6  5
+496   2  5  4
+497   3  5  3
+498   1  3  4
+499   6  5  5
+500   2  4  5
+501   1  5  5
+502   1  5  6
+503   4  6  5
+504   2  4  6
+505   2  5  6
+506   4  4  4
+507   1  6  5
+508   1  6  6
+509   4  4  3
+510   2  3  3
+511   2  4  5
+512   1  6  5
+513   2  5  5
+514   1  5  5
+515   2  4  6
+516   5  4  3
+517   2  6  6
+518   3  4  3
+519   1  4  6
+520   2  5  5
+521   2  6  6
+522   4  3  2
+523   2  4  4
+524   4  3  5
+525   1  5  6
+526   1  6  6
+527   4  5  5
+528   1  5  5
+529   1  5  5
+530   2  5  6
+531   4  5  5
+532   2  6  6
+533   1  6  5
+534   2  4  4
+535   1  6  5
+536   2  6  6
+537   3  5  5
+538   1  4  4
+539   1  5  3
+540   3  4  2
+541   1  6  5
+542   4  4  3
+543   1  6  6
+544   5  4  5
+545   1  1  5
+546   6  5  2
+547   1  6  5
+548   1  6  6
+549   1  6  6
+550   1  6  6
+551   1  5  4
+552   1  5  6
+553   4  5  5
+554   1  5  6
+555   3  4  4
+556   4  1  1
+557   1  4  4
+558   4  4  5
+559   4  4  4
+560   1  5  5
+561   2  5  5
+562   4  4  4
+563   3  6  6
+564   1  4  6
+565   1  6  6
+566   4  5  5
+567   4  4  5
+568   2  4  3
+569   1  5  5
+570   3  5  5
+571   2  4  2
+572   6  6  6
+573   3  6  5
+574   2  4  4
+575   2  5  6
+576   2  6  6
+577   2  6  6
+578   3  5  5
+579   1  4  4
+580   1  3  6
+581   3  4  4
+582   1  5  5
+583   1  6  6
+584   1  5  5
+585   4  5  4
+586   2  5  4
+587   3  6  6
+588   1  6  1
+589   1  5  6
+590   4  4  4
+591   1  4  4
+592   5  2  4
+593   1  4  4
+594   1  4  4
+595   3  4  4
+596   2  4  2
+597   2  3  6
+598   4  5  5
+599   4  4  3
+600   1  4  5
+601   1  6  5
+602   2  3  4
+603   2  5  6
+604   2  5  5
+605   2  5  6
+606   5  3  2
+607   6  6  6
+608   1  6  6
+609   2  2  3
+610   5  3  2
+611   1  1  5
+612   2  5  4
+613   2  6  4
+614   4  2  4
+615   3  5  4
+616   2  4  5
+617   1  6  6
+618   3  6  5
+619   2  6  5
+620   4  4  5
+621   1  6  5
+622   2  4  5
+623   1  6  6
+624   2  4  4
+625   2  5  5
+626   1  5  5
+627   1  6  5
+628   1  5  6
+629   1  6  6
+630   3  5  5
+631   4  5  5
+632   2  4  3
+633   1  6  6
+634   1  5  5
+635   2  4  4
+636   3  4  6
+637   3  2  1
+638   3  3  5
+639   2  5  5
+640   2  5  4
+641   5  4  3
+642   3  5  6
+643   4  4  3
+644   5  5  4
+645   3  5  5
+646   1  6  6
+647   4  5  5
+648   4  5  5
+649   6  5  6
+650   3  3  5
+651   3  5  5
+652   1  5  4
+653   1  5  5
+654   1  6  6
+655   5  2  1
+656   1  5  5
+657   1  6  6
+658   5  2  4
+659   1  6  6
+660   2  6  5
+661   3  4  2
+662   2  5  5
+663   2  6  6
+664   1  5  4
+665   1  6  5
+666   1  4  5
+667   2  6  5
+668   4  6  6
+669   2  5  4
+670   3  5  4
+671   1  5  4
+672   1  6  6
+673   4  1  2
+674   2  3  5
+675   4  6  5
+676   5  3  6
+677   4  2  3
+678   2  5  3
+679   2  3  3
+680   2  5  4
+681   1  6  6
+682   4  2  4
+683   6  1  1
+684   1  5  5
+685   1  6  6
+686   5  5  4
+687   5  4  4
+688   1  2  3
+689   4  3  1
+690   1  6  5
+691   2  5  5
+692   3  5  5
+693   2  5  2
+694   4  4  4
+695   2  4  4
+696   5  4  4
+697   2  4  5
+698   1  5  6
+699   5  6  6
+700   3  4  5
+701   1  6  5
+702   3  3  4
+703   5  6  6
+704   1  6  6
+705   1  4  4
+706   1  5  3
+707   2  5  5
+708   6  2  2
+709   1  6  6
+710   6  1  1
+711   1  6  6
+712   2  3  5
+713   1  4  4
+714   3  5  4
+715   1  4  5
+716   2  4  2
+717   3  5  3
+718   4  4  4
+719   2  4  4
+720   4  5  5
+721   1  4  5
+722   2  2  4
+723   2  6  5
+724   2  6  5
+725   2  6  6
+726   1  6  6
+727   1  6  4
+728   2  6  6
+729   5  5  4
+730   1  5  5
+731   3  6  6
+732   3  3  3
+733   2  4  4
+734   1  5  5
+735   2  5  5
+736   6  2  4
+737   1  5  6
+738   4  5  6
+739   2  5  5
+740   2  5  6
+741   1  6  6
+742   1  6  5
+743   2  6  1
+744   1  6  6
+745   3  6  6
+746   2  5  4
+747   2  4  5
+748   2  6  6
+749   2  6  4
+750   2  4  4
+751   5  4  5
+752   3  4  4
+753   4  5  4
+754   2  5  5
+755   4  6  5
+756   3  4  4
+757   2  3  5
+758   4  2  5
+759   4  5  5
+760   1  5  5
+761   1  5  6
+762   2  4  4
+763   2  6  5
+764   1  5  5
+765   1  6  4
+766   4  5  3
+767   1  6  6
+768   2  4  4
+769   3  2  4
+770   1  5  5
+771   1  5  6
+772   4  2  3
+773   1  5  5
+774   2  6  6
+775   1  3  4
+776   1  5  2
+777   2  6  3
+778   6  5  2
+779   5  2  2
+780   2  3  3
+781   3  4  2
+782   4  5  4
+783   2  6  4
+784   4  3  3
+785   2  4  5
+786   3  6  6
+787   2  2  2
+788   2  5  6
+789   3  3  3
+790   2  6  4
+791   2  5  4
+792   4  4  5
+793   3  5  4
+794   1  5  4
+795   1  6  5
+796   5  1  2
+797   1  5  5
+798   4  6  5
+799   1  5  5
+800   5  5  5
+801   5  2  4
+802   1  4  3
+803   2  4  5
+804   4  5  5
+805   1  3  2
+806   2  5  4
+807   4  3  3
+808   3  5  4
+809   1  5  2
+810   2  6  6
+811   2  4  4
+812   2  6  6
+813   1  6  6
+814   1  6  6
+815   1  6  6
+816   1  4  2
+817   1  4  2
+818   2  3  5
+819   2  4  5
+820   1  4  5
+821   1  5  5
+822   5  6  5
+823   2  5  3
+824   1  5  4
+825   1  5  4
+826   1  5  2
+827   1  6  6
+828   2  6  5
+829   3  3  2
+830   5  3  3
+831   4  4  4
+832   5  4  1
+833   2  5  6
+834   2  4  4
+835   1  5  4
+836   1  6  6
+837   4  6  6
+838   6  2  5
+839   4  4  4
+840   4  5  5
+841   2  4  5
+842   1  6  6
+843   2  5  5
+844   4  4  2
+845   2  5  4
+846   4  1  3
+847   5  6  2
+848   1  5  5
+849   1  2  2
+850   3  4  5
+851   4  3  2
+852   1  6  6
+853   2  5  5
+854   2  4  4
+855   1  5  5
+856   1  6  1
+857   4  4  2
+858   2  6  5
+859   2  2  4
+860   1  6  5
+861   2  2  2
+862   1  5  5
+863   4  4  2
+864   4  6  5
+865   1  3  1
+866   2  6  6
+867   4  5  5
+868   1  6  5
+869   2  4  5
+870   4  5  5
+871   4  3  4
+872   2  6  6
+873   1  6  6
+874   1  5  6
+875   5  6  5
+876   3  5  5
+877   4  1  3
+878   3  4  5
+879   3  6  5
+880   2  4  5
+881   1  6  5
+882   2  6  5
+883   2  2  3
+884   1  6  6
+885   2  4  4
+886   1  6  4
+887   2  4  2
+888   2  4  5
+889   4  5  5
+890   2  6  6
+891   1  6  6
+892   1  5  6
+893   1  6  6
+894   3  5  4
+895   2  6  6
+896   1  6  5
+897   2  2  4
+898   4  5  4
+899   2  5  5
+900   4  4  4
+901   2  6  6
+902   4  6  6
+903   1  6  5
+904   3  5  5
+905   3  3  4
+906   1  6  6
+907   2  5  5
+908   3  6  6
+909   2  2  4
+910   3  4  5
+911   5  4  4
+912   5  5  6
+913   6  6  6
+914   1  6  5
+915   3  6  5
+916   6  6  6
+917   2  5  5
+918   1  4  3
+919   1  5  5
+920   2  6  6
+921   3  5  5
+922   3  4  5
+923   3  3  4
+924   4  3  3
+925   1  6  5
+926   5  6  6
+927   1  6  6
+928   1  5  5
+929   4  2  1
+930   2  5  5
+931   2  4  4
+932   2  5  5
+933   3  6  3
+934   3  6  5
+935   1  5  6
+936   2  5  4
+937   3  5  4
+938   2  5  4
+939   2  4  4
+940   4  5  3
+941   2  4  4
+942   1  6  4
+943   4  6  5
+944   1  5  6
+945   3  5  5
+946   2  4  3
+947   2  5  4
+948   1  4  5
+949   3  6  5
+950   1  6  6
+951   1  6  4
+952   4  3  3
+953   4  3  3
+954   1  5  5
+955   2  5  4
+956   1  4  5
+957   1  5  5
+958   2  5  5
+959   3  1  4
+960   1  6  5
+961   2  4  4
+962   3  5  5
+963   6  5  4
+964   4  3  3
+965   2  5  4
+966   2  6  6
+967   1  5  5
+968   2  3  4
+969   1  4  4
+970   2  5  5
+971   4  4  5
+972   3  5  4
+973   1  5  4
+974   5  5  5
+975   1  5  5
+976   1  6  6
+977   2  4  5
+978   1  1  1
+979   1  5  4
+980   4  5  3
+981   6  4  4
+982   2  5  4
+983   1  5  5
+984   3  6  6
+985   4  5  5
+986   6  5  6
+987   1  5  5
+988   4  4  4
+989   2  5  5
+990   5  5  6
+991   3  5  5
+992   1  5  6
+993   5  3  4
+994   3  4  5
+995   1  6  6
+996   3  5  6
+997   4  4  4
+998   1  6  4
+999   1  6  6
+1000  2  5  5</code></pre>
+</div>
+</div>
+</section>
+<section id="fun-with-starwars-characters" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="fun-with-starwars-characters"><span class="header-section-number">6.14</span> Fun with Starwars characters</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>starwars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 14
+   name     height  mass hair_color skin_color eye_color birth_year sex   gender
+   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+ 1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…
+ 2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+ 3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+ 4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+ 5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+ 6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+ 7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+ 8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
+ 9 Biggs D…    183    84 black      light      brown           24   male  mascu…
+10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+# ℹ 77 more rows
+# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">==</span> <span class="st">"Human"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, height, mass, eye_color, species, films)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 6
+   name                  height  mass eye_color species        films    
+   &lt;chr&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;list&gt;   
+ 1 C-3PO                    167    75 yellow    Droid          &lt;chr [6]&gt;
+ 2 R2-D2                     96    32 red       Droid          &lt;chr [7]&gt;
+ 3 R5-D4                     97    32 red       Droid          &lt;chr [1]&gt;
+ 4 Chewbacca                228   112 blue      Wookiee        &lt;chr [5]&gt;
+ 5 Greedo                   173    74 black     Rodian         &lt;chr [1]&gt;
+ 6 Jabba Desilijic Tiure    175  1358 orange    Hutt           &lt;chr [3]&gt;
+ 7 Yoda                      66    17 brown     Yoda's species &lt;chr [5]&gt;
+ 8 IG-88                    200   140 red       Droid          &lt;chr [1]&gt;
+ 9 Bossk                    190   113 red       Trandoshan     &lt;chr [1]&gt;
+10 Ackbar                   180    83 orange    Mon Calamari   &lt;chr [2]&gt;
+# ℹ 38 more rows</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
