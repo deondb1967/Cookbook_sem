@@ -18,7 +18,7 @@ N =~ N1 + N2 + N3 + N4 + N5
 
 fit.mod.congeneric <- cfa(mod.congeneric, data = bfi)
 
-visualize(fit.mod.congeneric)
+visualize(fit.mod.congeneric, subset = 1:5)
 measurement_plot(fit.mod.congeneric, sample = 300)
 residual_plots(fit.mod.congeneric)
 
@@ -33,7 +33,7 @@ N =~ a*N1 + a*N2 + a*N3 + a*N4 + a*N5
 
 fit.mod.tau.eq <- cfa(mod.tau.eq, data = bfi, std.lv = TRUE)
 
-visualize(fit.mod.tau.eq)
+visualize(fit.mod.tau.eq, subset = 1:5)
 measurement_plot(fit.mod.tau.eq, sample = 300)
 residual_plots(fit.mod.tau.eq)
 ```
@@ -54,7 +54,7 @@ N5 ~~ b*N5
 fit.mod.parallel <- cfa(mod.parallel, data = bfi, std.lv = TRUE)
 
 
-visualize(fit.mod.parallel)
+visualize(fit.mod.parallel, subset = 1:5)
 measurement_plot(fit.mod.parallel, sample = 300)
 residual_plots(fit.mod.parallel)
 ```

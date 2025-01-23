@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Multiple_factors.html" rel="next">
+<link href="./Measurement_models.html" rel="next">
 <link href="./Estimating_correlations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -189,8 +189,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Measurement_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Multiple_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Plotting_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -200,19 +212,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EFA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Correlated_residuals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -222,13 +234,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MissingDataExamples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -282,26 +294,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">'</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">Agreeableness =~ A1 + A2 + A3 + A4 + A5</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">A1 ~~ A2</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>fit.mod1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod1, <span class="at">data =</span> bfi)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod1, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>fit.mod1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod1, <span class="at">data =</span> bfi)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod1, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-19 ended normally after 37 iterations
+<pre><code>lavaan 0.6-19 ended normally after 33 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
-  Number of model parameters                        11
+  Number of model parameters                        10
 
                                                   Used       Total
   Number of observations                          2709        2800
 
 Model Test User Model:
                                                       
-  Test statistic                                15.264
-  Degrees of freedom                                 4
-  P-value (Chi-square)                           0.004
+  Test statistic                                86.696
+  Degrees of freedom                                 5
+  P-value (Chi-square)                           0.000
 
 Model Test Baseline Model:
 
@@ -311,29 +322,29 @@ Model Test Baseline Model:
 
 User Model versus Baseline Model:
 
-  Comparative Fit Index (CFI)                    0.996
-  Tucker-Lewis Index (TLI)                       0.989
+  Comparative Fit Index (CFI)                    0.968
+  Tucker-Lewis Index (TLI)                       0.935
 
 Loglikelihood and Information Criteria:
 
-  Loglikelihood user model (H0)             -21741.864
+  Loglikelihood user model (H0)             -21777.580
   Loglikelihood unrestricted model (H1)     -21734.232
                                                       
-  Akaike (AIC)                               43505.728
-  Bayesian (BIC)                             43570.676
-  Sample-size adjusted Bayesian (SABIC)      43535.725
+  Akaike (AIC)                               43575.160
+  Bayesian (BIC)                             43634.203
+  Sample-size adjusted Bayesian (SABIC)      43602.430
 
 Root Mean Square Error of Approximation:
 
-  RMSEA                                          0.032
-  90 Percent confidence interval - lower         0.016
-  90 Percent confidence interval - upper         0.050
-  P-value H_0: RMSEA &lt;= 0.050                    0.949
-  P-value H_0: RMSEA &gt;= 0.080                    0.000
+  RMSEA                                          0.078
+  90 Percent confidence interval - lower         0.064
+  90 Percent confidence interval - upper         0.092
+  P-value H_0: RMSEA &lt;= 0.050                    0.001
+  P-value H_0: RMSEA &gt;= 0.080                    0.415
 
 Standardized Root Mean Square Residual:
 
-  SRMR                                           0.012
+  SRMR                                           0.032
 
 Parameter Estimates:
 
@@ -344,27 +355,22 @@ Parameter Estimates:
 Latent Variables:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
   Agreeableness =~                                                      
-    A1                1.000                               0.455    0.324
-    A2                1.623    0.109   14.956    0.000    0.739    0.628
-    A3                2.234    0.160   13.922    0.000    1.017    0.780
-    A4                1.576    0.123   12.770    0.000    0.718    0.483
-    A5                1.763    0.128   13.750    0.000    0.803    0.636
-
-Covariances:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
- .A1 ~~                                                                 
-   .A2                0.228    0.028    8.127    0.000    0.228    0.187
+    A1                1.000                               0.528    0.376
+    A2                1.465    0.090   16.310    0.000    0.774    0.658
+    A3                1.880    0.113   16.696    0.000    0.994    0.762
+    A4                1.358    0.093   14.626    0.000    0.717    0.483
+    A5                1.497    0.093   16.098    0.000    0.791    0.627
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-   .A1                1.765    0.050   35.124    0.000    1.765    0.895
-   .A2                0.837    0.029   28.403    0.000    0.837    0.605
-   .A3                0.666    0.037   17.881    0.000    0.666    0.392
-   .A4                1.693    0.051   33.181    0.000    1.693    0.767
-   .A5                0.947    0.034   28.139    0.000    0.947    0.595
-    Agreeableness     0.207    0.028    7.345    0.000    1.000    1.000</code></pre>
+   .A1                1.693    0.048   34.915    0.000    1.693    0.858
+   .A2                0.784    0.029   27.443    0.000    0.784    0.567
+   .A3                0.714    0.035   20.314    0.000    0.714    0.420
+   .A4                1.694    0.051   33.277    0.000    1.694    0.767
+   .A5                0.965    0.033   28.977    0.000    0.965    0.607
+    Agreeableness     0.279    0.031    8.870    0.000    1.000    1.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(fit.mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(fit.mod1, <span class="at">subset =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -933,8 +939,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Multiple_factors.html" class="pagination-link" aria-label="Multiple factors">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Multiple factors</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Measurement_models.html" class="pagination-link" aria-label="Congeneric, tau-equivalent and parallel measurement models">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

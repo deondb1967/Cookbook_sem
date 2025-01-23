@@ -14,13 +14,12 @@ bfi$A1 <- 7 - bfi$A1
 
 mod1 <- '
 Agreeableness =~ A1 + A2 + A3 + A4 + A5
-A1 ~~ A2
 '
 
 fit.mod1 <- cfa(mod1, data = bfi)
 summary(fit.mod1, standardized = TRUE, fit.measures = TRUE)
 
-visualize(fit.mod1)
+visualize(fit.mod1, subset = 1:5)
 measurement_plot(fit.mod1, sample = 300)
 residual_plots(fit.mod1)
 ```
