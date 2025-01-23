@@ -1,0 +1,39 @@
+---
+title: "Plotting"
+---
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+library(psychTools)
+library(lavaan)
+library(semTools)
+library(semPlot)
+library(psych)
+```
+
+```{r}
+mod1 <- '
+Neuroticism =~ N1 + N2 + N3 + N4 + N5
+'
+
+fit.mod1 <- cfa(mod1, data = bfi, std.lv = TRUE)
+summary(fit.mod1)
+```
+
+```{r}
+library(semPlot)
+semPaths(fit.mod1,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 6,
+         nCharNodes     = 0,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5))
+```

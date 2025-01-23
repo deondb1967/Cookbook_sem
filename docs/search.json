@@ -478,5 +478,15 @@
     "crumbs": [
       "References"
     ]
+  },
+  {
+    "objectID": "Plotting_models.html",
+    "href": "Plotting_models.html",
+    "title": "9  Plotting",
+    "section": "",
+    "text": "library(psychTools)\nlibrary(lavaan)\nlibrary(semTools)\nlibrary(semPlot)\nlibrary(psych)\n\n\nmod1 &lt;- '\nNeuroticism =~ N1 + N2 + N3 + N4 + N5\n'\n\nfit.mod1 &lt;- cfa(mod1, data = bfi, std.lv = TRUE)\nsummary(fit.mod1)\n\nlavaan 0.6-19 ended normally after 19 iterations\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                        10\n\n                                                  Used       Total\n  Number of observations                          2694        2800\n\nModel Test User Model:\n                                                      \n  Test statistic                               360.932\n  Degrees of freedom                                 5\n  P-value (Chi-square)                           0.000\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Expected\n  Information saturated (h1) model          Structured\n\nLatent Variables:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n  Neuroticism =~                                      \n    N1                1.286    0.027   47.511    0.000\n    N2                1.225    0.026   46.328    0.000\n    N3                1.147    0.029   39.920    0.000\n    N4                0.872    0.030   28.942    0.000\n    N5                0.813    0.032   25.766    0.000\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .N1                0.819    0.036   22.656    0.000\n   .N2                0.828    0.034   24.025    0.000\n   .N3                1.245    0.042   29.526    0.000\n   .N4                1.714    0.051   33.779    0.000\n   .N5                1.968    0.057   34.494    0.000\n    Neuroticism       1.000                           \n\n\n\nlibrary(semPlot)\nsemPaths(fit.mod1,\n         ###color       = \"black\",\n         what           = c(\"std\"),\n         weighted       = FALSE,\n         sizeLat        = 10,\n         sizeMan        = 8,\n         nCharNodes     = 0,\n         edge.label.cex = 1,\n         label.cex      = 1, \n         edge.color     = \"black\",\n         mar            = c(5,5,5,5))",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Plotting</span>"
+    ]
   }
 ]

@@ -15,8 +15,9 @@ book:
     - part: "Part I: Measurement model"
     - Estimating_correlations.qmd
     - Spearman.qmd
-    - Measurement models.qmd
+    - Measurement_models.qmd
     - Multiple_factors.qmd
+    - Plotting_models.qmd
     - part: "Part II: Diagnosing and improving the measurement model"
     - Modification_indices.qmd
     - EFA.qmd
