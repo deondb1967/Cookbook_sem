@@ -1,0 +1,49 @@
+---
+title: "Estimating correlations with lavaan"
+---
+
+```{r warning = FALSE, message = FALSE}
+library(lavaan)
+library(flexplot)
+library(flexplavaan)
+library(psychTools)
+library(psych)
+```
+
+## Finding the Pearson correlations of a set of variables
+
+Say we want to find the correlations of the five Agreeableness items, which are located in columns 1 to 5 in the bfi data frame. We can use the **`lavCor()`** function of the lavaan package to easily find the correlations as follows: **`lavCor(bfi[1:5])`**. 
+
+In the example below we find the Pearson correlations of the five Neuroticism items, which are located in columns 16 to 20.
+
+```{r warning = FALSE, message = FALSE}
+lavCor(bfi[16:20])
+```
+
+## The statistical signifcance of the correlations
+
+We can also obtain information about (a) the number of cases whose data were included in estimating the correlations (by default cases with missing data are removed listwise), (b) the covariances and variances of the items, and (c) the statistical significance of the correlations. To do this we need to specify that we want the output in lavaan format and that we want to estimate the standard errors of the covariances. We could do this for the five Agreeableness items as follows: **`Agree_cors <- lavCor(bfi[1:5], se = standard, output = "lavaan")`**. Note that we store the results in an object that here is named **`Agree_cors`**. Finally, we ask for a summary of **`Agree_cors`** and specify that we want to see the standardized parameters (i.e. the correlations). We could do that as follows: **`summary(Agree_cors, standardized = TRUE)`**
+
+In the example below we find the correlations of the five Neuroticism items, request standard errors, specify that the output should be in lavaan format, and store the results as **`Neur_cors`**.
+
+```{r warning = FALSE, message = FALSE}
+Neur_cors <- lavCor(bfi[16:20], output = "lavaan", se = "standard")
+summary(Neur_cors, standardized = TRUE)
+```
+
+## Using full information maximum likelihood to deal with missing data
+
+Note that the lavaan output shows that only 2694 of the 2800 cases were used to find the correlations (this is due to some missing data). We can use the data of all 2800 cases by using full information maximum likelihood (fiml) to estimate the correlations. This technique uses all the information in the data set to estimate the correlations and no cases are removed.
+
+We can use the same code as before, but add the specification that the missing data should be dealt with using full information maximum likelihood.
+
+```{r warning = FALSE, message = FALSE}
+lavCor(bfi[16:20], missing = "fiml")
+```
+
+
+```{r warning = FALSE, message = FALSE}
+Neur_cors_fiml <- lavCor(bfi[16:20], missing = "fiml", se = "standard", output = "lavaan")
+summary(Neur_cors_fiml, standardized = TRUE)
+```
+
