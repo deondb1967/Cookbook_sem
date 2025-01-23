@@ -12,14 +12,6 @@ library(psychTools)
 library(psych)
 library(tidyverse)
 
-scree(bfi[, c(1:5, 16:20)])
-
-fa.parallel(bfi[, c(1:5, 16:20)])
-
-fa(bfi[, c(1:5, 16:20)], nfactors = 2)
-
-fa(bfi[, c(1:5, 16:20)], nfactors = 3)
-
 bfi %>% 
   select(1:5, 16:20) %>% 
   scree()
