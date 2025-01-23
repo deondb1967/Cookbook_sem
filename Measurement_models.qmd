@@ -1,0 +1,67 @@
+---
+title: "Congeneric, tau-equivalent and parallel measurement models"
+---
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+library(psychTools)
+library(lavaan)
+library(semTools)
+library(flexplavaan)
+```
+
+```{r}
+mod.congeneric <- '
+N =~ N1 + N2 + N3 + N4 + N5
+'
+
+fit.mod.congeneric <- cfa(mod.congeneric, data = bfi)
+
+visualize(fit.mod.congeneric)
+measurement_plot(fit.mod.congeneric, sample = 300)
+residual_plots(fit.mod.congeneric)
+
+```
+
+
+
+```{r}
+mod.tau.eq <- '
+N =~ a*N1 + a*N2 + a*N3 + a*N4 + a*N5
+'
+
+fit.mod.tau.eq <- cfa(mod.tau.eq, data = bfi, std.lv = TRUE)
+
+visualize(fit.mod.tau.eq)
+measurement_plot(fit.mod.tau.eq, sample = 300)
+residual_plots(fit.mod.tau.eq)
+```
+
+
+
+```{r}
+mod.parallel <- '
+N =~ a*N1 + a*N2 + a*N3 + a*N4 + a*N5
+
+N1 ~~ b*N1
+N2 ~~ b*N2
+N3 ~~ b*N3
+N4 ~~ b*N4
+N5 ~~ b*N5
+'
+
+fit.mod.parallel <- cfa(mod.parallel, data = bfi, std.lv = TRUE)
+
+
+visualize(fit.mod.parallel)
+measurement_plot(fit.mod.parallel, sample = 300)
+residual_plots(fit.mod.parallel)
+```
+
+```{r}
+models.fit <- compareFit(fit.mod.congeneric, fit.mod.tau.eq, fit.mod.parallel)
+
+summary(models.fit)
+```
+
