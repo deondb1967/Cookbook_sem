@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Dealing with missing data – Structural equation modeling with lavaan in R: Examples and excercises</title>
+<title>14&nbsp; Dealing with missing data – Structural equation modeling with lavaan in R: Examples and excercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./MissingDataExamples.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./MissingDataExamples.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,20 +183,26 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Vectors_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ReadingStoringData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DataManagement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Subsetting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -206,31 +212,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Estimating_correlations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Spearman.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single factor model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Single factor model</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Measurement_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Multiple_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Plotting_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,19 +246,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EFA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Correlated_residuals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -262,13 +268,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MissingDataExamples.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -287,15 +293,15 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-packages-used-in-the-demonstration" id="toc-r-packages-used-in-the-demonstration" class="nav-link active" data-scroll-target="#r-packages-used-in-the-demonstration"><span class="header-section-number">13.1</span> <em>R</em> packages used in the demonstration</a></li>
-  <li><a href="#cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory" id="toc-cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory" class="nav-link" data-scroll-target="#cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory"><span class="header-section-number">13.2</span> CFA of the 5-item Neuroticism scale of the Big Five Inventory</a></li>
-  <li><a href="#examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random" id="toc-examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random" class="nav-link" data-scroll-target="#examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random"><span class="header-section-number">13.3</span> Examining patterns of missing data and testing for “missing completely at random”</a></li>
-  <li><a href="#full-information-maximum-likelihood-estimation" id="toc-full-information-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#full-information-maximum-likelihood-estimation"><span class="header-section-number">13.4</span> Full information maximum likelihood estimation</a></li>
-  <li><a href="#multiple-imputation-with-the-amelia-and-lavaan.mi-packages" id="toc-multiple-imputation-with-the-amelia-and-lavaan.mi-packages" class="nav-link" data-scroll-target="#multiple-imputation-with-the-amelia-and-lavaan.mi-packages"><span class="header-section-number">13.5</span> Multiple imputation with the Amelia and lavaan.mi packages</a>
+  <li><a href="#r-packages-used-in-the-demonstration" id="toc-r-packages-used-in-the-demonstration" class="nav-link active" data-scroll-target="#r-packages-used-in-the-demonstration"><span class="header-section-number">14.1</span> <em>R</em> packages used in the demonstration</a></li>
+  <li><a href="#cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory" id="toc-cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory" class="nav-link" data-scroll-target="#cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory"><span class="header-section-number">14.2</span> CFA of the 5-item Neuroticism scale of the Big Five Inventory</a></li>
+  <li><a href="#examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random" id="toc-examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random" class="nav-link" data-scroll-target="#examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random"><span class="header-section-number">14.3</span> Examining patterns of missing data and testing for “missing completely at random”</a></li>
+  <li><a href="#full-information-maximum-likelihood-estimation" id="toc-full-information-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#full-information-maximum-likelihood-estimation"><span class="header-section-number">14.4</span> Full information maximum likelihood estimation</a></li>
+  <li><a href="#multiple-imputation-with-the-amelia-and-lavaan.mi-packages" id="toc-multiple-imputation-with-the-amelia-and-lavaan.mi-packages" class="nav-link" data-scroll-target="#multiple-imputation-with-the-amelia-and-lavaan.mi-packages"><span class="header-section-number">14.5</span> Multiple imputation with the Amelia and lavaan.mi packages</a>
   <ul class="collapse">
-  <li><a href="#fit-the-model-to-the-imputed-data-sets-and-pool-the-results" id="toc-fit-the-model-to-the-imputed-data-sets-and-pool-the-results" class="nav-link" data-scroll-target="#fit-the-model-to-the-imputed-data-sets-and-pool-the-results"><span class="header-section-number">13.5.1</span> Fit the model to the imputed data sets and pool the results</a></li>
+  <li><a href="#fit-the-model-to-the-imputed-data-sets-and-pool-the-results" id="toc-fit-the-model-to-the-imputed-data-sets-and-pool-the-results" class="nav-link" data-scroll-target="#fit-the-model-to-the-imputed-data-sets-and-pool-the-results"><span class="header-section-number">14.5.1</span> Fit the model to the imputed data sets and pool the results</a></li>
   </ul></li>
-  <li><a href="#multiple-imputation-with-ordinal-variables" id="toc-multiple-imputation-with-ordinal-variables" class="nav-link" data-scroll-target="#multiple-imputation-with-ordinal-variables"><span class="header-section-number">13.6</span> Multiple imputation with ordinal variables</a></li>
+  <li><a href="#multiple-imputation-with-ordinal-variables" id="toc-multiple-imputation-with-ordinal-variables" class="nav-link" data-scroll-target="#multiple-imputation-with-ordinal-variables"><span class="header-section-number">14.6</span> Multiple imputation with ordinal variables</a></li>
   </ul>
 </nav>
     </div>
@@ -304,7 +310,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></h1>
 </div>
 
 
@@ -341,8 +347,8 @@ window.Quarto = {
 </ul>
 <p>We don’t address the philosophy, pitfalls, or merits of different methods of dealing with missing data, nor do we discuss the different methods of multiple imputation and pooling of results. We just show how a researcher can easily deal with missing data if they have made the decision to do so using either “fiml” or multiple imputation with the defaults of the relevant packages.</p>
 <p>Mikko Rönkkö made nice videos about missing data and how to deal with it. He discusses different missing data mechanisms here: <a href="https://www.youtube.com/watch?v=TxcLeMsZ7Bk"><strong>https://www.youtube.com/watch?v=TxcLeMsZ7Bk</strong></a>. He discusses full information maximum likelihood estimation here: <a href="https://www.youtube.com/watch?v=6CQ526G8rOk"><strong>https://www.youtube.com/watch?v=6CQ526G8rOk</strong></a>. Finally, he discusses multiple imputation here: <a href="https://www.youtube.com/watch?v=gQkd_MylHQ8"><strong>https://www.youtube.com/watch?v=gQkd_MylHQ8</strong></a>.</p>
-<section id="r-packages-used-in-the-demonstration" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="r-packages-used-in-the-demonstration"><span class="header-section-number">13.1</span> <em>R</em> packages used in the demonstration</h2>
+<section id="r-packages-used-in-the-demonstration" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="r-packages-used-in-the-demonstration"><span class="header-section-number">14.1</span> <em>R</em> packages used in the demonstration</h2>
 <p>We use the following packages: <code>psychTools</code> (to access the <code>bfi</code> data set), <code>mice</code> (to detect the patterns of missing data), <code>naniar</code> (to perform Little’s MCAR test) , <code>Amelia</code> (to perform the multiple imputation), <code>lavaan</code> (to perform the confirmatory factor analysis), and <code>lavaan.mi</code> (to perform the confirmatory factor analysis with multiple complete data sets).</p>
 <p>These packages need to be installed once. To install the packages you need to remove the # at the beginning of each row (<em>R</em> does not evaluate any code that follows a #).</p>
 <div class="cell">
@@ -358,8 +364,8 @@ window.Quarto = {
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#remotes::install_github("TDJorgensen/lavaan.mi")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory"><span class="header-section-number">13.2</span> CFA of the 5-item Neuroticism scale of the Big Five Inventory</h2>
+<section id="cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="cfa-of-the-5-item-neuroticism-scale-of-the-big-five-inventory"><span class="header-section-number">14.2</span> CFA of the 5-item Neuroticism scale of the Big Five Inventory</h2>
 <p>I performed a confirmatory factor analysis of the Neuroticism scale of the Big Five Inventory. The data are in the <code>bfi</code> data frame, which can be found in the <code>psychTools</code> package. There were 2800 participants, but there were only 2694 complete cases. For convenience, I stored the five Neuroticism items (which are in columns 16 to 20 of the <code>bfi</code> data frame) in a new data frame called <code>Ndata</code>.</p>
 <p>In this baseline analysis I ignored the missing data. By default, lavaan employs <strong>listwise deletion</strong> when missing data are encountered. At the top of the output it can be seen that the number of observed (<em>n</em> = 2800) and used (<em>n</em> = 2694) cases differ.</p>
 <div class="cell">
@@ -470,8 +476,8 @@ Variances:
 </div>
 </div>
 </section>
-<section id="examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random"><span class="header-section-number">13.3</span> Examining patterns of missing data and testing for “missing completely at random”</h2>
+<section id="examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="examining-patterns-of-missing-data-and-testing-for-missing-completely-at-random"><span class="header-section-number">14.3</span> Examining patterns of missing data and testing for “missing completely at random”</h2>
 <p>Next, I employed the <code>md.pattern()</code> function of the <code>mice</code> package to identify the patterns of missing data. I also used the <code>mcar_test()</code> function of the <code>naniar</code> package to perform Little’s missing completely at random (MCAR) test. There were 11 missing data patterns. There were 11 missing values for item N3, 21 for item N2, 22 for item N1, 29 for item N5, and 36 for item N4, which gives a total of 119 missing values. The pattern with the most missing values contained three missing values (four persons produced this pattern).</p>
 <p>Little’s MCAR test showed that the null hypothesis that the missing data are completely at random could not be rejected: <span class="math inline">\(\chi^2(34) = 27.2, p = 0.791\)</span></p>
 <div class="cell">
@@ -509,8 +515,8 @@ Variances:
 </div>
 </div>
 </section>
-<section id="full-information-maximum-likelihood-estimation" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="full-information-maximum-likelihood-estimation"><span class="header-section-number">13.4</span> Full information maximum likelihood estimation</h2>
+<section id="full-information-maximum-likelihood-estimation" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="full-information-maximum-likelihood-estimation"><span class="header-section-number">14.4</span> Full information maximum likelihood estimation</h2>
 <p>Second, I estimated the parameters of the confirmatory factor analysis model using full information maximum likelihood (“fiml”). This approach uses all the available information in the data set to estimate the parameters. It does not estimate what the missing values would be and it does not fill it in to complete the data set. Note that all 2800 cases were now used.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fit.Nmodel.fiml <span class="ot">&lt;-</span> <span class="fu">cfa</span>(Nmodel,</span>
@@ -620,8 +626,8 @@ Variances:
 </div>
 </div>
 </section>
-<section id="multiple-imputation-with-the-amelia-and-lavaan.mi-packages" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="multiple-imputation-with-the-amelia-and-lavaan.mi-packages"><span class="header-section-number">13.5</span> Multiple imputation with the Amelia and lavaan.mi packages</h2>
+<section id="multiple-imputation-with-the-amelia-and-lavaan.mi-packages" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="multiple-imputation-with-the-amelia-and-lavaan.mi-packages"><span class="header-section-number">14.5</span> Multiple imputation with the Amelia and lavaan.mi packages</h2>
 <p>Next, I used the <code>Amelia</code> and <code>lavaan.mi</code> packages to (a) perform multiple imputation to obtain 20 data sets that contain plausible estimates of the missing values, (b) fit the confirmatory factor analysis model to each of the data sets, and (c) report the pooled results.</p>
 <p>The 20 complete data sets were stored as a list in an object I labeled <code>Ndata.mi</code>. I stored this list in a new object I labeled <code>imps</code>.</p>
 <div class="cell">
@@ -634,8 +640,8 @@ Variances:
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>imps          <span class="ot">&lt;-</span> Ndata.mi<span class="sc">$</span>imputations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="fit-the-model-to-the-imputed-data-sets-and-pool-the-results" class="level3" data-number="13.5.1">
-<h3 data-number="13.5.1" class="anchored" data-anchor-id="fit-the-model-to-the-imputed-data-sets-and-pool-the-results"><span class="header-section-number">13.5.1</span> Fit the model to the imputed data sets and pool the results</h3>
+<section id="fit-the-model-to-the-imputed-data-sets-and-pool-the-results" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="fit-the-model-to-the-imputed-data-sets-and-pool-the-results"><span class="header-section-number">14.5.1</span> Fit the model to the imputed data sets and pool the results</h3>
 <p>I fitted the confirmatory factor analysis model to the imputed data sets in <code>imps</code> using the <code>cfa.mi()</code> function of the <code>lavaan.mi</code> package. The results are stored in <code>fit.Nmodel.mi</code>. We access the results by asking for a summary. Note that the parameter estimates are very similar to those obtained with listwise deletion and full information maximum likelihood estimation. Also, the standard errors of the parameters are very similar across the three analyses.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fit.Nmodel.mi <span class="ot">&lt;-</span> <span class="fu">cfa.mi</span>(Nmodel, </span>
@@ -770,8 +776,8 @@ Variances:
 </div>
 </section>
 </section>
-<section id="multiple-imputation-with-ordinal-variables" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="multiple-imputation-with-ordinal-variables"><span class="header-section-number">13.6</span> Multiple imputation with ordinal variables</h2>
+<section id="multiple-imputation-with-ordinal-variables" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="multiple-imputation-with-ordinal-variables"><span class="header-section-number">14.6</span> Multiple imputation with ordinal variables</h2>
 <p>The items of the Neuroticism scale are strictly ordinal with six ordered categories. The observed values should be 1, 2, 3, 4, 5 or 6. If we don’t instruct <code>amelia()</code> to treat the items as ordinal, the function will treat them as continuous variables and the imputed values will contain decimals (which is not what we want). The imputed values may even extend beyond the range of the original six-point rating scale (which is really not what we want). Here I impute the missing data with the <code>amelia()</code> function, but now with the added argument that the items are ordinal. The imputed values will now be integers rather than decimals, which is what we want. The results are almost indistinguishable from the previous results.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Amelia)</span>
@@ -1343,12 +1349,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Correlated_residuals.html" class="pagination-link" aria-label="Correlated residuals">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

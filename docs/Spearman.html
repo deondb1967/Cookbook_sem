@@ -8,7 +8,7 @@
 
 <meta name="author" content="Deon de Bruin">
 
-<title>6&nbsp; Single factor model – Structural equation modeling with lavaan in R: Examples and excercises</title>
+<title>7&nbsp; Single factor model – Structural equation modeling with lavaan in R: Examples and excercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Spearman.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single factor model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Spearman.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Single factor model</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,20 +155,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Vectors_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ReadingStoringData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DataManagement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Subsetting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -178,31 +184,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Estimating_correlations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Spearman.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single factor model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Single factor model</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Measurement_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Multiple_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Plotting_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -212,19 +218,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EFA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Correlated_residuals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -234,13 +240,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MissingDataExamples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -262,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single factor model</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Single factor model</span></h1>
 </div>
 
 
@@ -290,61 +296,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexplavaan)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>bfi<span class="sc">$</span>A1 <span class="ot">&lt;-</span> <span class="dv">7</span> <span class="sc">-</span> bfi<span class="sc">$</span>A1</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">'</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">Agreeableness =~ A1 + A2 + A3 + A4 + A5</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>fit.mod1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod1, <span class="at">data =</span> bfi)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod1, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">Neuroticism =~ N1 + N2 + N3 + N4 + N5</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>fit.mod1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod1, <span class="at">data =</span> bfi)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod1, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-19 ended normally after 33 iterations
+<pre><code>lavaan 0.6-19 ended normally after 26 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
   Number of model parameters                        10
 
                                                   Used       Total
-  Number of observations                          2709        2800
+  Number of observations                          2694        2800
 
 Model Test User Model:
                                                       
-  Test statistic                                86.696
+  Test statistic                               360.932
   Degrees of freedom                                 5
   P-value (Chi-square)                           0.000
 
 Model Test Baseline Model:
 
-  Test statistic                              2533.636
+  Test statistic                              4724.621
   Degrees of freedom                                10
   P-value                                        0.000
 
 User Model versus Baseline Model:
 
-  Comparative Fit Index (CFI)                    0.968
-  Tucker-Lewis Index (TLI)                       0.935
+  Comparative Fit Index (CFI)                    0.925
+  Tucker-Lewis Index (TLI)                       0.849
 
 Loglikelihood and Information Criteria:
 
-  Loglikelihood user model (H0)             -21777.580
-  Loglikelihood unrestricted model (H1)     -21734.232
+  Loglikelihood user model (H0)             -23078.504
+  Loglikelihood unrestricted model (H1)     -22898.038
                                                       
-  Akaike (AIC)                               43575.160
-  Bayesian (BIC)                             43634.203
-  Sample-size adjusted Bayesian (SABIC)      43602.430
+  Akaike (AIC)                               46177.007
+  Bayesian (BIC)                             46235.995
+  Sample-size adjusted Bayesian (SABIC)      46204.222
 
 Root Mean Square Error of Approximation:
 
-  RMSEA                                          0.078
-  90 Percent confidence interval - lower         0.064
-  90 Percent confidence interval - upper         0.092
-  P-value H_0: RMSEA &lt;= 0.050                    0.001
-  P-value H_0: RMSEA &gt;= 0.080                    0.415
+  RMSEA                                          0.163
+  90 Percent confidence interval - lower         0.149
+  90 Percent confidence interval - upper         0.177
+  P-value H_0: RMSEA &lt;= 0.050                    0.000
+  P-value H_0: RMSEA &gt;= 0.080                    1.000
 
 Standardized Root Mean Square Residual:
 
-  SRMR                                           0.032
+  SRMR                                           0.056
 
 Parameter Estimates:
 
@@ -354,21 +358,21 @@ Parameter Estimates:
 
 Latent Variables:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-  Agreeableness =~                                                      
-    A1                1.000                               0.528    0.376
-    A2                1.465    0.090   16.310    0.000    0.774    0.658
-    A3                1.880    0.113   16.696    0.000    0.994    0.762
-    A4                1.358    0.093   14.626    0.000    0.717    0.483
-    A5                1.497    0.093   16.098    0.000    0.791    0.627
+  Neuroticism =~                                                        
+    N1                1.000                               1.286    0.818
+    N2                0.952    0.023   40.826    0.000    1.225    0.803
+    N3                0.892    0.024   36.883    0.000    1.147    0.717
+    N4                0.677    0.024   27.818    0.000    0.872    0.554
+    N5                0.632    0.025   24.973    0.000    0.813    0.502
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-   .A1                1.693    0.048   34.915    0.000    1.693    0.858
-   .A2                0.784    0.029   27.443    0.000    0.784    0.567
-   .A3                0.714    0.035   20.314    0.000    0.714    0.420
-   .A4                1.694    0.051   33.277    0.000    1.694    0.767
-   .A5                0.965    0.033   28.977    0.000    0.965    0.607
-    Agreeableness     0.279    0.031    8.870    0.000    1.000    1.000</code></pre>
+   .N1                0.819    0.036   22.656    0.000    0.819    0.331
+   .N2                0.828    0.034   24.025    0.000    0.828    0.356
+   .N3                1.245    0.042   29.526    0.000    1.245    0.486
+   .N4                1.714    0.051   33.779    0.000    1.714    0.693
+   .N5                1.968    0.057   34.494    0.000    1.968    0.748
+    Neuroticism       1.655    0.070   23.756    0.000    1.000    1.000</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(fit.mod1, <span class="at">subset =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -378,7 +382,7 @@ Variances:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">measurement_plot</span>(fit.mod1, <span class="at">sample =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">measurement_plot</span>(fit.mod1, <span class="at">sample =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -935,12 +939,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Estimating_correlations.html" class="pagination-link" aria-label="Estimating correlations with lavaan">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Measurement_models.html" class="pagination-link" aria-label="Congeneric, tau-equivalent and parallel measurement models">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

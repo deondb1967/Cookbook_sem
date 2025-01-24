@@ -25,3 +25,21 @@ summary(fit.mod4,
         standardized = TRUE, 
         fit.measures = TRUE)
 ```
+
+```{r}
+library(semPlot)
+semPaths(fit.mod4,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 6,
+         nCharNodes     = 0,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel")
+```

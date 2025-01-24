@@ -1,0 +1,88 @@
+---
+title: "Vectors and data frames"
+---
+
+## Vector
+
+A vector is a collection of elements that are all of the same type.
+
+## Character vectors
+
+```{r}
+c("Peter", "Paul", "Mary", "Janette") 
+
+c("male", "male", "female", "female")
+```
+
+## Logical vectors
+
+```{r}
+c(TRUE, FALSE, TRUE, TRUE)
+```
+
+## Numeric vectors
+
+A numeric vector contains numbers. Sometimes, however, the numbers are not used to indicate differences in quantity, but rather differences in type or quality. For instance, in the second vector the numbers 1, 2 and 3 are used to indicate the divisions in which Peter, Paul, Mary and Janette work.
+
+```{r}
+c(1,3,6,8)
+
+c(1, 2, 2, 3)
+```
+
+## Storing vectors as objects
+
+We can store vectors for further use by assigning them to an "object". We can give any names we want to the objects that we create.
+
+```{r}
+
+name <- c("Peter", "Paul", "Mary", "Janette") 
+
+sex  <- c("male", "male", "female", "female") 
+
+graduate <- c(TRUE, FALSE, TRUE, TRUE) 
+
+experience <- c(1, 3, 6, 8)
+
+division <- c(1, 2, 2, 3)
+```
+
+## Combining vectors into a data frame
+
+We can combine vectors into a data frame, on condition that the vectors are of the same length. The order in which we type the names of the vectors determines their positions in the data frame. Each of the vectors becomes a column in the data frame.
+
+```{r}
+df <- data.frame(name, sex, division, graduate, experience)
+
+df
+
+names(df)
+```
+
+## Changing a vector to a factor
+
+The sex variable is stored as a character vector, whereas the division variable is stored as a numeric vector. Both of these variables indicate membership to different levels of a categorical variable. For instance, the words "male" and "female" are different levels of the categorical variable "sex". Similarly, the numbers 1, 2 and 3 are used to indicate different levels, i.e. "finance", "HR", and "marketing" of the categorical variable "division". We need to instruct *R* to treat the sex and division variables as categorical variables. In *R*, a categorical variables is referred to as a factor.
+
+```{r}
+library(tidyverse)
+df$sex <- factor(df$sex)
+
+
+df$division <- factor(df$division, 
+                      levels = c(1, 2, 3),
+                      labels = c("Finance", 
+                                 "HR",
+                                 "Marketing"))
+
+
+#df2 <- df %>% 
+#  mutate(division = factor(division,
+#                           levels = c(1, 2, 3),
+#                           labels = c("Finance",
+#                                      "HR",
+#                                      "Marketing")))
+
+
+dplyr::glimpse(df)
+str(df)
+```

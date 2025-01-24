@@ -9,6 +9,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - Vectors_dataframes.qmd
     - ReadingStoringData.qmd
     - DataManagement.qmd
     - Subsetting.qmd
