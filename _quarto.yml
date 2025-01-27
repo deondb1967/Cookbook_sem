@@ -9,21 +9,22 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - part: "Part I: Introduction to R"
     - Vectors_dataframes.qmd
     - ReadingStoringData.qmd
     - DataManagement.qmd
     - Subsetting.qmd
-    - part: "Part I: Measurement model"
+    - part: "Part II: Measurement model"
     - Estimating_correlations.qmd
     - Spearman.qmd
     - Measurement_models.qmd
     - Multiple_factors.qmd
     - Plotting_models.qmd
-    - part: "Part II: Diagnosing and improving the measurement model"
+    - part: "Part III: Diagnosing and improving the measurement model"
     - Modification_indices.qmd
     - EFA.qmd
     - Correlated_residuals.qmd
-    - part: "Part III: Structural model"
+    - part: "Part IV: Structural model"
     - MissingDataExamples.qmd
     - summary.qmd
     - references.qmd
