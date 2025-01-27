@@ -19,13 +19,17 @@ book:
     - Spearman.qmd
     - Measurement_models.qmd
     - Multiple_factors.qmd
+    - Higher_order.qmd
     - Plotting_models.qmd
+    - Measurement_invariance.qmd
     - part: "Part III: Diagnosing and improving the measurement model"
     - Modification_indices.qmd
     - EFA.qmd
     - Correlated_residuals.qmd
     - part: "Part IV: Structural model"
     - MissingDataExamples.qmd
+    - Mediation.qmd
+    - Moderation.qmd
     - summary.qmd
     - references.qmd
   page-navigation: true

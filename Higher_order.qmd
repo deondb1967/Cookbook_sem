@@ -1,0 +1,102 @@
+---
+title: "Higher order models"
+---
+
+## A second-order factor analysis of nine cognitive variables
+
+```{r}
+library(lavaan)
+library(psych)
+library(semPlot)
+mod <- '
+Comprehension =~ Sentences + Vocabulary + Sent.Completion
+Fluency       =~ First.Letters + Four.Letter.Words + Suffixes
+Reasoning     =~ Letter.Series + Pedigrees + Letter.Group
+'
+
+fit.mod <- cfa(mod, sample.cov = Thurstone, sample.nobs = 500, std.lv = TRUE)
+summary(fit.mod, standardized = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+semPaths(fit.mod,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 8,
+         nCharNodes     = 3,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel")
+```
+
+
+
+```{r}
+mod <- '
+Comprehension =~ Sentences + Vocabulary + Sent.Completion
+Fluency       =~ First.Letters + Four.Letter.Words + Suffixes
+Reasoning     =~ Letter.Series + Pedigrees + Letter.Group
+
+General       =~ Comprehension + Fluency + Reasoning
+'
+
+fit.mod <- cfa(mod, sample.cov = Thurstone, sample.nobs = 500, std.lv = TRUE)
+summary(fit.mod, standardized = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+semPaths(fit.mod,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 8,
+         nCharNodes     = 3,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel")
+```
+```{r}
+mod <- '
+Comprehension =~ Sentences + Vocabulary + Sent.Completion
+Fluency       =~ First.Letters + Four.Letter.Words + Suffixes
+Reasoning     =~ Letter.Series + Pedigrees + Letter.Group
+
+G =~ Sentences + Vocabulary + Sent.Completion +
+     First.Letters + Four.Letter.Words + Suffixes +
+     Letter.Series + Pedigrees + Letter.Group
+'
+
+fit.mod <- cfa(mod, sample.cov = Thurstone, sample.nobs = 500, std.lv = TRUE, orthogonal = TRUE)
+summary(fit.mod, standardized = TRUE, fit.measures = TRUE)
+```
+
+
+```{r}
+semPaths(fit.mod,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 8,
+         nCharNodes     = 3,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel",
+         layout = "spring")
+```
+
