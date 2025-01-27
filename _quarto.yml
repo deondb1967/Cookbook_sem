@@ -22,6 +22,7 @@ book:
     - Higher_order.qmd
     - Plotting_models.qmd
     - Measurement_invariance.qmd
+    - MIMIC.qmd
     - part: "Part III: Diagnosing and improving the measurement model"
     - Modification_indices.qmd
     - EFA.qmd
