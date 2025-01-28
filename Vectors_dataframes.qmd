@@ -14,7 +14,7 @@ library(gt)
 
 In *R* a vector is a collection of elements that are all of the same type. A typical data set consists of a number of rows that each represents a case, and a number of columns. Each of the columns is a vector.
 
-We can create a vector in *R* by concatanating the elements. We do this by typing the elements inside round brackets. Each element should be separated by a comma.String or character elements should be enclosed in quotation marks. Finally, we place a c before the round brackets.
+We can create a vector in *R* by concatenating the elements. We do this by typing the elements inside round brackets. Each element should be separated by a comma.String or character elements should be enclosed in quotation marks. Finally, we place a c before the round brackets.
 
 For instance, say we have the following elements, 10, 8, 12, 15. We can combine them into a vector as follows: c(10, 8, 12, 15). Similarly, we can combine the elements Dutch, Mandarin, Swahili and Russian into a vector as follows: c("Dutch", "Mandarin", "Swahili", "Russian").
 
