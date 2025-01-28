@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Vectors and data frames – Structural equation modeling with lavaan in R: Examples and excercises</title>
+<title>3&nbsp; Vectors and data frames – Structural equation modeling with lavaan in R: Examples and excercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./ReadingStoringData.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./Installing_packages.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Vectors_dataframes.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Vectors_dataframes.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,26 +158,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Installing_packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Packages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Vectors_dataframes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ReadingStoringData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DataManagement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data management in <em>R</em></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Subsetting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Subsetting a data frame using the dplyr package</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -187,55 +193,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Estimating_correlations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimating correlations with lavaan</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Spearman.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Single factor model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single factor model</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Measurement_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Multiple_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Higher_order.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Higher order models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Higher order models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Plotting_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Measurement_invariance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Measurement invariance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Measurement invariance</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MIMIC Models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">MIMIC models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">MIMIC models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Ordinal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Measurement models with ordinal indicators</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Measurement models with ordinal indicators</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -245,19 +251,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EFA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Correlated_residuals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -267,25 +273,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MissingDataExamples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Mediation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Mediation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mediation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Moderation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Moderation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Moderation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -304,16 +310,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#vector" id="toc-vector" class="nav-link active" data-scroll-target="#vector"><span class="header-section-number">2.1</span> Vector</a></li>
-  <li><a href="#a-data-frame-consists-of-vectors" id="toc-a-data-frame-consists-of-vectors" class="nav-link" data-scroll-target="#a-data-frame-consists-of-vectors"><span class="header-section-number">2.2</span> A data frame consists of vectors</a></li>
-  <li><a href="#creating-a-data-frame-in-r" id="toc-creating-a-data-frame-in-r" class="nav-link" data-scroll-target="#creating-a-data-frame-in-r"><span class="header-section-number">2.3</span> Creating a data frame in R</a></li>
-  <li><a href="#character-vectors" id="toc-character-vectors" class="nav-link" data-scroll-target="#character-vectors"><span class="header-section-number">2.4</span> Character vectors</a></li>
-  <li><a href="#logical-vectors" id="toc-logical-vectors" class="nav-link" data-scroll-target="#logical-vectors"><span class="header-section-number">2.5</span> Logical vectors</a></li>
-  <li><a href="#numeric-vectors" id="toc-numeric-vectors" class="nav-link" data-scroll-target="#numeric-vectors"><span class="header-section-number">2.6</span> Numeric vectors</a></li>
-  <li><a href="#storing-vectors-as-objects" id="toc-storing-vectors-as-objects" class="nav-link" data-scroll-target="#storing-vectors-as-objects"><span class="header-section-number">2.7</span> Storing vectors as objects</a></li>
-  <li><a href="#combining-vectors-into-a-data-frame" id="toc-combining-vectors-into-a-data-frame" class="nav-link" data-scroll-target="#combining-vectors-into-a-data-frame"><span class="header-section-number">2.8</span> Combining vectors into a data frame</a></li>
-  <li><a href="#changing-a-character-or-numeric-vector-to-a-factor" id="toc-changing-a-character-or-numeric-vector-to-a-factor" class="nav-link" data-scroll-target="#changing-a-character-or-numeric-vector-to-a-factor"><span class="header-section-number">2.9</span> Changing a character or numeric vector to a factor</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.10</span> Exercise</a></li>
+  <li><a href="#vector" id="toc-vector" class="nav-link active" data-scroll-target="#vector"><span class="header-section-number">3.1</span> Vector</a></li>
+  <li><a href="#a-data-frame-consists-of-vectors" id="toc-a-data-frame-consists-of-vectors" class="nav-link" data-scroll-target="#a-data-frame-consists-of-vectors"><span class="header-section-number">3.2</span> A data frame consists of vectors</a></li>
+  <li><a href="#creating-a-data-frame-in-r" id="toc-creating-a-data-frame-in-r" class="nav-link" data-scroll-target="#creating-a-data-frame-in-r"><span class="header-section-number">3.3</span> Creating a data frame in R</a></li>
+  <li><a href="#character-vectors" id="toc-character-vectors" class="nav-link" data-scroll-target="#character-vectors"><span class="header-section-number">3.4</span> Character vectors</a></li>
+  <li><a href="#logical-vectors" id="toc-logical-vectors" class="nav-link" data-scroll-target="#logical-vectors"><span class="header-section-number">3.5</span> Logical vectors</a></li>
+  <li><a href="#numeric-vectors" id="toc-numeric-vectors" class="nav-link" data-scroll-target="#numeric-vectors"><span class="header-section-number">3.6</span> Numeric vectors</a></li>
+  <li><a href="#storing-vectors-as-objects" id="toc-storing-vectors-as-objects" class="nav-link" data-scroll-target="#storing-vectors-as-objects"><span class="header-section-number">3.7</span> Storing vectors as objects</a></li>
+  <li><a href="#combining-vectors-into-a-data-frame" id="toc-combining-vectors-into-a-data-frame" class="nav-link" data-scroll-target="#combining-vectors-into-a-data-frame"><span class="header-section-number">3.8</span> Combining vectors into a data frame</a></li>
+  <li><a href="#changing-a-character-or-numeric-vector-to-a-factor" id="toc-changing-a-character-or-numeric-vector-to-a-factor" class="nav-link" data-scroll-target="#changing-a-character-or-numeric-vector-to-a-factor"><span class="header-section-number">3.9</span> Changing a character or numeric vector to a factor</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">3.10</span> Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -322,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors and data frames</span></h1>
 </div>
 
 
@@ -344,34 +350,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="vector" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="vector"><span class="header-section-number">2.1</span> Vector</h2>
+<section id="vector" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="vector"><span class="header-section-number">3.1</span> Vector</h2>
 <p>In <em>R</em> a vector is a collection of elements that are all of the same type. A typical data set consists of a number of rows that each represents a case, and a number of columns. Each of the columns is a vector.</p>
-<p>We can create a vector in <em>R</em> by concatanating the elements. We do this by typing the elements inside round brackets. Each element should be separated by a comma.String or character elements should be enclosed in quotation marks. Finally, we place a c before the round brackets.</p>
+<p>We can create a vector in <em>R</em> by concatenating the elements. We do this by typing the elements inside round brackets. Each element should be separated by a comma.String or character elements should be enclosed in quotation marks. Finally, we place a c before the round brackets.</p>
 <p>For instance, say we have the following elements, 10, 8, 12, 15. We can combine them into a vector as follows: c(10, 8, 12, 15). Similarly, we can combine the elements Dutch, Mandarin, Swahili and Russian into a vector as follows: c(“Dutch”, “Mandarin”, “Swahili”, “Russian”).</p>
 </section>
-<section id="a-data-frame-consists-of-vectors" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="a-data-frame-consists-of-vectors"><span class="header-section-number">2.2</span> A data frame consists of vectors</h2>
+<section id="a-data-frame-consists-of-vectors" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="a-data-frame-consists-of-vectors"><span class="header-section-number">3.2</span> A data frame consists of vectors</h2>
 <p>Consider the following mini data set. There are four rows, each of which contains data of a particular person. There are five columns, each of which represents a variable. Note that each of the columns is a vector. The first column (name) vector is a character vector, the second (sex) is also a character vector, the third (division) is a numeric vector, the fourth (graduate) is a logical vector, and the fifth (experience) is a numeric vector.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qyigsrzfpm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qyigsrzfpm table {
+<div id="psjrsintsc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#psjrsintsc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qyigsrzfpm thead, #qyigsrzfpm tbody, #qyigsrzfpm tfoot, #qyigsrzfpm tr, #qyigsrzfpm td, #qyigsrzfpm th {
+#psjrsintsc thead, #psjrsintsc tbody, #psjrsintsc tfoot, #psjrsintsc tr, #psjrsintsc td, #psjrsintsc th {
   border-style: none;
 }
 
-#qyigsrzfpm p {
+#psjrsintsc p {
   margin: 0;
   padding: 0;
 }
 
-#qyigsrzfpm .gt_table {
+#psjrsintsc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -397,12 +403,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_caption {
+#psjrsintsc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qyigsrzfpm .gt_title {
+#psjrsintsc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -414,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#qyigsrzfpm .gt_subtitle {
+#psjrsintsc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -426,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#qyigsrzfpm .gt_heading {
+#psjrsintsc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -438,13 +444,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_bottom_border {
+#psjrsintsc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_col_headings {
+#psjrsintsc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -459,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_col_heading {
+#psjrsintsc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -479,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#qyigsrzfpm .gt_column_spanner_outer {
+#psjrsintsc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -491,15 +497,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#qyigsrzfpm .gt_column_spanner_outer:first-child {
+#psjrsintsc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qyigsrzfpm .gt_column_spanner_outer:last-child {
+#psjrsintsc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qyigsrzfpm .gt_column_spanner {
+#psjrsintsc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -511,11 +517,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#qyigsrzfpm .gt_spanner_row {
+#psjrsintsc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qyigsrzfpm .gt_group_heading {
+#psjrsintsc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -541,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#qyigsrzfpm .gt_empty_group_heading {
+#psjrsintsc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -556,15 +562,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#qyigsrzfpm .gt_from_md > :first-child {
+#psjrsintsc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qyigsrzfpm .gt_from_md > :last-child {
+#psjrsintsc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qyigsrzfpm .gt_row {
+#psjrsintsc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -583,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#qyigsrzfpm .gt_stub {
+#psjrsintsc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -596,7 +602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qyigsrzfpm .gt_stub_row_group {
+#psjrsintsc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -610,15 +616,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#qyigsrzfpm .gt_row_group_first td {
+#psjrsintsc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qyigsrzfpm .gt_row_group_first th {
+#psjrsintsc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qyigsrzfpm .gt_summary_row {
+#psjrsintsc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -628,16 +634,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qyigsrzfpm .gt_first_summary_row {
+#psjrsintsc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_first_summary_row.thick {
+#psjrsintsc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qyigsrzfpm .gt_last_summary_row {
+#psjrsintsc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -647,7 +653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_grand_summary_row {
+#psjrsintsc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -657,7 +663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qyigsrzfpm .gt_first_grand_summary_row {
+#psjrsintsc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -667,7 +673,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_last_grand_summary_row_top {
+#psjrsintsc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -677,11 +683,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_striped {
+#psjrsintsc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qyigsrzfpm .gt_table_body {
+#psjrsintsc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -690,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_footnotes {
+#psjrsintsc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -704,7 +710,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_footnote {
+#psjrsintsc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -713,7 +719,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qyigsrzfpm .gt_sourcenotes {
+#psjrsintsc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -727,7 +733,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qyigsrzfpm .gt_sourcenote {
+#psjrsintsc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -735,72 +741,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qyigsrzfpm .gt_left {
+#psjrsintsc .gt_left {
   text-align: left;
 }
 
-#qyigsrzfpm .gt_center {
+#psjrsintsc .gt_center {
   text-align: center;
 }
 
-#qyigsrzfpm .gt_right {
+#psjrsintsc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qyigsrzfpm .gt_font_normal {
+#psjrsintsc .gt_font_normal {
   font-weight: normal;
 }
 
-#qyigsrzfpm .gt_font_bold {
+#psjrsintsc .gt_font_bold {
   font-weight: bold;
 }
 
-#qyigsrzfpm .gt_font_italic {
+#psjrsintsc .gt_font_italic {
   font-style: italic;
 }
 
-#qyigsrzfpm .gt_super {
+#psjrsintsc .gt_super {
   font-size: 65%;
 }
 
-#qyigsrzfpm .gt_footnote_marks {
+#psjrsintsc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qyigsrzfpm .gt_asterisk {
+#psjrsintsc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qyigsrzfpm .gt_indent_1 {
+#psjrsintsc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qyigsrzfpm .gt_indent_2 {
+#psjrsintsc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qyigsrzfpm .gt_indent_3 {
+#psjrsintsc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qyigsrzfpm .gt_indent_4 {
+#psjrsintsc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qyigsrzfpm .gt_indent_5 {
+#psjrsintsc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qyigsrzfpm .katex-display {
+#psjrsintsc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qyigsrzfpm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#psjrsintsc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -852,11 +858,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We would typically create such a data set in software such as Excel, and then import the data into <em>R</em>. It is informative, however, to create such a data set in <em>R</em> as an excercise. In the paragraphs that follow we do that by first creating five vectors (each with four elements) and then concatenating (combining) the vectors into a data frame.</p>
 </section>
-<section id="creating-a-data-frame-in-r" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="creating-a-data-frame-in-r"><span class="header-section-number">2.3</span> Creating a data frame in R</h2>
+<section id="creating-a-data-frame-in-r" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="creating-a-data-frame-in-r"><span class="header-section-number">3.3</span> Creating a data frame in R</h2>
 </section>
-<section id="character-vectors" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="character-vectors"><span class="header-section-number">2.4</span> Character vectors</h2>
+<section id="character-vectors" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="character-vectors"><span class="header-section-number">3.4</span> Character vectors</h2>
 <p>First, we create character vectors for name and sex.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Peter"</span>, <span class="st">"Paul"</span>, <span class="st">"Mary"</span>, <span class="st">"Janette"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -869,8 +875,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="logical-vectors" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="logical-vectors"><span class="header-section-number">2.5</span> Logical vectors</h2>
+<section id="logical-vectors" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="logical-vectors"><span class="header-section-number">3.5</span> Logical vectors</h2>
 <p>Second, we create a logical vector for the graduate variable. Note that we do not enclose TRUE and FALSE with quotation marks.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -879,8 +885,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="numeric-vectors" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="numeric-vectors"><span class="header-section-number">2.6</span> Numeric vectors</h2>
+<section id="numeric-vectors" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="numeric-vectors"><span class="header-section-number">3.6</span> Numeric vectors</h2>
 <p>Third, we create numeric vectors for the division and experience variables. Note that the numbers in our two numeric vectors serve different purposes. The numbers in the experience vector represents differences in quantity (i.e.&nbsp;differences in years experience). By contrast, however, the numbers in the division column indicates differences in type or quality. For instance, in the division vector the numbers 1, 2 and 3 are used to indicate the divisions (finance, HR or marketing) in which Peter, Paul, Mary and Janette work.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Experience</span></span>
@@ -895,8 +901,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="storing-vectors-as-objects" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="storing-vectors-as-objects"><span class="header-section-number">2.7</span> Storing vectors as objects</h2>
+<section id="storing-vectors-as-objects" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="storing-vectors-as-objects"><span class="header-section-number">3.7</span> Storing vectors as objects</h2>
 <p>We can store a vector for further use by assigning it to an “object” that we give any name of our choosing. We can then use that name to access the vector. Below we assign the character vector with the names of the four participants to an object that we call “name”, the character vector containing information about the sex of the participants to an object we call “sex”, the numeric vector containing information about years experience to an object we call “experience”, the numeric vector containing information about the division in which a person works as an object we call “division”, and the logical vector containing information about graduate status as an object we call “graduate”.</p>
 <p>We can access the contents of any object by typing its name and then running it.</p>
 <div class="cell">
@@ -911,8 +917,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>division <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="combining-vectors-into-a-data-frame" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="combining-vectors-into-a-data-frame"><span class="header-section-number">2.8</span> Combining vectors into a data frame</h2>
+<section id="combining-vectors-into-a-data-frame" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="combining-vectors-into-a-data-frame"><span class="header-section-number">3.8</span> Combining vectors into a data frame</h2>
 <p>We can combine vectors into a data frame, on condition that the vectors are of the same length. The order in which we type the names of the vectors determines their positions in the data frame. Each of the vectors becomes a column in the data frame.</p>
 <p>Below we combine our five vectors into a data frame that we call <code>df</code> (note that we could choose any name we want).</p>
 <div class="cell">
@@ -937,8 +943,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="changing-a-character-or-numeric-vector-to-a-factor" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="changing-a-character-or-numeric-vector-to-a-factor"><span class="header-section-number">2.9</span> Changing a character or numeric vector to a factor</h2>
+<section id="changing-a-character-or-numeric-vector-to-a-factor" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="changing-a-character-or-numeric-vector-to-a-factor"><span class="header-section-number">3.9</span> Changing a character or numeric vector to a factor</h2>
 <p>The sex variable is stored as a character vector, whereas the division variable is stored as a numeric vector. Both of these variables indicate membership to different levels of a categorical variable. For instance, the words “male” and “female” are different levels of the categorical variable “sex”. Similarly, the numbers 1, 2 and 3 are used to indicate different levels, i.e.&nbsp;“finance”, “HR”, and “marketing” of the categorical variable “division”. We need to instruct <em>R</em> to treat the sex and division variables as categorical variables. In <em>R</em>, a categorical variables is referred to as a factor.</p>
 <p>In the example below we use the <code>factor()</code> function to instruct <em>R</em> to treat the sex and division variables as factors. Note how we use the $ symbol to gain access to a vector in a data frame.</p>
 <div class="cell">
@@ -966,23 +972,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="hpvvpyyiby" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hpvvpyyiby table {
+<div id="nsizocoyoq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nsizocoyoq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hpvvpyyiby thead, #hpvvpyyiby tbody, #hpvvpyyiby tfoot, #hpvvpyyiby tr, #hpvvpyyiby td, #hpvvpyyiby th {
+#nsizocoyoq thead, #nsizocoyoq tbody, #nsizocoyoq tfoot, #nsizocoyoq tr, #nsizocoyoq td, #nsizocoyoq th {
   border-style: none;
 }
 
-#hpvvpyyiby p {
+#nsizocoyoq p {
   margin: 0;
   padding: 0;
 }
 
-#hpvvpyyiby .gt_table {
+#nsizocoyoq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1008,12 +1014,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_caption {
+#nsizocoyoq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hpvvpyyiby .gt_title {
+#nsizocoyoq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1025,7 +1031,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#hpvvpyyiby .gt_subtitle {
+#nsizocoyoq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1037,7 +1043,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#hpvvpyyiby .gt_heading {
+#nsizocoyoq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1049,13 +1055,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_bottom_border {
+#nsizocoyoq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_col_headings {
+#nsizocoyoq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1070,7 +1076,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_col_heading {
+#nsizocoyoq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1090,7 +1096,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hpvvpyyiby .gt_column_spanner_outer {
+#nsizocoyoq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1102,15 +1108,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#hpvvpyyiby .gt_column_spanner_outer:first-child {
+#nsizocoyoq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hpvvpyyiby .gt_column_spanner_outer:last-child {
+#nsizocoyoq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hpvvpyyiby .gt_column_spanner {
+#nsizocoyoq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1122,11 +1128,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#hpvvpyyiby .gt_spanner_row {
+#nsizocoyoq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hpvvpyyiby .gt_group_heading {
+#nsizocoyoq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1152,7 +1158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#hpvvpyyiby .gt_empty_group_heading {
+#nsizocoyoq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1167,15 +1173,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#hpvvpyyiby .gt_from_md > :first-child {
+#nsizocoyoq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hpvvpyyiby .gt_from_md > :last-child {
+#nsizocoyoq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hpvvpyyiby .gt_row {
+#nsizocoyoq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1194,7 +1200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hpvvpyyiby .gt_stub {
+#nsizocoyoq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1207,7 +1213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hpvvpyyiby .gt_stub_row_group {
+#nsizocoyoq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1221,15 +1227,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#hpvvpyyiby .gt_row_group_first td {
+#nsizocoyoq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hpvvpyyiby .gt_row_group_first th {
+#nsizocoyoq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hpvvpyyiby .gt_summary_row {
+#nsizocoyoq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1239,16 +1245,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hpvvpyyiby .gt_first_summary_row {
+#nsizocoyoq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_first_summary_row.thick {
+#nsizocoyoq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hpvvpyyiby .gt_last_summary_row {
+#nsizocoyoq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1258,7 +1264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_grand_summary_row {
+#nsizocoyoq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1268,7 +1274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hpvvpyyiby .gt_first_grand_summary_row {
+#nsizocoyoq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1278,7 +1284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_last_grand_summary_row_top {
+#nsizocoyoq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1288,11 +1294,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_striped {
+#nsizocoyoq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hpvvpyyiby .gt_table_body {
+#nsizocoyoq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1301,7 +1307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_footnotes {
+#nsizocoyoq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1315,7 +1321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_footnote {
+#nsizocoyoq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1324,7 +1330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hpvvpyyiby .gt_sourcenotes {
+#nsizocoyoq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1338,7 +1344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hpvvpyyiby .gt_sourcenote {
+#nsizocoyoq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1346,72 +1352,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hpvvpyyiby .gt_left {
+#nsizocoyoq .gt_left {
   text-align: left;
 }
 
-#hpvvpyyiby .gt_center {
+#nsizocoyoq .gt_center {
   text-align: center;
 }
 
-#hpvvpyyiby .gt_right {
+#nsizocoyoq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hpvvpyyiby .gt_font_normal {
+#nsizocoyoq .gt_font_normal {
   font-weight: normal;
 }
 
-#hpvvpyyiby .gt_font_bold {
+#nsizocoyoq .gt_font_bold {
   font-weight: bold;
 }
 
-#hpvvpyyiby .gt_font_italic {
+#nsizocoyoq .gt_font_italic {
   font-style: italic;
 }
 
-#hpvvpyyiby .gt_super {
+#nsizocoyoq .gt_super {
   font-size: 65%;
 }
 
-#hpvvpyyiby .gt_footnote_marks {
+#nsizocoyoq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hpvvpyyiby .gt_asterisk {
+#nsizocoyoq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hpvvpyyiby .gt_indent_1 {
+#nsizocoyoq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hpvvpyyiby .gt_indent_2 {
+#nsizocoyoq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hpvvpyyiby .gt_indent_3 {
+#nsizocoyoq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hpvvpyyiby .gt_indent_4 {
+#nsizocoyoq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hpvvpyyiby .gt_indent_5 {
+#nsizocoyoq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hpvvpyyiby .katex-display {
+#nsizocoyoq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hpvvpyyiby div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nsizocoyoq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1462,8 +1468,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exercise" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="exercise"><span class="header-section-number">2.10</span> Exercise</h2>
+<section id="exercise" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="exercise"><span class="header-section-number">3.10</span> Exercise</h2>
 <p>Consider the data set below. Recreate this data set in <em>R</em> by first creating five separate vectors and then store it as a data frame with the name <code>mydata</code>. Be sure to instruct <em>R</em> to treat area, sex and rank as factors. Give appropriate labels to the levels of the sex and rank variables. Finally, use the <code>str()</code> function to inspect the structure of the data frame.</p>
 <p><img src="Exercise_df.PNG" class="img-fluid"></p>
 
@@ -1893,13 +1899,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./Installing_packages.html" class="pagination-link" aria-label="Packages">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Packages</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ReadingStoringData.html" class="pagination-link" aria-label="Reading and storing data in *R*">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reading and storing data in <em>R</em></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

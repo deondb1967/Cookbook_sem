@@ -10,6 +10,7 @@ book:
     - index.qmd
     - intro.qmd
     - part: "Part I: Introduction to R"
+    - Installing_packages.qmd
     - Vectors_dataframes.qmd
     - ReadingStoringData.qmd
     - DataManagement.qmd

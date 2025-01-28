@@ -1,0 +1,35 @@
+---
+title: "Packages"
+---
+
+Base *R* is equipped with many functions that can be used to perform a wide variety of statistical analyses and many data management tasks. Sometimes, however, it may be necessary to employ functions that are housed in packages that are not installed with base *R*. In such cases we need to download and install the packages. We only need to do this once, after which the packages will remain available for further use. In this book we will need the following packages that are not installed with base *R*: tidyverse, dplyr, psych, psychTools, lavaan, lavaan.mi, semTools, MBESS, gt, ggplot2, mice and Amelia.
+
+Install the packages by copying the code below into an *R* script window and then run it. If you are instructed that a certain package is needed but is missing, you will need to add that package to the list of packages that should be installed.
+
+```{r}
+#| eval: FALSE
+install.packages("tidyverse" , repos = "https://cloud.r-project.org/")
+install.packages("dplyr"     , repos = "https://cloud.r-project.org/")
+install.packages("psych"     , repos = "https://cloud.r-project.org/")
+install.packages("psychTools", repos = "https://cloud.r-project.org/")
+install.packages("lavaan"    , repos = "https://cloud.r-project.org/")
+install.packages("lavaan.mi" , repos = "https://cloud.r-project.org/")
+install.packages("semTools"  , repos = "https://cloud.r-project.org/")
+install.packages("MBESS"     , repos = "https://cloud.r-project.org/")
+install.packages("gt"        , repos = "https://cloud.r-project.org/")
+install.packages("ggplot2"   , repos = "https://cloud.r-project.org/")
+install.packages("mice"      , repos = "https://cloud.r-project.org/")
+install.packages("Amelia"    , repos = "https://cloud.r-project.org/")
+install.packages("devtools"  , repos = "https://cloud.r-project.org/")
+```
+
+Some packages are hosted on Github, which is a site for developers. To download from Github we must first activate the `devtools` package. You may be asked if you want to update some packages. Choose "All".
+
+```{r}
+#| eval: FALSE
+library(devtools)
+install_github("dustinfife/flexplot")
+install_github("dustinfife/flexplavaan")
+install_github("deondb1967/itemselectr")
+```
+

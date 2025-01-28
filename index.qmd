@@ -1,3 +1,3 @@
 # Preface {.unnumbered}
 
-This book contains examples of how to fit structural equation models to observed data. The book also contains exercises.
+This book contains examples of how to fit structural equation models to observed data with the **`lavaan`** package in *R*. The book also contains exercises to help students build their skills.
