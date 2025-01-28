@@ -1,0 +1,81 @@
+---
+title: "Stress Models"
+---
+
+```{r}
+library(lavaan)
+library(psych)
+```
+
+
+```{r}
+df <- read.csv("C:/Users/deondb/OneDrive - Stellenbosch University/Documents/Cookbook_sem/SWSIhonours (2) (4).csv")
+
+names(df)
+```
+
+
+```{r}
+mod1 <- '
+GWS ~ RA + REL + RA_REL'
+```
+
+
+```{r}
+fit.mod1 <- sem(mod1, data = df)
+summary(fit.mod1, rsquare = TRUE)
+```
+
+
+```{r}
+library(semPlot)
+semPaths(fit.mod1,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 6,
+         nCharNodes     = 0,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel")
+```
+
+
+```{r}
+mod2 <- '
+GWS ~ WL + RA + LA + REL
+REL ~ RA + LA
+'
+```
+
+
+```{r}
+fit.mod2 <- sem(mod2, data = df)
+summary(fit.mod2, rsquare = TRUE)
+```
+
+
+```{r}
+library(semPlot)
+semPaths(fit.mod2,
+         ###color       = "black",
+         what           = c("std"),
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 6,
+         nCharNodes     = 0,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel")
+```
+
+

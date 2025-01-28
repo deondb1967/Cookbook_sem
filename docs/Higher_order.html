@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Deon de Bruin">
 
-<title>9&nbsp; Multiple factors – Structural equation modeling with lavaan in R: Examples and excercises</title>
+<title>10&nbsp; Higher order models – Structural equation modeling with lavaan in R: Examples and excercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Higher_order.html" rel="next">
-<link href="./Measurement_models.html" rel="prev">
+<link href="./Plotting_models.html" rel="next">
+<link href="./Multiple_factors.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Multiple_factors.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Higher_order.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Higher order models</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,13 +204,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Multiple_factors.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Multiple_factors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Higher_order.html" class="sidebar-item-text sidebar-link">
+  <a href="./Higher_order.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Higher order models</span></span></a>
   </div>
 </li>
@@ -300,27 +299,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-second-order-factor-analysis-of-nine-cognitive-variables" id="toc-a-second-order-factor-analysis-of-nine-cognitive-variables" class="nav-link active" data-scroll-target="#a-second-order-factor-analysis-of-nine-cognitive-variables"><span class="header-section-number">10.1</span> A second-order factor analysis of nine cognitive variables</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Higher order models</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Deon de Bruin </p>
-          </div>
-  </div>
     
   
     
@@ -331,72 +330,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="a-second-order-factor-analysis-of-nine-cognitive-variables" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="a-second-order-factor-analysis-of-nine-cognitive-variables"><span class="header-section-number">10.1</span> A second-order factor analysis of nine cognitive variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexplavaan)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="st">'</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">Neuroticism   =~ N1 + N2 + N3 + N4 + N5</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">Agreeableness =~ A1 + A2 + A3 + A4 + A5</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">N1 ~~ N2</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>fit.mod3 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(<span class="at">model =</span> mod3, </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">data  =</span> bfi)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod3, </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">standardized =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This is lavaan 0.6-19
+lavaan is FREE software! Please report any bugs.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'psych'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:lavaan':
+
+    cor2cov</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(semPlot)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">Comprehension =~ Sentences + Vocabulary + Sent.Completion</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">Fluency       =~ First.Letters + Four.Letter.Words + Suffixes</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">Reasoning     =~ Letter.Series + Pedigrees + Letter.Group</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>fit.mod <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod, <span class="at">sample.cov =</span> Thurstone, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-19 ended normally after 39 iterations
+<pre><code>lavaan 0.6-19 ended normally after 25 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
-  Number of model parameters                        22
+  Number of model parameters                        21
 
-                                                  Used       Total
-  Number of observations                          2618        2800
+  Number of observations                           500
 
 Model Test User Model:
                                                       
-  Test statistic                               394.745
-  Degrees of freedom                                33
+  Test statistic                                90.086
+  Degrees of freedom                                24
   P-value (Chi-square)                           0.000
 
 Model Test Baseline Model:
 
-  Test statistic                              7465.706
-  Degrees of freedom                                45
+  Test statistic                              2598.803
+  Degrees of freedom                                36
   P-value                                        0.000
 
 User Model versus Baseline Model:
 
-  Comparative Fit Index (CFI)                    0.951
-  Tucker-Lewis Index (TLI)                       0.934
+  Comparative Fit Index (CFI)                    0.974
+  Tucker-Lewis Index (TLI)                       0.961
 
 Loglikelihood and Information Criteria:
 
-  Loglikelihood user model (H0)             -43229.863
-  Loglikelihood unrestricted model (H1)     -43032.491
+  Loglikelihood user model (H0)              -5126.360
+  Loglikelihood unrestricted model (H1)      -5081.317
                                                       
-  Akaike (AIC)                               86503.726
-  Bayesian (BIC)                             86632.870
-  Sample-size adjusted Bayesian (SABIC)      86562.969
+  Akaike (AIC)                               10294.720
+  Bayesian (BIC)                             10383.227
+  Sample-size adjusted Bayesian (SABIC)      10316.572
 
 Root Mean Square Error of Approximation:
 
-  RMSEA                                          0.065
-  90 Percent confidence interval - lower         0.059
-  90 Percent confidence interval - upper         0.071
-  P-value H_0: RMSEA &lt;= 0.050                    0.000
-  P-value H_0: RMSEA &gt;= 0.080                    0.000
+  RMSEA                                          0.074
+  90 Percent confidence interval - lower         0.058
+  90 Percent confidence interval - upper         0.091
+  P-value H_0: RMSEA &lt;= 0.050                    0.007
+  P-value H_0: RMSEA &gt;= 0.080                    0.297
 
 Standardized Root Mean Square Residual:
 
-  SRMR                                           0.048
+  SRMR                                           0.044
 
 Parameter Estimates:
 
@@ -406,84 +412,336 @@ Parameter Estimates:
 
 Latent Variables:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-  Neuroticism =~                                                        
-    N1                1.000                               1.069    0.681
-    N2                0.940    0.024   38.841    0.000    1.005    0.658
-    N3                1.206    0.041   29.617    0.000    1.289    0.807
-    N4                0.944    0.035   26.800    0.000    1.009    0.643
-    N5                0.833    0.035   23.538    0.000    0.890    0.549
-  Agreeableness =~                                                      
-    A1                1.000                               0.542    0.387
-    A2               -1.413    0.086  -16.450    0.000   -0.765   -0.651
-    A3               -1.838    0.109  -16.933    0.000   -0.996   -0.761
-    A4               -1.343    0.091  -14.789    0.000   -0.728   -0.488
-    A5               -1.487    0.091  -16.357    0.000   -0.806   -0.638
+  Comprehension =~                                                      
+    Sentences         0.904    0.035   25.627    0.000    0.904    0.905
+    Vocabulary        0.913    0.035   26.054    0.000    0.913    0.914
+    Sent.Completin    0.855    0.036   23.467    0.000    0.855    0.856
+  Fluency =~                                                            
+    First.Letters     0.835    0.040   21.117    0.000    0.835    0.836
+    Four.Lttr.Wrds    0.796    0.040   19.821    0.000    0.796    0.797
+    Suffixes          0.702    0.042   16.793    0.000    0.702    0.703
+  Reasoning =~                                                          
+    Letter.Series     0.780    0.042   18.651    0.000    0.780    0.781
+    Pedigrees         0.719    0.043   16.851    0.000    0.719    0.720
+    Letter.Group      0.703    0.043   16.362    0.000    0.703    0.703
 
 Covariances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
- .N1 ~~                                                                 
-   .N2                0.621    0.040   15.696    0.000    0.621    0.471
-  Neuroticism ~~                                                        
-    Agreeableness     0.117    0.016    7.304    0.000    0.203    0.203
+  Comprehension ~~                                                      
+    Fluency           0.643    0.033   19.542    0.000    0.643    0.643
+    Reasoning         0.670    0.033   20.153    0.000    0.670    0.670
+  Fluency ~~                                                            
+    Reasoning         0.637    0.038   16.700    0.000    0.637    0.637
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-   .N1                1.319    0.048   27.230    0.000    1.319    0.536
-   .N2                1.319    0.047   28.112    0.000    1.319    0.567
-   .N3                0.890    0.048   18.678    0.000    0.890    0.349
-   .N4                1.447    0.049   29.606    0.000    1.447    0.587
-   .N5                1.836    0.057   32.264    0.000    1.836    0.699
-   .A1                1.668    0.049   34.239    0.000    1.668    0.850
-   .A2                0.795    0.029   27.568    0.000    0.795    0.576
-   .A3                0.719    0.035   20.374    0.000    0.719    0.420
-   .A4                1.692    0.052   32.681    0.000    1.692    0.762
-   .A5                0.943    0.033   28.181    0.000    0.943    0.592
-    Neuroticism       1.142    0.066   17.384    0.000    1.000    1.000
-    Agreeableness     0.293    0.033    9.006    0.000    1.000    1.000</code></pre>
+   .Sentences         0.181    0.019    9.788    0.000    0.181    0.181
+   .Vocabulary        0.165    0.018    9.121    0.000    0.165    0.165
+   .Sent.Completin    0.267    0.022   12.296    0.000    0.267    0.267
+   .First.Letters     0.301    0.033    9.075    0.000    0.301    0.302
+   .Four.Lttr.Wrds    0.364    0.034   10.635    0.000    0.364    0.365
+   .Suffixes          0.505    0.039   13.043    0.000    0.505    0.506
+   .Letter.Series     0.390    0.039   10.102    0.000    0.390    0.390
+   .Pedigrees         0.480    0.040   11.876    0.000    0.480    0.481
+   .Letter.Group      0.504    0.041   12.249    0.000    0.504    0.505
+    Comprehension     1.000                               1.000    1.000
+    Fluency           1.000                               1.000    1.000
+    Reasoning         1.000                               1.000    1.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(fit.mod3, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit.mod,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>         <span class="do">###color       = "black",</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">what           =</span> <span class="fu">c</span>(<span class="st">"std"</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">weighted       =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeLat        =</span> <span class="dv">14</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeLat2       =</span> <span class="dv">10</span>,          </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">shapeLat       =</span> <span class="st">"ellipse"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeMan        =</span> <span class="dv">8</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">nCharNodes     =</span> <span class="dv">3</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">label.cex      =</span> <span class="dv">1</span>, </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge.color     =</span> <span class="st">"black"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">mar            =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">style          =</span> <span class="st">"lisrel"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Multiple_factors_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Higher_order_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">measurement_plot</span>(fit.mod3, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sample =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">Comprehension =~ Sentences + Vocabulary + Sent.Completion</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">Fluency       =~ First.Letters + Four.Letter.Words + Suffixes</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">Reasoning     =~ Letter.Series + Pedigrees + Letter.Group</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">General       =~ Comprehension + Fluency + Reasoning</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fit.mod <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod, <span class="at">sample.cov =</span> Thurstone, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$Neuroticism</code></pre>
+<pre><code>lavaan 0.6-19 ended normally after 36 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        21
+
+  Number of observations                           500
+
+Model Test User Model:
+                                                      
+  Test statistic                                90.086
+  Degrees of freedom                                24
+  P-value (Chi-square)                           0.000
+
+Model Test Baseline Model:
+
+  Test statistic                              2598.803
+  Degrees of freedom                                36
+  P-value                                        0.000
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.974
+  Tucker-Lewis Index (TLI)                       0.961
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -5126.360
+  Loglikelihood unrestricted model (H1)      -5081.317
+                                                      
+  Akaike (AIC)                               10294.720
+  Bayesian (BIC)                             10383.227
+  Sample-size adjusted Bayesian (SABIC)      10316.572
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.074
+  90 Percent confidence interval - lower         0.058
+  90 Percent confidence interval - upper         0.091
+  P-value H_0: RMSEA &lt;= 0.050                    0.007
+  P-value H_0: RMSEA &gt;= 0.080                    0.297
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.044
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Comprehension =~                                                      
+    Sentences         0.515    0.041   12.573    0.000    0.904    0.905
+    Vocabulary        0.520    0.041   12.607    0.000    0.913    0.914
+    Sent.Completin    0.487    0.040   12.309    0.000    0.855    0.856
+  Fluency =~                                                            
+    First.Letters     0.521    0.040   13.106    0.000    0.835    0.836
+    Four.Lttr.Wrds    0.497    0.038   12.933    0.000    0.796    0.797
+    Suffixes          0.438    0.036   12.022    0.000    0.702    0.703
+  Reasoning =~                                                          
+    Letter.Series     0.452    0.043   10.533    0.000    0.780    0.781
+    Pedigrees         0.417    0.040   10.310    0.000    0.719    0.720
+    Letter.Group      0.407    0.040   10.210    0.000    0.703    0.703
+  General =~                                                            
+    Comprehension     1.444    0.167    8.643    0.000    0.822    0.822
+    Fluency           1.254    0.138    9.110    0.000    0.782    0.782
+    Reasoning         1.407    0.175    8.033    0.000    0.815    0.815
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .Sentences         0.181    0.019    9.788    0.000    0.181    0.181
+   .Vocabulary        0.165    0.018    9.121    0.000    0.165    0.165
+   .Sent.Completin    0.267    0.022   12.296    0.000    0.267    0.267
+   .First.Letters     0.301    0.033    9.075    0.000    0.301    0.302
+   .Four.Lttr.Wrds    0.364    0.034   10.635    0.000    0.364    0.365
+   .Suffixes          0.505    0.039   13.043    0.000    0.505    0.506
+   .Letter.Series     0.390    0.039   10.102    0.000    0.390    0.390
+   .Pedigrees         0.480    0.040   11.876    0.000    0.480    0.481
+   .Letter.Group      0.504    0.041   12.249    0.000    0.504    0.505
+   .Comprehension     1.000                               0.324    0.324
+   .Fluency           1.000                               0.389    0.389
+   .Reasoning         1.000                               0.336    0.336
+    General           1.000                               1.000    1.000</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit.mod,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>         <span class="do">###color       = "black",</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">what           =</span> <span class="fu">c</span>(<span class="st">"std"</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">weighted       =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeLat        =</span> <span class="dv">14</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeLat2       =</span> <span class="dv">10</span>,          </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">shapeLat       =</span> <span class="st">"ellipse"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeMan        =</span> <span class="dv">8</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">nCharNodes     =</span> <span class="dv">3</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">label.cex      =</span> <span class="dv">1</span>, </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge.color     =</span> <span class="st">"black"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">mar            =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">style          =</span> <span class="st">"lisrel"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Multiple_factors_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Higher_order_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">Comprehension =~ Sentences + Vocabulary + Sent.Completion</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">Fluency       =~ First.Letters + Four.Letter.Words + Suffixes</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">Reasoning     =~ Letter.Series + Pedigrees + Letter.Group</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">G =~ Sentences + Vocabulary + Sent.Completion +</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">     First.Letters + Four.Letter.Words + Suffixes +</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">     Letter.Series + Pedigrees + Letter.Group</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>fit.mod <span class="ot">&lt;-</span> <span class="fu">cfa</span>(mod, <span class="at">sample.cov =</span> Thurstone, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">std.lv =</span> <span class="cn">TRUE</span>, <span class="at">orthogonal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.mod, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-$Agreeableness</code></pre>
+<pre><code>lavaan 0.6-19 ended normally after 30 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        27
+
+  Number of observations                           500
+
+Model Test User Model:
+                                                      
+  Test statistic                                57.114
+  Degrees of freedom                                18
+  P-value (Chi-square)                           0.000
+
+Model Test Baseline Model:
+
+  Test statistic                              2598.803
+  Degrees of freedom                                36
+  P-value                                        0.000
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.985
+  Tucker-Lewis Index (TLI)                       0.969
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -5109.874
+  Loglikelihood unrestricted model (H1)      -5081.317
+                                                      
+  Akaike (AIC)                               10273.749
+  Bayesian (BIC)                             10387.543
+  Sample-size adjusted Bayesian (SABIC)      10301.844
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.066
+  90 Percent confidence interval - lower         0.047
+  90 Percent confidence interval - upper         0.086
+  P-value H_0: RMSEA &lt;= 0.050                    0.079
+  P-value H_0: RMSEA &gt;= 0.080                    0.124
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.035
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Comprehension =~                                                      
+    Sentences         0.487    0.053    9.203    0.000    0.487    0.488
+    Vocabulary        0.452    0.054    8.315    0.000    0.452    0.452
+    Sent.Completin    0.404    0.057    7.117    0.000    0.404    0.404
+  Fluency =~                                                            
+    First.Letters     0.613    0.055   11.132    0.000    0.613    0.614
+    Four.Lttr.Wrds    0.505    0.053    9.536    0.000    0.505    0.506
+    Suffixes          0.394    0.051    7.758    0.000    0.394    0.394
+  Reasoning =~                                                          
+    Letter.Series     0.727    0.103    7.049    0.000    0.727    0.727
+    Pedigrees         0.247    0.056    4.369    0.000    0.247    0.247
+    Letter.Group      0.409    0.074    5.535    0.000    0.409    0.409
+  G =~                                                                  
+    Sentences         0.767    0.046   16.705    0.000    0.767    0.768
+    Vocabulary        0.790    0.045   17.429    0.000    0.790    0.791
+    Sent.Completin    0.753    0.046   16.271    0.000    0.753    0.754
+    First.Letters     0.608    0.046   13.227    0.000    0.608    0.608
+    Four.Lttr.Wrds    0.597    0.046   12.933    0.000    0.597    0.597
+    Suffixes          0.571    0.047   12.268    0.000    0.571    0.572
+    Letter.Series     0.566    0.047   12.009    0.000    0.566    0.567
+    Pedigrees         0.662    0.046   14.525    0.000    0.662    0.662
+    Letter.Group      0.529    0.048   11.099    0.000    0.529    0.530
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+  Comprehension ~~                                                      
+    Fluency           0.000                               0.000    0.000
+    Reasoning         0.000                               0.000    0.000
+    G                 0.000                               0.000    0.000
+  Fluency ~~                                                            
+    Reasoning         0.000                               0.000    0.000
+    G                 0.000                               0.000    0.000
+  Reasoning ~~                                                          
+    G                 0.000                               0.000    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+   .Sentences         0.172    0.022    7.773    0.000    0.172    0.172
+   .Vocabulary        0.170    0.020    8.691    0.000    0.170    0.170
+   .Sent.Completin    0.268    0.022   12.433    0.000    0.268    0.268
+   .First.Letters     0.252    0.052    4.888    0.000    0.252    0.253
+   .Four.Lttr.Wrds    0.387    0.041    9.416    0.000    0.387    0.387
+   .Suffixes          0.517    0.039   13.347    0.000    0.517    0.518
+   .Letter.Series     0.149    0.142    1.051    0.293    0.149    0.150
+   .Pedigrees         0.499    0.039   12.901    0.000    0.499    0.500
+   .Letter.Group      0.551    0.055   10.021    0.000    0.551    0.552
+    Comprehension     1.000                               1.000    1.000
+    Fluency           1.000                               1.000    1.000
+    Reasoning         1.000                               1.000    1.000
+    G                 1.000                               1.000    1.000</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit.mod,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>         <span class="do">###color       = "black",</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">what           =</span> <span class="fu">c</span>(<span class="st">"std"</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">weighted       =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeLat        =</span> <span class="dv">14</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeLat2       =</span> <span class="dv">10</span>,          </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">shapeLat       =</span> <span class="st">"ellipse"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">sizeMan        =</span> <span class="dv">8</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">nCharNodes     =</span> <span class="dv">3</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">label.cex      =</span> <span class="dv">1</span>, </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge.color     =</span> <span class="st">"black"</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">mar            =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">style          =</span> <span class="st">"lisrel"</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">layout =</span> <span class="st">"spring"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Multiple_factors_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residual_plots</span>(fit.mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Multiple_factors_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Higher_order_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -908,13 +1166,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Measurement_models.html" class="pagination-link" aria-label="Congeneric, tau-equivalent and parallel measurement models">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Congeneric, tau-equivalent and parallel measurement models</span></span>
+      <a href="./Multiple_factors.html" class="pagination-link" aria-label="Multiple factors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Multiple factors</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Higher_order.html" class="pagination-link" aria-label="Higher order models">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Higher order models</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Plotting_models.html" class="pagination-link" aria-label="Plotting">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Plotting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
