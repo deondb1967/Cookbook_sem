@@ -240,8 +240,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Parceling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Parceling indicators</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Ordinal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Measurement models with ordinal indicators</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Measurement models with ordinal indicators</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -251,19 +257,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Modification_indices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Modification Indices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EFA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exploratory factor analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Correlated_residuals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Correlated residuals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -273,25 +279,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MissingDataExamples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Mediation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mediation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Mediation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Moderation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Moderation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Moderation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -317,6 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reading-an-excel-file" id="toc-reading-an-excel-file" class="nav-link" data-scroll-target="#reading-an-excel-file"><span class="header-section-number">4.5</span> Reading an Excel file</a></li>
   <li><a href="#reading-an-spss-file" id="toc-reading-an-spss-file" class="nav-link" data-scroll-target="#reading-an-spss-file"><span class="header-section-number">4.6</span> Reading an SPSS file</a></li>
   <li><a href="#reading-data-from-the-clipboard" id="toc-reading-data-from-the-clipboard" class="nav-link" data-scroll-target="#reading-data-from-the-clipboard"><span class="header-section-number">4.7</span> Reading data from the clipboard</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">4.8</span> Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -345,14 +352,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this chapter we learn how to read and store data in <em>R</em>. The focus falls on reading .csv files, .xlsx files, and .sav files. We also learn how to copy data to the clipboard and to then store it in <em>R.</em></p>
 <section id="setting-the-working-directory" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="setting-the-working-directory"><span class="header-section-number">4.1</span> Setting the working directory</h2>
-<p>The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with R.</p>
+<p>The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with <em>R</em>.</p>
 <p>You should create a folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward.</p>
-<p>You can set the working directory via the Rstudio menu: <strong><code>Session/Set Working Directory/Choose Directory</code></strong>. R uses the <strong><code>setwd()</code></strong> function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start R and want to set the working directory, you can highlight the first row of the script and run it.</p>
+<p>You can set the working directory via the Rstudio menu: <strong><code>Session/Set Working Directory/Choose Directory</code></strong>. <em>R</em> uses the <strong><code>setwd()</code></strong> function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start <em>R</em> and want to set the working directory, you can highlight the first row of the script and run it.</p>
 <p>In the example below I first used the menus to set the working directory to “C:/myR/Masters2021”. Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.</p>
 <p>I also included the <strong><code>getwd()</code></strong> function, which is used to see the active working directory. Users sometimes change the working directory during an R session and <strong><code>getwd()</code></strong> can be used at any time to remind you of the current working directory.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#setwd("C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#getwd()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-the-data-and-storing-it-as-an-object" class="level2" data-number="4.2">
@@ -480,27 +487,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="reading-an-excel-file" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="reading-an-excel-file"><span class="header-section-number">4.5</span> Reading an Excel file</h2>
-<p>It is possible to directly read an Excel file without first storing it in csv format. This requires that the <strong>readxl</strong> package must be installed and activated. Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the <strong><code>read_excel()</code></strong> function will automatically recognise the missing data.</p>
+<p>It is possible to directly read an Excel file without first storing it in csv format. This requires that the <strong>readxl</strong> package be installed and activated (the package only needs to be installed once). Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the <strong><code>read_excel()</code></strong> function will automatically recognise the missing data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readxl)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#mydata &lt;- read_excel("SA_Swiss.xlsx", na = "-999")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>  , <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into 'C:/Users/deondb/AppData/Local/R/win-library/4.4'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>package 'readxl' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\deondb\AppData\Local\Temp\RtmpKyjfQP\downloaded_packages</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"SA_Swiss.xlsx"</span>, <span class="at">na =</span> <span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-an-spss-file" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="reading-an-spss-file"><span class="header-section-number">4.6</span> Reading an SPSS file</h2>
-<p>It is possible to read an SPSS data file without first storing it in csv format. This requires that the <strong>haven</strong> package must be installed and activated. The <strong><code>read_spss()</code></strong> function will automatically recognise missing data in an SPSS file, on condition that special codes have been assigned missing data status in the SPSS file.</p>
+<p>It is possible to read an SPSS data file without first storing it in csv format. This requires that the <strong>haven</strong> package be installed and activated (the package only needs to be installed once). The <strong><code>read_spss()</code></strong> function will automatically recognise missing data in an SPSS file, on condition that special codes have been assigned missing data status in the SPSS file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(haven)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#mydata &lt;- read_spss("SA_Swiss.sav")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"haven"</span>  , <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org/"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">"SA_Swiss.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-data-from-the-clipboard" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="reading-data-from-the-clipboard"><span class="header-section-number">4.7</span> Reading data from the clipboard</h2>
 <p>At times it might be convenient to highlight and copy data in Excel and then use the <strong><code>read.clipboard()</code></strong> function from the <strong><code>psychTools</code></strong> package to read and store the copied data as a data frame. Whereas this is easy and quick to do it is not recommended for general practice, because the saved code will not explicitly state where the data were obtained from (other than the clipboard). In the example code below I copied some data in Excel and then used the <strong><code>read.clipboard()</code></strong> function to store it as a data frame called “tempdata”. To execute the code users will have to first copy data in Excel, then remove the hash tags at the beginning of the lines, and then run the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(psychTools)</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tempdata &lt;- read.clipboard()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tempdata <span class="ot">&lt;-</span> <span class="fu">read.clipboard</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="exercise" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="exercise"><span class="header-section-number">4.8</span> Exercise</h2>
+<ul>
+<li><p>Create a folder on your machine where you will store your data and <em>R</em> scripts.</p></li>
+<li><p>Set this folder as the working directory.</p></li>
+<li><p>Import the <code>SA_Swiss.csv</code> data set and store it as <code>mydata_csv</code>.</p></li>
+<li><p>Import the <code>SA_Swiss.xlsx</code> data set and store it as <code>mydata_xl</code>.</p></li>
+<li><p>Import the <code>SA_Swiss.sav</code> data set and store it as <code>mydata_spss</code>.</p></li>
+<li><p>Open the <code>playdata.csv</code> file in Excel. Copy the data set and then use the <code>read.clipboard()</code> function to read and store the data frame as <code>playdata_clip</code>.</p></li>
+</ul>
+<p><br>
+</p>
 
 
 </section>

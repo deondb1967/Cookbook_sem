@@ -24,6 +24,7 @@ book:
     - Plotting_models.qmd
     - Measurement_invariance.qmd
     - MIMIC Models.qmd
+    - Parceling.qmd
     - Ordinal.qmd
     - part: "Part III: Diagnosing and improving the measurement model"
     - Modification_indices.qmd

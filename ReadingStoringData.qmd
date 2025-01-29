@@ -8,19 +8,20 @@ In this chapter we learn how to read and store data in *R*. The focus falls on r
 
 ## Setting the working directory
 
-The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with R.
+The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with *R*.
 
 You should create a folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward.
 
-You can set the working directory via the Rstudio menu: **`Session/Set Working Directory/Choose Directory`**. R uses the **`setwd()`** function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start R and want to set the working directory, you can highlight the first row of the script and run it.
+You can set the working directory via the Rstudio menu: **`Session/Set Working Directory/Choose Directory`**. *R* uses the **`setwd()`** function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start *R* and want to set the working directory, you can highlight the first row of the script and run it.
 
 In the example below I first used the menus to set the working directory to "C:/myR/Masters2021". Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.
 
 I also included the **`getwd()`** function, which is used to see the active working directory. Users sometimes change the working directory during an R session and **`getwd()`** can be used at any time to remind you of the current working directory.
 
 ```{r setwd}
-#setwd("C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021")
-#getwd()
+#| eval: FALSE
+setwd("C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021")
+getwd()
 ```
 
 ## Reading the data and storing it as an object
@@ -67,20 +68,23 @@ SA_Swiss <- read.csv("SA_Swiss.csv", na.strings="-999")
 
 ## Reading an Excel file
 
-It is possible to directly read an Excel file without first storing it in csv format. This requires that the **readxl** package must be installed and activated. Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the **`read_excel()`** function will automatically recognise the missing data.
+It is possible to directly read an Excel file without first storing it in csv format. This requires that the **readxl** package be installed and activated (the package only needs to be installed once). Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the **`read_excel()`** function will automatically recognise the missing data.
 
 ```{r read_excel}
-#library(readxl)
-#mydata <- read_excel("SA_Swiss.xlsx", na = "-999")
+install.packages("readxl"  , repos = "https://cloud.r-project.org/")
+library(readxl)
+mydata <- read_excel("SA_Swiss.xlsx", na = "-999")
 ```
 
 ## Reading an SPSS file
 
-It is possible to read an SPSS data file without first storing it in csv format. This requires that the **haven** package must be installed and activated. The **`read_spss()`** function will automatically recognise missing data in an SPSS file, on condition that special codes have been assigned missing data status in the SPSS file.
+It is possible to read an SPSS data file without first storing it in csv format. This requires that the **haven** package be installed and activated (the package only needs to be installed once). The **`read_spss()`** function will automatically recognise missing data in an SPSS file, on condition that special codes have been assigned missing data status in the SPSS file.
 
 ```{r read_spss}
-#library(haven)
-#mydata <- read_spss("SA_Swiss.sav")
+#| eval: FALSE
+install.packages("haven"  , repos = "https://cloud.r-project.org/")
+library(haven)
+mydata <- read_spss("SA_Swiss.sav")
 ```
 
 ## Reading data from the clipboard
@@ -88,6 +92,23 @@ It is possible to read an SPSS data file without first storing it in csv format.
 At times it might be convenient to highlight and copy data in Excel and then use the **`read.clipboard()`** function from the **`psychTools`** package to read and store the copied data as a data frame. Whereas this is easy and quick to do it is not recommended for general practice, because the saved code will not explicitly state where the data were obtained from (other than the clipboard). In the example code below I copied some data in Excel and then used the **`read.clipboard()`** function to store it as a data frame called "tempdata". To execute the code users will have to first copy data in Excel, then remove the hash tags at the beginning of the lines, and then run the code.
 
 ```{r}
-#library(psychTools)
-#tempdata <- read.clipboard()
+#| eval: FALSE
+library(psychTools)
+tempdata <- read.clipboard()
 ```
+
+## Exercise
+
+-   Create a folder on your machine where you will store your data and *R* scripts.
+
+-   Set this folder as the working directory.
+
+-   Import the `SA_Swiss.csv` data set and store it as `mydata_csv`.
+
+-   Import the `SA_Swiss.xlsx` data set and store it as `mydata_xl`.
+
+-   Import the `SA_Swiss.sav` data set and store it as `mydata_spss`.
+
+-   Open the `playdata.csv` file in Excel. Copy the data set and then use the `read.clipboard()` function to read and store the data frame as `playdata_clip`.
+
+\

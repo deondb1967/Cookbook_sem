@@ -8,28 +8,31 @@ Install the packages by copying the code below into an *R* script window and the
 
 ```{r}
 #| eval: FALSE
-install.packages("tidyverse" , repos = "https://cloud.r-project.org/")
-install.packages("dplyr"     , repos = "https://cloud.r-project.org/")
-install.packages("psych"     , repos = "https://cloud.r-project.org/")
-install.packages("psychTools", repos = "https://cloud.r-project.org/")
-install.packages("lavaan"    , repos = "https://cloud.r-project.org/")
-install.packages("lavaan.mi" , repos = "https://cloud.r-project.org/")
-install.packages("semTools"  , repos = "https://cloud.r-project.org/")
-install.packages("MBESS"     , repos = "https://cloud.r-project.org/")
-install.packages("gt"        , repos = "https://cloud.r-project.org/")
-install.packages("ggplot2"   , repos = "https://cloud.r-project.org/")
-install.packages("mice"      , repos = "https://cloud.r-project.org/")
-install.packages("Amelia"    , repos = "https://cloud.r-project.org/")
-install.packages("devtools"  , repos = "https://cloud.r-project.org/")
+install.packages("tidyverse"  , repos = "https://cloud.r-project.org/")
+install.packages("dplyr"      , repos = "https://cloud.r-project.org/")
+install.packages("psych"      , repos = "https://cloud.r-project.org/")
+install.packages("GPArotation", repos = "https://cloud.r-project.org/")
+install.packages("psychTools" , repos = "https://cloud.r-project.org/")
+install.packages("lavaan"     , repos = "https://cloud.r-project.org/")
+install.packages("naniar"     , repos = "https://cloud.r-project.org/")
+install.packages("semTools"   , repos = "https://cloud.r-project.org/")
+install.packages("MBESS"      , repos = "https://cloud.r-project.org/")
+install.packages("gt"         , repos = "https://cloud.r-project.org/")
+install.packages("ggplot2"    , repos = "https://cloud.r-project.org/")
+install.packages("mice"       , repos = "https://cloud.r-project.org/")
+install.packages("Amelia"     , repos = "https://cloud.r-project.org/")
+install.packages("devtools"   , repos = "https://cloud.r-project.org/")
+install.packages("remotes"    , repos = "https://cloud.r-project.org/")
 ```
 
-Some packages are hosted on Github, which is a site for developers. To download from Github we must first activate the `devtools` package. You may be asked if you want to update some packages. Choose "All".
+Some packages are hosted on Github, which is a site for developers. To download from Github we must first activate the `remotes` package. You may be asked if you want to update some packages. Choose "All".
 
 ```{r}
 #| eval: FALSE
 library(devtools)
+library(remotes)
 install_github("dustinfife/flexplot")
 install_github("dustinfife/flexplavaan")
 install_github("deondb1967/itemselectr")
+install_github("TDJorgensen/lavaan.mi")
 ```
-
