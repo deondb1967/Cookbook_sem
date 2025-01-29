@@ -16,13 +16,13 @@ setwd("C:/Users/deondb/OneDrive - Stellenbosch University/Documents/Cookbook_sem
 mybfi <- read.csv("data/bfi_small.csv")
 ```
 
-# The %\>% operator of the dplyr package
+## The %\>% operator of the dplyr package
 
 The dplyr package makes it easy to select cases and variables by making use of the %\>% operator (the pipe operator). The meaning of %\>% is "and then". One starts by typing the name of the data frame followed by %\>% and then the criteria on the basis of which persons and/or variables are selected. For instance, to select the variables in columns 1 to 5 of the mybfi data frame we would type **`mybfi %>% select(1:5)`**, which reads as start with the mybfi data frame AND THEN select the variables in columns 1 to 5. A keyboard shortcut for typing the pipe operator is **`Shift-Ctrl-M`**.
 
-# Filtering cases with the dplyr package
+## Filtering cases with the dplyr package
 
-## Filtering rows by consecutive row numbers
+### Filtering rows by consecutive row numbers
 
 The **`slice()`** function of the **`dplyr`** package can be used to select a specified set of cases that fall in consecutive rows from a data frame. In the example below we select the cases that are in rows 1 to 10 of the mybfi data frame.
 
@@ -30,7 +30,7 @@ The **`slice()`** function of the **`dplyr`** package can be used to select a sp
 mybfi %>% slice(1:10)
 ```
 
-## Filtering cases by non-consecutive row numbers
+### Filtering cases by non-consecutive row numbers
 
 To select cases that are in non-consecutive rows we need to type their row numbers. In the example below we select the cases that are in rows 1, 3, 5, and 7 to 10 of the mybfi data frame.
 
@@ -38,7 +38,7 @@ To select cases that are in non-consecutive rows we need to type their row numbe
 mybfi %>% slice(1, 3, 5, 7:10)
 ```
 
-## Filtering cases that meet a certain condition
+### Filtering cases that meet a certain condition
 
 The `filter()` function of the dplyr package can be used to filter cases that meet a specific condition. In the examples below we (a) select the men, (b) select people with education levels greater than 3, (c) select cases whose age is equal to 30, (d) select cases whose age is smaller than or equal to 30, and (e) select cases whose age is greater than or equal to 31.
 
@@ -54,7 +54,7 @@ mybfi %>% filter(age <= 30)
 mybfi %>% filter(age >= 31)
 ```
 
-## Filtering cases that don't meet a certain condition
+### Filtering cases that don't meet a certain condition
 
 The ! symbol can be used to select cases that do not meet a certain condition. In the examples below we (a) select people who are not men, (b) select people who do not have education levels greater than 3, and (c) select people whose age is not greater than 30.
 
@@ -66,7 +66,7 @@ mybfi %>% filter(!education > 3)
 mybfi %>% filter(!age > 30)
 ```
 
-## Filtering cases on the basis of two or more conditions
+### Filtering cases on the basis of two or more conditions
 
 We can also select cases on the basis of two or more conditions. The & ("and") and \| ("or") operators are used to specify the conditions. In the examples below we (a) select cases who are men AND are older than 60, and (b) select cases who are older than 65 OR whose education level is equal to one. The second example will select ALL the people who are older than 65 and ALL the people whose education level is equal to one.
 
@@ -77,7 +77,7 @@ mybfi %>%
   filter(age > 65 | education == 1)
 ```
 
-## Storing the filtered cases in a new data frame
+### Storing the filtered cases in a new data frame
 
 In the example below we start with the mybfi data frame, AND THEN we select the cases who are older than 28 AND have an education level of three or higher, AND THEN we select the first 15 rows of the cases who met the condition. Finally, we assign these cases to a new data frame that is labeled df_new. This data frame will contain 15 cases that each are older than 28 and have an education level of three or higher.
 
@@ -89,7 +89,7 @@ df_new <- mybfi %>%
 df_new
 ```
 
-# Selecting variables with the dplyr package
+## Selecting variables with the dplyr package
 
 The **`select()`** function of the dplyr package makes it easy to select variables with either the column numbers of the variables or their names. In the examples below we start with the mybfi data frame AND THEN: (a) select the variables A1 to A5 (i.e. A1, A2, A3, A4 and A5), (b) select the variables A1, A3, N1 and N3, (c) select any variable that starts with "A" (i.e. A1, A2, A3, A4 and A5), (d) select any variable that does not start with "A", (e) select any variable that ends with "r" (i.e. gender), (f) select the variables in columns 6 to 10 (i.e. N1, N2, N3, N4 and N5) (f) select the variables in columns 1, 3, 6, and 8 (i.e. A1, A3, N1, and N3).
 
@@ -106,7 +106,7 @@ mybfi %>% select(6:10)
 mybfi %>% select(1, 3, 6, 8)
 ```
 
-## Combining select and slice
+### Combining select and slice
 
 In the example below we first select the variables A1 to A5 AND THEN only only the cases that are in rows 1, 3 and 5.
 
@@ -116,7 +116,7 @@ mybfi %>%
   slice(1,3,5)
 ```
 
-## Combing select and filter
+### Combining select and filter
 
 In the example below we first select all the women AND THEN only the first 10 rows AND THEN we select variables A1 to A5.
 
@@ -127,7 +127,7 @@ mybfi %>%
   select(A1:A5)
 ```
 
-## Randomly select rows from a data frame without replacement
+### Randomly select rows from a data frame without replacement
 
 We can use the **`sample_n()`** function of the dplyr package to draw a random sample of cases (without replacement) from a data frame. In the example below we randomly sample (without replacement) ten cases from the mybfi data frame.
 
@@ -136,7 +136,7 @@ mybfi %>%
   sample_n(10)
 ```
 
-## Randomly select rows from a data frame with replacement
+### Randomly select rows from a data frame with replacement
 
 To randomly select cases with replacement we need to add the argument **`replace = TRUE`**.
 
@@ -145,7 +145,7 @@ mybfi %>%
   sample_n(10, replace = TRUE)
 ```
 
-## Randomly select a fraction of rows without replacement
+### Randomly select a fraction of rows without replacement
 
 We can also specify a fraction of cases to be randomly selected. In the example below we randomly select 1% of the cases in the mybfi data frame.
 
@@ -154,7 +154,7 @@ mybfi %>%
   sample_frac(.01)
 ```
 
-## Randomly select a fraction of rows with replacement
+### Randomly select a fraction of rows with replacement
 
 To randomly select a fraction of cases with replacement we need to add the argument **`replace = TRUE`**.
 
@@ -163,7 +163,7 @@ mybfi %>%
   sample_frac(0.01, replace = TRUE)
 ```
 
-## Randomly split a data frame into two parts
+### Randomly split a data frame into two parts
 
 The code below can be used to randomly split a data frame into two. We need to indicate the number of people we want in each group. In the example below we randomly split the mybfi data frame into two, where the first sample (mybfi1) contains 800 cases and the second (mybfi2) 200 cases.
 
@@ -186,7 +186,7 @@ nrow(mybfi1)
 nrow(mybfi2)
 ```
 
-# Excercises
+## Excercises
 
 1.  Use the dplyr package with the pipe operator to randomly select 500 cases from the mybfi data frame and then find the correlations of the five agreeableness variables.
 
@@ -263,9 +263,9 @@ mybfi %>%
   cor()
 ```
 
-# Filtering cases and selecting variables with square brackets
+## Filtering cases and selecting variables with square brackets
 
-## Selecting consecutive rows by their row numbers with square brackets
+### Selecting consecutive rows by their row numbers with square brackets
 
 We can select rows of a data frame by their row numbers using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index **`mybfi[1, 1]`**. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by **`mybfi[5, 6]`**.
 
@@ -315,7 +315,7 @@ mean(mybfi[, 1])
 sd(mybfi[, 1])
 ```
 
-## Selecting a variable by its name with square brackets
+### Selecting a variable by its name with square brackets
 
 We can also use square brackets to select a variable by its name. For instance, to select variable N1 of the mybfi data frame, we type mybfi\[, "N1". Note that we have to type the name of the variable inside quotation marks.
 
@@ -327,7 +327,7 @@ mean(mybfi[, "A1"])
 sd(mybfi[, "A1"])
 ```
 
-## Selecting two or more contiguous variables by their column numbers with square brackets
+### Selecting two or more contiguous variables by their column numbers with square brackets
 
 If the columns we want to select are contiguous--i.e. next to each other or together in sequence--we can type the first and last column numbers separated by a colon. For instance, to select the variables in columns three to six of the mybfi data frame we would type **`mybfi[, 3:6]`**.
 
@@ -339,13 +339,13 @@ psych::describe(mybfi[, 1:5])
 cor(mybfi[, 1:5])
 ```
 
-## Selecting two or more non-contiguous variables by their column numbers with square brackets
+### Selecting two or more non-contiguous variables by their column numbers with square brackets
 
 ```{r}
 head(mybfi[, c(1,3,5)])
 ```
 
-## Selecting two or more variables by their names with square brackets
+### Selecting two or more variables by their names with square brackets
 
 ```{r}
 head(mybfi[, c("A1", "A3", "A5")])

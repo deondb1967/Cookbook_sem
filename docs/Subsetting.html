@@ -316,42 +316,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-operator-of-the-dplyr-package" id="toc-the-operator-of-the-dplyr-package" class="nav-link active" data-scroll-target="#the-operator-of-the-dplyr-package"><span class="header-section-number">7</span> The %&gt;% operator of the dplyr package</a></li>
-  <li><a href="#filtering-cases-with-the-dplyr-package" id="toc-filtering-cases-with-the-dplyr-package" class="nav-link" data-scroll-target="#filtering-cases-with-the-dplyr-package"><span class="header-section-number">8</span> Filtering cases with the dplyr package</a>
+  <li><a href="#the-operator-of-the-dplyr-package" id="toc-the-operator-of-the-dplyr-package" class="nav-link active" data-scroll-target="#the-operator-of-the-dplyr-package"><span class="header-section-number">6.1</span> The %&gt;% operator of the dplyr package</a></li>
+  <li><a href="#filtering-cases-with-the-dplyr-package" id="toc-filtering-cases-with-the-dplyr-package" class="nav-link" data-scroll-target="#filtering-cases-with-the-dplyr-package"><span class="header-section-number">6.2</span> Filtering cases with the dplyr package</a>
   <ul class="collapse">
-  <li><a href="#filtering-rows-by-consecutive-row-numbers" id="toc-filtering-rows-by-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">8.1</span> Filtering rows by consecutive row numbers</a></li>
-  <li><a href="#filtering-cases-by-non-consecutive-row-numbers" id="toc-filtering-cases-by-non-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">8.2</span> Filtering cases by non-consecutive row numbers</a></li>
-  <li><a href="#filtering-cases-that-meet-a-certain-condition" id="toc-filtering-cases-that-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">8.3</span> Filtering cases that meet a certain condition</a></li>
-  <li><a href="#filtering-cases-that-dont-meet-a-certain-condition" id="toc-filtering-cases-that-dont-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">8.4</span> Filtering cases that don’t meet a certain condition</a></li>
-  <li><a href="#filtering-cases-on-the-basis-of-two-or-more-conditions" id="toc-filtering-cases-on-the-basis-of-two-or-more-conditions" class="nav-link" data-scroll-target="#filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">8.5</span> Filtering cases on the basis of two or more conditions</a></li>
-  <li><a href="#storing-the-filtered-cases-in-a-new-data-frame" id="toc-storing-the-filtered-cases-in-a-new-data-frame" class="nav-link" data-scroll-target="#storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">8.6</span> Storing the filtered cases in a new data frame</a></li>
+  <li><a href="#filtering-rows-by-consecutive-row-numbers" id="toc-filtering-rows-by-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">6.2.1</span> Filtering rows by consecutive row numbers</a></li>
+  <li><a href="#filtering-cases-by-non-consecutive-row-numbers" id="toc-filtering-cases-by-non-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">6.2.2</span> Filtering cases by non-consecutive row numbers</a></li>
+  <li><a href="#filtering-cases-that-meet-a-certain-condition" id="toc-filtering-cases-that-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">6.2.3</span> Filtering cases that meet a certain condition</a></li>
+  <li><a href="#filtering-cases-that-dont-meet-a-certain-condition" id="toc-filtering-cases-that-dont-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">6.2.4</span> Filtering cases that don’t meet a certain condition</a></li>
+  <li><a href="#filtering-cases-on-the-basis-of-two-or-more-conditions" id="toc-filtering-cases-on-the-basis-of-two-or-more-conditions" class="nav-link" data-scroll-target="#filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">6.2.5</span> Filtering cases on the basis of two or more conditions</a></li>
+  <li><a href="#storing-the-filtered-cases-in-a-new-data-frame" id="toc-storing-the-filtered-cases-in-a-new-data-frame" class="nav-link" data-scroll-target="#storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">6.2.6</span> Storing the filtered cases in a new data frame</a></li>
   </ul></li>
-  <li><a href="#selecting-variables-with-the-dplyr-package" id="toc-selecting-variables-with-the-dplyr-package" class="nav-link" data-scroll-target="#selecting-variables-with-the-dplyr-package"><span class="header-section-number">9</span> Selecting variables with the dplyr package</a>
+  <li><a href="#selecting-variables-with-the-dplyr-package" id="toc-selecting-variables-with-the-dplyr-package" class="nav-link" data-scroll-target="#selecting-variables-with-the-dplyr-package"><span class="header-section-number">6.3</span> Selecting variables with the dplyr package</a>
   <ul class="collapse">
-  <li><a href="#combining-select-and-slice" id="toc-combining-select-and-slice" class="nav-link" data-scroll-target="#combining-select-and-slice"><span class="header-section-number">9.1</span> Combining select and slice</a></li>
-  <li><a href="#combing-select-and-filter" id="toc-combing-select-and-filter" class="nav-link" data-scroll-target="#combing-select-and-filter"><span class="header-section-number">9.2</span> Combing select and filter</a></li>
-  <li><a href="#randomly-select-rows-from-a-data-frame-without-replacement" id="toc-randomly-select-rows-from-a-data-frame-without-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">9.3</span> Randomly select rows from a data frame without replacement</a></li>
-  <li><a href="#randomly-select-rows-from-a-data-frame-with-replacement" id="toc-randomly-select-rows-from-a-data-frame-with-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">9.4</span> Randomly select rows from a data frame with replacement</a></li>
-  <li><a href="#randomly-select-a-fraction-of-rows-without-replacement" id="toc-randomly-select-a-fraction-of-rows-without-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">9.5</span> Randomly select a fraction of rows without replacement</a></li>
-  <li><a href="#randomly-select-a-fraction-of-rows-with-replacement" id="toc-randomly-select-a-fraction-of-rows-with-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">9.6</span> Randomly select a fraction of rows with replacement</a></li>
-  <li><a href="#randomly-split-a-data-frame-into-two-parts" id="toc-randomly-split-a-data-frame-into-two-parts" class="nav-link" data-scroll-target="#randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">9.7</span> Randomly split a data frame into two parts</a></li>
+  <li><a href="#combining-select-and-slice" id="toc-combining-select-and-slice" class="nav-link" data-scroll-target="#combining-select-and-slice"><span class="header-section-number">6.3.1</span> Combining select and slice</a></li>
+  <li><a href="#combining-select-and-filter" id="toc-combining-select-and-filter" class="nav-link" data-scroll-target="#combining-select-and-filter"><span class="header-section-number">6.3.2</span> Combining select and filter</a></li>
+  <li><a href="#randomly-select-rows-from-a-data-frame-without-replacement" id="toc-randomly-select-rows-from-a-data-frame-without-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">6.3.3</span> Randomly select rows from a data frame without replacement</a></li>
+  <li><a href="#randomly-select-rows-from-a-data-frame-with-replacement" id="toc-randomly-select-rows-from-a-data-frame-with-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">6.3.4</span> Randomly select rows from a data frame with replacement</a></li>
+  <li><a href="#randomly-select-a-fraction-of-rows-without-replacement" id="toc-randomly-select-a-fraction-of-rows-without-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">6.3.5</span> Randomly select a fraction of rows without replacement</a></li>
+  <li><a href="#randomly-select-a-fraction-of-rows-with-replacement" id="toc-randomly-select-a-fraction-of-rows-with-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">6.3.6</span> Randomly select a fraction of rows with replacement</a></li>
+  <li><a href="#randomly-split-a-data-frame-into-two-parts" id="toc-randomly-split-a-data-frame-into-two-parts" class="nav-link" data-scroll-target="#randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">6.3.7</span> Randomly split a data frame into two parts</a></li>
   </ul></li>
-  <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises"><span class="header-section-number">10</span> Excercises</a></li>
-  <li><a href="#filtering-cases-and-selecting-variables-with-square-brackets" id="toc-filtering-cases-and-selecting-variables-with-square-brackets" class="nav-link" data-scroll-target="#filtering-cases-and-selecting-variables-with-square-brackets"><span class="header-section-number">11</span> Filtering cases and selecting variables with square brackets</a>
+  <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises"><span class="header-section-number">6.4</span> Excercises</a></li>
+  <li><a href="#filtering-cases-and-selecting-variables-with-square-brackets" id="toc-filtering-cases-and-selecting-variables-with-square-brackets" class="nav-link" data-scroll-target="#filtering-cases-and-selecting-variables-with-square-brackets"><span class="header-section-number">6.5</span> Filtering cases and selecting variables with square brackets</a>
   <ul class="collapse">
-  <li><a href="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1</span> Selecting consecutive rows by their row numbers with square brackets</a>
-  <ul class="collapse">
-  <li><a href="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1.1</span> Selecting non-consecutive rows by their row numbers with square brackets</a></li>
+  <li><a href="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.5.1</span> Selecting consecutive rows by their row numbers with square brackets</a></li>
+  <li><a href="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.5.2</span> Selecting non-consecutive rows by their row numbers with square brackets</a></li>
   </ul></li>
-  <li><a href="#selecting-columns-variables-from-a-data-frame" id="toc-selecting-columns-variables-from-a-data-frame" class="nav-link" data-scroll-target="#selecting-columns-variables-from-a-data-frame"><span class="header-section-number">11.2</span> Selecting columns (variables) from a data frame</a>
+  <li><a href="#selecting-columns-variables-from-a-data-frame" id="toc-selecting-columns-variables-from-a-data-frame" class="nav-link" data-scroll-target="#selecting-columns-variables-from-a-data-frame"><span class="header-section-number">6.6</span> Selecting columns (variables) from a data frame</a>
   <ul class="collapse">
-  <li><a href="#selecting-a-variable-with-notation" id="toc-selecting-a-variable-with-notation" class="nav-link" data-scroll-target="#selecting-a-variable-with-notation"><span class="header-section-number">11.2.1</span> Selecting a variable with $ notation</a></li>
-  <li><a href="#selecting-a-variable-by-its-column-number-with-square-brackets" id="toc-selecting-a-variable-by-its-column-number-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">11.2.2</span> Selecting a variable by its column number with square brackets</a></li>
-  </ul></li>
-  <li><a href="#selecting-a-variable-by-its-name-with-square-brackets" id="toc-selecting-a-variable-by-its-name-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">11.3</span> Selecting a variable by its name with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.4</span> Selecting two or more contiguous variables by their column numbers with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.5</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-variables-by-their-names-with-square-brackets" id="toc-selecting-two-or-more-variables-by-their-names-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">11.6</span> Selecting two or more variables by their names with square brackets</a></li>
+  <li><a href="#selecting-a-variable-with-notation" id="toc-selecting-a-variable-with-notation" class="nav-link" data-scroll-target="#selecting-a-variable-with-notation"><span class="header-section-number">6.6.1</span> Selecting a variable with $ notation</a></li>
+  <li><a href="#selecting-a-variable-by-its-column-number-with-square-brackets" id="toc-selecting-a-variable-by-its-column-number-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">6.6.2</span> Selecting a variable by its column number with square brackets</a></li>
+  <li><a href="#selecting-a-variable-by-its-name-with-square-brackets" id="toc-selecting-a-variable-by-its-name-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">6.6.3</span> Selecting a variable by its name with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.6.4</span> Selecting two or more contiguous variables by their column numbers with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.6.5</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-variables-by-their-names-with-square-brackets" id="toc-selecting-two-or-more-variables-by-their-names-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">6.6.6</span> Selecting two or more variables by their names with square brackets</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -379,14 +377,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In this chapter we explore how the dplyr package can be used to filter cases and select variables for further analysis. The data set, which is stored as “bfi_small.csv”, is a subset of the larger bfi data set that is included in the psychTools package. The bfi_small.csv file contains the responses of 1000 people to 10 personality inventory items. Items A1 to A5 are indicators of the Agreeableness personality factor and items N1 to N5 are indicators of the Neuroticism factor. The data set also contains information about gender (men = 1 and women = 2), education and age.</p>
-<section id="the-operator-of-the-dplyr-package" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> The %&gt;% operator of the dplyr package</h1>
+<section id="the-operator-of-the-dplyr-package" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="the-operator-of-the-dplyr-package"><span class="header-section-number">6.1</span> The %&gt;% operator of the dplyr package</h2>
 <p>The dplyr package makes it easy to select cases and variables by making use of the %&gt;% operator (the pipe operator). The meaning of %&gt;% is “and then”. One starts by typing the name of the data frame followed by %&gt;% and then the criteria on the basis of which persons and/or variables are selected. For instance, to select the variables in columns 1 to 5 of the mybfi data frame we would type <strong><code>mybfi %&gt;% select(1:5)</code></strong>, which reads as start with the mybfi data frame AND THEN select the variables in columns 1 to 5. A keyboard shortcut for typing the pipe operator is <strong><code>Shift-Ctrl-M</code></strong>.</p>
 </section>
-<section id="filtering-cases-with-the-dplyr-package" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Filtering cases with the dplyr package</h1>
-<section id="filtering-rows-by-consecutive-row-numbers" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">8.1</span> Filtering rows by consecutive row numbers</h2>
+<section id="filtering-cases-with-the-dplyr-package" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="filtering-cases-with-the-dplyr-package"><span class="header-section-number">6.2</span> Filtering cases with the dplyr package</h2>
+<section id="filtering-rows-by-consecutive-row-numbers" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">6.2.1</span> Filtering rows by consecutive row numbers</h3>
 <p>The <strong><code>slice()</code></strong> function of the <strong><code>dplyr</code></strong> package can be used to select a specified set of cases that fall in consecutive rows from a data frame. In the example below we select the cases that are in rows 1 to 10 of the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -405,8 +403,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="filtering-cases-by-non-consecutive-row-numbers" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">8.2</span> Filtering cases by non-consecutive row numbers</h2>
+<section id="filtering-cases-by-non-consecutive-row-numbers" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">6.2.2</span> Filtering cases by non-consecutive row numbers</h3>
 <p>To select cases that are in non-consecutive rows we need to type their row numbers. In the example below we select the cases that are in rows 1, 3, 5, and 7 to 10 of the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -422,8 +420,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="filtering-cases-that-meet-a-certain-condition" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">8.3</span> Filtering cases that meet a certain condition</h2>
+<section id="filtering-cases-that-meet-a-certain-condition" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">6.2.3</span> Filtering cases that meet a certain condition</h3>
 <p>The <code>filter()</code> function of the dplyr package can be used to filter cases that meet a specific condition. In the examples below we (a) select the men, (b) select people with education levels greater than 3, (c) select cases whose age is equal to 30, (d) select cases whose age is smaller than or equal to 30, and (e) select cases whose age is greater than or equal to 31.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span>)</span>
@@ -437,8 +435,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">31</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="filtering-cases-that-dont-meet-a-certain-condition" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">8.4</span> Filtering cases that don’t meet a certain condition</h2>
+<section id="filtering-cases-that-dont-meet-a-certain-condition" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">6.2.4</span> Filtering cases that don’t meet a certain condition</h3>
 <p>The ! symbol can be used to select cases that do not meet a certain condition. In the examples below we (a) select people who are not men, (b) select people who do not have education levels greater than 3, and (c) select people whose age is not greater than 30.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>gender <span class="sc">==</span> <span class="dv">1</span>)</span>
@@ -448,8 +446,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="filtering-cases-on-the-basis-of-two-or-more-conditions" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">8.5</span> Filtering cases on the basis of two or more conditions</h2>
+<section id="filtering-cases-on-the-basis-of-two-or-more-conditions" class="level3" data-number="6.2.5">
+<h3 data-number="6.2.5" class="anchored" data-anchor-id="filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">6.2.5</span> Filtering cases on the basis of two or more conditions</h3>
 <p>We can also select cases on the basis of two or more conditions. The &amp; (“and”) and | (“or”) operators are used to specify the conditions. In the examples below we (a) select cases who are men AND are older than 60, and (b) select cases who are older than 65 OR whose education level is equal to one. The second example will select ALL the people who are older than 65 and ALL the people whose education level is equal to one.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">&gt;</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -548,8 +546,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="storing-the-filtered-cases-in-a-new-data-frame" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">8.6</span> Storing the filtered cases in a new data frame</h2>
+<section id="storing-the-filtered-cases-in-a-new-data-frame" class="level3" data-number="6.2.6">
+<h3 data-number="6.2.6" class="anchored" data-anchor-id="storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">6.2.6</span> Storing the filtered cases in a new data frame</h3>
 <p>In the example below we start with the mybfi data frame, AND THEN we select the cases who are older than 28 AND have an education level of three or higher, AND THEN we select the first 15 rows of the cases who met the condition. Finally, we assign these cases to a new data frame that is labeled df_new. This data frame will contain 15 cases that each are older than 28 and have an education level of three or higher.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span> </span>
@@ -578,8 +576,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="selecting-variables-with-the-dplyr-package" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Selecting variables with the dplyr package</h1>
+<section id="selecting-variables-with-the-dplyr-package" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="selecting-variables-with-the-dplyr-package"><span class="header-section-number">6.3</span> Selecting variables with the dplyr package</h2>
 <p>The <strong><code>select()</code></strong> function of the dplyr package makes it easy to select variables with either the column numbers of the variables or their names. In the examples below we start with the mybfi data frame AND THEN: (a) select the variables A1 to A5 (i.e.&nbsp;A1, A2, A3, A4 and A5), (b) select the variables A1, A3, N1 and N3, (c) select any variable that starts with “A” (i.e.&nbsp;A1, A2, A3, A4 and A5), (d) select any variable that does not start with “A”, (e) select any variable that ends with “r” (i.e.&nbsp;gender), (f) select the variables in columns 6 to 10 (i.e.&nbsp;N1, N2, N3, N4 and N5) (f) select the variables in columns 1, 3, 6, and 8 (i.e.&nbsp;A1, A3, N1, and N3).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -593,8 +591,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="combining-select-and-slice" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="combining-select-and-slice"><span class="header-section-number">9.1</span> Combining select and slice</h2>
+<section id="combining-select-and-slice" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="combining-select-and-slice"><span class="header-section-number">6.3.1</span> Combining select and slice</h3>
 <p>In the example below we first select the variables A1 to A5 AND THEN only only the cases that are in rows 1, 3 and 5.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
@@ -602,8 +600,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="combing-select-and-filter" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="combing-select-and-filter"><span class="header-section-number">9.2</span> Combing select and filter</h2>
+<section id="combining-select-and-filter" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="combining-select-and-filter"><span class="header-section-number">6.3.2</span> Combining select and filter</h3>
 <p>In the example below we first select all the women AND THEN only the first 10 rows AND THEN we select variables A1 to A5.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
@@ -612,92 +610,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="randomly-select-rows-from-a-data-frame-without-replacement" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">9.3</span> Randomly select rows from a data frame without replacement</h2>
+<section id="randomly-select-rows-from-a-data-frame-without-replacement" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">6.3.3</span> Randomly select rows from a data frame without replacement</h3>
 <p>We can use the <strong><code>sample_n()</code></strong> function of the dplyr package to draw a random sample of cases (without replacement) from a data frame. In the example below we randomly sample (without replacement) ten cases from the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   5  4  6  2  4  5  6  5  4  5      1         1  19
-2   4  4  4  3  4  2  2  3  3  3      1         1  19
-3   3  6  5  6  6  2  4  3  2  2      2         2  40
-4   2  6  5  6  5  4  3  5  6  2      2         5  41
-5   3  6  5  6  5  4  4  4  3  3      2         3  28
-6   2  6  5  6  5  3  2  2  4  4      1         4  28
-7   3  4  4  5  4  4  4  4  2  1      1         3  27
-8   2  6  5  6  6  1  1  5  5  4      1         3  23
-9   1  5  2  4  2  2  1  2  4  4      1         4  54
-10  2  5  5  5  5  1  1  1  1  1      1         4  26</code></pre>
+1   2  3  2  1  4  1  5  1  2  1      1         5  48
+2   3  4  3  2  4  2  3  2  5  6      1         3  21
+3   1  6  5  6  6  4  5  4  3  4      2         4  33
+4   2  5  6  5  5  3  4  1  2  1      1         2  31
+5   2  6  5  6  4  4  4  5  5  6      2         4  24
+6   1  5  5  6  4  6  6  4  6  3      2         3  19
+7   2  6  5  6  6  3  4  2  2  1      1         2  29
+8   4  6  6  6  5  4  5  5  3  2      2         3  34
+9   5  4  5  2  4  3  4  2  1  1      1         3  25
+10  1  6  6  6  6  1  5  1  4  2      2         3  24</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-rows-from-a-data-frame-with-replacement" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">9.4</span> Randomly select rows from a data frame with replacement</h2>
+<section id="randomly-select-rows-from-a-data-frame-with-replacement" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">6.3.4</span> Randomly select rows from a data frame with replacement</h3>
 <p>To randomly select cases with replacement we need to add the argument <strong><code>replace = TRUE</code></strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   1  4  5  3  3  3  4  2  6  5      1         2  29
-2   2  6  5  6  5  5  6  2  4  6      2         3  21
-3   5  6  6  5  5  1  1  1  1  1      1         3  21
-4   5  4  4  4  5  2  2  2  2  1      1         3  20
-5   1  5  5  6  6  2  2  5  2  5      2         3  22
-6   3  5  4  5  5  1  2  2  1  2      1         3  18
-7   4  5  6  4  5  4  2  2  3  1      1         3  20
-8   2  5  5  6  6  1  4  3  4  4      2         3  25
-9   6  5  6  5  6  6  6  6  6  6      2         3  20
-10  2  5  4  4  5  2  3  3  4  2      1         4  23</code></pre>
+1   1  6  6  6  6  1  5  1  4  2      2         3  24
+2   6  6  6  6  6  1  4  5  5  6      2         3  35
+3   3  5  5  5  5  6  6  5  5  3      2         3  29
+4   4  5  4  6  4  3  4  3  1  4      2         3  19
+5   5  2  3  2  3  2  4  5  5  4      1         3  31
+6   1  6  5  6  5  3  4  2  5  2      2         3  19
+7   2  2  4  1  3  5  5  6  6  4      1         3  18
+8   3  4  4  1  3  2  6  2  1  2      2         3  30
+9   3  5  5  6  5  3  2  3  2  1      2         2  48
+10  2  5  6  5  6  1  2  1  2  4      2         3  25</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-a-fraction-of-rows-without-replacement" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">9.5</span> Randomly select a fraction of rows without replacement</h2>
+<section id="randomly-select-a-fraction-of-rows-without-replacement" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">6.3.5</span> Randomly select a fraction of rows without replacement</h3>
 <p>We can also specify a fraction of cases to be randomly selected. In the example below we randomly select 1% of the cases in the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(.<span class="dv">01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   1  6  5  6  5  1  1  1  1  3      2         3  19
-2   1  6  6  6  6  1  2  4  4  1      2         3  11
-3   2  5  5  6  4  4  5  5  5  5      2         3  38
-4   4  2  4  4  4  4  2  2  2  3      1         3  19
-5   1  5  5  1  6  1  1  5  5  6      2         4  53
-6   3  5  5  6  6  4  3  2  3  1      1         1  39
-7   1  5  6  4  5  1  3  3  2  2      1         1  22
-8   2  5  2  4  2  1  1  1  5  1      1         3  58
-9   2  5  5  4  6  2  4  2  2  1      2         4  24
-10  3  4  5  1  4  5  5  4  2  2      2         5  31</code></pre>
+1   5  5  5  6  6  4  1  2  2  5      2         1  44
+2   3  6  5  6  5  2  3  5  4  2      2         4  24
+3   3  5  4  4  2  2  4  1  1  3      2         3  20
+4   2  4  4  1  2  6  6  6  6  6      2         3  19
+5   3  5  5  6  5  3  3  4  2  4      2         3  39
+6   2  5  6  5  6  4  4  2  2  2      1         5  25
+7   1  6  6  6  6  6  6  4  5  6      2         3  25
+8   1  5  5  2  3  6  6  5  6  6      2         3  21
+9   2  5  5  2  6  1  4  1  2  1      1         4  38
+10  1  5  6  6  5  4  4  5  1  1      2         3  25</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-a-fraction-of-rows-with-replacement" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">9.6</span> Randomly select a fraction of rows with replacement</h2>
+<section id="randomly-select-a-fraction-of-rows-with-replacement" class="level3" data-number="6.3.6">
+<h3 data-number="6.3.6" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">6.3.6</span> Randomly select a fraction of rows with replacement</h3>
 <p>To randomly select a fraction of cases with replacement we need to add the argument <strong><code>replace = TRUE</code></strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.01</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   2  4  4  6  4  3  3  2  3  3      2         1  32
-2   3  3  3  4  4  1  2  2  4  3      1         3  18
-3   1  6  6  1  6  2  3  1  2  1      2         3  20
-4   4  5  2  1  4  4  5  2  4  6      2         1  18
-5   1  6  5  6  6  3  2  2  1  1      1         3  52
-6   4  5  5  5  3  4  5  4  3  4      2         3  20
-7   6  2  5  6  6  1  1  4  2  6      2         2  19
-8   2  5  4  5  5  2  2  2  2  4      2         4  24
-9   1  4  5  4  5  3  3  3  2  4      2         5  28
-10  2  6  6  6  6  4  5  2  2  1      2         3  32</code></pre>
+1   3  4  4  5  5  4  4  4  5  3      2         3  29
+2   2  5  5  5  5  2  3  3  2  2      2         3  19
+3   1  4  5  6  5  1  3  2  2  5      2         3  18
+4   1  6  5  6  5  3  4  2  5  2      2         3  19
+5   2  5  5  6  4  1  2  2  2  1      2         3  17
+6   5  4  4  4  3  5  5  2  2  1      1         3  34
+7   2  6  5  6  5  4  2  4  5  4      2         3  45
+8   3  5  4  5  5  3  4  2  2  1      2         1  22
+9   2  4  3  1  5  2  4  6  5  1      2         3  18
+10  2  5  5  6  4  4  4  5  4  3      2         3  21</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-split-a-data-frame-into-two-parts" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">9.7</span> Randomly split a data frame into two parts</h2>
+<section id="randomly-split-a-data-frame-into-two-parts" class="level3" data-number="6.3.7">
+<h3 data-number="6.3.7" class="anchored" data-anchor-id="randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">6.3.7</span> Randomly split a data frame into two parts</h3>
 <p>The code below can be used to randomly split a data frame into two. We need to indicate the number of people we want in each group. In the example below we randomly split the mybfi data frame into two, where the first sample (mybfi1) contains 800 cases and the second (mybfi2) 200 cases.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specify exactly how many persons you want in the two groups, respectively.</span></span>
@@ -725,8 +723,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="excercises" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Excercises</h1>
+<section id="excercises" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="excercises"><span class="header-section-number">6.4</span> Excercises</h2>
 <ol type="1">
 <li>Use the dplyr package with the pipe operator to randomly select 500 cases from the mybfi data frame and then find the correlations of the five agreeableness variables.</li>
 </ol>
@@ -738,9 +736,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          N1        N3        N5
-N1 1.0000000 0.5978231 0.3800810
-N3 0.5978231 1.0000000 0.4191232
-N5 0.3800810 0.4191232 1.0000000</code></pre>
+N1 1.0000000 0.5710420 0.3700384
+N3 0.5710420 1.0000000 0.4166014
+N5 0.3700384 0.4166014 1.0000000</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -753,10 +751,10 @@ N5 0.3800810 0.4191232 1.0000000</code></pre>
 <li>Use the dplyr package to select the rows of the men who (a) have education levels of 3 or above and (b) are older than 40. Then find the correlations of variables N1 to N5.</li>
 </ol>
 </section>
-<section id="filtering-cases-and-selecting-variables-with-square-brackets" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Filtering cases and selecting variables with square brackets</h1>
-<section id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1</span> Selecting consecutive rows by their row numbers with square brackets</h2>
+<section id="filtering-cases-and-selecting-variables-with-square-brackets" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="filtering-cases-and-selecting-variables-with-square-brackets"><span class="header-section-number">6.5</span> Filtering cases and selecting variables with square brackets</h2>
+<section id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.5.1</span> Selecting consecutive rows by their row numbers with square brackets</h3>
 <p>We can select rows of a data frame by their row numbers using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index <strong><code>mybfi[1, 1]</code></strong>. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by <strong><code>mybfi[5, 6]</code></strong>.</p>
 <p>If we want to select a row and include all the columns we leave the space after the comma empty. So if we want to use the scores of the person in the sixth row of the data frame on all the variables we would do it as follows: <strong><code>mybfi[6, ]</code></strong>.</p>
 <p>In the example below we select the persons in rows 1 to 20, using all the variables.</p>
@@ -772,8 +770,9 @@ N5 0.3800810 0.4191232 1.0000000</code></pre>
 6  1  5  6  6  5  1  1  2  1  1      2         1  53</code></pre>
 </div>
 </div>
-<section id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1.1</span> Selecting non-consecutive rows by their row numbers with square brackets</h3>
+</section>
+<section id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">6.5.2</span> Selecting non-consecutive rows by their row numbers with square brackets</h3>
 <p>We can select non-consecutive rows of a data frame by concatenating the row numbers inside round brackets, preceded by the letter “c”. For instance, to select rows 2, 4, and 7 of the mybfi data frame we type <strong><code>mybfi[c(2, 4, 7), ]</code></strong>. Note that the space after the comma indicates that we want to include all the variables.</p>
 <p>In the example below we select rows 1, 3, 5, 7 and 9 from the bfi data frame.</p>
 <div class="cell">
@@ -789,10 +788,10 @@ N5 0.3800810 0.4191232 1.0000000</code></pre>
 </div>
 </section>
 </section>
-<section id="selecting-columns-variables-from-a-data-frame" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="selecting-columns-variables-from-a-data-frame"><span class="header-section-number">11.2</span> Selecting columns (variables) from a data frame</h2>
-<section id="selecting-a-variable-with-notation" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="selecting-a-variable-with-notation"><span class="header-section-number">11.2.1</span> Selecting a variable with $ notation</h3>
+<section id="selecting-columns-variables-from-a-data-frame" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="selecting-columns-variables-from-a-data-frame"><span class="header-section-number">6.6</span> Selecting columns (variables) from a data frame</h2>
+<section id="selecting-a-variable-with-notation" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="selecting-a-variable-with-notation"><span class="header-section-number">6.6.1</span> Selecting a variable with $ notation</h3>
 <p>We can select a variable from a data frame using dollar notation by first typing the name of the data frame, second typing a $ symbol, and then typing the name of the variable. For instance, we select variable N1 of the mybfi data frame as follows: <strong><code>mybfi$N1</code></strong></p>
 <p>In this example we are selecting the variable A1 from the <code>mybfi</code> data frame. Next, I find the mean and standard deviation of variable A1.</p>
 <div class="cell">
@@ -810,8 +809,8 @@ N5 0.3800810 0.4191232 1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-a-variable-by-its-column-number-with-square-brackets" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">11.2.2</span> Selecting a variable by its column number with square brackets</h3>
+<section id="selecting-a-variable-by-its-column-number-with-square-brackets" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">6.6.2</span> Selecting a variable by its column number with square brackets</h3>
 <p>We can select a variable by its column number in the data frame using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index <strong><code>mybfi[1, 1]</code></strong>. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by <strong><code>mybfi[5, 6]</code></strong>.</p>
 <p>If we want to select a variable and include all the rows we leave the space before the comma empty. So if we want to use the scores of all the persons in the data frame on the variable in column six we would do it as follows: <strong><code>mybfi[, 6]</code></strong>.</p>
 <p>In the example below we select variable A1, which is in the first column, using all the rows.</p>
@@ -830,9 +829,8 @@ N5 0.3800810 0.4191232 1.0000000</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="selecting-a-variable-by-its-name-with-square-brackets" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">11.3</span> Selecting a variable by its name with square brackets</h2>
+<section id="selecting-a-variable-by-its-name-with-square-brackets" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">6.6.3</span> Selecting a variable by its name with square brackets</h3>
 <p>We can also use square brackets to select a variable by its name. For instance, to select variable N1 of the mybfi data frame, we type mybfi[, “N1”. Note that we have to type the name of the variable inside quotation marks.</p>
 <p>In the example below we select variable A1 from the mybfi data frame.</p>
 <div class="cell">
@@ -850,8 +848,8 @@ N5 0.3800810 0.4191232 1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.4</span> Selecting two or more contiguous variables by their column numbers with square brackets</h2>
+<section id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.6.4</span> Selecting two or more contiguous variables by their column numbers with square brackets</h3>
 <p>If the columns we want to select are contiguous–i.e.&nbsp;next to each other or together in sequence–we can type the first and last column numbers separated by a colon. For instance, to select the variables in columns three to six of the mybfi data frame we would type <strong><code>mybfi[, 3:6]</code></strong>.</p>
 <p>In the example below we select the variables in columns one to five. Next we ask for descriptive statistics of these variables.</p>
 <div class="cell">
@@ -885,8 +883,8 @@ A5 -0.1860256  0.3827802  0.5281988  0.3372695  1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.5</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</h2>
+<section id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level3" data-number="6.6.5">
+<h3 data-number="6.6.5" class="anchored" data-anchor-id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">6.6.5</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -900,8 +898,8 @@ A5 -0.1860256  0.3827802  0.5281988  0.3372695  1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-variables-by-their-names-with-square-brackets" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">11.6</span> Selecting two or more variables by their names with square brackets</h2>
+<section id="selecting-two-or-more-variables-by-their-names-with-square-brackets" class="level3" data-number="6.6.6">
+<h3 data-number="6.6.6" class="anchored" data-anchor-id="selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">6.6.6</span> Selecting two or more variables by their names with square brackets</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A3"</span>, <span class="st">"A5"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
