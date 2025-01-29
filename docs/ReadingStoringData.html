@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#setting-the-working-directory" id="toc-setting-the-working-directory" class="nav-link active" data-scroll-target="#setting-the-working-directory"><span class="header-section-number">4.1</span> Setting the working directory</a></li>
-  <li><a href="#reading-the-data-and-storing-it-as-an-object" id="toc-reading-the-data-and-storing-it-as-an-object" class="nav-link" data-scroll-target="#reading-the-data-and-storing-it-as-an-object"><span class="header-section-number">4.2</span> Reading the data and storing it as an object</a></li>
+  <li><a href="#reading-a-.csv-file-and-storing-it-as-an-object" id="toc-reading-a-.csv-file-and-storing-it-as-an-object" class="nav-link" data-scroll-target="#reading-a-.csv-file-and-storing-it-as-an-object"><span class="header-section-number">4.2</span> Reading a .csv file and storing it as an object</a></li>
   <li><a href="#check-that-the-data-has-been-properly-read" id="toc-check-that-the-data-has-been-properly-read" class="nav-link" data-scroll-target="#check-that-the-data-has-been-properly-read"><span class="header-section-number">4.3</span> Check that the data has been properly read</a></li>
   <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data"><span class="header-section-number">4.4</span> Missing data</a></li>
   <li><a href="#reading-an-excel-file" id="toc-reading-an-excel-file" class="nav-link" data-scroll-target="#reading-an-excel-file"><span class="header-section-number">4.5</span> Reading an Excel file</a></li>
@@ -352,22 +352,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this chapter we learn how to read and store data in <em>R</em>. The focus falls on reading .csv files, .xlsx files, and .sav files. We also learn how to copy data to the clipboard and to then store it in <em>R.</em></p>
 <section id="setting-the-working-directory" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="setting-the-working-directory"><span class="header-section-number">4.1</span> Setting the working directory</h2>
-<p>The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with <em>R</em>.</p>
-<p>You should create a folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward.</p>
+<p>The first step in any data analysis session with <em>R</em> is to set the working directory. The working directory is a folder that files related to the project that you are working on. This directory contains your data and any objects and files that you create and store while working with <em>R</em>.</p>
+<p>You should create a project folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward. It is also good practice to create a “data” subfolder inside the project folder. Data files should be stored in this subfolder.</p>
 <p>You can set the working directory via the Rstudio menu: <strong><code>Session/Set Working Directory/Choose Directory</code></strong>. <em>R</em> uses the <strong><code>setwd()</code></strong> function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start <em>R</em> and want to set the working directory, you can highlight the first row of the script and run it.</p>
-<p>In the example below I first used the menus to set the working directory to “C:/myR/Masters2021”. Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.</p>
+<p>In the example below I first used the menus to set the working directory to “C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021”. Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.</p>
 <p>I also included the <strong><code>getwd()</code></strong> function, which is used to see the active working directory. Users sometimes change the working directory during an R session and <strong><code>getwd()</code></strong> can be used at any time to remind you of the current working directory.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="reading-the-data-and-storing-it-as-an-object" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="reading-the-data-and-storing-it-as-an-object"><span class="header-section-number">4.2</span> Reading the data and storing it as an object</h2>
-<p>Data will typically be captured in a spreadsheet programme like Excel. One of the safest ways to get data into R is to first–in the working directory folder–store the Excel file as a comma separated values file (<em>.csv), second to read the csv file in R, and third to store the data as an object in R. In R the stored data is referred to as a</em> data frame*.</p>
-<p>We accomplish the second and third steps jointly by using the <strong><code>read.csv()</code></strong> function. In the example we read the data and then store it to an object (a data frame) with the name “mydata”. Note that we can give the data frame any name we want (but the name should not start with a number and it should not contain any special characters such as @, #, $, %, !, etc). The name also should not contain spaces. Two words can be used in a name if they are separated by an underscore or by a full stop (e.g.&nbsp;“my.data” or “my_data”) It is good practice to keep the name short and straightforward, but as informative as possible.</p>
+<section id="reading-a-.csv-file-and-storing-it-as-an-object" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="reading-a-.csv-file-and-storing-it-as-an-object"><span class="header-section-number">4.2</span> Reading a .csv file and storing it as an object</h2>
+<p>Data will typically be captured in a spreadsheet programme like Excel. One of the safest ways to get data into R is to first–in the working directory folder–store the Excel file as a comma separated values file (.csv)<em>,</em> second to read the .csv file in <em>R</em>, and third to store the data as an object in <em>R</em>.</p>
+<p>We accomplish the second and third steps jointly by using the <strong><code>read.csv()</code></strong> function. In the example below we read the data in the file labeled “SA_Swiss.csv” from the “data”subfolder and then store it to an object (a data frame) with the name <strong><code>mydata</code></strong>. Note that we can give the data frame any name we want (but the name should not start with a number and it should not contain any special characters such as @, #, $, %, !, etc). The name also should not contain spaces. Two words can be used in a name if they are separated by an underscore or by a full stop (e.g.&nbsp;“my.data” or “my_data”). It is good practice to keep the name short and straightforward, but as informative as possible.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SA_Swiss.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/SA_Swiss.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>On some machines Excel uses a semi-colon rather than a comma to separate values. In such cases you should use the <strong><code>read.csv2()</code></strong> function rather than the <strong><code>read.csv()</code></strong> function.</p>
 </section>
@@ -482,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.4" class="anchored" data-anchor-id="missing-data"><span class="header-section-number">4.4</span> Missing data</h2>
 <p>It is relatively common to find missing data in a data set. In Excel, missing data can be represented by an empty cell, by the letters <strong>NA</strong>, or by a special code such as -999. In the first two cases R will recognise the empty cells or cells containing NAs as missing data. In the third case it is necessary to indicate to <strong><code>read.csv()</code></strong> that the special code represents missing data. Note that in an R data frame missing data will always be represented by NA (an abbreviation for “not available”).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>SA_Swiss <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"SA_Swiss.csv"</span>, <span class="at">na.strings=</span><span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>SA_Swiss <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/SA_Swiss.csv"</span>, <span class="at">na.strings=</span><span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-an-excel-file" class="level2" data-number="4.5">
@@ -498,10 +498,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>package 'readxl' successfully unpacked and MD5 sums checked
 
 The downloaded binary packages are in
-    C:\Users\deondb\AppData\Local\Temp\RtmpKyjfQP\downloaded_packages</code></pre>
+    C:\Users\deondb\AppData\Local\Temp\RtmpqEvu1D\downloaded_packages</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"SA_Swiss.xlsx"</span>, <span class="at">na =</span> <span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SA_Swiss.xlsx"</span>, <span class="at">na =</span> <span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-an-spss-file" class="level2" data-number="4.6">
@@ -510,7 +510,7 @@ The downloaded binary packages are in
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"haven"</span>  , <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org/"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">"SA_Swiss.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">"data/SA_Swiss.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-data-from-the-clipboard" class="level2" data-number="4.7">
@@ -524,8 +524,10 @@ The downloaded binary packages are in
 <section id="exercise" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="exercise"><span class="header-section-number">4.8</span> Exercise</h2>
 <ul>
-<li><p>Create a folder on your machine where you will store your data and <em>R</em> scripts.</p></li>
-<li><p>Set this folder as the working directory.</p></li>
+<li><p>Create a folder on your machine that will be the working directory of your project</p></li>
+<li><p>Create a data subfolder in the working directory</p></li>
+<li><p>Store the SA_Swiss.csv, SA_Swiss.xlsx, SA_Swiss.sav and playdata.csv files in the data subfolder</p></li>
+<li><p>Set the working directory to the project folder</p></li>
 <li><p>Import the <code>SA_Swiss.csv</code> data set and store it as <code>mydata_csv</code>.</p></li>
 <li><p>Import the <code>SA_Swiss.xlsx</code> data set and store it as <code>mydata_xl</code>.</p></li>
 <li><p>Import the <code>SA_Swiss.sav</code> data set and store it as <code>mydata_spss</code>.</p></li>

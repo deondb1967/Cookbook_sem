@@ -11,7 +11,7 @@ In this chapter we focus on some basic aspects of data management in R. We focus
 Our first step is to read the data and to store it as a data frame. This needs to be done at the start of each session. If this had been done earlier in the session we do not need to do it again.
 
 ```{r }
-mydata <- read.csv("SA_Swiss.csv")
+mydata <- read.csv("data/SA_Swiss.csv")
 ```
 
 ## Inspecting the structure of a data frame
@@ -52,5 +52,3 @@ We can now ask for a summary of basic descriptive statistics of all the variable
 ```{r }
 summary(mydata)
 ```
-
-$$ C(n, k) = \frac{n!}{k!(n-k)!} $$

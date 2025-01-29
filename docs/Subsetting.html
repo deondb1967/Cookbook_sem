@@ -316,39 +316,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#using-dplyr-to-filter-rows-from-a-data-frame" id="toc-using-dplyr-to-filter-rows-from-a-data-frame" class="nav-link active" data-scroll-target="#using-dplyr-to-filter-rows-from-a-data-frame"><span class="header-section-number">7</span> Using dplyr to filter rows from a data frame</a>
+  <li><a href="#the-operator-of-the-dplyr-package" id="toc-the-operator-of-the-dplyr-package" class="nav-link active" data-scroll-target="#the-operator-of-the-dplyr-package"><span class="header-section-number">7</span> The %&gt;% operator of the dplyr package</a></li>
+  <li><a href="#filtering-cases-with-the-dplyr-package" id="toc-filtering-cases-with-the-dplyr-package" class="nav-link" data-scroll-target="#filtering-cases-with-the-dplyr-package"><span class="header-section-number">8</span> Filtering cases with the dplyr package</a>
   <ul class="collapse">
-  <li><a href="#filtering-rows-by-consecutive-row-numbers" id="toc-filtering-rows-by-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">7.1</span> Filtering rows by consecutive row numbers</a></li>
-  <li><a href="#filtering-cases-by-non-consecutive-row-numbers" id="toc-filtering-cases-by-non-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">7.2</span> Filtering cases by non-consecutive row numbers</a></li>
-  <li><a href="#filtering-cases-that-meet-a-certain-condition" id="toc-filtering-cases-that-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">7.3</span> Filtering cases that meet a certain condition</a></li>
-  <li><a href="#filtering-cases-that-dont-meet-a-certain-condition" id="toc-filtering-cases-that-dont-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">7.4</span> Filtering cases that don’t meet a certain condition</a></li>
-  <li><a href="#filtering-cases-on-the-basis-of-two-or-more-conditions" id="toc-filtering-cases-on-the-basis-of-two-or-more-conditions" class="nav-link" data-scroll-target="#filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">7.5</span> Filtering cases on the basis of two or more conditions</a></li>
-  <li><a href="#storing-the-filtered-cases-in-a-new-data-frame" id="toc-storing-the-filtered-cases-in-a-new-data-frame" class="nav-link" data-scroll-target="#storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">7.6</span> Storing the filtered cases in a new data frame</a></li>
+  <li><a href="#filtering-rows-by-consecutive-row-numbers" id="toc-filtering-rows-by-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">8.1</span> Filtering rows by consecutive row numbers</a></li>
+  <li><a href="#filtering-cases-by-non-consecutive-row-numbers" id="toc-filtering-cases-by-non-consecutive-row-numbers" class="nav-link" data-scroll-target="#filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">8.2</span> Filtering cases by non-consecutive row numbers</a></li>
+  <li><a href="#filtering-cases-that-meet-a-certain-condition" id="toc-filtering-cases-that-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">8.3</span> Filtering cases that meet a certain condition</a></li>
+  <li><a href="#filtering-cases-that-dont-meet-a-certain-condition" id="toc-filtering-cases-that-dont-meet-a-certain-condition" class="nav-link" data-scroll-target="#filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">8.4</span> Filtering cases that don’t meet a certain condition</a></li>
+  <li><a href="#filtering-cases-on-the-basis-of-two-or-more-conditions" id="toc-filtering-cases-on-the-basis-of-two-or-more-conditions" class="nav-link" data-scroll-target="#filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">8.5</span> Filtering cases on the basis of two or more conditions</a></li>
+  <li><a href="#storing-the-filtered-cases-in-a-new-data-frame" id="toc-storing-the-filtered-cases-in-a-new-data-frame" class="nav-link" data-scroll-target="#storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">8.6</span> Storing the filtered cases in a new data frame</a></li>
   </ul></li>
-  <li><a href="#selecting-variables-with-the-dplyr-package" id="toc-selecting-variables-with-the-dplyr-package" class="nav-link" data-scroll-target="#selecting-variables-with-the-dplyr-package"><span class="header-section-number">8</span> Selecting variables with the dplyr package</a>
+  <li><a href="#selecting-variables-with-the-dplyr-package" id="toc-selecting-variables-with-the-dplyr-package" class="nav-link" data-scroll-target="#selecting-variables-with-the-dplyr-package"><span class="header-section-number">9</span> Selecting variables with the dplyr package</a>
   <ul class="collapse">
-  <li><a href="#combining-select-and-slice" id="toc-combining-select-and-slice" class="nav-link" data-scroll-target="#combining-select-and-slice"><span class="header-section-number">8.1</span> Combining select and slice</a></li>
-  <li><a href="#combing-select-and-filter" id="toc-combing-select-and-filter" class="nav-link" data-scroll-target="#combing-select-and-filter"><span class="header-section-number">8.2</span> Combing select and filter</a></li>
-  <li><a href="#randomly-select-rows-from-a-data-frame-without-replacement" id="toc-randomly-select-rows-from-a-data-frame-without-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">8.3</span> Randomly select rows from a data frame without replacement</a></li>
-  <li><a href="#randomly-select-rows-from-a-data-frame-with-replacement" id="toc-randomly-select-rows-from-a-data-frame-with-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">8.4</span> Randomly select rows from a data frame with replacement</a></li>
-  <li><a href="#randomly-select-a-fraction-of-rows-without-replacement" id="toc-randomly-select-a-fraction-of-rows-without-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">8.5</span> Randomly select a fraction of rows without replacement</a></li>
-  <li><a href="#randomly-select-a-fraction-of-rows-with-replacement" id="toc-randomly-select-a-fraction-of-rows-with-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">8.6</span> Randomly select a fraction of rows with replacement</a></li>
-  <li><a href="#randomly-split-a-data-frame-into-two-parts" id="toc-randomly-split-a-data-frame-into-two-parts" class="nav-link" data-scroll-target="#randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">8.7</span> Randomly split a data frame into two parts</a></li>
-  <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises"><span class="header-section-number">8.8</span> Excercises</a>
-  <ul class="collapse">
-  <li><a href="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">8.8.1</span> Selecting consecutive rows by their row numbers with square brackets</a></li>
-  <li><a href="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">8.8.2</span> Selecting non-consecutive rows by their row numbers with square brackets</a></li>
+  <li><a href="#combining-select-and-slice" id="toc-combining-select-and-slice" class="nav-link" data-scroll-target="#combining-select-and-slice"><span class="header-section-number">9.1</span> Combining select and slice</a></li>
+  <li><a href="#combing-select-and-filter" id="toc-combing-select-and-filter" class="nav-link" data-scroll-target="#combing-select-and-filter"><span class="header-section-number">9.2</span> Combing select and filter</a></li>
+  <li><a href="#randomly-select-rows-from-a-data-frame-without-replacement" id="toc-randomly-select-rows-from-a-data-frame-without-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">9.3</span> Randomly select rows from a data frame without replacement</a></li>
+  <li><a href="#randomly-select-rows-from-a-data-frame-with-replacement" id="toc-randomly-select-rows-from-a-data-frame-with-replacement" class="nav-link" data-scroll-target="#randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">9.4</span> Randomly select rows from a data frame with replacement</a></li>
+  <li><a href="#randomly-select-a-fraction-of-rows-without-replacement" id="toc-randomly-select-a-fraction-of-rows-without-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">9.5</span> Randomly select a fraction of rows without replacement</a></li>
+  <li><a href="#randomly-select-a-fraction-of-rows-with-replacement" id="toc-randomly-select-a-fraction-of-rows-with-replacement" class="nav-link" data-scroll-target="#randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">9.6</span> Randomly select a fraction of rows with replacement</a></li>
+  <li><a href="#randomly-split-a-data-frame-into-two-parts" id="toc-randomly-split-a-data-frame-into-two-parts" class="nav-link" data-scroll-target="#randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">9.7</span> Randomly split a data frame into two parts</a></li>
   </ul></li>
-  <li><a href="#selecting-columns-variables-from-a-data-frame" id="toc-selecting-columns-variables-from-a-data-frame" class="nav-link" data-scroll-target="#selecting-columns-variables-from-a-data-frame"><span class="header-section-number">8.9</span> Selecting columns (variables) from a data frame</a>
+  <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises"><span class="header-section-number">10</span> Excercises</a></li>
+  <li><a href="#filtering-cases-and-selecting-variables-with-square-brackets" id="toc-filtering-cases-and-selecting-variables-with-square-brackets" class="nav-link" data-scroll-target="#filtering-cases-and-selecting-variables-with-square-brackets"><span class="header-section-number">11</span> Filtering cases and selecting variables with square brackets</a>
   <ul class="collapse">
-  <li><a href="#selecting-a-variable-with-notation" id="toc-selecting-a-variable-with-notation" class="nav-link" data-scroll-target="#selecting-a-variable-with-notation"><span class="header-section-number">8.9.1</span> Selecting a variable with $ notation</a></li>
-  <li><a href="#selecting-a-variable-by-its-column-number-with-square-brackets" id="toc-selecting-a-variable-by-its-column-number-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">8.9.2</span> Selecting a variable by its column number with square brackets</a></li>
+  <li><a href="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1</span> Selecting consecutive rows by their row numbers with square brackets</a>
+  <ul class="collapse">
+  <li><a href="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" id="toc-selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1.1</span> Selecting non-consecutive rows by their row numbers with square brackets</a></li>
   </ul></li>
-  <li><a href="#selecting-a-variable-by-its-name-with-square-brackets" id="toc-selecting-a-variable-by-its-name-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">8.10</span> Selecting a variable by its name with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">8.11</span> Selecting two or more contiguous variables by their column numbers with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">8.12</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</a></li>
-  <li><a href="#selecting-two-or-more-variables-by-their-names-with-square-brackets" id="toc-selecting-two-or-more-variables-by-their-names-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">8.13</span> Selecting two or more variables by their names with square brackets</a></li>
-  <li><a href="#fun-with-starwars-characters" id="toc-fun-with-starwars-characters" class="nav-link" data-scroll-target="#fun-with-starwars-characters"><span class="header-section-number">8.14</span> Fun with Starwars characters</a></li>
+  <li><a href="#selecting-columns-variables-from-a-data-frame" id="toc-selecting-columns-variables-from-a-data-frame" class="nav-link" data-scroll-target="#selecting-columns-variables-from-a-data-frame"><span class="header-section-number">11.2</span> Selecting columns (variables) from a data frame</a>
+  <ul class="collapse">
+  <li><a href="#selecting-a-variable-with-notation" id="toc-selecting-a-variable-with-notation" class="nav-link" data-scroll-target="#selecting-a-variable-with-notation"><span class="header-section-number">11.2.1</span> Selecting a variable with $ notation</a></li>
+  <li><a href="#selecting-a-variable-by-its-column-number-with-square-brackets" id="toc-selecting-a-variable-by-its-column-number-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">11.2.2</span> Selecting a variable by its column number with square brackets</a></li>
+  </ul></li>
+  <li><a href="#selecting-a-variable-by-its-name-with-square-brackets" id="toc-selecting-a-variable-by-its-name-with-square-brackets" class="nav-link" data-scroll-target="#selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">11.3</span> Selecting a variable by its name with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.4</span> Selecting two or more contiguous variables by their column numbers with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" id="toc-selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.5</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</a></li>
+  <li><a href="#selecting-two-or-more-variables-by-their-names-with-square-brackets" id="toc-selecting-two-or-more-variables-by-their-names-with-square-brackets" class="nav-link" data-scroll-target="#selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">11.6</span> Selecting two or more variables by their names with square brackets</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -375,42 +378,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="using-dplyr-to-filter-rows-from-a-data-frame" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Using dplyr to filter rows from a data frame</h1>
-<section id="filtering-rows-by-consecutive-row-numbers" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">7.1</span> Filtering rows by consecutive row numbers</h2>
+<p>In this chapter we explore how the dplyr package can be used to filter cases and select variables for further analysis. The data set, which is stored as “bfi_small.csv”, is a subset of the larger bfi data set that is included in the psychTools package. The bfi_small.csv file contains the responses of 1000 people to 10 personality inventory items. Items A1 to A5 are indicators of the Agreeableness personality factor and items N1 to N5 are indicators of the Neuroticism factor. The data set also contains information about gender (men = 1 and women = 2), education and age.</p>
+<section id="the-operator-of-the-dplyr-package" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> The %&gt;% operator of the dplyr package</h1>
+<p>The dplyr package makes it easy to select cases and variables by making use of the %&gt;% operator (the pipe operator). The meaning of %&gt;% is “and then”. One starts by typing the name of the data frame followed by %&gt;% and then the criteria on the basis of which persons and/or variables are selected. For instance, to select the variables in columns 1 to 5 of the mybfi data frame we would type <strong><code>mybfi %&gt;% select(1:5)</code></strong>, which reads as start with the mybfi data frame AND THEN select the variables in columns 1 to 5. A keyboard shortcut for typing the pipe operator is <strong><code>Shift-Ctrl-M</code></strong>.</p>
+</section>
+<section id="filtering-cases-with-the-dplyr-package" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Filtering cases with the dplyr package</h1>
+<section id="filtering-rows-by-consecutive-row-numbers" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="filtering-rows-by-consecutive-row-numbers"><span class="header-section-number">8.1</span> Filtering rows by consecutive row numbers</h2>
+<p>The <strong><code>slice()</code></strong> function of the <strong><code>dplyr</code></strong> package can be used to select a specified set of cases that fall in consecutive rows from a data frame. In the example below we select the cases that are in rows 1 to 10 of the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   5  2  3  5  4  4  3  1  3  1      1         4  34
-2   3  3  4  2  4  3  4  4  4  6      2         4  20
-3   3  5  6  6  6  3  5  2  5  6      2         3  44
-4   1  6  6  6  6  1  3  5  4  4      2         4  50
-5   3  4  4  4  4  3  4  4  4  4      1         4  24
-6   2  4  4  1  3  1  2  1  4  4      1         2  18
-7   3  4  4  4  4  5  6  6  4  5      2         2  41
-8   3  5  4  4  2  2  4  1  1  3      2         3  20
-9   3  3  3  4  4  3  4  2  4  2      2         4  24
-10  4  2  5  1  5  1  2  4  5  1      1         3  20</code></pre>
+1   1  6  6  4  5  2  2  5  4  1      2         5  31
+2   2  4  4  3  4  3  4  4  3  4      2         4  22
+3   1  6  5  6  5  1  2  2  4  4      2         3  40
+4   1  5  6  6  4  1  2  4  3  2      2         3  36
+5   2  5  6  6  6  2  2  4  4  2      2         5  30
+6   1  5  6  6  5  1  1  2  1  1      2         1  53
+7   2  5  6  5  6  2  4  2  3  2      2         3  31
+8   2  6  4  6  5  4  5  4  2  5      2         3  18
+9   1  6  4  6  5  2  2  1  6  4      2         3  43
+10  3  4  5  6  3  5  5  6  5  4      2         3  21</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-cases-by-non-consecutive-row-numbers" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">7.2</span> Filtering cases by non-consecutive row numbers</h2>
+<section id="filtering-cases-by-non-consecutive-row-numbers" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="filtering-cases-by-non-consecutive-row-numbers"><span class="header-section-number">8.2</span> Filtering cases by non-consecutive row numbers</h2>
+<p>To select cases that are in non-consecutive rows we need to type their row numbers. In the example below we select the cases that are in rows 1, 3, 5, and 7 to 10 of the mybfi data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1  5  2  3  5  4  4  3  1  3  1      1         4  34
-2  3  5  6  6  6  3  5  2  5  6      2         3  44
-3  3  4  4  4  4  3  4  4  4  4      1         4  24
-4  3  4  4  4  4  5  6  6  4  5      2         2  41</code></pre>
+1  1  6  6  4  5  2  2  5  4  1      2         5  31
+2  1  6  5  6  5  1  2  2  4  4      2         3  40
+3  2  5  6  6  6  2  2  4  4  2      2         5  30
+4  2  5  6  5  6  2  4  2  3  2      2         3  31
+5  2  6  4  6  5  4  5  4  2  5      2         3  18
+6  1  6  4  6  5  2  2  1  6  4      2         3  43
+7  3  4  5  6  3  5  5  6  5  4      2         3  21</code></pre>
 </div>
 </div>
 </section>
-<section id="filtering-cases-that-meet-a-certain-condition" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">7.3</span> Filtering cases that meet a certain condition</h2>
+<section id="filtering-cases-that-meet-a-certain-condition" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="filtering-cases-that-meet-a-certain-condition"><span class="header-section-number">8.3</span> Filtering cases that meet a certain condition</h2>
+<p>The <code>filter()</code> function of the dplyr package can be used to filter cases that meet a specific condition. In the examples below we (a) select the men, (b) select people with education levels greater than 3, (c) select cases whose age is equal to 30, (d) select cases whose age is smaller than or equal to 30, and (e) select cases whose age is greater than or equal to 31.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -423,8 +437,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">31</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="filtering-cases-that-dont-meet-a-certain-condition" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">7.4</span> Filtering cases that don’t meet a certain condition</h2>
+<section id="filtering-cases-that-dont-meet-a-certain-condition" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="filtering-cases-that-dont-meet-a-certain-condition"><span class="header-section-number">8.4</span> Filtering cases that don’t meet a certain condition</h2>
+<p>The ! symbol can be used to select cases that do not meet a certain condition. In the examples below we (a) select people who are not men, (b) select people who do not have education levels greater than 3, and (c) select people whose age is not greater than 30.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>gender <span class="sc">==</span> <span class="dv">1</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -433,105 +448,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="filtering-cases-on-the-basis-of-two-or-more-conditions" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">7.5</span> Filtering cases on the basis of two or more conditions</h2>
+<section id="filtering-cases-on-the-basis-of-two-or-more-conditions" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="filtering-cases-on-the-basis-of-two-or-more-conditions"><span class="header-section-number">8.5</span> Filtering cases on the basis of two or more conditions</h2>
+<p>We can also select cases on the basis of two or more conditions. The &amp; (“and”) and | (“or”) operators are used to specify the conditions. In the examples below we (a) select cases who are men AND are older than 60, and (b) select cases who are older than 65 OR whose education level is equal to one. The second example will select ALL the people who are older than 65 and ALL the people whose education level is equal to one.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">&gt;</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1  1  4  3  6  5  6  5  5  6  4      1         4  67
-2  5  4  2  6  4  5  5  4  4  4      1         2  65
-3  3  2  2  6  5  1  1  1  1  1      1         5  63</code></pre>
+1  4  3  1  1  5  4  2  1  2  1      1         5  74
+2  3  2  2  6  5  1  1  1  1  1      1         5  63
+3  1  5  6  5  6  2  2  2  2  2      1         5  68</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> age <span class="sc">&gt;</span> <span class="dv">60</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">65</span> <span class="sc">|</span> education <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   3  5  5  5  5  4  5  2  2  2      1         3  25
-2   1  4  5  5  5  2  2  2  2  1      1         4  37
-3   4  5  6  5  6  5  4  5  5  2      1         4  23
-4   6  2  4  6  3  5  5  5  4  1      1         1  25
-5   4  4  4  4  4  1  1  2  4  3      1         3  23
-6   2  5  5  5  5  1  5  4  4  2      1         1  35
-7   5  5  2  5  6  2  3  4  3  2      1         3  30
-8   5  5  3  5  2  5  5  6  5  2      1         3  35
-9   2  6  6  6  6  1  1  1  3  1      1         3  20
-10  1  6  5  6  5  3  3  5  4  6      1         2  24
-11  3  5  4  4  4  2  3  2  3  2      1         1  53
-12  3  2  4  6  5  4  5  2  2  4      1         3  39
-13  2  6  6  5  6  1  4  1  1  1      1         3  19
-14  2  5  6  4  6  2  3  3  2  2      1         3  34
-15  5  4  5  6  4  2  2  1  3  2      1         3  19
-16  3  5  5  4  6  4  4  4  4  2      1         5  21
-17  4  4  4  4  4  3  5  3  3  4      1         3  36
-18  2  1  3  4  6  2  6  1  1  1      1         3  23
-19  4  4  5  6  5  3  3  4  2  3      1         1  21
-20  5  2  2  2  5  5  5  5  6  5      1         4  29</code></pre>
+1   1  5  6  6  5  1  1  2  1  1      2         1  53
+2   4  5  4  5  4  3  2  2  4  5      1         1  49
+3   3  5  4  4  4  2  3  2  3  2      1         1  53
+4   3  5  5  6  6  4  3  2  3  1      1         1  39
+5   3  6  6  5  6  2  5  4  1  2      1         1  40
+6   1  1  1  1  5  1  2  6  4  6      2         1  18
+7   3  2  5  5  3  2  2  2  1  3      2         1  40
+8   2  5  3  5  5  2  2  1  1  5      1         1  51
+9   3  4  6  6  6  5  5  4  4  6      1         1  25
+10  5  4  4  4  3  2  2  1  3  1      1         1  24
+11  1  6  5  6  4  5  5  5  1  4      2         1  23
+12  3  3  3  5  5  3  5  2  4  4      1         1  18
+13  4  6  1  6  6  4  3  6  5  6      2         1  20
+14  1  4  3  6  3  5  6  4  5  5      2         1  16
+15  2  5  5  2  4  5  4  6  2  4      2         1  17
+16  3  4  5  5  3  3  2  3  4  2      2         1  20
+17  3  3  4  2  3  3  3  2  3  3      1         1  19
+18  2  3  4  2  5  1  5  1  1  1      2         1  18
+19  1  6  3  4  2  4  1  3  2  5      1         1  16
+20  2  3  4  3  3  2  4  2  5  3      2         1  19
+21  2  5  5  6  5  1  2  2  2  2      2         1  15
+22  2  4  6  5  6  2  5  4  3  4      1         1  26
+23  6  4  4  6  6  3  6  5  4  4      2         1  23
+24  3  5  4  5  5  1  1  1  1  1      2         1  21
+25  3  5  4  5  5  3  4  2  2  1      2         1  22
+26  2  4  5  4  2  5  5  6  4  4      2         1  19
+27  3  4  4  5  4  3  3  4  2  4      2         1  24
+28  1  3  4  4  4  1  1  1  1  4      2         2  86
+29  4  3  1  1  5  4  2  1  2  1      1         5  74
+30  5  6  5  5  6  1  4  1  3  2      2         1  18
+31  3  4  5  6  5  1  2  1  2  1      1         1  20
+32  5  5  5  6  6  4  1  2  2  5      2         1  44
+33  4  4  6  6  5  1  2  3  6  2      1         1  23
+34  2  4  4  6  4  3  3  2  3  3      2         1  32
+35  1  5  3  2  3  5  5  5  5  3      2         1  43
+36  2  5  5  5  6  2  2  2  2  2      1         1  19
+37  1  6  5  2  5  1  1  1  1  1      2         1  18
+38  1  6  6  5  5  3  3  3  3  4      2         1  34
+39  3  5  5  6  5  1  2  1  1  1      2         1  24
+40  1  6  6  6  5  4  2  2  3  4      1         1  34
+41  6  6  5  5  4  1  4  1  1  1      2         1  21
+42  2  4  4  3  5  5  5  6  4  6      2         1  21
+43  2  6  5  4  6  2  5  2  1  2      2         1  16
+44  1  4  5  6  4  4  5  3  6  4      1         1  18
+45  4  1  1  1  3  6  6  5  5  5      2         1  20
+46  4  5  2  2  1  2  4  2  2  3      1         1  17
+47  6  6  6  6  6  6  6  6  6  6      1         1  18
+48  5  4  2  4  5  2  5  5  5  5      1         1  38
+49  3  3  5  5  5  3  5  3  3  4      2         1  18
+50  4  5  5  6  5  2  3  3  1  1      1         1  18
+51  3  5  2  1  2  4  6  3  2  3      2         1  17
+52  4  4  4  3  4  2  2  3  3  3      1         1  19
+53  3  5  2  2  5  2  2  5  2  2      1         1  21
+54  1  5  6  5  6  2  2  2  2  2      1         5  68
+55  1  6  5  6  3  6  6  6  2  6      2         1  29
+56  3  4  4  6  3  3  5  4  3  3      2         1  42
+57  2  3  4  6  5  3  2  3  2  1      2         1  54
+58  1  6  5  5  5  1  2  1  4  4      2         1  58
+59  4  2  1  1  2  6  6  4  6  6      2         1  20
+60  1  5  5  6  5  3  3  2  1  2      2         1  22
+61  1  5  6  6  6  5  1  5  5  2      1         1  31
+62  4  5  2  1  4  4  5  2  4  6      2         1  18
+63  1  5  6  4  5  1  3  3  2  2      1         1  22
+64  2  5  5  2  5  2  4  2  4  3      2         1  46
+65  6  6  6  6  6  1  6  1  6  1      1         1  31
+66  4  4  4  4  4  4  4  4  4  4      2         1  20
+67  5  2  1  1  1  1  1  1  1  1      1         1  18
+68  2  5  2  5  5  1  4  2  5  2      1         1  35
+69  3  4  3  6  3  3  3  3  4  4      1         1  46
+70  3  6  4  6  4  1  1  1  1  1      1         1  21
+71  5  4  6  2  4  5  6  5  4  5      1         1  19
+72  2  6  5  4  6  4  5  5  6  6      2         1  20
+73  1  5  6  5  2  1  2  5  2  1      2         1  27
+74  2  5  5  5  5  1  5  4  4  2      1         1  35
+75  5  6  6  1  6  2  3  6  6  4      1         1  16
+76  1  6  6  6  6  2  2  5  2  1      1         1  17
+77  2  4  6  4  5  2  4  1  1  1      2         1  31
+78  2  5  6  3  5  5  4  1  2  2      1         1  18
+79  2  5  5  5  5  3  2  3  2  2      1         1  19
+80  2  6  6  6  5  1  1  1  2  1      2         5  66
+81  1  5  6  4  5  1  2  2  2  4      2         1  18
+82  5  6  5  6  4  1  1  2  2  1      1         1  18</code></pre>
 </div>
 </div>
 </section>
-<section id="storing-the-filtered-cases-in-a-new-data-frame" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">7.6</span> Storing the filtered cases in a new data frame</h2>
+<section id="storing-the-filtered-cases-in-a-new-data-frame" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="storing-the-filtered-cases-in-a-new-data-frame"><span class="header-section-number">8.6</span> Storing the filtered cases in a new data frame</h2>
+<p>In the example below we start with the mybfi data frame, AND THEN we select the cases who are older than 28 AND have an education level of three or higher, AND THEN we select the first 15 rows of the cases who met the condition. Finally, we assign these cases to a new data frame that is labeled df_new. This data frame will contain 15 cases that each are older than 28 and have an education level of three or higher.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">28</span> <span class="sc">&amp;</span> education <span class="sc">&gt;=</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(age)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   1  5  6  6  6  1  1  1  1  1      2         3  30
-2   3  6  1  5  6  3  5  2  3  2      2         3  31
-3   5  2  3  5  4  4  3  1  3  1      1         4  34
-4   2  3  4  3  4  4  4  3  2  1      2         4  34
-5   1  5  5  2  5  2  4  2  3  1      2         4  34
-6   5  5  3  5  2  5  5  6  5  2      1         3  35
-7   2  4  6  6  6  5  6  5  5  5      2         5  35
-8   2  6  6  6  6  1  4  2  3  2      2         3  39
-9   1  6  6  6  4  2  4  4  4  2      2         3  40
-10  2  5  5  4  3  5  5  5  4  2      2         5  40
-11  3  5  6  6  6  3  5  2  5  6      2         3  44
-12  6  1  6  6  6  1  1  1  1  1      2         3  45
-13  2  4  2  5  4  2  2  1  1  1      1         4  46
-14  1  6  6  6  6  1  3  5  4  4      2         4  50
-15  1  4  3  6  5  6  5  5  6  4      1         4  67</code></pre>
+1   1  6  6  4  5  2  2  5  4  1      2         5  31
+2   1  6  5  6  5  1  2  2  4  4      2         3  40
+3   1  5  6  6  4  1  2  4  3  2      2         3  36
+4   2  5  6  6  6  2  2  4  4  2      2         5  30
+5   2  5  6  5  6  2  4  2  3  2      2         3  31
+6   1  6  4  6  5  2  2  1  6  4      2         3  43
+7   1  5  5  6  5  4  4  4  3  2      2         3  30
+8   2  3  2  1  4  1  5  1  2  1      1         5  48
+9   1  6  6  6  6  1  1  3  2  1      1         3  39
+10  1  5  5  6  6  4  5  3  2  5      2         5  34
+11  1  5  5  5  5  5  6  4  5  6      1         4  52
+12  3  4  5  6  4  4  4  5  5  3      2         5  31
+13  5  5  5  6  2  5  4  5  2  4      2         3  46
+14  1  6  6  6  6  1  1  1  2  2      1         3  30
+15  4  4  4  3  3  4  4  5  3  2      1         4  32</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="selecting-variables-with-the-dplyr-package" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Selecting variables with the dplyr package</h1>
+<section id="selecting-variables-with-the-dplyr-package" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Selecting variables with the dplyr package</h1>
+<p>The <strong><code>select()</code></strong> function of the dplyr package makes it easy to select variables with either the column numbers of the variables or their names. In the examples below we start with the mybfi data frame AND THEN: (a) select the variables A1 to A5 (i.e.&nbsp;A1, A2, A3, A4 and A5), (b) select the variables A1, A3, N1 and N3, (c) select any variable that starts with “A” (i.e.&nbsp;A1, A2, A3, A4 and A5), (d) select any variable that does not start with “A”, (e) select any variable that ends with “r” (i.e.&nbsp;gender), (f) select the variables in columns 6 to 10 (i.e.&nbsp;N1, N2, N3, N4 and N5) (f) select the variables in columns 1, 3, 6, and 8 (i.e.&nbsp;A1, A3, N1, and N3).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, A1<span class="sc">:</span>A5)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, A1, A3, N1, N3)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, <span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, <span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mybfi, <span class="fu">ends_with</span>(<span class="st">"r"</span>))</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1, A3, N1, N3)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"r"</span>))</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(A1, A3, N1, N3)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"A"</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"r"</span>))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="combining-select-and-slice" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="combining-select-and-slice"><span class="header-section-number">8.1</span> Combining select and slice</h2>
+<section id="combining-select-and-slice" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="combining-select-and-slice"><span class="header-section-number">9.1</span> Combining select and slice</h2>
+<p>In the example below we first select the variables A1 to A5 AND THEN only only the cases that are in rows 1, 3 and 5.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="combing-select-and-filter" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="combing-select-and-filter"><span class="header-section-number">8.2</span> Combing select and filter</h2>
+<section id="combing-select-and-filter" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="combing-select-and-filter"><span class="header-section-number">9.2</span> Combing select and filter</h2>
+<p>In the example below we first select all the women AND THEN only the first 10 rows AND THEN we select variables A1 to A5.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
@@ -539,91 +612,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span>A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="randomly-select-rows-from-a-data-frame-without-replacement" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">8.3</span> Randomly select rows from a data frame without replacement</h2>
+<section id="randomly-select-rows-from-a-data-frame-without-replacement" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-without-replacement"><span class="header-section-number">9.3</span> Randomly select rows from a data frame without replacement</h2>
+<p>We can use the <strong><code>sample_n()</code></strong> function of the dplyr package to draw a random sample of cases (without replacement) from a data frame. In the example below we randomly sample (without replacement) ten cases from the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   5  5  5  6  6  4  1  2  2  5      2         1  44
-2   2  4  3  3  3  4  6  4  4  5      2         3  20
-3   1  4  6  5  6  4  4  2  1  1      2         4  32
-4   4  6  6  6  5  4  5  5  3  2      2         3  34
-5   1  4  4  4  5  2  2  4  2  4      2         3  19
-6   2  2  5  6  6  1  1  1  1  1      1         3  21
-7   4  4  2  2  2  4  4  2  2  2      1         5  26
-8   5  4  4  4  5  4  4  4  4  2      1         5  58
-9   1  6  6  6  6  1  1  2  1  1      2         3  23
-10  1  5  5  5  5  5  6  4  5  6      1         4  52</code></pre>
+1   5  4  6  2  4  5  6  5  4  5      1         1  19
+2   4  4  4  3  4  2  2  3  3  3      1         1  19
+3   3  6  5  6  6  2  4  3  2  2      2         2  40
+4   2  6  5  6  5  4  3  5  6  2      2         5  41
+5   3  6  5  6  5  4  4  4  3  3      2         3  28
+6   2  6  5  6  5  3  2  2  4  4      1         4  28
+7   3  4  4  5  4  4  4  4  2  1      1         3  27
+8   2  6  5  6  6  1  1  5  5  4      1         3  23
+9   1  5  2  4  2  2  1  2  4  4      1         4  54
+10  2  5  5  5  5  1  1  1  1  1      1         4  26</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-rows-from-a-data-frame-with-replacement" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">8.4</span> Randomly select rows from a data frame with replacement</h2>
+<section id="randomly-select-rows-from-a-data-frame-with-replacement" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="randomly-select-rows-from-a-data-frame-with-replacement"><span class="header-section-number">9.4</span> Randomly select rows from a data frame with replacement</h2>
+<p>To randomly select cases with replacement we need to add the argument <strong><code>replace = TRUE</code></strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   2  5  5  6  4  1  2  2  2  1      2         3  17
-2   1  6  5  6  4  5  5  5  1  4      2         1  23
-3   2  5  6  6  6  2  2  4  4  2      2         5  30
-4   4  4  2  6  4  6  6  6  5  6      2         3  29
-5   3  6  6  6  5  5  6  6  3  2      2         3  39
-6   2  5  5  5  5  1  5  4  4  2      1         1  35
-7   1  5  5  6  6  1  2  3  1  2      2         4  43
-8   6  1  6  6  6  1  1  1  1  1      2         3  45
-9   2  6  6  6  5  2  4  4  2  4      2         3  19
-10  4  2  4  4  4  3  3  2  2  1      1         3  38</code></pre>
+1   1  4  5  3  3  3  4  2  6  5      1         2  29
+2   2  6  5  6  5  5  6  2  4  6      2         3  21
+3   5  6  6  5  5  1  1  1  1  1      1         3  21
+4   5  4  4  4  5  2  2  2  2  1      1         3  20
+5   1  5  5  6  6  2  2  5  2  5      2         3  22
+6   3  5  4  5  5  1  2  2  1  2      1         3  18
+7   4  5  6  4  5  4  2  2  3  1      1         3  20
+8   2  5  5  6  6  1  4  3  4  4      2         3  25
+9   6  5  6  5  6  6  6  6  6  6      2         3  20
+10  2  5  4  4  5  2  3  3  4  2      1         4  23</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-a-fraction-of-rows-without-replacement" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">8.5</span> Randomly select a fraction of rows without replacement</h2>
+<section id="randomly-select-a-fraction-of-rows-without-replacement" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-without-replacement"><span class="header-section-number">9.5</span> Randomly select a fraction of rows without replacement</h2>
+<p>We can also specify a fraction of cases to be randomly selected. In the example below we randomly select 1% of the cases in the mybfi data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(.<span class="dv">01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   2  6  4  6  5  2  2  5  4  3      2         3  25
-2   3  2  4  3  4  5  5  4  5  3      1         4  38
-3   3  5  6  6  5  5  5  4  3  3      1         3  26
-4   2  6  5  6  5  1  4  4  1  2      2         3  17
-5   1  5  5  6  6  4  4  2  5  4      2         3  24
-6   1  6  6  5  6  5  5  2  5  2      2         3  49
-7   2  6  6  6  4  3  2  4  4  4      2         3  34
-8   5  4  2  3  4  4  5  6  4  4      2         3  20
-9   3  6  6  5  6  3  6  1  5  1      1         2  21
-10  4  4  2  5  2  6  1  5  4  3      1         3  28</code></pre>
+1   1  6  5  6  5  1  1  1  1  3      2         3  19
+2   1  6  6  6  6  1  2  4  4  1      2         3  11
+3   2  5  5  6  4  4  5  5  5  5      2         3  38
+4   4  2  4  4  4  4  2  2  2  3      1         3  19
+5   1  5  5  1  6  1  1  5  5  6      2         4  53
+6   3  5  5  6  6  4  3  2  3  1      1         1  39
+7   1  5  6  4  5  1  3  3  2  2      1         1  22
+8   2  5  2  4  2  1  1  1  5  1      1         3  58
+9   2  5  5  4  6  2  4  2  2  1      2         4  24
+10  3  4  5  1  4  5  5  4  2  2      2         5  31</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-select-a-fraction-of-rows-with-replacement" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">8.6</span> Randomly select a fraction of rows with replacement</h2>
+<section id="randomly-select-a-fraction-of-rows-with-replacement" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="randomly-select-a-fraction-of-rows-with-replacement"><span class="header-section-number">9.6</span> Randomly select a fraction of rows with replacement</h2>
+<p>To randomly select a fraction of cases with replacement we need to add the argument <strong><code>replace = TRUE</code></strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.01</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1   3  4  5  4  5  4  3  2  4  2      1         3  19
-2   4  4  2  5  2  6  1  5  4  3      1         3  28
-3   3  4  3  1  3  5  6  5  5  6      2         4  24
-4   2  6  5  2  5  3  2  1  2  1      2         2  42
-5   3  4  3  6  3  3  3  3  4  4      1         1  46
-6   1  6  5  2  6  2  4  5  6  6      2         1  18
-7   3  6  5  6  6  1  2  1  1  2      1         2  25
-8   5  4  3  4  3  5  5  4  5  4      1         2  30
-9   3  5  4  6  4  6  6  5  1  2      2         4  27
-10  1  6  6  5  4  1  1  1  2  2      2         3  19</code></pre>
+1   2  4  4  6  4  3  3  2  3  3      2         1  32
+2   3  3  3  4  4  1  2  2  4  3      1         3  18
+3   1  6  6  1  6  2  3  1  2  1      2         3  20
+4   4  5  2  1  4  4  5  2  4  6      2         1  18
+5   1  6  5  6  6  3  2  2  1  1      1         3  52
+6   4  5  5  5  3  4  5  4  3  4      2         3  20
+7   6  2  5  6  6  1  1  4  2  6      2         2  19
+8   2  5  4  5  5  2  2  2  2  4      2         4  24
+9   1  4  5  4  5  3  3  3  2  4      2         5  28
+10  2  6  6  6  6  4  5  2  2  1      2         3  32</code></pre>
 </div>
 </div>
 </section>
-<section id="randomly-split-a-data-frame-into-two-parts" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">8.7</span> Randomly split a data frame into two parts</h2>
+<section id="randomly-split-a-data-frame-into-two-parts" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="randomly-split-a-data-frame-into-two-parts"><span class="header-section-number">9.7</span> Randomly split a data frame into two parts</h2>
+<p>The code below can be used to randomly split a data frame into two. We need to indicate the number of people we want in each group. In the example below we randomly split the mybfi data frame into two, where the first sample (mybfi1) contains 800 cases and the second (mybfi2) 200 cases.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specify exactly how many persons you want in the two groups, respectively.</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we want n = 600 in the first group and n = 400 in the second.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we want n = 800 in the first group and n = 200 in the second.</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>v          <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="dv">800</span>), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="dv">200</span>))) </span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>selection  <span class="ot">&lt;-</span> <span class="fu">sample</span>(v) </span>
@@ -646,383 +724,194 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="excercises" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="excercises"><span class="header-section-number">8.8</span> Excercises</h2>
+</section>
+<section id="excercises" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Excercises</h1>
 <ol type="1">
-<li>First use dollar notation and then square brackets to find the mean and standard deviation of variable A3.</li>
+<li>Use the dplyr package with the pipe operator to randomly select 500 cases from the mybfi data frame and then find the correlations of the five agreeableness variables.</li>
 </ol>
+<p>Here is an example where I randomly select 300 cases AND THEN select items N1, N3, and N5, AND THEN calculate their correlations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">300</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1, N3, N5) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.412</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.421364</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.412</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.421364</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.412</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.421364</code></pre>
+<pre><code>          N1        N3        N5
+N1 1.0000000 0.5978231 0.3800810
+N3 0.5978231 1.0000000 0.4191232
+N5 0.3800810 0.4191232 1.0000000</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li>First use dollar notation and then square brackets to find the correlation of variables N1 and N3.</li>
+<li>Randomly split (without replacement) the mybfi data frame into two data frames where the first data frame contains 600 cases and the second 400 cases. Store the first data frame as mybfi1 and the second as mybfi2. Next, use the pipe operator to select variables A1, A3, N2 and N4, and then find the correlations of these variables. Do this for each of the two data frames. Note that the corresponding correlations are not exactly the same across the two data sets, which illustrates the role of sampling error.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi<span class="sc">$</span>N1, mybfi<span class="sc">$</span>N3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5730131</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          N1        N3
-N1 1.0000000 0.5730131
-N3 0.5730131 1.0000000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="fu">c</span>(<span class="st">"N1"</span>,<span class="st">"N3"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          N1        N3
-N1 1.0000000 0.5730131
-N3 0.5730131 1.0000000</code></pre>
-</div>
-</div>
-<ol start="5" type="1">
-<li>Use square bracket notation to find the correlations of the five agreeableness items for the first 500 persons.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           A1         A2         A3         A4         A5
-A1  1.0000000 -0.3507137 -0.3099573 -0.1897966 -0.1979284
-A2 -0.3507137  1.0000000  0.4516677  0.3241097  0.3584335
-A3 -0.3099573  0.4516677  1.0000000  0.4007004  0.5103224
-A4 -0.1897966  0.3241097  0.4007004  1.0000000  0.3460398
-A5 -0.1979284  0.3584335  0.5103224  0.3460398  1.0000000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A2"</span>, <span class="st">"A3"</span>, <span class="st">"A4"</span>, <span class="st">"A5"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           A1         A2         A3         A4         A5
-A1  1.0000000 -0.3507137 -0.3099573 -0.1897966 -0.1979284
-A2 -0.3507137  1.0000000  0.4516677  0.3241097  0.3584335
-A3 -0.3099573  0.4516677  1.0000000  0.4007004  0.5103224
-A4 -0.1897966  0.3241097  0.4007004  1.0000000  0.3460398
-A5 -0.1979284  0.3584335  0.5103224  0.3460398  1.0000000</code></pre>
-</div>
-</div>
-<ol start="6" type="1">
-<li>Use the dplyr package with the pipe operator to randomly select 500 cases from the mybfi data frame and then use the psych package to find the correlations of the five agreeableness variables.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1<span class="sc">:</span>A5) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           A1         A2         A3         A4         A5
-A1  1.0000000 -0.3640333 -0.3205013 -0.2035252 -0.2341094
-A2 -0.3640333  1.0000000  0.4206001  0.3021557  0.3847325
-A3 -0.3205013  0.4206001  1.0000000  0.3115534  0.5397715
-A4 -0.2035252  0.3021557  0.3115534  1.0000000  0.3055938
-A5 -0.2341094  0.3847325  0.5397715  0.3055938  1.0000000</code></pre>
-</div>
-</div>
-<ol start="7" type="1">
-<li>Randomly split (without replacement) the mybfi data frame into two data frames where the first data frame contains 800 cases and the second 200 cases. Store the first data frame as mybfi1 and the second as mybfi2. Next, use the pipe operator to select variables A1, A3, N2 and N4, and then find the correlations of these variables. Do this for each of the two data frames. Note that the corresponding correlations are not exactly the same across the two data sets, which illustrates the role of sampling error.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Specify exactly how many persons you want in the two groups, respectively.</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we want n = 600 in the first group and n = 400 in the second.</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>v          <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="dv">800</span>), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="dv">200</span>))) </span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>selection  <span class="ot">&lt;-</span> <span class="fu">sample</span>(v) </span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>mybfi1     <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(selection) </span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>mybfi2     <span class="ot">&lt;-</span> mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>selection) </span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>mybfi1 <span class="sc">%&gt;%</span> </span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1, A3, N2, N4) <span class="sc">%&gt;%</span> </span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            A1          A3          N2          N4
-A1  1.00000000 -0.31859520  0.14079385  0.01767515
-A3 -0.31859520  1.00000000 -0.05280044 -0.07954697
-N2  0.14079385 -0.05280044  1.00000000  0.34839569
-N4  0.01767515 -0.07954697  0.34839569  1.00000000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mybfi2 <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(A1, A3, N2, N4) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            A1          A3          N2          N4
-A1  1.00000000 -0.27866607  0.08641407  0.13670278
-A3 -0.27866607  1.00000000 -0.17789463 -0.05863666
-N2  0.08641407 -0.17789463  1.00000000  0.47465323
-N4  0.13670278 -0.05863666  0.47465323  1.00000000</code></pre>
-</div>
-</div>
-<ol start="8" type="1">
+<ol start="3" type="1">
 <li>Use the dplyr package to select the rows of all the women (coded as 2 in the gender column). Then find the correlations of the variables N1 to N5. Do the same for the men.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1<span class="sc">:</span>N5) <span class="sc">%&gt;%</span> </span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          N1        N2        N3        N4        N5
-N1 1.0000000 0.7264130 0.5912143 0.4011930 0.4129772
-N2 0.7264130 1.0000000 0.5763424 0.3956640 0.3696933
-N3 0.5912143 0.5763424 1.0000000 0.5040065 0.4267933
-N4 0.4011930 0.3956640 0.5040065 1.0000000 0.4305504
-N5 0.4129772 0.3696933 0.4267933 0.4305504 1.0000000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1<span class="sc">:</span>N5) <span class="sc">%&gt;%</span> </span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          N1        N2        N3        N4        N5
-N1 1.0000000 0.6603235 0.5342302 0.3467617 0.3076176
-N2 0.6603235 1.0000000 0.5043258 0.3373063 0.3339034
-N3 0.5342302 0.5043258 1.0000000 0.5197848 0.3627369
-N4 0.3467617 0.3373063 0.5197848 1.0000000 0.3661354
-N5 0.3076176 0.3339034 0.3627369 0.3661354 1.0000000</code></pre>
-</div>
-</div>
-<ol start="9" type="1">
+<ol start="4" type="1">
 <li>Use the dplyr package to select the rows of the men who (a) have education levels of 3 or above and (b) are older than 40. Then find the correlations of variables N1 to N5.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>mybfi <span class="sc">%&gt;%</span> </span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> education <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> age <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(N1<span class="sc">:</span>N5) <span class="sc">%&gt;%</span> </span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          N1        N2        N3        N4        N5
-N1 1.0000000 0.7427549 0.6943646 0.6041376 0.6502644
-N2 0.7427549 1.0000000 0.6531166 0.5962786 0.4910950
-N3 0.6943646 0.6531166 1.0000000 0.6342416 0.5494459
-N4 0.6041376 0.5962786 0.6342416 1.0000000 0.5467812
-N5 0.6502644 0.4910950 0.5494459 0.5467812 1.0000000</code></pre>
-</div>
-</div>
-<section id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="8.8.1">
-<h3 data-number="8.8.1" class="anchored" data-anchor-id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">8.8.1</span> Selecting consecutive rows by their row numbers with square brackets</h3>
+</section>
+<section id="filtering-cases-and-selecting-variables-with-square-brackets" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Filtering cases and selecting variables with square brackets</h1>
+<section id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="selecting-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1</span> Selecting consecutive rows by their row numbers with square brackets</h2>
 <p>We can select rows of a data frame by their row numbers using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index <strong><code>mybfi[1, 1]</code></strong>. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by <strong><code>mybfi[5, 6]</code></strong>.</p>
 <p>If we want to select a row and include all the columns we leave the space after the comma empty. So if we want to use the scores of the person in the sixth row of the data frame on all the variables we would do it as follows: <strong><code>mybfi[6, ]</code></strong>.</p>
 <p>In the example below we select the persons in rows 1 to 20, using all the variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1  5  2  3  5  4  4  3  1  3  1      1         4  34
-2  3  3  4  2  4  3  4  4  4  6      2         4  20
-3  3  5  6  6  6  3  5  2  5  6      2         3  44
-4  1  6  6  6  6  1  3  5  4  4      2         4  50
-5  3  4  4  4  4  3  4  4  4  4      1         4  24
-6  2  4  4  1  3  1  2  1  4  4      1         2  18</code></pre>
+1  1  6  6  4  5  2  2  5  4  1      2         5  31
+2  2  4  4  3  4  3  4  4  3  4      2         4  22
+3  1  6  5  6  5  1  2  2  4  4      2         3  40
+4  1  5  6  6  4  1  2  4  3  2      2         3  36
+5  2  5  6  6  6  2  2  4  4  2      2         5  30
+6  1  5  6  6  5  1  1  2  1  1      2         1  53</code></pre>
 </div>
 </div>
-</section>
-<section id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="8.8.2">
-<h3 data-number="8.8.2" class="anchored" data-anchor-id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">8.8.2</span> Selecting non-consecutive rows by their row numbers with square brackets</h3>
+<section id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="selecting-non-consecutive-rows-by-their-row-numbers-with-square-brackets"><span class="header-section-number">11.1.1</span> Selecting non-consecutive rows by their row numbers with square brackets</h3>
 <p>We can select non-consecutive rows of a data frame by concatenating the row numbers inside round brackets, preceded by the letter “c”. For instance, to select rows 2, 4, and 7 of the mybfi data frame we type <strong><code>mybfi[c(2, 4, 7), ]</code></strong>. Note that the space after the comma indicates that we want to include all the variables.</p>
 <p>In the example below we select rows 1, 3, 5, 7 and 9 from the bfi data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A2 A3 A4 A5 N1 N2 N3 N4 N5 gender education age
-1  5  2  3  5  4  4  3  1  3  1      1         4  34
-3  3  5  6  6  6  3  5  2  5  6      2         3  44
-5  3  4  4  4  4  3  4  4  4  4      1         4  24
-7  3  4  4  4  4  5  6  6  4  5      2         2  41
-9  3  3  3  4  4  3  4  2  4  2      2         4  24</code></pre>
+1  1  6  6  4  5  2  2  5  4  1      2         5  31
+3  1  6  5  6  5  1  2  2  4  4      2         3  40
+5  2  5  6  6  6  2  2  4  4  2      2         5  30
+7  2  5  6  5  6  2  4  2  3  2      2         3  31
+9  1  6  4  6  5  2  2  1  6  4      2         3  43</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="selecting-columns-variables-from-a-data-frame" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="selecting-columns-variables-from-a-data-frame"><span class="header-section-number">8.9</span> Selecting columns (variables) from a data frame</h2>
-<section id="selecting-a-variable-with-notation" class="level3" data-number="8.9.1">
-<h3 data-number="8.9.1" class="anchored" data-anchor-id="selecting-a-variable-with-notation"><span class="header-section-number">8.9.1</span> Selecting a variable with $ notation</h3>
+<section id="selecting-columns-variables-from-a-data-frame" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="selecting-columns-variables-from-a-data-frame"><span class="header-section-number">11.2</span> Selecting columns (variables) from a data frame</h2>
+<section id="selecting-a-variable-with-notation" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="selecting-a-variable-with-notation"><span class="header-section-number">11.2.1</span> Selecting a variable with $ notation</h3>
 <p>We can select a variable from a data frame using dollar notation by first typing the name of the data frame, second typing a $ symbol, and then typing the name of the variable. For instance, we select variable N1 of the mybfi data frame as follows: <strong><code>mybfi$N1</code></strong></p>
 <p>In this example we are selecting the variable A1 from the <code>mybfi</code> data frame. Next, I find the mean and standard deviation of variable A1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 3 3 1 3 2</code></pre>
+<pre><code>[1] 1 2 1 1 2 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.412</code></pre>
+<pre><code>[1] 2.317</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi<span class="sc">$</span>A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.421364</code></pre>
+<pre><code>[1] 1.366887</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-a-variable-by-its-column-number-with-square-brackets" class="level3" data-number="8.9.2">
-<h3 data-number="8.9.2" class="anchored" data-anchor-id="selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">8.9.2</span> Selecting a variable by its column number with square brackets</h3>
+<section id="selecting-a-variable-by-its-column-number-with-square-brackets" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="selecting-a-variable-by-its-column-number-with-square-brackets"><span class="header-section-number">11.2.2</span> Selecting a variable by its column number with square brackets</h3>
 <p>We can select a variable by its column number in the data frame using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index <strong><code>mybfi[1, 1]</code></strong>. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by <strong><code>mybfi[5, 6]</code></strong>.</p>
 <p>If we want to select a variable and include all the rows we leave the space before the comma empty. So if we want to use the scores of all the persons in the data frame on the variable in column six we would do it as follows: <strong><code>mybfi[, 6]</code></strong>.</p>
 <p>In the example below we select variable A1, which is in the first column, using all the rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="dv">1</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="dv">1</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 3 3 1 3 2</code></pre>
+<pre><code>[1] 1 2 1 1 2 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.412</code></pre>
+<pre><code>[1] 2.317</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.421364</code></pre>
+<pre><code>[1] 1.366887</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="selecting-a-variable-by-its-name-with-square-brackets" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">8.10</span> Selecting a variable by its name with square brackets</h2>
+<section id="selecting-a-variable-by-its-name-with-square-brackets" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="selecting-a-variable-by-its-name-with-square-brackets"><span class="header-section-number">11.3</span> Selecting a variable by its name with square brackets</h2>
 <p>We can also use square brackets to select a variable by its name. For instance, to select variable N1 of the mybfi data frame, we type mybfi[, “N1”. Note that we have to type the name of the variable inside quotation marks.</p>
 <p>In the example below we select variable A1 from the mybfi data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 3 3 1 3 2</code></pre>
+<pre><code>[1] 1 2 1 1 2 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.412</code></pre>
+<pre><code>[1] 2.317</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mybfi[, <span class="st">"A1"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.421364</code></pre>
+<pre><code>[1] 1.366887</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">8.11</span> Selecting two or more contiguous variables by their column numbers with square brackets</h2>
+<section id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="selecting-two-or-more-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.4</span> Selecting two or more contiguous variables by their column numbers with square brackets</h2>
 <p>If the columns we want to select are contiguous–i.e.&nbsp;next to each other or together in sequence–we can type the first and last column numbers separated by a colon. For instance, to select the variables in columns three to six of the mybfi data frame we would type <strong><code>mybfi[, 3:6]</code></strong>.</p>
 <p>In the example below we select the variables in columns one to five. Next we ask for descriptive statistics of these variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A2 A3 A4 A5
-1  5  2  3  5  4
-2  3  3  4  2  4
-3  3  5  6  6  6
-4  1  6  6  6  6
-5  3  4  4  4  4
-6  2  4  4  1  3</code></pre>
+1  1  6  6  4  5
+2  2  4  4  3  4
+3  1  6  5  6  5
+4  1  5  6  6  4
+5  2  5  6  6  6
+6  1  5  6  6  5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars    n mean   sd median trimmed  mad min max range  skew kurtosis   se
-A1    1 1000 2.41 1.42      2    2.23 1.48   1   6     5  0.81    -0.39 0.04
-A2    2 1000 4.81 1.18      5    5.00 1.48   1   6     5 -1.16     1.09 0.04
-A3    3 1000 4.67 1.28      5    4.86 1.48   1   6     5 -1.02     0.47 0.04
-A4    4 1000 4.80 1.42      5    5.05 1.48   1   6     5 -1.16     0.47 0.04
-A5    5 1000 4.62 1.23      5    4.76 1.48   1   6     5 -0.86     0.26 0.04</code></pre>
+A1    1 1000 2.32 1.37      2    2.12 1.48   1   6     5  0.97     0.09 0.04
+A2    2 1000 4.81 1.16      5    4.98 1.48   1   6     5 -1.15     1.22 0.04
+A3    3 1000 4.69 1.25      5    4.87 1.48   1   6     5 -1.08     0.75 0.04
+A4    4 1000 4.77 1.48      5    5.02 1.48   1   6     5 -1.14     0.27 0.05
+A5    5 1000 4.64 1.26      5    4.80 1.48   1   6     5 -0.90     0.23 0.04</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mybfi[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           A1         A2         A3         A4         A5
-A1  1.0000000 -0.3551551 -0.3126551 -0.1710918 -0.1962464
-A2 -0.3551551  1.0000000  0.4634210  0.2919393  0.3638141
-A3 -0.3126551  0.4634210  1.0000000  0.3465298  0.5101414
-A4 -0.1710918  0.2919393  0.3465298  1.0000000  0.2979877
-A5 -0.1962464  0.3638141  0.5101414  0.2979877  1.0000000</code></pre>
+A1  1.0000000 -0.3297446 -0.2407081 -0.1508566 -0.1860256
+A2 -0.3297446  1.0000000  0.4753208  0.3681640  0.3827802
+A3 -0.2407081  0.4753208  1.0000000  0.3957704  0.5281988
+A4 -0.1508566  0.3681640  0.3957704  1.0000000  0.3372695
+A5 -0.1860256  0.3827802  0.5281988  0.3372695  1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">8.12</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</h2>
+<section id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="selecting-two-or-more-non-contiguous-variables-by-their-column-numbers-with-square-brackets"><span class="header-section-number">11.5</span> Selecting two or more non-contiguous variables by their column numbers with square brackets</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A3 A5
-1  5  3  4
-2  3  4  4
-3  3  6  6
-4  1  6  6
-5  3  4  4
-6  2  4  3</code></pre>
+1  1  6  5
+2  2  4  4
+3  1  5  5
+4  1  6  4
+5  2  6  6
+6  1  6  5</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-two-or-more-variables-by-their-names-with-square-brackets" class="level2" data-number="8.13">
-<h2 data-number="8.13" class="anchored" data-anchor-id="selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">8.13</span> Selecting two or more variables by their names with square brackets</h2>
+<section id="selecting-two-or-more-variables-by-their-names-with-square-brackets" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="selecting-two-or-more-variables-by-their-names-with-square-brackets"><span class="header-section-number">11.6</span> Selecting two or more variables by their names with square brackets</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A3"</span>, <span class="st">"A5"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mybfi[, <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A3"</span>, <span class="st">"A5"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  A1 A3 A5
-1  5  3  4
-2  3  4  4
-3  3  6  6
-4  1  6  6
-5  3  4  4
-6  2  4  3</code></pre>
-</div>
-</div>
-</section>
-<section id="fun-with-starwars-characters" class="level2" data-number="8.14">
-<h2 data-number="8.14" class="anchored" data-anchor-id="fun-with-starwars-characters"><span class="header-section-number">8.14</span> Fun with Starwars characters</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>starwars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 87 × 14
-   name     height  mass hair_color skin_color eye_color birth_year sex   gender
-   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
- 1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…
- 2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
- 3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
- 4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
- 5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
- 6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
- 7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
- 8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
- 9 Biggs D…    183    84 black      light      brown           24   male  mascu…
-10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
-# ℹ 77 more rows
-# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
-#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">==</span> <span class="st">"Human"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, height, mass, eye_color, species, films)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 48 × 6
-   name                  height  mass eye_color species        films    
-   &lt;chr&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;list&gt;   
- 1 C-3PO                    167    75 yellow    Droid          &lt;chr [6]&gt;
- 2 R2-D2                     96    32 red       Droid          &lt;chr [7]&gt;
- 3 R5-D4                     97    32 red       Droid          &lt;chr [1]&gt;
- 4 Chewbacca                228   112 blue      Wookiee        &lt;chr [5]&gt;
- 5 Greedo                   173    74 black     Rodian         &lt;chr [1]&gt;
- 6 Jabba Desilijic Tiure    175  1358 orange    Hutt           &lt;chr [3]&gt;
- 7 Yoda                      66    17 brown     Yoda's species &lt;chr [5]&gt;
- 8 IG-88                    200   140 red       Droid          &lt;chr [1]&gt;
- 9 Bossk                    190   113 red       Trandoshan     &lt;chr [1]&gt;
-10 Ackbar                   180    83 orange    Mon Calamari   &lt;chr [2]&gt;
-# ℹ 38 more rows</code></pre>
+1  1  6  5
+2  2  4  4
+3  1  5  5
+4  1  6  4
+5  2  6  6
+6  1  6  5</code></pre>
 </div>
 </div>
 
