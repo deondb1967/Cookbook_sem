@@ -23,6 +23,8 @@ install.packages("mice"       , repos = "https://cloud.r-project.org/")
 install.packages("Amelia"     , repos = "https://cloud.r-project.org/")
 install.packages("devtools"   , repos = "https://cloud.r-project.org/")
 install.packages("remotes"    , repos = "https://cloud.r-project.org/")
+install.packages("haven"      , repos = "https://cloud.r-project.org/")
+install.packages("readxl"     , repos = "https://cloud.r-project.org/")
 ```
 
 Some packages are hosted on Github, which is a site for developers. To download from Github we must first activate the `remotes` package. You may be asked if you want to update some packages. Choose "All".

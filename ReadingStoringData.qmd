@@ -8,13 +8,13 @@ In this chapter we learn how to read and store data in *R*. The focus falls on r
 
 ## Setting the working directory
 
-The first step in any data analysis session with R is to set the working directory. The working directory is a folder that contains your data and any objects and files that you create and store while working with *R*.
+The first step in any data analysis session with *R* is to set the working directory. The working directory is a folder that files related to the project that you are working on. This directory contains your data and any objects and files that you create and store while working with *R*.
 
-You should create a folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward.
+You should create a project folder that will serve as your working directory on your computer or on an external drive. It is strongly recommended to keep the name of this folder short and straightforward. It is also good practice to create a "data" subfolder inside the project folder. Data files should be stored in this subfolder.
 
 You can set the working directory via the Rstudio menu: **`Session/Set Working Directory/Choose Directory`**. *R* uses the **`setwd()`** function to set the working directory. The entire command, which includes the path to the working directory will be printed in the console window. You should copy this command and then paste it into the first line of the script window. The next time that you start *R* and want to set the working directory, you can highlight the first row of the script and run it.
 
-In the example below I first used the menus to set the working directory to "C:/myR/Masters2021". Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.
+In the example below I first used the menus to set the working directory to "C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021". Next, I copied the line of code in the console window and pasted it into the first line of the script window. By running the line of code in the script window I can set the working directory in future sessions without having to return to the menu.
 
 I also included the **`getwd()`** function, which is used to see the active working directory. Users sometimes change the working directory during an R session and **`getwd()`** can be used at any time to remind you of the current working directory.
 
@@ -24,14 +24,14 @@ setwd("C:/Users/deondb/OneDrive - Stellenbosch University/myR/Masters2021")
 getwd()
 ```
 
-## Reading the data and storing it as an object
+## Reading a .csv file and storing it as an object
 
-Data will typically be captured in a spreadsheet programme like Excel. One of the safest ways to get data into R is to first--in the working directory folder--store the Excel file as a comma separated values file (*.csv), second to read the csv file in R, and third to store the data as an object in R. In R the stored data is referred to as a* data frame\*.
+Data will typically be captured in a spreadsheet programme like Excel. One of the safest ways to get data into R is to first--in the working directory folder--store the Excel file as a comma separated values file (.csv)*,* second to read the .csv file in *R*, and third to store the data as an object in *R*.
 
-We accomplish the second and third steps jointly by using the **`read.csv()`** function. In the example we read the data and then store it to an object (a data frame) with the name "mydata". Note that we can give the data frame any name we want (but the name should not start with a number and it should not contain any special characters such as \@, #, \$, %, !, etc). The name also should not contain spaces. Two words can be used in a name if they are separated by an underscore or by a full stop (e.g. "my.data" or "my_data") It is good practice to keep the name short and straightforward, but as informative as possible.
+We accomplish the second and third steps jointly by using the **`read.csv()`** function. In the example below we read the data in the file labeled "SA_Swiss.csv" from the "data "subfolder and then store it to an object (a data frame) with the name **`mydata`**. Note that we can give the data frame any name we want (but the name should not start with a number and it should not contain any special characters such as \@, #, \$, %, !, etc). The name also should not contain spaces. Two words can be used in a name if they are separated by an underscore or by a full stop (e.g. "my.data" or "my_data"). It is good practice to keep the name short and straightforward, but as informative as possible.
 
 ```{r read.csv}
-mydata <- read.csv("SA_Swiss.csv")
+mydata <- read.csv("data/SA_Swiss.csv")
 ```
 
 On some machines Excel uses a semi-colon rather than a comma to separate values. In such cases you should use the **`read.csv2()`** function rather than the **`read.csv()`** function.
@@ -63,7 +63,7 @@ data.frame(names(mydata))
 It is relatively common to find missing data in a data set. In Excel, missing data can be represented by an empty cell, by the letters **NA**, or by a special code such as -999. In the first two cases R will recognise the empty cells or cells containing NAs as missing data. In the third case it is necessary to indicate to **`read.csv()`** that the special code represents missing data. Note that in an R data frame missing data will always be represented by NA (an abbreviation for "not available").
 
 ```{r missing_csv}
-SA_Swiss <- read.csv("SA_Swiss.csv", na.strings="-999")
+SA_Swiss <- read.csv("data/SA_Swiss.csv", na.strings="-999")
 ```
 
 ## Reading an Excel file
@@ -73,7 +73,7 @@ It is possible to directly read an Excel file without first storing it in csv fo
 ```{r read_excel}
 install.packages("readxl"  , repos = "https://cloud.r-project.org/")
 library(readxl)
-mydata <- read_excel("SA_Swiss.xlsx", na = "-999")
+mydata <- read_excel("data/SA_Swiss.xlsx", na = "-999")
 ```
 
 ## Reading an SPSS file
@@ -84,7 +84,7 @@ It is possible to read an SPSS data file without first storing it in csv format.
 #| eval: FALSE
 install.packages("haven"  , repos = "https://cloud.r-project.org/")
 library(haven)
-mydata <- read_spss("SA_Swiss.sav")
+mydata <- read_spss("data/SA_Swiss.sav")
 ```
 
 ## Reading data from the clipboard
@@ -99,9 +99,13 @@ tempdata <- read.clipboard()
 
 ## Exercise
 
--   Create a folder on your machine where you will store your data and *R* scripts.
+-   Create a folder on your machine that will be the working directory of your project
 
--   Set this folder as the working directory.
+-   Create a data subfolder in the working directory
+
+-   Store the SA_Swiss.csv, SA_Swiss.xlsx, SA_Swiss.sav and playdata.csv files in the data subfolder
+
+-   Set the working directory to the project folder
 
 -   Import the `SA_Swiss.csv` data set and store it as `mydata_csv`.
 
