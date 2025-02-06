@@ -31,11 +31,13 @@ book:
     - EFA.qmd
     - Correlated_residuals.qmd
     - part: "Part IV: Structural model"
+    - PathModels.qmd
     - MissingDataExamples.qmd
     - Mediation.qmd
     - Moderation.qmd
     - summary.qmd
     - references.qmd
+    - answers.qmd
   page-navigation: true
 
 bibliography: references.bib

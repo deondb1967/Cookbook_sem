@@ -4,6 +4,8 @@ title: "Packages"
 
 Base *R* is equipped with many functions that can be used to perform a wide variety of statistical analyses and many data management tasks. Sometimes, however, it may be necessary to employ functions that are housed in packages that are not installed with base *R*. In such cases we need to download and install the packages. We only need to do this once, after which the packages will remain available for further use. In this book we will need the following packages that are not installed with base *R*: tidyverse, dplyr, psych, psychTools, lavaan, lavaan.mi, semTools, MBESS, gt, ggplot2, mice and Amelia.
 
+The majority of the packages we will use in this course are housed on the "Comprehensive R Archive Network" (CRAN). Some packages will downloaded from Github, which is a site dedicated to software development.
+
 Install the packages by copying the code below into an *R* script window and then run it. If you are instructed that a certain package is needed but is missing, you will need to add that package to the list of packages that should be installed.
 
 ```{r}

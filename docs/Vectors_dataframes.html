@@ -278,32 +278,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PathModels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Path analysis models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./MissingDataExamples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Dealing with missing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Mediation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Mediation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Mediation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Moderation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Moderation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Moderation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Answers</span></span></a>
   </div>
 </li>
     </ul>
@@ -364,26 +376,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="a-data-frame-consists-of-vectors" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="a-data-frame-consists-of-vectors"><span class="header-section-number">3.2</span> A data frame consists of vectors</h2>
-<p>Consider the following mini data set. There are four rows, each of which contains data of a particular person. There are five columns, each of which represents a variable. Note that each of the columns is a vector. The first column (name) vector is a character vector, the second (sex) is also a character vector, the third (division) is a numeric vector, the fourth (graduate) is a logical vector, and the fifth (experience) is a numeric vector.</p>
+<p>Consider the following mini data set. There are four rows, each of which contains data of a particular person. There are five columns, each of which represents a variable. Note that each of the columns is a vector. The first column (name) vector is a character vector, the second (sex) is also a character vector, the third (division) is a numeric vector, the fourth (graduate) is a logical vector, and the fifth (experience) is a numeric vector. The numbers in the division vector have the following meaning: 1 = Finance, 2 = HR, and 3 = Marketing.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="swgctcfdai" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#swgctcfdai table {
+<div id="waoatipaga" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#waoatipaga table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#swgctcfdai thead, #swgctcfdai tbody, #swgctcfdai tfoot, #swgctcfdai tr, #swgctcfdai td, #swgctcfdai th {
+#waoatipaga thead, #waoatipaga tbody, #waoatipaga tfoot, #waoatipaga tr, #waoatipaga td, #waoatipaga th {
   border-style: none;
 }
 
-#swgctcfdai p {
+#waoatipaga p {
   margin: 0;
   padding: 0;
 }
 
-#swgctcfdai .gt_table {
+#waoatipaga .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -409,12 +421,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_caption {
+#waoatipaga .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#swgctcfdai .gt_title {
+#waoatipaga .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -426,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#swgctcfdai .gt_subtitle {
+#waoatipaga .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -438,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#swgctcfdai .gt_heading {
+#waoatipaga .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -450,13 +462,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_bottom_border {
+#waoatipaga .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_col_headings {
+#waoatipaga .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -471,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_col_heading {
+#waoatipaga .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -491,7 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#swgctcfdai .gt_column_spanner_outer {
+#waoatipaga .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -503,15 +515,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#swgctcfdai .gt_column_spanner_outer:first-child {
+#waoatipaga .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#swgctcfdai .gt_column_spanner_outer:last-child {
+#waoatipaga .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#swgctcfdai .gt_column_spanner {
+#waoatipaga .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -523,11 +535,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#swgctcfdai .gt_spanner_row {
+#waoatipaga .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#swgctcfdai .gt_group_heading {
+#waoatipaga .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#swgctcfdai .gt_empty_group_heading {
+#waoatipaga .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -568,15 +580,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#swgctcfdai .gt_from_md > :first-child {
+#waoatipaga .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#swgctcfdai .gt_from_md > :last-child {
+#waoatipaga .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#swgctcfdai .gt_row {
+#waoatipaga .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#swgctcfdai .gt_stub {
+#waoatipaga .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -608,7 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#swgctcfdai .gt_stub_row_group {
+#waoatipaga .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -622,15 +634,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#swgctcfdai .gt_row_group_first td {
+#waoatipaga .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#swgctcfdai .gt_row_group_first th {
+#waoatipaga .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#swgctcfdai .gt_summary_row {
+#waoatipaga .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -640,16 +652,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#swgctcfdai .gt_first_summary_row {
+#waoatipaga .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_first_summary_row.thick {
+#waoatipaga .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#swgctcfdai .gt_last_summary_row {
+#waoatipaga .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_grand_summary_row {
+#waoatipaga .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -669,7 +681,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#swgctcfdai .gt_first_grand_summary_row {
+#waoatipaga .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -679,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_last_grand_summary_row_top {
+#waoatipaga .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,11 +701,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_striped {
+#waoatipaga .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#swgctcfdai .gt_table_body {
+#waoatipaga .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -702,7 +714,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_footnotes {
+#waoatipaga .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -716,7 +728,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_footnote {
+#waoatipaga .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -725,7 +737,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#swgctcfdai .gt_sourcenotes {
+#waoatipaga .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -739,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#swgctcfdai .gt_sourcenote {
+#waoatipaga .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -747,72 +759,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#swgctcfdai .gt_left {
+#waoatipaga .gt_left {
   text-align: left;
 }
 
-#swgctcfdai .gt_center {
+#waoatipaga .gt_center {
   text-align: center;
 }
 
-#swgctcfdai .gt_right {
+#waoatipaga .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#swgctcfdai .gt_font_normal {
+#waoatipaga .gt_font_normal {
   font-weight: normal;
 }
 
-#swgctcfdai .gt_font_bold {
+#waoatipaga .gt_font_bold {
   font-weight: bold;
 }
 
-#swgctcfdai .gt_font_italic {
+#waoatipaga .gt_font_italic {
   font-style: italic;
 }
 
-#swgctcfdai .gt_super {
+#waoatipaga .gt_super {
   font-size: 65%;
 }
 
-#swgctcfdai .gt_footnote_marks {
+#waoatipaga .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#swgctcfdai .gt_asterisk {
+#waoatipaga .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#swgctcfdai .gt_indent_1 {
+#waoatipaga .gt_indent_1 {
   text-indent: 5px;
 }
 
-#swgctcfdai .gt_indent_2 {
+#waoatipaga .gt_indent_2 {
   text-indent: 10px;
 }
 
-#swgctcfdai .gt_indent_3 {
+#waoatipaga .gt_indent_3 {
   text-indent: 15px;
 }
 
-#swgctcfdai .gt_indent_4 {
+#waoatipaga .gt_indent_4 {
   text-indent: 20px;
 }
 
-#swgctcfdai .gt_indent_5 {
+#waoatipaga .gt_indent_5 {
   text-indent: 25px;
 }
 
-#swgctcfdai .katex-display {
+#waoatipaga .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#swgctcfdai div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#waoatipaga div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -862,14 +874,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>We would typically create such a data set in software such as Excel, and then import the data into <em>R</em>. It is informative, however, to create such a data set in <em>R</em> as an excercise. In the paragraphs that follow we do that by first creating five vectors (each with four elements) and then concatenating (combining) the vectors into a data frame.</p>
+<p>We would typically create such a data set in software such as Excel, and then import the data into <em>R</em>. It is informative, however, to create such a data set in <em>R</em> as an exercise. In the paragraphs that follow we do that by first creating five vectors (each with four elements) and then concatenating (combining) the vectors into a data frame.</p>
 </section>
 <section id="creating-a-data-frame-in-r" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="creating-a-data-frame-in-r"><span class="header-section-number">3.3</span> Creating a data frame in R</h2>
 </section>
 <section id="character-vectors" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="character-vectors"><span class="header-section-number">3.4</span> Character vectors</h2>
-<p>First, we create character vectors for name and sex.</p>
+<p>First, we create character vectors for name and sex. Note that each element in a character vector is enclosed in quotation marks. We type the elements of the vector inside round brackets and we separate the elements with commas. The letter “c” directly in front of the square brackets instructs R to concatenate or combine the different elements into a single vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Peter"</span>, <span class="st">"Paul"</span>, <span class="st">"Mary"</span>, <span class="st">"Janette"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -893,10 +905,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="numeric-vectors" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="numeric-vectors"><span class="header-section-number">3.6</span> Numeric vectors</h2>
-<p>Third, we create numeric vectors for the division and experience variables. Note that the numbers in our two numeric vectors serve different purposes. The numbers in the experience vector represents differences in quantity (i.e.&nbsp;differences in years experience). By contrast, however, the numbers in the division column indicates differences in type or quality. For instance, in the division vector the numbers 1, 2 and 3 are used to indicate the divisions (finance, HR or marketing) in which Peter, Paul, Mary and Janette work.</p>
+<p>Third, we create numeric vectors for the division and experience variables. Note that the numbers in our two numeric vectors (experience and division) serve different purposes. The numbers in the experience vector represents differences in quantity (i.e.&nbsp;differences in years experience). By contrast, however, the numbers in the division column indicates differences in type or quality. For instance, in the division vector the numbers 1, 2 and 3 are used to indicate the divisions (finance, HR or marketing) in which Peter, Paul, Mary and Janette work. The numbers indicate differences in type, but not differences in magnitude. Following Stevens (19??), we could say that the division vector is “measured” on a nominal level scale, whereas experience is “measured” on an interval level scale.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Experience</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 6 8</code></pre>
 </div>
@@ -951,8 +963,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="changing-a-character-or-numeric-vector-to-a-factor" class="level2" data-number="3.9">
 <h2 data-number="3.9" class="anchored" data-anchor-id="changing-a-character-or-numeric-vector-to-a-factor"><span class="header-section-number">3.9</span> Changing a character or numeric vector to a factor</h2>
-<p>The sex variable is stored as a character vector, whereas the division variable is stored as a numeric vector. Both of these variables indicate membership to different levels of a categorical variable. For instance, the words “male” and “female” are different levels of the categorical variable “sex”. Similarly, the numbers 1, 2 and 3 are used to indicate different levels, i.e.&nbsp;“finance”, “HR”, and “marketing” of the categorical variable “division”. We need to instruct <em>R</em> to treat the sex and division variables as categorical variables. In <em>R</em>, a categorical variables is referred to as a factor.</p>
-<p>In the example below we use the <code>factor()</code> function to instruct <em>R</em> to treat the sex and division variables as factors. Note how we use the $ symbol to gain access to a vector in a data frame.</p>
+<p>The sex variable is stored as a character vector, whereas the division variable is stored as a numeric vector. Both of these variables indicate membership to different levels of a categorical variable (i.e.&nbsp;both are nominal level variables). For instance, the words “male” and “female” are different levels of the categorical variable “sex”. Similarly, the numbers 1, 2 and 3 are used to indicate different levels, i.e.&nbsp;“finance”, “HR”, and “marketing” of the categorical variable “division”. We need to instruct <em>R</em> to treat the sex and division variables as categorical variables. In <em>R</em>, a categorical variables is referred to as a factor.</p>
+<p>In the example below we use the <strong><code>factor()</code></strong> function to instruct <em>R</em> to treat the sex and division variables as factors. Note how we use the $ symbol to gain access to a vector in a data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>sex)</span>
@@ -974,27 +986,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  $ experience: num  1 3 6 8</code></pre>
 </div>
 </div>
-<p>We use the <code>str()</code> function to inspect the structure of the data frame. The division variable now is a factor and no longer a numeric vector.</p>
+<p>We use the <strong><code>str()</code></strong> function to inspect the structure of the data frame. The division variable now is a factor and no longer a numeric vector. We can now use the <strong><code>gt()</code></strong> function of the gt package to print a nice table of our data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ojbgobyljl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ojbgobyljl table {
+<div id="zdzwsvefjt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zdzwsvefjt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ojbgobyljl thead, #ojbgobyljl tbody, #ojbgobyljl tfoot, #ojbgobyljl tr, #ojbgobyljl td, #ojbgobyljl th {
+#zdzwsvefjt thead, #zdzwsvefjt tbody, #zdzwsvefjt tfoot, #zdzwsvefjt tr, #zdzwsvefjt td, #zdzwsvefjt th {
   border-style: none;
 }
 
-#ojbgobyljl p {
+#zdzwsvefjt p {
   margin: 0;
   padding: 0;
 }
 
-#ojbgobyljl .gt_table {
+#zdzwsvefjt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1020,12 +1035,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_caption {
+#zdzwsvefjt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ojbgobyljl .gt_title {
+#zdzwsvefjt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1037,7 +1052,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ojbgobyljl .gt_subtitle {
+#zdzwsvefjt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1049,7 +1064,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ojbgobyljl .gt_heading {
+#zdzwsvefjt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1061,13 +1076,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_bottom_border {
+#zdzwsvefjt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_col_headings {
+#zdzwsvefjt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1082,7 +1097,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_col_heading {
+#zdzwsvefjt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1102,7 +1117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ojbgobyljl .gt_column_spanner_outer {
+#zdzwsvefjt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1114,15 +1129,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ojbgobyljl .gt_column_spanner_outer:first-child {
+#zdzwsvefjt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ojbgobyljl .gt_column_spanner_outer:last-child {
+#zdzwsvefjt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ojbgobyljl .gt_column_spanner {
+#zdzwsvefjt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1134,11 +1149,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ojbgobyljl .gt_spanner_row {
+#zdzwsvefjt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ojbgobyljl .gt_group_heading {
+#zdzwsvefjt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1164,7 +1179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ojbgobyljl .gt_empty_group_heading {
+#zdzwsvefjt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1179,15 +1194,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ojbgobyljl .gt_from_md > :first-child {
+#zdzwsvefjt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ojbgobyljl .gt_from_md > :last-child {
+#zdzwsvefjt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ojbgobyljl .gt_row {
+#zdzwsvefjt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1206,7 +1221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ojbgobyljl .gt_stub {
+#zdzwsvefjt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1219,7 +1234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ojbgobyljl .gt_stub_row_group {
+#zdzwsvefjt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1233,15 +1248,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ojbgobyljl .gt_row_group_first td {
+#zdzwsvefjt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ojbgobyljl .gt_row_group_first th {
+#zdzwsvefjt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ojbgobyljl .gt_summary_row {
+#zdzwsvefjt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1251,16 +1266,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ojbgobyljl .gt_first_summary_row {
+#zdzwsvefjt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_first_summary_row.thick {
+#zdzwsvefjt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ojbgobyljl .gt_last_summary_row {
+#zdzwsvefjt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1270,7 +1285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_grand_summary_row {
+#zdzwsvefjt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1280,7 +1295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ojbgobyljl .gt_first_grand_summary_row {
+#zdzwsvefjt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1290,7 +1305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_last_grand_summary_row_top {
+#zdzwsvefjt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1300,11 +1315,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_striped {
+#zdzwsvefjt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ojbgobyljl .gt_table_body {
+#zdzwsvefjt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1313,7 +1328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_footnotes {
+#zdzwsvefjt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1327,7 +1342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_footnote {
+#zdzwsvefjt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1336,7 +1351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ojbgobyljl .gt_sourcenotes {
+#zdzwsvefjt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1350,7 +1365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ojbgobyljl .gt_sourcenote {
+#zdzwsvefjt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1358,72 +1373,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ojbgobyljl .gt_left {
+#zdzwsvefjt .gt_left {
   text-align: left;
 }
 
-#ojbgobyljl .gt_center {
+#zdzwsvefjt .gt_center {
   text-align: center;
 }
 
-#ojbgobyljl .gt_right {
+#zdzwsvefjt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ojbgobyljl .gt_font_normal {
+#zdzwsvefjt .gt_font_normal {
   font-weight: normal;
 }
 
-#ojbgobyljl .gt_font_bold {
+#zdzwsvefjt .gt_font_bold {
   font-weight: bold;
 }
 
-#ojbgobyljl .gt_font_italic {
+#zdzwsvefjt .gt_font_italic {
   font-style: italic;
 }
 
-#ojbgobyljl .gt_super {
+#zdzwsvefjt .gt_super {
   font-size: 65%;
 }
 
-#ojbgobyljl .gt_footnote_marks {
+#zdzwsvefjt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ojbgobyljl .gt_asterisk {
+#zdzwsvefjt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ojbgobyljl .gt_indent_1 {
+#zdzwsvefjt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ojbgobyljl .gt_indent_2 {
+#zdzwsvefjt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ojbgobyljl .gt_indent_3 {
+#zdzwsvefjt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ojbgobyljl .gt_indent_4 {
+#zdzwsvefjt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ojbgobyljl .gt_indent_5 {
+#zdzwsvefjt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ojbgobyljl .katex-display {
+#zdzwsvefjt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ojbgobyljl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zdzwsvefjt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1476,7 +1491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exercise" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="exercise"><span class="header-section-number">3.10</span> Exercise</h2>
-<p>Consider the data set below. Recreate this data set in <em>R</em> by first creating five separate vectors and then store it as a data frame with the name <code>mydata</code>. Be sure to instruct <em>R</em> to treat area, sex and rank as factors. Give appropriate labels to the levels of the sex and rank variables. Finally, use the <code>str()</code> function to inspect the structure of the data frame.</p>
+<p>Consider the data set below. Recreate this data set in <em>R</em> by first creating five separate vectors and then store it as a data frame with the name <strong><code>mydata</code></strong>. Be sure to instruct <em>R</em> to treat area, sex and rank as factors. Give appropriate labels to the levels of the sex and rank variables. Finally, use the <strong><code>str()</code></strong> function to inspect the structure of the data frame and the <strong><code>gt()</code></strong> function to make nice table.</p>
 <p><img src="Exercise_df.PNG" class="img-fluid"></p>
 
 

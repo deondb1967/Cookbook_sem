@@ -1,0 +1,113 @@
+---
+title: "Path analysis models"
+---
+
+## Simple regression
+
+Say we want to examine the effect of workload on subjectively experienced stress. We can assume that both variables are continuous and are measured on an interval level. We have data with respect to these two variables for ?? cases in the swsihonours.csv file.
+
+```{r}
+mydata <- read.csv("data/SWSIhonours.csv")
+```
+
+As a first step it is useful to create a scatter plot that visually depicts the relationship between the two variables. The **`flexplot()`** function of the **`flexplot`** package creates excellent graphs, which by default plots the raw data and a non-parametric loess line that shows the trend in the data. In the example below we plot the effect of WL on GWS. In addition to the loess line we can also plot straight lines ("lm"), polynomial lines ("polynomial"), logistic lines ("logistic"). In this case the loess line clearly suggests a linear relationship. The plot reveals the presence of two severe outliers (there is a person with a WL score of zero and another with a GWS score of zero!).
+
+```{r}
+library(flexplot)
+flexplot(GWS ~ WL, data = mydata, method = "loess")
+```
+
+```{r}
+flexplot::flexplot(GWS ~ WL, data = mydata, method = "lm")
+```
+
+## Dealing with the outliers
+
+Outliers can potentially influence the observed relationship between variables. It would be best to deal with the two outliers we have detected by deleting the two scores and treating them as missing data (which in an *R* data frame is represented by the letters NA). The **`SWSIhonours.csv`** file contains some zeroes were such values are not permitted. There are many ways to deal with such a problem. Here we use the **`scrub()`** function of the `psych` package to recode all zeroes in the data frame to NA (missing).
+
+```{r}
+library(psych)
+scrub(mydata, isvalue = 0)
+
+#library(tidyverse)
+#mydata <- mydata %>% 
+#  mutate(WL = ifelse(WL < 1, NA, WL)) %>% 
+#  mutate(GWS = ifelse(GWS < 1, NA, GWS)) %>% 
+#  mutate(RA = ifelse(RA < 1, NA, RA)) %>%
+#  mutate(REL = ifelse(REL < 1, NA, REL)) %>%
+#  mutate(TE = ifelse(TE < 1, NA, TE)) %>%
+#  mutate(JS = ifelse(JS < 1, NA, JS)) %>%
+#  mutate(CA = ifelse(CA < 1, NA, CA)) %>%
+#  mutate(LA = ifelse(LA < 1, NA, LA)) %>%  
+#  mutate(WH = ifelse(WH < 1, NA, WH))
+```
+
+The scatterplots now do not include the outliers. The loess line is about dead straight which suggests that the relationship between GWS and WL is linear. We can therefore fit a straight line to the data.
+
+```{r}
+flexplot::flexplot(GWS ~ WL, data = mydata, method = "loess")
+```
+
+
+```{r}
+flexplot::flexplot(GWS ~ WL, data = mydata, method = "lm")
+```
+
+## Fitting a simple regression model of the relationship between WL and GWS
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+library(lavaan)
+```
+
+## Specifying the model as a structural equation model
+```{r}
+model1 <- '
+GWS ~ WL
+'
+```
+
+## Fitting the model to observed data
+
+We fit the model to the observed data in the mydata data frame using the **`sem()`** function. We store the results in an object we call **`fit.mod1`**.
+
+```{r}
+fit.model1 <- sem(model1, data = mydata)
+```
+
+## Examining the results
+
+We examine the results by asking for a summary of **`fit.model1`**.
+
+```{r}
+summary(fit.model1, standardized = TRUE)
+```
+
+## Plotting the model
+
+We use the semPaths() function of the semPlot model to plot the structural equation model. We need to specify the name of the fitted model. Students can experiment with different values for the color, what, weighted, sizeMan, nCharNodes, edge.label.cex, label.cex, edge.color, label.color and mar arguments and observe the effects thereof. With respect to the "what" argument we can request standardized parameters ("std") or unstandardized parameters ("est). Our model does not contain latent variables and the arguments relating to such variables does not affect the plot.
+
+```{r}
+library(semPlot)
+semPaths(fit.model1,
+         color       = "white",   ## try black, yellow, blue etc.
+         what           = c("est"), ## try std for standardized
+         weighted       = FALSE,
+         sizeLat        = 14,
+         sizeLat2       = 10,          
+         shapeLat       = "ellipse",
+         sizeMan        = 6,
+         nCharNodes     = 0,
+         edge.label.cex = 0.8,
+         label.cex      = 1, 
+         edge.color     = "black",
+         label.color    = "black",
+         mar            = c(5,5,5,5),
+         style          = "lisrel")
+```
+Our results show that WL has a positive effect on GWS (i.e. an increase in WL is associated with an increas in GWS). The unstandardized regression coefficient shows that a one unit increase in WL leads to a .51 unit increase in WL. The R-square statistic shows that WL accounts for about 25% of the variance in GWS.
+
+## Exercise
+
+Fit a series of simple regression models were GWS is the dependent variable and RA (role ambiguity), REL (relationships), LA (lack of autonomy), CA (career advancement) and JS (job security) in turn are the independent variables. Note the differences between the regression coefficients and the R-square statistics across the different models. Plot each of the models using semPlot.

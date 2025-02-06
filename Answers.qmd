@@ -1,0 +1,53 @@
+---
+title: "Answers"
+---
+
+## Chapter 3: Vectors and data frames
+
+```{r}
+#| eval: FALSE
+library(dplyr)
+library(gt)
+
+### Create the five vectors
+area         <- c("North", "North", "West", "West", "South", "South")
+age          <- c(42, 35, 38, 50, 56, 55)
+sex          <- c(1, 2, 1, 2, 1, 2)
+rank         <- c(1, 1, 2, 3, 4, 5)
+satisfaction <- c(7, 5, 2, 9, 7, 6)
+```
+
+```{r}
+#| eval: FALSE
+## Combine the vectors into a data frame
+mydata <- data.frame(area, age, sex, rank, satisfaction)
+```
+
+```{r}
+#| eval: FALSE
+## Store area, sex, and rank as factors
+
+mydata$area <- factor(mydata$area)
+
+mydata$sex  <- factor(mydata$sex,
+                      levels = c(1, 2),
+                      labels = c("male", "female"))
+
+mydata$rank <- factor(mydata$rank,
+                      levels = c(1, 2, 3, 4, 5),
+                      labels = c("Junior",
+                                 "Middle",
+                                 "Upper",
+                                 "Top",
+                                 "Executive"))
+```
+
+```{r}
+#| eval: FALSE
+## Check the structure of the data frame
+str(mydata)
+
+## Print the data frame as a table
+mydata %>% 
+  gt()
+```

@@ -35,8 +35,6 @@ semPaths(fit.mod,
          style          = "lisrel")
 ```
 
-
-
 ```{r}
 mod <- '
 Comprehension =~ Sentences + Vocabulary + Sent.Completion
@@ -66,6 +64,7 @@ semPaths(fit.mod,
          mar            = c(5,5,5,5),
          style          = "lisrel")
 ```
+
 ```{r}
 mod <- '
 Comprehension =~ Sentences + Vocabulary + Sent.Completion
@@ -80,7 +79,6 @@ G =~ Sentences + Vocabulary + Sent.Completion +
 fit.mod <- cfa(mod, sample.cov = Thurstone, sample.nobs = 500, std.lv = TRUE, orthogonal = TRUE)
 summary(fit.mod, standardized = TRUE, fit.measures = TRUE)
 ```
-
 
 ```{r}
 semPaths(fit.mod,
@@ -99,4 +97,3 @@ semPaths(fit.mod,
          style          = "lisrel",
          layout = "spring")
 ```
-
