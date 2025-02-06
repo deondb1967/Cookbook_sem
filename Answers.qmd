@@ -7,16 +7,15 @@ title: "Answers"
 Note that I placed a hash at the beginning of each line that would install the respective packages. This was done to prevent R from installing the packages over and over again. You only need to install a package once and you could do that by removing the hash at the start of the line
 .
 ```{r}
-#| eval: FALSE
+
 ### Install janitor package from CRAN
 #install.packages("janitor"  , repos = "https://cloud.r-project.org/")
 
-#| eval: FALSE
 # Install FAtools package from Github
 library(devtools)
 #install_github("mattkcole/FAtools")
 
-## You can go to the actual Github page of the package (https://github.com/xmc2/FAtools) and scroll down to the "Read me". Package developers will usually have download instructions in this section, which you can copy and paste in an Rstudio script window.
+## You can go to the actual Github page of the package (https://github.com/xmc2/FAtools) and scroll down to the "Read me" section. Package developers will usually have download instructions in this section, which you can copy and paste in an Rstudio script window.
 ```
 
 ## Chapter 3: Vectors and data frames
