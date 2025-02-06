@@ -40,3 +40,9 @@ install_github("dustinfife/flexplavaan")
 install_github("deondb1967/itemselectr")
 install_github("TDJorgensen/lavaan.mi")
 ```
+
+## Exercise
+
+-   Download and install the `janitor` package from CRAN. We will use this package later to deal with messy data frames.
+
+-   Download and install the `FAtools` package from Github. It is available at the following address: "mattkcole/FAtools" on Github.
