@@ -501,36 +501,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.5" class="anchored" data-anchor-id="reading-an-excel-file"><span class="header-section-number">4.5</span> Reading an Excel file</h2>
 <p>It is possible to directly read an Excel file without first storing it in csv format. This requires that the <strong>readxl</strong> package be installed and activated (the package only needs to be installed once). Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the <strong><code>read_excel()</code></strong> function will automatically recognise the missing data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>  , <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Installing package into 'C:/Users/deondb/AppData/Local/R/win-library/4.4'
-(as 'lib' is unspecified)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'readxl' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\deondb\AppData\Local\Temp\RtmpmMd4Ia\downloaded_packages</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SA_Swiss.xlsx"</span>, <span class="at">na =</span> <span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("readxl"  , repos = "https://cloud.r-project.org/")</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/SA_Swiss.xlsx"</span>, <span class="at">na =</span> <span class="st">"-999"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-an-spss-file" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="reading-an-spss-file"><span class="header-section-number">4.6</span> Reading an SPSS file</h2>
 <p>It is possible to read an SPSS data file without first storing it in csv format. This requires that the <strong>haven</strong> package be installed and activated (the package only needs to be installed once). The <strong><code>read_spss()</code></strong> function will automatically recognise missing data in an SPSS file, on condition that special codes have been assigned missing data status in the SPSS file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"haven"</span>  , <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org/"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">"data/SA_Swiss.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("haven"  , repos = "https://cloud.r-project.org/")</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">"data/SA_Swiss.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-data-from-the-clipboard" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="reading-data-from-the-clipboard"><span class="header-section-number">4.7</span> Reading data from the clipboard</h2>
 <p>At times it might be convenient to highlight and copy data in Excel and then use the <strong><code>read.clipboard()</code></strong> function from the <strong><code>psychTools</code></strong> package to read and store the copied data as a data frame. Whereas this is easy and quick to do it is not recommended for general practice, because the saved code will not explicitly state where the data were obtained from (other than the clipboard). In the example code below I copied some data in Excel and then used the <strong><code>read.clipboard()</code></strong> function to store it as a data frame called “tempdata”. To execute the code users will have to first copy data in Excel, then remove the hash tags at the beginning of the lines, and then run the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tempdata <span class="ot">&lt;-</span> <span class="fu">read.clipboard</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychTools)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tempdata <span class="ot">&lt;-</span> <span class="fu">read.clipboard</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise" class="level2" data-number="4.8">

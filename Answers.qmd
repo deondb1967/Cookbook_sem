@@ -7,9 +7,12 @@ title: "Answers"
 Note that I placed a hash at the beginning of each line that would install the respective packages. This was done to prevent R from installing the packages over and over again. You only need to install a package once and you could do that by removing the hash at the start of the line
 .
 ```{r}
-
+#| message: FALSE
+#| warning: FALSE
 ### Install janitor package from CRAN
 #install.packages("janitor"  , repos = "https://cloud.r-project.org/")
+
+#install.packages("EFAtools"  , repos = "https://cloud.r-project.org/")
 
 # Install FAtools package from Github
 library(devtools)

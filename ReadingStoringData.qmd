@@ -71,7 +71,7 @@ SA_Swiss <- read.csv("data/SA_Swiss.csv", na.strings="-999")
 It is possible to directly read an Excel file without first storing it in csv format. This requires that the **readxl** package be installed and activated (the package only needs to be installed once). Note how a special code such as -999 can be used to indicate missing data. Note that empty cells or NA can also be used to indicate missing data in the Excel file, in which case the **`read_excel()`** function will automatically recognise the missing data.
 
 ```{r read_excel}
-install.packages("readxl"  , repos = "https://cloud.r-project.org/")
+#install.packages("readxl"  , repos = "https://cloud.r-project.org/")
 library(readxl)
 mydata <- read_excel("data/SA_Swiss.xlsx", na = "-999")
 ```
@@ -82,7 +82,7 @@ It is possible to read an SPSS data file without first storing it in csv format.
 
 ```{r read_spss}
 #| eval: FALSE
-install.packages("haven"  , repos = "https://cloud.r-project.org/")
+#install.packages("haven"  , repos = "https://cloud.r-project.org/")
 library(haven)
 mydata <- read_spss("data/SA_Swiss.sav")
 ```

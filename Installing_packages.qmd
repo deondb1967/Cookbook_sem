@@ -43,6 +43,8 @@ install_github("TDJorgensen/lavaan.mi")
 
 ## Exercise
 
--   Download and install the `janitor` package from CRAN. We will use this package later to deal with messy data frames.
+-   Download and install the **`janitor`** package from CRAN.
 
--   Download and install the `FAtools` package from Github. It is available at the following address: "mattkcole/FAtools" on Github.
+-   Download and install the **`EFAtools`** package from CRAN.
+
+-   Download and install the **`FAtools`** package from Github. It is available at the following address: "mattkcole/FAtools" on Github.
