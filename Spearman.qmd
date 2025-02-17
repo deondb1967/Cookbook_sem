@@ -22,9 +22,6 @@ measurement_plot(fit.mod1, sample = 100)
 residual_plots(fit.mod1)
 ```
 
-
-
-
 ```{r}
 #| warning: FALSE
 #| message: FALSE
@@ -42,4 +39,3 @@ visualize(fit.modgws, subset = c(1:9))
 measurement_plot(fit.modgws)
 residual_plots(fit.modgws)
 ```
-

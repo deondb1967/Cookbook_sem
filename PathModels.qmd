@@ -27,7 +27,7 @@ Outliers can potentially influence the observed relationship between variables. 
 
 ```{r}
 library(psych)
-scrub(mydata, isvalue = 0)
+mydata <- scrub(mydata, isvalue = 0)
 
 #library(tidyverse)
 #mydata <- mydata %>% 

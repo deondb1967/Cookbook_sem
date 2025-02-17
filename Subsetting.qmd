@@ -18,13 +18,13 @@ mybfi <- read.csv("data/bfi_small.csv")
 
 ## The %\>% operator of the dplyr package
 
-The dplyr package makes it easy to select cases and variables by making use of the %\>% operator (the pipe operator). The meaning of %\>% is "and then". One starts by typing the name of the data frame followed by %\>% and then the criteria on the basis of which persons and/or variables are selected. For instance, to select the variables in columns 1 to 5 of the mybfi data frame we would type **`mybfi %>% select(1:5)`**, which reads as start with the mybfi data frame AND THEN select the variables in columns 1 to 5. A keyboard shortcut for typing the pipe operator is **`Shift-Ctrl-M`**.
+The dplyr package makes it easy to select cases and variables by making use of the %\>% operator (the pipe operator). The meaning of %\>% is "and then". One starts by typing the name of the data frame followed by %\>% and then the criteria on the basis of which persons and/or variables are selected. For instance, to select the variables in columns 1 to 5 of the mybfi data frame we would type `mybfi %>% select(1:5)`, which reads as start with the mybfi data frame AND THEN select the variables in columns 1 to 5. A keyboard shortcut for typing the pipe operator is `Shift-Ctrl-M`.
 
 ## Filtering cases with the dplyr package
 
 ### Filtering rows by consecutive row numbers
 
-The **`slice()`** function of the **`dplyr`** package can be used to select a specified set of cases that fall in consecutive rows from a data frame. In the example below we select the cases that are in rows 1 to 10 of the mybfi data frame.
+The `slice()` function of the `dplyr` package can be used to select a specified set of cases that fall in consecutive rows from a data frame. In the example below we select the cases that are in rows 1 to 10 of the `mybfi` data frame.
 
 ```{r}
 mybfi %>% slice(1:10)
@@ -91,7 +91,7 @@ df_new
 
 ## Selecting variables with the dplyr package
 
-The **`select()`** function of the dplyr package makes it easy to select variables with either the column numbers of the variables or their names. In the examples below we start with the mybfi data frame AND THEN: (a) select the variables A1 to A5 (i.e. A1, A2, A3, A4 and A5), (b) select the variables A1, A3, N1 and N3, (c) select any variable that starts with "A" (i.e. A1, A2, A3, A4 and A5), (d) select any variable that does not start with "A", (e) select any variable that ends with "r" (i.e. gender), (f) select the variables in columns 6 to 10 (i.e. N1, N2, N3, N4 and N5) (f) select the variables in columns 1, 3, 6, and 8 (i.e. A1, A3, N1, and N3).
+The `select()` function of the dplyr package makes it easy to select variables with either the column numbers of the variables or their names. In the examples below we start with the mybfi data frame AND THEN: (a) select the variables A1 to A5 (i.e. A1, A2, A3, A4 and A5), (b) select the variables A1, A3, N1 and N3, (c) select any variable that starts with "A" (i.e. A1, A2, A3, A4 and A5), (d) select any variable that does not start with "A", (e) select any variable that ends with "r" (i.e. gender), (f) select the variables in columns 6 to 10 (i.e. N1, N2, N3, N4 and N5) (f) select the variables in columns 1, 3, 6, and 8 (i.e. A1, A3, N1, and N3).
 
 ```{r results = 'hide'}
 library(dplyr)
@@ -129,7 +129,7 @@ mybfi %>%
 
 ### Randomly select rows from a data frame without replacement
 
-We can use the **`sample_n()`** function of the dplyr package to draw a random sample of cases (without replacement) from a data frame. In the example below we randomly sample (without replacement) ten cases from the mybfi data frame.
+We can use the `sample_n()` function of the dplyr package to draw a random sample of cases (without replacement) from a data frame. In the example below we randomly sample (without replacement) ten cases from the mybfi data frame.
 
 ```{r}
 mybfi %>% 
@@ -138,7 +138,7 @@ mybfi %>%
 
 ### Randomly select rows from a data frame with replacement
 
-To randomly select cases with replacement we need to add the argument **`replace = TRUE`**.
+To randomly select cases with replacement we need to add the argument `replace = TRUE`.
 
 ```{r}
 mybfi %>% 
@@ -156,7 +156,7 @@ mybfi %>%
 
 ### Randomly select a fraction of rows with replacement
 
-To randomly select a fraction of cases with replacement we need to add the argument **`replace = TRUE`**.
+To randomly select a fraction of cases with replacement we need to add the argument `replace = TRUE`.
 
 ```{r}
 mybfi %>% 
@@ -186,13 +186,102 @@ nrow(mybfi1)
 nrow(mybfi2)
 ```
 
+## Filtering cases and selecting variables with square brackets
+
+### Selecting consecutive rows by their row numbers with square brackets
+
+We can select rows of a data frame by their row numbers using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index `mybfi[1, 1]`. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by `mybfi[5, 6]`.
+
+If we want to select a row and include all the columns we leave the space after the comma empty. So if we want to use the scores of the person in the sixth row of the data frame on all the variables we would do it as follows: `mybfi[6, ]`.
+
+In the example below we select the persons in rows 1 to 20, using all the variables.
+
+```{r}
+head(mybfi[1:10, ])
+```
+
+### Selecting non-consecutive rows by their row numbers with square brackets
+
+We can select non-consecutive rows of a data frame by concatenating the row numbers inside round brackets, preceded by the letter "c". For instance, to select rows 2, 4, and 7 of the mybfi data frame we type `mybfi[c(2, 4, 7), ]`. Note that the space after the comma indicates that we want to include all the variables.
+
+In the example below we select rows 1, 3, 5, 7 and 9 from the bfi data frame.
+
+```{r}
+head(mybfi[c(1, 3, 5, 7, 9), ])
+```
+
+## Selecting columns (variables) from a data frame
+
+### Selecting a variable with \$ notation
+
+We can select a variable from a data frame using dollar notation by first typing the name of the data frame, second typing a \$ symbol, and then typing the name of the variable. For instance, we select variable N1 of the mybfi data frame as follows: `mybfi$N1`
+
+In this example we are selecting the variable A1 from the `mybfi` data frame. Next, I find the mean and standard deviation of variable A1.
+
+```{r}
+head(mybfi$A1)
+mean(mybfi$A1)
+sd(mybfi$A1)
+```
+
+### Selecting a variable by its column number with square brackets
+
+We can select a variable by its column number in the data frame using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index `mybfi[1, 1]`. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by `mybfi[5, 6]`.
+
+If we want to select a variable and include all the rows we leave the space before the comma empty. So if we want to use the scores of all the persons in the data frame on the variable in column six we would do it as follows: `mybfi[, 6]`.
+
+In the example below we select variable A1, which is in the first column, using all the rows.
+
+```{r}
+head(mybfi[, 1]) 
+mean(mybfi[, 1])
+sd(mybfi[, 1])
+```
+
+### Selecting a variable by its name with square brackets
+
+We can also use square brackets to select a variable by its name. For instance, to select variable N1 of the mybfi data frame, we type mybfi\[, "N1". Note that we have to type the name of the variable inside quotation marks.
+
+In the example below we select variable A1 from the mybfi data frame.
+
+```{r}
+head(mybfi[, "A1"])
+mean(mybfi[, "A1"])
+sd(mybfi[, "A1"])
+```
+
+### Selecting two or more contiguous variables by their column numbers with square brackets
+
+If the columns we want to select are contiguous--i.e. next to each other or together in sequence--we can type the first and last column numbers separated by a colon. For instance, to select the variables in columns three to six of the mybfi data frame we would type `mybfi[, 3:6]`.
+
+In the example below we select the variables in columns one to five. Next we ask for descriptive statistics of these variables.
+
+```{r}
+head(mybfi[, 1:5])
+psych::describe(mybfi[, 1:5])
+cor(mybfi[, 1:5])
+```
+
+### Selecting two or more non-contiguous variables by their column numbers with square brackets
+
+```{r}
+head(mybfi[, c(1,3,5)])
+```
+
+### Selecting two or more variables by their names with square brackets
+
+```{r}
+head(mybfi[, c("A1", "A3", "A5")])
+```
+
 ## Excercises
 
-1.  Use the dplyr package with the pipe operator to randomly select 500 cases from the mybfi data frame and then find the correlations of the five agreeableness variables.
+- Use the `dplyr` package with the pipe operator (%>%) to randomly select 500 cases from the `mybfi` data frame and then find the correlations of the five agreeableness variables.
 
 Here is an example where I randomly select 300 cases AND THEN select items N1, N3, and N5, AND THEN calculate their correlations.
 
 ```{r}
+#| eval: FALSE
 mybfi %>% 
   sample_n(300) %>% 
   select(N1, N3, N5) %>% 
@@ -208,7 +297,7 @@ mybfi %>%
   cor()
 ```
 
-2.  Randomly split (without replacement) the mybfi data frame into two data frames where the first data frame contains 600 cases and the second 400 cases. Store the first data frame as mybfi1 and the second as mybfi2. Next, use the pipe operator to select variables A1, A3, N2 and N4, and then find the correlations of these variables. Do this for each of the two data frames. Note that the corresponding correlations are not exactly the same across the two data sets, which illustrates the role of sampling error.
+- Randomly split (without replacement) the `mybfi` data frame into two data frames where the first data frame contains 600 cases and the second 400 cases. Store the first data frame as `mybfi1` and the second as `mybfi2`. Next, use the pipe operator to select variables A1, A3, N2 and N4, and then find the correlations of these variables. Do this for each of the two data frames. Note that the corresponding correlations are not exactly the same across the two data sets, which illustrates the role of sampling error.
 
 ```{r}
 #| echo: FALSE
@@ -236,7 +325,7 @@ mybfi2 %>%
 
 ```
 
-3.  Use the dplyr package to select the rows of all the women (coded as 2 in the gender column). Then find the correlations of the variables N1 to N5. Do the same for the men.
+- Use the `dplyr` package to select the rows of all the women (coded as 2 in the gender column). Then find the correlations of the variables N1 to N5. Do the same for the men.
 
 ```{r}
 #| echo: FALSE
@@ -252,7 +341,7 @@ mybfi %>%
   cor()
 ```
 
-4.  Use the dplyr package to select the rows of the men who (a) have education levels of 3 or above and (b) are older than 40. Then find the correlations of variables N1 to N5.
+- Use the `dplyr` package to select the rows of the men who (a) have education levels of 3 or above and (b) are older than 40. Then find the correlations of variables N1 to N5.
 
 ```{r}
 #| echo: FALSE
@@ -263,90 +352,39 @@ mybfi %>%
   cor()
 ```
 
-## Filtering cases and selecting variables with square brackets
 
-### Selecting consecutive rows by their row numbers with square brackets
+The "SA_Swiss.csv" file contains data for 1377 people with respect to the items of the General Work Stress Scale (GWS), the Utrecht Work Engagement Scale (UWES), the Maslach Burnout Inventory (MBI), and the General Health Questionnaire (GHQ), country, and gender.
 
-We can select rows of a data frame by their row numbers using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index **`mybfi[1, 1]`**. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by **`mybfi[5, 6]`**.
+The country variable has two levels: 1 = Swiss, and 2 = South Africa. The gender variable also has two levels: 0 = men and 1 = women. The items of the GWS are labelled GWS1 to GWS9, the UWES items are labelled UWES1 to UWES9, the MBI items are labelled MBI1 to MBI15, and the GHQ items are labelled GHQ1 to GHQ12.
 
-If we want to select a row and include all the columns we leave the space after the comma empty. So if we want to use the scores of the person in the sixth row of the data frame on all the variables we would do it as follows: **`mybfi[6, ]`**.
+-   Import the data and store it as a data frame labelled "df"
+-   Inspect the names of all the variables in `df`
+-   Store the country and gender variables as factors
+-   Use the `describe` function of the `psych` package to (a) find the column numbers of all the variables in `df`, and (b) to inspect descriptive statistics of each item
+-   Use the `slice()` function of the `dplyr` package to find descriptive statistics for the people that are in rows 50 to 100 of the `df` data frame (you will have to "activate" the `psych` package to use the `describe()` function)
 
-In the example below we select the persons in rows 1 to 20, using all the variables.
-
-```{r}
-head(mybfi[1:10, ])
-```
-
-### Selecting non-consecutive rows by their row numbers with square brackets
-
-We can select non-consecutive rows of a data frame by concatenating the row numbers inside round brackets, preceded by the letter "c". For instance, to select rows 2, 4, and 7 of the mybfi data frame we type **`mybfi[c(2, 4, 7), ]`**. Note that the space after the comma indicates that we want to include all the variables.
-
-In the example below we select rows 1, 3, 5, 7 and 9 from the bfi data frame.
+Example: Say we have a data frame labelled `mydata`. We can find descriptive statistics of the first 10 rows of `mydata` with the `slice()` and `describe()` functions as follows:
 
 ```{r}
-head(mybfi[c(1, 3, 5, 7, 9), ])
+#| eval: FALSE
+library(psych)
+library(dplyr)  
+mydata %>% 
+  slice(1:10) %>% 
+  describe()
 ```
 
-## Selecting columns (variables) from a data frame
-
-### Selecting a variable with \$ notation
-
-We can select a variable from a data frame using dollar notation by first typing the name of the data frame, second typing a \$ symbol, and then typing the name of the variable. For instance, we select variable N1 of the mybfi data frame as follows: **`mybfi$N1`**
-
-In this example we are selecting the variable A1 from the `mybfi` data frame. Next, I find the mean and standard deviation of variable A1.
-
-```{r}
-head(mybfi$A1)
-mean(mybfi$A1)
-sd(mybfi$A1)
-```
-
-### Selecting a variable by its column number with square brackets
-
-We can select a variable by its column number in the data frame using square brackets. Any particular cell in a data frame can be indexed by its row number and its column number, for instance the score of the person in row one on the variable in column one has the index **`mybfi[1, 1]`**. We first type the name of the data frame and then the square brackets with the row and column numbers. Note that we place a comma in the square brackets to separate the row and column numbers. The value before the comma pertains to the row number, whereas the value after the comma pertains to the column number. So, the score of the person in row five on the variable in column six of the mybfi data frame is indexed by **`mybfi[5, 6]`**.
-
-If we want to select a variable and include all the rows we leave the space before the comma empty. So if we want to use the scores of all the persons in the data frame on the variable in column six we would do it as follows: **`mybfi[, 6]`**.
-
-In the example below we select variable A1, which is in the first column, using all the rows.
-
-```{r}
-head(mybfi[, 1]) 
-mean(mybfi[, 1])
-sd(mybfi[, 1])
-```
-
-### Selecting a variable by its name with square brackets
-
-We can also use square brackets to select a variable by its name. For instance, to select variable N1 of the mybfi data frame, we type mybfi\[, "N1". Note that we have to type the name of the variable inside quotation marks.
-
-In the example below we select variable A1 from the mybfi data frame.
-
-```{r}
-head(mybfi[, "A1"])
-mean(mybfi[, "A1"])
-sd(mybfi[, "A1"])
-```
-
-### Selecting two or more contiguous variables by their column numbers with square brackets
-
-If the columns we want to select are contiguous--i.e. next to each other or together in sequence--we can type the first and last column numbers separated by a colon. For instance, to select the variables in columns three to six of the mybfi data frame we would type **`mybfi[, 3:6]`**.
-
-In the example below we select the variables in columns one to five. Next we ask for descriptive statistics of these variables.
-
-```{r}
-head(mybfi[, 1:5])
-psych::describe(mybfi[, 1:5])
-cor(mybfi[, 1:5])
-```
-
-### Selecting two or more non-contiguous variables by their column numbers with square brackets
-
-```{r}
-head(mybfi[, c(1,3,5)])
-```
-
-### Selecting two or more variables by their names with square brackets
-
-```{r}
-head(mybfi[, c("A1", "A3", "A5")])
-```
+-   Use the `slice()` function of the `dplyr` package to find descriptive statistics for the people that are in rows 50 to 60 and rows 70 to 80 of the `df` data frame
+-   Use the `filter()` function of the `dplyr` package to find descriptive statistics for all the women
+-   Use the `filter()` function of the `dplyr` package to find descriptive statistics for all the participants who are older than 39
+-   Use the `filter()` function of the `dplyr` package to find descriptive statistics for all the participants who are not from Switzerland
+-   Use the `filter()` function of the `dplyr` package to find descriptive statistics for all the women who are from Switzerland
+-   Use the `filter()` function of the `dplyr` package to find descriptive statistics for all the men who are from South Africa and are 30 years or younger
+-   Use the `filter()` function of the `dplyr` package to store the data of all the men in data frame labelled `df_men` and the data of the women in a data frame labelled `df_women`
+-   Use the `select()` function of the `dplyr` package to find descriptive statistics of the UWES items by name for the men
+-   Use the `select()` function of the `dplyr` package to find descriptive statistics of the GHQ items by number for the women
+-   Use the `select()` function of the `dplyr` package to find descriptive statistics of the GHQ items by number for the women
+-   Use the `filter()` and `select()` functions of the `dplyr` package to find descriptive statistics of all persons who are older than 50 on the GWS items
+-   Use the `sample_n()` function of the `dplyr` package to randomly select (without replacement) 20 cases and then find descriptive statistics for them
+-   Use the `sample_frac()` function of the `dplyr` package to randomly select (without replacement) 20% of the cases. Store these data in a new data frame labelled `df_20` and then find descriptive statistics of this data frame
+-   Randomly split the `df` data frame into two, such that the one part contains 700 cases and the second part contains 677 cases. Store the new data frames as `df_700` and `df_677`, respectively. Next, find descriptive statistics for each of the two data frames
